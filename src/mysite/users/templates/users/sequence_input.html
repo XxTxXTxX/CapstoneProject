@@ -1,0 +1,15 @@
+<html lang="en">
+<head>
+    <title>Upload MOLX File</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Upload MOLX File</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="molx_file" accept=".molx" required>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+</body>
+</html>
