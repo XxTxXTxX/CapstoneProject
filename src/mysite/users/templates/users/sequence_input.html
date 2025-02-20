@@ -46,10 +46,12 @@
 </head>
 <body>
     <div class="container">
-        <h2>Input Amino Sequence</h2>
+        <h2>Input Amino Acid Sequence</h2>
         <form method="post">
             {% csrf_token %}
-            <input type="text" name="sequence" placeholder="Enter amino sequence" required>
+            <input type="text" name="sequence" placeholder="Enter amino acid sequence" required>
+            <input type="text" name="Ph" placeholder="pH value">
+            <input type="text" name="Temperature" placeholder="Temperature">
             <button type="submit">Submit</button>
         </form>
     </div>

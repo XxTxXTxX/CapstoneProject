@@ -112,45 +112,45 @@ def getSequence():
     with open('src/dataCollection/id.txt', 'r') as all_id:
         for id in all_id:
             id = id.strip() # remove \n
-            if id == "3CY1":
-                prevVal = True
-            if prevVal == True:
-                url = f"https://files.rcsb.org/download/{id}.pdb"
-                folder_path = os.path.join('src/dataCollection/', id)
-                # print(folder_path)
+            # if id == "3CY1":
+            #     prevVal = True
+            # if prevVal == True:
+            url = f"https://files.rcsb.org/download/{id}.pdb"
+            folder_path = os.path.join('src/dataCollection/', id)
+            # print(folder_path)
 
-                ## Download pdb file and put to local
-                if not os.path.exists(folder_path):
-                    os.makedirs(folder_path)
-                try:
-                    response = requests.get(url)
-                    if response.status_code == 200:
-                        file_path = os.path.join(folder_path, f"{id}.pdb")
-                        with open(file_path, 'wb') as file:
-                            file.write(response.content)
-                        
-                        print(f"write {id}.pdb successfully!")
-                    else:
-                        print(f"Failed to download {id}.pdb")
-                except Exception as e:
-                    print("error message: ", str(e))
-
-                ## get sequence and write to local
-                variables = {
-                    "id": f"{id}"
-                }
-                payload = {
-                    "query": query,
-                    "variables": variables
-                }
-                response = requests.post(urlSequence, json=payload, headers=headers)
+            ## Download pdb file and put to local
+            if not os.path.exists(folder_path):
+                os.makedirs(folder_path)
+            try:
+                response = requests.get(url)
                 if response.status_code == 200:
-                    data = response.json()
-                    file_path = os.path.join(folder_path, f"{id}.txt")
-                    with open(file_path, 'w') as file:
-                        file.write(data['data']['entry']['polymer_entities'][0]['entity_poly']['pdbx_seq_one_letter_code_can'])
-                        print(f"write {id}.txt successfully!")
+                    file_path = os.path.join(folder_path, f"{id}.pdb")
+                    with open(file_path, 'wb') as file:
+                        file.write(response.content)
+                    
+                    print(f"write {id}.pdb successfully!")
                 else:
-                    print(f"write {id}.txt failed!")
+                    print(f"Failed to download {id}.pdb")
+            except Exception as e:
+                print("error message: ", str(e))
+
+            ## get sequence and write to local
+            variables = {
+                "id": f"{id}"
+            }
+            payload = {
+                "query": query,
+                "variables": variables
+            }
+            response = requests.post(urlSequence, json=payload, headers=headers)
+            if response.status_code == 200:
+                data = response.json()
+                file_path = os.path.join(folder_path, f"{id}.txt")
+                with open(file_path, 'w') as file:
+                    file.write(data['data']['entry']['polymer_entities'][0]['entity_poly']['pdbx_seq_one_letter_code_can'])
+                    print(f"write {id}.txt successfully!")
+            else:
+                print(f"write {id}.txt failed!")
 
 # getSequence()

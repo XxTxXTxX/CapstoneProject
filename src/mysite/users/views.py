@@ -1,4 +1,5 @@
 import os
+import time
 
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
@@ -47,6 +48,7 @@ def user_login(request):  # login page
 def sequence_input(request):
     if request.method == 'POST':
         sequence = request.POST.get('sequence')
+        time.sleep(3)
         return redirect('result', sequence=sequence)
     return render(request, 'users/sequence_input.html')
 

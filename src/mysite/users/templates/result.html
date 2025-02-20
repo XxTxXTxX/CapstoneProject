@@ -31,6 +31,7 @@
             margin-top: 20px;
             display: flex;
             gap: 10px;
+            flex-wrap: wrap;
         }
         .button {
             padding: 10px 20px;
@@ -42,6 +43,21 @@
         }
         .button:hover {
             background-color: #0056b3;
+        }
+        .button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        select {
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .email-input {
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            min-width: 200px;
         }
         #loading-status {
             position: absolute;
@@ -66,6 +82,15 @@
             <button class="button" onclick="toggleSpin()">Toggle Spin</button>
             <button class="button" onclick="toggleRepresentation()">Toggle Style</button>
             <a href="/" class="button">Back to Home</a>
+            <select name="download" id="download" onchange="handleFormatChange()">
+                <option value="">Select format...</option>
+                <option value="pdbFile">PDB format</option>
+                <option value="JSON">JSON format</option>
+                <option value="txt">txt format</option>
+            </select>
+            <button class="button" id="downloadBtn" disabled onclick="handleDownload()">Download</button>
+            <input type="email" class="email-input" id="emailInput" placeholder="Enter your email">
+            <button class="button" onclick="handleSendEmail()">Send</button>
         </div>
     </div>
 
@@ -151,6 +176,39 @@
                 loadingStatus.textContent = 'PDB file not found.';
             }
         });
+
+        // handle format change
+        function handleFormatChange() {
+            const downloadBtn = document.getElementById('downloadBtn');
+            const selectedFormat = document.getElementById('download').value;
+            downloadBtn.disabled = !selectedFormat;
+        }
+
+        // handle download -> currently without logic
+        function handleDownload() {
+            const selectedFormat = document.getElementById('download').value;
+            // download logic ------->>>>>>>> LATER WE NEED TO IMPLEMENT DOWNLOAD LOGIC
+            console.log('Downloading in format:', selectedFormat);
+        }
+
+        function handleSendEmail() {
+            const email = document.getElementById('emailInput').value;
+            if (!email) {
+                alert('Please enter an email address');
+                return;
+            }
+            if (!validateEmail(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            // Logic for sending email ------->>>>>>>> LATER WE NEED TO IMPLEMENT SENDING EMAIL LOGIC
+            console.log('Sending to email:', email);
+        }
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
     </script>
 </body>
 </html>
