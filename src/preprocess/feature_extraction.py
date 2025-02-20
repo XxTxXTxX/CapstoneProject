@@ -5,9 +5,9 @@ import os
 
 # 20 amino acid types
 _restypes = ["A","R","N","D","C", "Q", "E", "G", "H", "I", "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V",]
-# includes "X" for unknown amino acids
+# includes "X" for unknown amino acids (21 types)
 _restypes_with_x = _restypes + ["X"]
-# includes "-" for gap tokens
+# includes "-" for gap tokens (22 types)
 _restypes_with_x_and_gap = _restypes_with_x + ["-"]
 # dictionary: amino acid abbreviations -> index
 restype_order_with_x = None
@@ -179,6 +179,7 @@ def select_cluster_centers(features, max_msa_clusters=512, seed=None):
         # N_cluster, N_res, 23 | N_cluster, N_res
         features[key] = value[shuffled[:max_msa_clusters]]
         # N_cluster + N_extra = N_seq
+    print(features.keys())
     return features
 
 def mask_cluster_centers(features, mask_probability=0.15, seed=None):
@@ -189,22 +190,21 @@ def mask_cluster_centers(features, mask_probability=0.15, seed=None):
     model robustness in the presence of noisy or missing input data.
 
     Args:
-        features: A dictionary containing feature representations of the MSA. It is assumed
-                  that cluster centers have already been selected.
-        mask_probability: The probability of masking out an individual amino acid 
-                          in a cluster center sequence.
-        seed: An optional integer seed for the random number generator. 
-              Use this to ensure reproducibility.
+        features: 
+            A dictionary containing feature representations of the MSA. (cluster centers have already been selected)
+        mask_probability: 
+            The probability of masking out an individual amino acid in a cluster center sequence.
+        seed: 
+            An optional integer seed for the random number generator. Use this to ensure reproducibility.
 
     Modifies:
         The 'features' dictionary in-place by:
-            * Updating the 'msa_aatype' feature with masked-out tokens as well as possible 
-              replacements based on defined probabilities. 
+            * Updating the 'msa_aatype' feature with masked-out tokens as well as possible replacements based on defined probabilities. 
             * Creating a copy of the original 'msa_aatype' feature with the key 'true_msa_aatype'. 
     """
-
+    # N_clust, N_res, 22
     N_clust, N_res = features['msa_aatype'].shape[:2]
-    N_aa_categories = 23 # 20 Amino Acids, Unknown AA, Gap, masked_msa_token
+    N_aa_categories = 23 # 20 Amino Acids + [UNK], [GAP], [MASK]
     odds = {
         'uniform_replacement': 0.1,
         'replacement_from_distribution': 0.1,
@@ -216,33 +216,36 @@ def mask_cluster_centers(features, mask_probability=0.15, seed=None):
         gen = torch.Generator(features['msa_aatype'].device)
         gen.manual_seed(seed)
         torch.manual_seed(seed)
+"""
+    1. Select Modification Candidates:
+        - Generate a random mask (tensor of shape (N_clust, N_res) ) where each element is a random number between 0 and 1. 
+        - Select elements where the random number is less than the `mask_probability` for potential modification.
+    2. Replacement Logic:
+        Create tensors to represent substitution probabilities:
+            - `uniform_replacement`: Shape (22,)
+                 - Set the first 20 elements (amino acids) to `1/20 * odds['uniform_replacement']`.
+                 - Set the last 2 elements (unknown AA and gap) to 0.
+            
+            - `replacement_from_distribution`: Shape (N_res, 22), calculated from 'features['aa_distribution]'. Scale by `odds['replacement_from_distribution']`
+            
+            - `no_replacement`: Shape (N_clust, N_res, 22), use the existing 'features['msa_aatype']' tensor and scale by `odds['no_replacement']`.
+            
+            - `masked_out`: Shape (N_clust, N_res, 1), scale all elements by `odds['masked_out']`.
+            (masked_out is a completely different category from the 22 types of tokens, so needs to be concatenated)
 
-    ##########################################################################
-    # TODO:
-    # 1. **Select Modification Candidates:**
-    #      * Generate a random mask (tensor of shape (N_clust, N_res) ) where each element is a 
-    #        random number between 0 and 1. 
-    #      * Select elements where the random number is less than the `mask_probability` for potential modification.
-    # 2. **Replacement Logic:**
-    #      * Create tensors to represent substitution probabilities:
-    #          * `uniform_replacement`: Shape (22,) 
-    #             - Set the first 20 elements (amino acids) to `1/20 * odds['uniform_replacement']`.
-    #             - Set the last 2 elements (unknown AA and gap) to 0.
-    #          * `replacement_from_distribution`: Shape (N_res, 22), calculated from 'features['aa_distribution]'. Scale by `odds['replacement_from_distribution']`
-    #          *  `no_replacement`: Shape (N_clust, N_res, 22), use the existing 'features['msa_aatype']' tensor and scale by `odds['no_replacement']`.
-    #          * `masked_out`: Shape (N_clust, N_res, 1), all elements are `odds['masked_out']`.
-    #      * **Sum** the first three tensors, then **concatenate** with `masked_out` along the last dimension.  This creates 'categories_with_mask_token' of shape (N_clust, N_res, 23)
-    #      * Flatten the first two dimensions of 'categories_with_mask_token' for sampling.
-    #      * Use  `torch.distributions.Categorical` and the flattened 'categories_with_mask_token' tensor to 
-    #        probabilistically determine replacements for the selected residues. 
-    #      * Reshape the sampled replacements back to (N_clust, N_res).
-    # 3. **Preserve Original Data:**
-    #      * Create a copy of the original 'msa_aatype' data under the key 'true_msa_atype'.
-    # 4. **Apply Masking:**
-    #      * Update the 'msa_aatype' tensor, but *only* for the elements selected in step 1 for modification, with the sampled replacements.  Leave other elements unchanged. 
-    ##########################################################################
+        Sum the first three tensors, then concatenate with `masked_out` along the last dimension.  This creates 'categories_with_mask_token' of shape (N_clust, N_res, 23)
+        
+        Flatten the first two dimensions of 'categories_with_mask_token' for sampling.
 
+        Use `torch.distributions.Categorical` and the flattened 'categories_with_mask_token' tensor to probabilistically determine replacements for the selected residues. 
+        
+        Reshape the sampled replacements back to (N_clust, N_res).
 
+    3. Preserve Original Data:
+        Create a copy of the original 'msa_aatype' data under the key 'true_msa_atype'.
+    4. Apply Masking:
+        Update the 'msa_aatype' tensor, but only for the elements selected in step 1 for modification, with the sampled replacements.  Leave other elements unchanged. 
+"""
     # uniform_replacement has shape (22,)
     uniform_replacement = torch.tensor([1/20]*20+[0,0]) * odds['uniform_replacement']
     # replacement_from_distribution has shape (N_res, 22)
@@ -671,26 +674,26 @@ def create_control_values():
     torch.save(msa_feat, f'{control}/msa_feat.pt')
     torch.save(extra_msa_feat, f'{control}/extra_msa_feat.pt')
 
-
+    #
     full_batch = create_features_from_a3m(file_name, seed=0)
     torch.save(full_batch, f'{control}/full_batch.pt')
 
-    # print(full_batch)
+    #print(full_batch)
 
 if __name__=='__main__':
     create_control_values()
-    batch = create_features_from_a3m('solutions/feature_extraction/alignment_tautomerase.a3m', seed=0)
+    #batch = create_features_from_a3m('solutions/feature_extraction/alignment_tautomerase.a3m', seed=0)
     # basic_features = torch.load('current_implementation/test_outputs/basic_features.pt', map_location='cpu')
     # extra_msa_feat = torch.load('current_implementation/test_outputs/extra_msa_feat.pt', map_location='cpu')
 
-    print('Target feat:')
-    print((batch['target_feat']-basic_features['target_feat'][...,1:, 0]).abs().max())
+    #print('Target feat:')
+    #print((batch['target_feat']-basic_features['target_feat'][...,1:, 0]).abs().max())
     # print('Residue index:')
     # print((batch['residue_index']-basic_features['residue_index'][...,0]).float().abs().max())
     # # For MSA feat, a mean error of 0.0085 is expected, as the random
     # # generation changed during pytorch versions
-    print('MSA feat:')
-    print((batch['msa_feat']-basic_features['msa_feat'][...,0]).abs().mean())
+    #print('MSA feat:')
+    #print((batch['msa_feat']-basic_features['msa_feat'][...,0]).abs().mean())
     # print('Extra MSA feat:')
     # print((batch['extra_msa_feat']-extra_msa_feat).abs().max())
 
