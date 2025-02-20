@@ -246,32 +246,44 @@ def mask_cluster_centers(features, mask_probability=0.15, seed=None):
     4. Apply Masking:
         Update the 'msa_aatype' tensor, but only for the elements selected in step 1 for modification, with the sampled replacements.  Leave other elements unchanged. 
 """
-    # uniform_replacement has shape (22,)
+    # uniform_replacement: (22,)
     uniform_replacement = torch.tensor([1/20]*20+[0,0]) * odds['uniform_replacement']
-    # replacement_from_distribution has shape (N_res, 22)
+    # replacement_from_distribution: (N_res, 22)
     replacement_from_distribution = features['aa_distribution'] * odds['replacement_from_distribution']
-    # no_replacement has shape (N_clust, N_res, 22)
+    # no_replacement: (N_clust, N_res, 22)
     no_replacement = features['msa_aatype'] * odds['no_replacement']
-    # masked_out has shape (N_clust, N_res, 1)
+    # masked_out: (N_clust, N_res, 1)
     masked_out = torch.ones((N_clust, N_res, 1)) * odds['masked_out']
 
+    # N_clust, N_res, 22
     uniform_replacement = uniform_replacement[None, None, ...].broadcast_to(no_replacement.shape)
+    # N_clust, N_res, 22
     replacement_from_distribution = replacement_from_distribution[None, ...].broadcast_to(no_replacement.shape)
-
+    # N_clust, N_res, 22
     categories_without_mask_token = uniform_replacement + replacement_from_distribution + no_replacement
+    # N_clust, N_res, 23
     categories_with_mask_token = torch.cat((categories_without_mask_token, masked_out), dim=-1)
+    # N_clust * N_res, 23
+    # each row is a probability distribution over 23 possible tokens
     categories_with_mask_token = categories_with_mask_token.reshape(-1, N_aa_categories)
-    
+    # N_clust * N_res
+    # select token index 0~22 for each row
     replace_with = torch.distributions.Categorical(categories_with_mask_token).sample()
+    # N_clust * N_res, 23
     replace_with = nn.functional.one_hot(replace_with, num_classes=N_aa_categories)
+    # N_clust, N_res, 23
     replace_with = replace_with.reshape(N_clust, N_res, N_aa_categories)
     replace_with = replace_with.float()
-
+    # N_clust, N_res (boolean mask, p < 0.15 means True to be replaced)
     replace_mask = torch.rand((N_clust, N_res), generator=gen) < mask_probability
-
+    # N_clust, N_res, 22
     features['true_msa_aatype'] = features['msa_aatype'].clone()
+    # N_clust, N_res, 1
     aatype_padding = torch.zeros((N_clust, N_res, 1))
-    features['msa_aatype'] = torch.cat((features['msa_aatype'], aatype_padding), dim=-1)
+    # N_clust, N_res, 23
+    features['msa_aatype'] = torch.cat(
+        (features['msa_aatype'], aatype_padding), 
+        dim=-1)
     features['msa_aatype'][replace_mask] = replace_with[replace_mask]
 
     return features
@@ -286,39 +298,34 @@ def cluster_assignment(features):
 
     Returns:
         The updated 'features' dictionary with the following additions:
-            * cluster_assignment:  A tensor of shape (N_extra,) containing the indices 
-                                  of the assigned cluster centers for each extra sequence.
-            * cluster_assignment_counts: A tensor of shape (N_clust,)  where each element indicates 
-                                        the number of extra sequences assigned to a cluster center 
-                                        (excluding the cluster center itself).
+            - cluster_assignment: A tensor of shape (N_extra,) containing the indices of the assigned cluster centers for each extra sequence.
+            
+            - cluster_assignment_counts: A tensor of shape (N_clust,)  where each element indicates the number of extra sequences assigned to a cluster center (excluding the cluster center itself).
     """
     
     N_clust, N_res = features['msa_aatype'].shape[:2]
     N_extra = features['extra_msa_aatype'].shape[0]
 
-    ##########################################################################
-    # TODO:
-    # 1. **Prepare Features:**
-    #     * Obtain slices of the 'msa_aatype' (shape: N_clust, N_res, 23) and 'extra_msa_aatype' (shape: N_extra, N_res, 22) tensors 
-    #       that exclude the  'gap' and 'masked' tokens.  This focuses the calculation on the standard amino acids.
-    # 2. **Calculate Agreement:**
-    #     * Employ broadcasting and tensor operations on the prepared features to efficiently calculate the number of positions where 
-    #       the amino acids in each extra sequence agree with those in each cluster center.  The result will be an 'agreement' tensor 
-    #       of shape (N_clust, N_extra).  `torch.einsum` can be a useful tool here. 
-    # 3. **Assign Clusters:**
-    #     * Use `torch.argmax(agreement, dim=0)` to find the cluster center index with the highest agreement (lowest Hamming distance) for each extra sequence. 
-    # 4. **Compute Assignment Counts:** 
-    #     * Use `torch.bincount` to efficiently calculate the number of extra sequences assigned to each cluster center (excluding 
-    #       the cluster center itself).  Ensure you set the `minlength` parameter appropriately.
-    ##########################################################################
-
-
+"""
+    1. Prepare Features:
+        Obtain slices of the 'msa_aatype' (shape: N_clust, N_res, 23) and 'extra_msa_aatype' (shape: N_extra, N_res, 22) tensors that exclude the 'gap' and 'masked' tokens. This focuses the calculation on the standard amino acids.
+    2. Calculate Agreement:
+        Employ broadcasting and tensor operations on the prepared features to efficiently calculate the number of positions where the amino acids in each extra sequence agree with those in each cluster center. The result will be an 'agreement' tensor of shape (N_clust, N_extra).  `torch.einsum` can be a useful tool here. 
+    3. Assign Clusters:
+        Use `torch.argmax(agreement, dim=0)` to find the cluster center index with the highest agreement (lowest Hamming distance) for each extra sequence. 
+    4. Compute Assignment Counts:
+        Use `torch.bincount` to efficiently calculate the number of extra sequences assigned to each cluster center (excluding the cluster center itself).  Ensure you set the `minlength` parameter appropriately.
+"""
+    # N_clust, N_res, 21
     msa_aatype = features['msa_aatype'][...,:21]
+    # N_extra, N_res, 21
     extra_msa_aatype = features['extra_msa_aatype'][...,:21]
+    # N_clust, N_extra (measures similarity between each cluster and extra sequence)
     agreement = torch.einsum('cra,era->ce', msa_aatype, extra_msa_aatype)
+    # N_extra (for each extra sequence, find the cluster with the highest agreement)
     assignment = torch.argmax(agreement,dim=0)
     features['cluster_assignment'] = assignment
-
+    # N_clust
     assignment_counts = torch.bincount(assignment, minlength=N_clust)
     features['cluster_assignment_counts'] = assignment_counts
 
@@ -326,20 +333,16 @@ def cluster_assignment(features):
 
 def cluster_average(feature, extra_feature, cluster_assignment, cluster_assignment_count):
     """
-    Calculates the average representation of each cluster center by aggregating features 
-    from the assigned extra sequences.
+    Calculates the average representation of each cluster center by aggregating features from the assigned extra sequences.
 
     Args:
-        feature: A tensor containing feature representations for the cluster centers.
-                 Shape: (N_clust, N_res, *)
-        extra_feature: A tensor containing feature representations for extra sequences.
-                       Shape: (N_extra, N_res, *).  The trailing dimensions (*) must 
-                       be smaller or equal to those of the 'feature' tensor.
-        cluster_assignment: A tensor indicating the cluster assignment of each extra sequence.
-                            Shape: (N_extra,)
-        cluster_assignment_count: A tensor containing the number of extra 
-                                 sequences assigned to each cluster center.
-                                 Shape: (N_clust,)
+        feature: A tensor containing feature representations for the cluster centers. Shape: (N_clust, N_res, *)
+
+        extra_feature: A tensor containing feature representations for extra sequences. Shape: (N_extra, N_res, *).  The trailing dimensions (*) must be smaller or equal to those of the 'feature' tensor.
+
+        cluster_assignment: A tensor indicating the cluster assignment of each extra sequence. Shape: (N_extra,)
+
+        cluster_assignment_count: A tensor containing the number of extra  sequences assigned to each cluster center. Shape: (N_clust,)
 
     Returns:
         A tensor containing the average feature representation for each cluster. 
@@ -348,17 +351,15 @@ def cluster_average(feature, extra_feature, cluster_assignment, cluster_assignme
     N_clust, N_res = feature.shape[:2]
     N_extra = extra_feature.shape[0]
 
-    ##########################################################################
-    # TODO:
-    # 1. **Prepare for Accumulation:**
-    #     * Broadcast the `cluster_assignment` tensor to have the same shape as `extra_feature`.
-    #     This is necessary for compatibility with `torch.scatter_add`.
-    # 2. **Accumulate Features:**
-    #     * Use `torch.scatter_add` to efficiently sum (or accumulate) the `extra_feature` values  for each cluster.  The broadcasted `cluster_assignment` tensor will define the grouping. 
-    # 3. **Calculate Averages:**
-    #     * Divide the accumulated features by the `cluster_assignment_count` + 1 to obtain the average feature representations for each cluster. 
-    ##########################################################################
-
+""" 
+    1. Prepare for Accumulation:
+        Broadcast the `cluster_assignment` tensor to have the same shape as `extra_feature`.
+        This is necessary for compatibility with `torch.scatter_add`.
+    2. Accumulate Features:
+        Use `torch.scatter_add` to efficiently sum (or accumulate) the `extra_feature` values  for each cluster.  The broadcasted `cluster_assignment` tensor will define the grouping. 
+    3. Calculate Averages:
+        Divide the accumulated features by the `cluster_assignment_count` + 1 to obtain the average feature representations for each cluster. 
+"""
 
     unsqueezed_extra_shape = (N_extra,) + (1,) * (extra_feature.dim()-1)
     unsqueezed_cluster_shape = (N_clust,) + (1,) * (feature.dim()-1)
