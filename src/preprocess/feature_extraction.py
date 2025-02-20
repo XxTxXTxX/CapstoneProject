@@ -675,7 +675,6 @@ def create_control_values():
     torch.save(msa_feat, f'{control}/msa_feat.pt')
     torch.save(extra_msa_feat, f'{control}/extra_msa_feat.pt')
 
-    #
     full_batch = create_features_from_a3m(file_name, seed=0)
     torch.save(full_batch, f'{control}/full_batch.pt')
 
