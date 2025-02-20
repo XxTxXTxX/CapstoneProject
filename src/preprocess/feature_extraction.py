@@ -83,7 +83,7 @@ def initial_data_from_seqs(seqs):
             msa_aatype: A PyTorch tensor of one-hot encoded amino acid sequences of shape (N_seq, N_res, 22)
             (N_seq: number of unique sequences (with deletions removed),
              N_res: the length of the sequences
-             The dimension 22 corresponds to the 20 amino acids + [UNK] token + [GAP] token
+             The dimension 22: 20 amino acids + [UNK] token + [GAP] token
             * msa_deletion_count: A tensor of shape (N_seq, N_res) where 
                   each element represents the number of deletions occurring before 
                   the corresponding residue in the MSA.
