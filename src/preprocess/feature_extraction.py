@@ -70,7 +70,6 @@ def onehot_encode_aa_type(seq, include_gap_token=False):
     return encoding
 
 
-
 def initial_data_from_seqs(seqs):
     """
     Processes raw sequences from an A3M file to extract initial feature representations.
@@ -83,7 +82,7 @@ def initial_data_from_seqs(seqs):
             msa_aatype: A PyTorch tensor of one-hot encoded amino acid sequences of shape (N_seq, N_res, 22)
             (N_seq: number of unique sequences (with deletions removed),
              N_res: the length of the sequences
-             The dimension 22: 20 amino acids + [UNK] token + [GAP] token
+             The dimension 22 corresponds to the 20 amino acids + [UNK] token + [GAP] token
             * msa_deletion_count: A tensor of shape (N_seq, N_res) where 
                   each element represents the number of deletions occurring before 
                   the corresponding residue in the MSA.
@@ -95,33 +94,6 @@ def initial_data_from_seqs(seqs):
     unique_seqs = None
     deletion_count_matrix = None
     aa_distribution = None
-
-    ##########################################################################
-    # TODO:                                                                  #
-    # 1. Calculate the 'deletion_count_matrix':                              #
-    #    * Initialize an empty list of lists to store deletion counts.       #
-    #    * Iterate through the sequences in 'seqs':                          #
-    #       * Create a list to track deletions for the current sequence.     #
-    #       * Iterate through letters, counting lowercase letters            #
-    #         as deletions.                                                  #
-    #       * Append the deletion count list to the main                     #
-    #         'deletion_count_matrix' only if the sequence                   # 
-    #         (after removing deletions) has not been seen before.           #
-    #    * Convert 'deletion_count_matrix' into a PyTorch tensor.            #
-    # 2. Identify 'unique_seqs':                                             #
-    #    * Create an empty list to store unique sequences.                   #
-    #    * Iterate through the sequences in 'seqs':                          #
-    #       * Remove lowercase letters (deletions) from the sequence.        #
-    #       * If the sequence (without deletions) is not already in the      #
-    #         'unique_seqs' list, add it.                                    #
-    #    * Apply the `onehot_encode_aa_type` function to each sequence       #
-    #      in 'unique_seqs' to get a tensor of shape (N_seq, N_res, 22)      #
-    #      representing the one-hot encoded amino acids.                     #
-    # 3. Compute 'aa_distribution':                                          #
-    #    * Average the one-hot encoded 'unique_seqs' tensor across the       #
-    #      first dimension (representing sequences) to calculate the         #
-    #      amino acid distribution.                                          #
-    ##########################################################################
 
     deletion_count_matrix = []
     unique_seqs = []
@@ -143,13 +115,12 @@ def initial_data_from_seqs(seqs):
         deletion_count_matrix.append(deletion_count_list)
     
     unique_seqs = torch.stack([onehot_encode_aa_type(seq, include_gap_token=True) for seq in unique_seqs], dim=0)
+    # N_seq, N_res, 22
     unique_seqs = unique_seqs.float()
+    # N_seq, N_res
     deletion_count_matrix = torch.tensor(deletion_count_matrix).float()
+    # N_res, 22
     aa_distribution = unique_seqs.float().mean(dim=0)
-
-    ##########################################################################
-    # END OF YOUR CODE                                                       #
-    ##########################################################################
 
     return { 'msa_aatype': unique_seqs, 'msa_deletion_count': deletion_count_matrix, 'aa_distribution': aa_distribution}
 
@@ -196,18 +167,18 @@ def select_cluster_centers(features, max_msa_clusters=512, seed=None):
 
 
     shuffled = torch.randperm(N_seq-1, generator=gen) + 1
+    # N_seq
     shuffled = torch.cat((torch.tensor([0]), shuffled), dim=0)
 
     for key in MSA_FEATURE_NAMES:
         extra_key = f'extra_{key}'
+        # N_seq, N_res, 23 | N_seq, N_res
         value = features[key]
+        # N_extra, N_res, 23 | N_extra, N_res
         features[extra_key] = value[shuffled[max_msa_clusters:]]
+        # N_cluster, N_res, 23 | N_cluster, N_res
         features[key] = value[shuffled[:max_msa_clusters]]
-
-    ##########################################################################
-    # END OF YOUR CODE                                                       #
-    ##########################################################################
-
+        # N_cluster + N_extra = N_seq
     return features
 
 def mask_cluster_centers(features, mask_probability=0.15, seed=None):
@@ -215,8 +186,7 @@ def mask_cluster_centers(features, mask_probability=0.15, seed=None):
     Introduces random masking in the cluster center sequences for data augmentation.
 
     This function modifies the 'msa_aatype' feature within the 'features' dictionary to improve 
-    model robustness in the presence of noisy or missing input data.  Masking is inspired by 
-    the AlphaFold architecture.
+    model robustness in the presence of noisy or missing input data.
 
     Args:
         features: A dictionary containing feature representations of the MSA. It is assumed
@@ -301,10 +271,6 @@ def mask_cluster_centers(features, mask_probability=0.15, seed=None):
     features['msa_aatype'] = torch.cat((features['msa_aatype'], aatype_padding), dim=-1)
     features['msa_aatype'][replace_mask] = replace_with[replace_mask]
 
-    ##########################################################################
-    # END OF YOUR CODE                                                       #
-    ##########################################################################
-
     return features
 
 def cluster_assignment(features):
@@ -353,10 +319,6 @@ def cluster_assignment(features):
     assignment_counts = torch.bincount(assignment, minlength=N_clust)
     features['cluster_assignment_counts'] = assignment_counts
 
-    ##########################################################################
-    # END OF YOUR CODE                                                       #
-    ##########################################################################
-
     return features
 
 def cluster_average(feature, extra_feature, cluster_assignment, cluster_assignment_count):
@@ -402,10 +364,6 @@ def cluster_average(feature, extra_feature, cluster_assignment, cluster_assignme
     cluster_sum = torch.scatter_add(feature, dim=0, index=cluster_assignment, src=extra_feature)
     cluster_assignment_count = cluster_assignment_count.view(unsqueezed_cluster_shape).broadcast_to(feature.shape)
     cluster_average = cluster_sum / (cluster_assignment_count + 1)
-
-    ##########################################################################
-    # END OF YOUR CODE                                                       #
-    ##########################################################################
 
     return cluster_average
 
@@ -508,10 +466,6 @@ def crop_extra_msa(features, max_extra_msa_count=5120, seed=None):
         if k.startswith('extra_'):
             features[k] = features[k][inds_to_select]
 
-    ##########################################################################
-    # END OF YOUR CODE                                                       #
-    ##########################################################################
-
     return features
 
 def calculate_msa_feat(features):
@@ -562,10 +516,6 @@ def calculate_msa_feat(features):
 
     msa_feat = torch.cat((cluster_msa, cluster_has_deletion, cluster_deletion_value, cluster_profile, cluster_deletion_mean), dim=-1)
 
-    ##########################################################################
-    # END OF YOUR CODE                                                       #
-    ##########################################################################
-
     return msa_feat
 
 def calculate_extra_msa_feat(features):
@@ -610,10 +560,6 @@ def calculate_extra_msa_feat(features):
     extra_msa_deletion_value = extra_msa_deletion_value.unsqueeze(-1)
 
     extra_msa_feat = torch.cat((extra_msa, extra_msa_has_deletion, extra_msa_deletion_value), dim=-1)
-
-    ##########################################################################
-    # END OF YOUR CODE                                                       #
-    ##########################################################################
 
     return extra_msa_feat
 
@@ -693,10 +639,6 @@ def create_features_from_a3m(file_name, seed=None):
     target_feat = onehot_encode_aa_type(seqs[0], include_gap_token=False).float()
     residue_index = torch.arange(len(seqs[0]))
 
-    ##########################################################################
-    # END OF YOUR CODE                                                       #
-    ##########################################################################
-
     return {
         'msa_feat': msa_feat,
         'extra_msa_feat': extra_msa_feat,
@@ -733,7 +675,7 @@ def create_control_values():
     full_batch = create_features_from_a3m(file_name, seed=0)
     torch.save(full_batch, f'{control}/full_batch.pt')
 
-    print(full_batch)
+    # print(full_batch)
 
 if __name__=='__main__':
     create_control_values()
