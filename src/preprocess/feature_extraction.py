@@ -679,18 +679,18 @@ def create_control_values():
 
 if __name__=='__main__':
     create_control_values()
-    # batch = create_features_from_a3m('solutions/feature_extraction/alignment_tautomerase.a3m', seed=0)
+    batch = create_features_from_a3m('solutions/feature_extraction/alignment_tautomerase.a3m', seed=0)
     # basic_features = torch.load('current_implementation/test_outputs/basic_features.pt', map_location='cpu')
     # extra_msa_feat = torch.load('current_implementation/test_outputs/extra_msa_feat.pt', map_location='cpu')
 
-    # print('Target feat:')
-    # print((batch['target_feat']-basic_features['target_feat'][...,1:, 0]).abs().max())
+    print('Target feat:')
+    print((batch['target_feat']-basic_features['target_feat'][...,1:, 0]).abs().max())
     # print('Residue index:')
     # print((batch['residue_index']-basic_features['residue_index'][...,0]).float().abs().max())
     # # For MSA feat, a mean error of 0.0085 is expected, as the random
     # # generation changed during pytorch versions
-    # print('MSA feat:')
-    # print((batch['msa_feat']-basic_features['msa_feat'][...,0]).abs().mean())
+    print('MSA feat:')
+    print((batch['msa_feat']-basic_features['msa_feat'][...,0]).abs().mean())
     # print('Extra MSA feat:')
     # print((batch['extra_msa_feat']-extra_msa_feat).abs().max())
 
