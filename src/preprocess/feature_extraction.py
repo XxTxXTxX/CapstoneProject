@@ -216,7 +216,7 @@ def mask_cluster_centers(features, mask_probability=0.15, seed=None):
         gen = torch.Generator(features['msa_aatype'].device)
         gen.manual_seed(seed)
         torch.manual_seed(seed)
-"""
+    """
     1. Select Modification Candidates:
         - Generate a random mask (tensor of shape (N_clust, N_res) ) where each element is a random number between 0 and 1. 
         - Select elements where the random number is less than the `mask_probability` for potential modification.
@@ -245,7 +245,7 @@ def mask_cluster_centers(features, mask_probability=0.15, seed=None):
         Create a copy of the original 'msa_aatype' data under the key 'true_msa_atype'.
     4. Apply Masking:
         Update the 'msa_aatype' tensor, but only for the elements selected in step 1 for modification, with the sampled replacements.  Leave other elements unchanged. 
-"""
+    """
     # uniform_replacement: (22,)
     uniform_replacement = torch.tensor([1/20]*20+[0,0]) * odds['uniform_replacement']
     # replacement_from_distribution: (N_res, 22)
@@ -306,7 +306,7 @@ def cluster_assignment(features):
     N_clust, N_res = features['msa_aatype'].shape[:2]
     N_extra = features['extra_msa_aatype'].shape[0]
 
-"""
+    """
     1. Prepare Features:
         Obtain slices of the 'msa_aatype' (shape: N_clust, N_res, 23) and 'extra_msa_aatype' (shape: N_extra, N_res, 22) tensors that exclude the 'gap' and 'masked' tokens. This focuses the calculation on the standard amino acids.
     2. Calculate Agreement:
@@ -315,7 +315,7 @@ def cluster_assignment(features):
         Use `torch.argmax(agreement, dim=0)` to find the cluster center index with the highest agreement (lowest Hamming distance) for each extra sequence. 
     4. Compute Assignment Counts:
         Use `torch.bincount` to efficiently calculate the number of extra sequences assigned to each cluster center (excluding the cluster center itself).  Ensure you set the `minlength` parameter appropriately.
-"""
+    """
     # N_clust, N_res, 21
     msa_aatype = features['msa_aatype'][...,:21]
     # N_extra, N_res, 21
@@ -351,7 +351,7 @@ def cluster_average(feature, extra_feature, cluster_assignment, cluster_assignme
     N_clust, N_res = feature.shape[:2]
     N_extra = extra_feature.shape[0]
 
-""" 
+    """ 
     1. Prepare for Accumulation:
         Broadcast the `cluster_assignment` tensor to have the same shape as `extra_feature`.
         This is necessary for compatibility with `torch.scatter_add`.
@@ -359,7 +359,7 @@ def cluster_average(feature, extra_feature, cluster_assignment, cluster_assignme
         Use `torch.scatter_add` to efficiently sum (or accumulate) the `extra_feature` values  for each cluster.  The broadcasted `cluster_assignment` tensor will define the grouping. 
     3. Calculate Averages:
         Divide the accumulated features by the `cluster_assignment_count` + 1 to obtain the average feature representations for each cluster. 
-"""
+    """
 
     unsqueezed_extra_shape = (N_extra,) + (1,) * (extra_feature.dim()-1)
     unsqueezed_cluster_shape = (N_clust,) + (1,) * (feature.dim()-1)
@@ -696,6 +696,5 @@ if __name__=='__main__':
     #print((batch['msa_feat']-basic_features['msa_feat'][...,0]).abs().mean())
     # print('Extra MSA feat:')
     # print((batch['extra_msa_feat']-extra_msa_feat).abs().max())
-
 
     
