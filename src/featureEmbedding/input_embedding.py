@@ -22,25 +22,16 @@ class InputEmbedder(nn.Module):
         super().__init__()
         self.tf_dim = tf_dim
         self.vbins = vbins
+        
+        # Initialize the modules linear_tf_z_i, linear_tf_z_j,linear_tf_m, linear_msa_m (from Algorithm 3) and linear_rel_pos (from Algorithm 4).
 
-        ##########################################################################
-        # TODO: Initialize the modules linear_tf_z_i, linear_tf_z_j,             #
-        #   linear_tf_m, linear_msa_m (from Algorithm 3) and linear_rel_pos      #
-        #   (from Algorithm 4).                                                  #
-        #   Note the difference between the MSA feature                          #
-        #   (as created during feature extraction) and the MSA representation m  #
-        #   that is used throughout the Evoformer.                               #
-        ##########################################################################
-
+        # Note the difference between the MSA feature (as created during feature extraction) and the MSA representation m that is used throughout the Evoformer.
+ 
         self.linear_tf_z_i = nn.Linear(tf_dim, c_z)
         self.linear_tf_z_j = nn.Linear(tf_dim, c_z)
         self.linear_tf_m = nn.Linear(tf_dim, c_m)
         self.linear_msa_m = nn.Linear(msa_feat_dim, c_m)
         self.linear_relpos = nn.Linear(2*vbins+1, c_z)
-
-        ##########################################################################
-        #               END OF YOUR CODE                                         #
-        ##########################################################################
 
     def relpos(self, residue_index):
         """
@@ -58,7 +49,6 @@ class InputEmbedder(nn.Module):
         out = None
         dtype = self.linear_relpos.weight.dtype
 
-        ##########################################################################
         # TODO: Implement Algorithm 4. Since the residue index is just a number, #
         #   we can directly use the shifted d_ij as class labels.                #
         #   You can follow these steps:                                          #
@@ -78,10 +68,6 @@ class InputEmbedder(nn.Module):
         d = torch.clamp(d, -self.vbins, self.vbins) + self.vbins
         d_onehot = nn.functional.one_hot(d, num_classes=2*self.vbins+1).to(dtype=dtype)
         out = self.linear_relpos(d_onehot)
-
-        ##########################################################################
-        #               END OF YOUR CODE                                         #
-        ##########################################################################
 
         return out
         
@@ -103,29 +89,32 @@ class InputEmbedder(nn.Module):
         m = None
         z = None
 
+        # N_clust, N_res, f_c = 49
         msa_feat = batch['msa_feat']
+        # N_res, f = 21
         target_feat = batch['target_feat']
+        # N_res, 
         residue_index = batch['residue_index']
 
-        ##########################################################################
-        # TODO: Implement the forward pass for Algorithm 3. For the calculation  #
-        #   of the outer sum in line 2, the embeddings a and b must be           #
-        #   unsqueezed correctly to allow for broadcasting along the N_res dim.  #
-        #   Note: For batched use, target_feat must be unsqueezed after the      #
-        #   computation of a and b and before the computation of m, to match     #
-        #   the number of dimensions of msa_feat.                                #
-        ##########################################################################
+        # Implement the forward pass for Algorithm 3. For the calculation of the outer sum in line 2, the embeddings a and b must be unsqueezed correctly to allow for broadcasting along the N_res dim.
+        
+        # Note: For batched use, target_feat must be unsqueezed after the computation of a and b and before the computation of m, to match the number of dimensions of msa_feat.
 
+        # N_res, 21 -> N_res, C_z
         a = self.linear_tf_z_i(target_feat)
+        # N_res, 21 -> N_res, C_z
         b = self.linear_tf_z_j(target_feat)
+        # (N_res, 1, C_z) + (1, N_res, C_z) -> (N_res, N_res, C_z)
         z = a.unsqueeze(-2) + b.unsqueeze(-3)
-
-        z += self.relpos(residue_index)
+        # N_res, N_res, C_z
+        z += self.relpos(residue_index) 
+        
+        # Add PH and temperature rotations
+        
+        # (1, N_res, 21)
         target_feat = target_feat.unsqueeze(-3)
-        m = self.linear_msa_m(msa_feat) + self.linear_tf_m(target_feat)
 
-        ##########################################################################
-        #               END OF YOUR CODE                                         #
-        ##########################################################################
+        # (N_clust, N_res, C_m) + (1, N_res, C_m) -> (N_clust, N_res, C_m)
+        m = self.linear_msa_m(msa_feat) + self.linear_tf_m(target_feat)
 
         return m, z
