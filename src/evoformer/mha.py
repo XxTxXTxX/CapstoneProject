@@ -15,16 +15,12 @@ class MultiHeadAttention(nn.Module):
         so we only need one query, key and value layer with larger c_out.
 
         Args:
-            c_in (int): Input dimension for the embeddings.
-            c (int): Embedding dimension for each individual head.
-            N_head (int): Number of heads.
-            attn_dim (int): The dimension in the input tensor along which
-                the attention mechanism is performed.
-            gated (bool, optional): If True, an additional sigmoid-activated 
-                linear layer will be multiplicated against the weighted 
-                value vectors before feeding them through the output layer. 
-                Defaults to False.
-            is_global (bool, optional): If True, global calculation will be performed.
+            - c_in (int): Input dimension for the embeddings.
+            - c (int): Embedding dimension for each individual head.
+            - N_head (int): Number of heads.
+            - attn_dim (int): The dimension in the input tensor along which the attention mechanism is performed.
+            - gated (bool, optional): If True, an additional sigmoid-activated linear layer will be multiplicated against the weighted value vectors before feeding them through the output layer. Defaults to False.
+            - is_global (bool, optional): If True, global calculation will be performed.
                 For global calculation, key and value embeddings will only use one head,
                 and the q query vectors will be averaged to one query vector.
                 Defaults to False.
@@ -41,14 +37,12 @@ class MultiHeadAttention(nn.Module):
         self.attn_dim = attn_dim
         self.is_global = is_global
 
-        ##########################################################################
         # TODO: Initialize the query, key, value and output layers.              #
         #   Whether or not query, key, and value layers use bias is determined   #
         #   by `use_bias` (False for AlphaFold). The output layer should always  #
         #   use a bias. If gated is true, initialize another linear with bias.   #
         #   For compatibility use the names linear_q, linear_k, linear_v,        #
         #   linear_o and linear_g.                                               #
-        ##########################################################################
         
         self.linear_q = nn.Linear(c_in, c*N_head, bias=use_bias_for_embeddings)
 
@@ -60,10 +54,6 @@ class MultiHeadAttention(nn.Module):
 
         if gated:
             self.linear_g = nn.Linear(c_in, c*N_head)
-
-        ##########################################################################
-        #               END OF YOUR CODE                                         #
-        ##########################################################################
 
     def prepare_qkv(self, q: torch.Tensor, k: torch.Tensor, v: torch.Tensor):
         """
@@ -82,13 +72,10 @@ class MultiHeadAttention(nn.Module):
                 shape (*, N_head, q/k/v, c) respectively.
         """
 
-        ##########################################################################
         # TODO: Rearrange the tensors with the following changes:                #
-        #   - (*, q/k/v, *, N_head*c) -> (*, q/k/v, N_head*c) with movedim       # 
-        #   - (*, q/k/v, N_head*c) -> (*, q/k/v, N_head, c)                      #
-        #   - (*, q/k/v, N_head, c) -> (*, N_head, q/k/v, c)                     #
-        ##########################################################################
-
+        # (*, q/k/v, *, N_head*c) -> (*, q/k/v, N_head*c) with movedim
+        # (*, q/k/v, N_head*c) -> (*, q/k/v, N_head, c)
+        # (*, q/k/v, N_head, c) -> (*, N_head, q/k/v, c)
         # Transposing to [*, q/k/v, N_head*c]
         q = q.movedim(self.attn_dim, -2)
         k = k.movedim(self.attn_dim, -2)
@@ -107,10 +94,6 @@ class MultiHeadAttention(nn.Module):
         q = q.transpose(-2, -3)
         k = k.transpose(-2, -3)
         v = v.transpose(-2, -3)
-
-        ##########################################################################
-        #               END OF YOUR CODE                                         #
-        ##########################################################################
 
         return q, k, v
 
@@ -131,11 +114,7 @@ class MultiHeadAttention(nn.Module):
             tuple: The rearranged embeddings q, k, and v of
                 shape (*, N_head, 1, c) for q and shape (*, 1, k, c) for k and v. 
         """
-
-        ##########################################################################
-        # TODO: Rearrange the tensors to match the output dimensions. Use        #
-        #   torch.mean for the contraction of q at the end of this function.     #
-        ##########################################################################
+        # Rearrange the tensors to match the output dimensions. Use torch.mean for the contraction of q at the end of this function.
 
         q = q.movedim(self.attn_dim, -2)
         k = k.movedim(self.attn_dim, -2)
@@ -149,10 +128,6 @@ class MultiHeadAttention(nn.Module):
         v = v.unsqueeze(-3)
 
         q = torch.mean(q, dim=-2, keepdim=True)
-
-        ##########################################################################
-        #               END OF YOUR CODE                                         #
-        ##########################################################################
 
         return q, k, v
 
@@ -174,16 +149,14 @@ class MultiHeadAttention(nn.Module):
         """
 
         out = None
-
-        ##########################################################################
-        # TODO: Implement the forward pass consisting of the following steps:    #
-        #   - Create query, key and value embeddings.                            #
-        #   - Rearrange the embeddings with prepare_qkv.                         #
-        #   - Scale the queries by 1/sqrt(c).                                    #
-        #   - Calculate the attention weights of shape (*, N_head, q, k)         #
-        #       from q and k. You can use torch.einsum for this.                 #
-        #   - If a bias was given:                                               #
-        #       - extract the bias batch shape by omitting the last 3 dims       #
+        """
+        Implement the forward pass consisting of the following steps:
+            - Create query, key and value embeddings.
+            - Rearrange the embeddings with prepare_qkv
+            - Scale the queries by 1/sqrt(c).
+            - Calculate the attention weights of shape (*, N_head, q, k)from q and k. You can use torch.einsum for this.
+            - If a bias was given:
+               - extract the bias batch shape by omitting the last 3 dims       #
         #         from bias.                                                     #
         #       - construct a broadcastable bias shape, by concatenating         #
         #           bias_batch_shape, (1,) * n, and the last three dims of bias. #
@@ -211,9 +184,8 @@ class MultiHeadAttention(nn.Module):
         #       incorrect positioning if attn_dim uses negative indexing.        #
         #   - if gated, calculate the gating with linear_g and sigmoid and       #
         #       multiply it against the output.                                  #
-        #   - apply linear_o to calculate the final output.                        #
-        ##########################################################################
-
+        #   - apply linear_o to calculate the final output.
+        """
         q = self.linear_q(x)
         k = self.linear_k(x)
         v = self.linear_v(x)
@@ -249,9 +221,5 @@ class MultiHeadAttention(nn.Module):
             o = g * o
 
         out = self.linear_o(o)
-
-        ##########################################################################
-        #               END OF YOUR CODE                                         #
-        ##########################################################################
 
         return out

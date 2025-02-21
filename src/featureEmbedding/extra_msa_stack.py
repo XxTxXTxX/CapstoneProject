@@ -18,16 +18,8 @@ class ExtraMsaEmbedder(nn.Module):
             c_e (int): Embedding dimension of the extra_msa_feat.
         """
         super().__init__()
-        
-        ##########################################################################
-        # TODO: Initialize the module self.linear for the extra MSA embedding.   #
-        ##########################################################################
 
         self.linear = nn.Linear(f_e, c_e)
-        
-        ##########################################################################
-        #               END OF YOUR CODE                                         #
-        ##########################################################################
 
 
     def forward(self, batch):
@@ -36,24 +28,16 @@ class ExtraMsaEmbedder(nn.Module):
 
         Args:
             batch (dict): Feature dictionary with the following entries:
-                * extra_msa_feat: Extra MSA feature of shape (*, N_extra, N_res, f_e).
+                * extra_msa_feat: Extra MSA feature of shape (*, N_extra, N_res, f_e = 25).
 
         Returns:
             torch.tensor: Output tensor of shape (*, N_extra, N_res, c_e):
         """
-
+        # N_extra, N_res, f_e = 25
         e = batch['extra_msa_feat']
         out = None
-
-        ##########################################################################
-        # TODO: Pass extra_msa_feat through the linear layer defined in init.    #
-        ##########################################################################
-
+        # N_extra, N_res, C_e
         out = self.linear(e)
-
-        ##########################################################################
-        #               END OF YOUR CODE                                         #
-        ##########################################################################
 
         return out
 
@@ -75,18 +59,11 @@ class MSAColumnGlobalAttention(nn.Module):
 
         super().__init__()
 
-        ##########################################################################
-        # TODO: Initialize the modules layer_norm_m and global_attention.        #
-        #   Set the parameters for MultiHeadAttention correctly to use global    #
-        #   attention.                                                           #
-        ##########################################################################
+        # TODO: Initialize the modules layer_norm_m and global_attention.
+        # Set the parameters for MultiHeadAttention correctly to use global attention.                                           
 
         self.layer_norm_m = nn.LayerNorm(c_m)
         self.global_attention = MultiHeadAttention(c_m, c, attn_dim=-3, N_head=N_head, gated=True, is_global=True)
-
-        ##########################################################################
-        #               END OF YOUR CODE                                         #
-        ##########################################################################
 
     def forward(self, m):
         """
@@ -100,17 +77,9 @@ class MSAColumnGlobalAttention(nn.Module):
         """
 
         out = None
-        
-        ##########################################################################
-        # TODO: Implement the forward pass for Algorithm 19.                     #
-        ##########################################################################
 
         m = self.layer_norm_m(m)
         out = self.global_attention(m)
-
-        ##########################################################################
-        #               END OF YOUR CODE                                         #
-        ##########################################################################
 
         return out
 
@@ -130,13 +99,8 @@ class ExtraMsaBlock(nn.Module):
         """
         super().__init__()
 
-        ##########################################################################
         # TODO: Initialize the modules msa_att_row, msa_att_col, msa_transition, #
-        #   outer_product_mean, core (the PairStack), and (optionally for        #
-        #   inference) dropout_rowwise. Your implementation should be looking    #
-        #   very similar to the one for the EvoformerBlock, but using global     #
-        #   column attention.                                                    #
-        ##########################################################################
+        #   outer_product_mean, core (the PairStack), and (optionally for inference) dropout_rowwise. Your implementation should be looking very similar to the one for the EvoformerBlock, but using global column attention.
 
         self.dropout_rowwise = DropoutRowwise(p=0.15)
         self.msa_att_row = MSARowAttentionWithPairBias(c_e, c_z, c=8)
@@ -144,10 +108,6 @@ class ExtraMsaBlock(nn.Module):
         self.msa_transition = MSATransition(c_e)
         self.outer_product_mean = OuterProductMean(c_e, c_z)
         self.core = PairStack(c_z)
-
-        ##########################################################################
-        #               END OF YOUR CODE                                         #
-        ##########################################################################
 
     def forward(self, e, z):
         """
@@ -160,11 +120,8 @@ class ExtraMsaBlock(nn.Module):
         Returns:
             tuple: Tuple consisting of the transformed features e and z.
         """
-
-        ##########################################################################
         # TODO: Implement one block of Algorithm 18. This should look very       #
-        #   similar to your implementation in EvoformerBlock.                    #
-        ##########################################################################
+        # similar to your implementation in EvoformerBlock.
 
         e = e + self.dropout_rowwise(self.msa_att_row(e, z))
         e = e + self.msa_att_col(e)
@@ -173,14 +130,8 @@ class ExtraMsaBlock(nn.Module):
         z = z + self.outer_product_mean(e)
         z = self.core(z)
 
-        ##########################################################################
-        #               END OF YOUR CODE                                         #
-        ##########################################################################
-
         return e, z
         
-
-
 class ExtraMsaStack(nn.Module):
     """
     Implements Algorithm 18.
@@ -197,15 +148,10 @@ class ExtraMsaStack(nn.Module):
         """
         super().__init__()
 
-        ##########################################################################
-        # TODO: Initialize self.blocks as a ModuleList of ExtraMSABlocks.        #
-        ##########################################################################
+        # TODO: Initialize self.blocks as a ModuleList of ExtraMSABlocks
 
         self.blocks = nn.ModuleList([ExtraMsaBlock(c_e, c_z) for _ in range(num_blocks)])
 
-        ##########################################################################
-        #               END OF YOUR CODE                                         #
-        ##########################################################################
 
     def forward(self, e, z):
         """
@@ -219,15 +165,9 @@ class ExtraMsaStack(nn.Module):
             torch.tensor: Output tensor of the same shape as z.
         """
 
-        ##########################################################################
-        # TODO: Implement the forward pass for Algorithm 18.                     #
-        ##########################################################################
+        # Implement the forward pass for Algorithm 18.
 
         for block in self.blocks:
             e, z = block(e, z)
-
-        ##########################################################################
-        #               END OF YOUR CODE                                         #
-        ##########################################################################
 
         return z

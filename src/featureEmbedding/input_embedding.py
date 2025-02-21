@@ -49,9 +49,8 @@ class InputEmbedder(nn.Module):
         out = None
         dtype = self.linear_relpos.weight.dtype
 
-        # TODO: Implement Algorithm 4. Since the residue index is just a number, #
-        #   we can directly use the shifted d_ij as class labels.                #
-        #   You can follow these steps:                                          #
+        # Implement Algorithm 4. Since the residue index is just a number, we can directly use the shifted d_ij as class labels.                #
+        # You can follow these steps:
         #   * Cast residue_index to long.                                        #
         #   * unsqueeze residue_index accordingly to calculate the outer         #
         #      difference d_ij.                                                  #
@@ -60,9 +59,7 @@ class InputEmbedder(nn.Module):
         #      [0, 2*vbins] instead of [-vbins, vbins].                          #
         #   * use nn.functional.one_hot to convert the class labels into         #
         #      one-hot encodings.                                                #
-        #   * use the linear module to create the output embedding.              #
-        ##########################################################################
-
+        #   * use the linear module to create the output embedding.
         residue_index = residue_index.long()
         d = residue_index.unsqueeze(-1) - residue_index.unsqueeze(-2)
         d = torch.clamp(d, -self.vbins, self.vbins) + self.vbins
@@ -109,7 +106,7 @@ class InputEmbedder(nn.Module):
         # N_res, N_res, C_z
         z += self.relpos(residue_index) 
         
-        # Add PH and temperature rotations
+        #TODO: Add PH and temperature rotations
         
         # (1, N_res, 21)
         target_feat = target_feat.unsqueeze(-3)
