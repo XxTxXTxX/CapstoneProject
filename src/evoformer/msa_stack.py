@@ -1,6 +1,6 @@
 import torch
 from torch import nn
-from mha import MultiHeadAttention
+from evoformer.mha import MultiHeadAttention
 
 class MSARowAttentionWithPairBias(nn.Module):
     """

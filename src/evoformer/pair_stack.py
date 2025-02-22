@@ -1,7 +1,7 @@
 import torch
 from torch import nn
-from dropout import DropoutRowwise, DropoutColumnwise
-from mha import MultiHeadAttention
+from evoformer.dropout import DropoutRowwise, DropoutColumnwise
+from evoformer.mha import MultiHeadAttention
 
 class TriangleMultiplication(nn.Module):
     """

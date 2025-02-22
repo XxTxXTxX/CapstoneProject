@@ -39,6 +39,10 @@ def load_a3m_file(file_name: str):
 
     description_line_indices = [i for i,l in enumerate(lines) if l.startswith('>')] # load descriptions
     seqs = [lines[i+1].strip() for i in description_line_indices] # load sequence
+    # for i in description_line_indices:
+    #     if "U" in lines[i + 1].strip():
+    #         print(lines[i + 1])
+    #         print(i)
 
     return seqs
 
@@ -66,7 +70,6 @@ def onehot_encode_aa_type(seq, include_gap_token=False):
 
     sequence_inds = torch.tensor([restype_order[a] for a in seq])
     encoding = nn.functional.one_hot(sequence_inds, num_classes=len(restype_order))
-    print(encoding.shape)
 
     return encoding
 
@@ -653,7 +656,7 @@ def create_features_from_a3m(file_name, seed=None):
 
 def create_control_values():
     pwd = os.getcwd() + '/src/preprocess/'
-    file_name = pwd + f'1A04.a3m'
+    file_name = pwd + f'1A0R.a3m'
     control = pwd + f'control_values'
 
     seqs = load_a3m_file(file_name)
