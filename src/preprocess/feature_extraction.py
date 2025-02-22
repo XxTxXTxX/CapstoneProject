@@ -66,6 +66,7 @@ def onehot_encode_aa_type(seq, include_gap_token=False):
 
     sequence_inds = torch.tensor([restype_order[a] for a in seq])
     encoding = nn.functional.one_hot(sequence_inds, num_classes=len(restype_order))
+    print(encoding.shape)
 
     return encoding
 
@@ -652,7 +653,7 @@ def create_features_from_a3m(file_name, seed=None):
 
 def create_control_values():
     pwd = os.getcwd() + '/src/preprocess/'
-    file_name = pwd + f'output.a3m'
+    file_name = pwd + f'1A04.a3m'
     control = pwd + f'control_values'
 
     seqs = load_a3m_file(file_name)

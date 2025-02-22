@@ -6,5 +6,5 @@ c_m  = 256
 tf_dim = 21
 
 batch = torch.load('preprocess/control_values/full_batch.pt', map_location='cpu')
-# print(batch)
-print(batch['target_feat'].shape)
+print(batch["msa_feat"].shape)
+

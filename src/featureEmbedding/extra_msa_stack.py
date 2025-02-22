@@ -1,5 +1,5 @@
 from torch import nn
-from attention.mha import MultiHeadAttention
+from evoformer.mha import MultiHeadAttention
 from evoformer.dropout import DropoutRowwise
 from evoformer.msa_stack import MSARowAttentionWithPairBias, MSATransition, OuterProductMean
 from evoformer.pair_stack import PairStack
