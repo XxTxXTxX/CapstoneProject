@@ -1,8 +1,8 @@
 import torch
 from torch import nn
-from dropout import DropoutRowwise
-from msa_stack import MSARowAttentionWithPairBias, MSAColumnAttention, OuterProductMean, MSATransition
-from pair_stack import PairStack
+from evoformer.dropout import DropoutRowwise
+from evoformer.msa_stack import MSARowAttentionWithPairBias, MSAColumnAttention, OuterProductMean, MSATransition
+from evoformer.pair_stack import PairStack
 
 
 class EvoformerBlock(nn.Module):
@@ -118,9 +118,11 @@ class EvoformerStack(nn.Module):
         ##########################################################################
 
         for evo_block in self.blocks:
+            print("inside evoformer loop")
             m, z = evo_block(m, z)
         
         s = self.linear(m[..., 0, :, :])
+        print(f"s:{s.shape}")
 
         ##########################################################################
         #               END OF YOUR CODE                                         #

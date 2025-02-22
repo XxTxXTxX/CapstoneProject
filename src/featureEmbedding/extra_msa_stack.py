@@ -8,7 +8,7 @@ class ExtraMsaEmbedder(nn.Module):
     """
     Creates the embeddings of extra_msa_feat for the Extra MSA Stack.
     """
-    
+    # 
     def __init__(self, f_e, c_e):
         """
         Initializes the ExtraMSAEmbedder.
@@ -137,7 +137,7 @@ class ExtraMsaStack(nn.Module):
     Implements Algorithm 18.
     """
     
-    def __init__(self, c_e, c_z, num_blocks):
+    def __init__(self, c_e, c_z, num_blocks=1):
         """
         Initializes the ExtraMSAStack.
 
@@ -149,7 +149,7 @@ class ExtraMsaStack(nn.Module):
         super().__init__()
 
         # TODO: Initialize self.blocks as a ModuleList of ExtraMSABlocks
-
+        print("sadf")
         self.blocks = nn.ModuleList([ExtraMsaBlock(c_e, c_z) for _ in range(num_blocks)])
 
 
@@ -168,6 +168,7 @@ class ExtraMsaStack(nn.Module):
         # Implement the forward pass for Algorithm 18.
 
         for block in self.blocks:
+            print("inside loop")
             e, z = block(e, z)
 
         return z
