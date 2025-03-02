@@ -39,7 +39,7 @@ def load_a3m_file(file_name: str):
 
     description_line_indices = [i for i,l in enumerate(lines) if l.startswith('>')] # load descriptions
     seqs = [lines[i+1].strip() for i in description_line_indices] # load sequence
-
+    # seqs: N_seq
     return seqs
 
 
