@@ -6,12 +6,11 @@ from evoformer.pair_stack import PairStack
 
 
 class EvoformerBlock(nn.Module):
-    """
-    Implements one block from Algorithm 6.
-    """
+    # Implements one block from Algorithm 6.
     
     def __init__(self, c_m, c_z):
-        """Initializes EvoformerBlock.
+        """
+        Initializes EvoformerBlock.
 
         Args:
             c_m (int): Embedding dimension for the MSA representation.
@@ -19,11 +18,7 @@ class EvoformerBlock(nn.Module):
         """
         super().__init__()
 
-        ##########################################################################
-        # TODO: Initialize the modules msa_att_row, msa_att_col, msa_transition, #
-        #   outer_product_mean, core (the PairStack), and (optionally for        #
-        #   inference) dropout_rowwise_m.                                        #
-        ##########################################################################
+        # Initialize the modules msa_att_row, msa_att_col, msa_transition, outer_product_mean, core (the PairStack), and (optionally for inference) dropout_rowwise_m.
 
         self.dropout_rowwise_m = DropoutRowwise(p=0.15)
         self.msa_att_row = MSARowAttentionWithPairBias(c_m, c_z)
@@ -32,10 +27,6 @@ class EvoformerBlock(nn.Module):
         self.outer_product_mean = OuterProductMean(c_m, c_z)
         self.core = PairStack(c_z)
 
-        ##########################################################################
-        #               END OF YOUR CODE                                         #
-        ##########################################################################
-    
     def forward(self, m, z):
         """
         Implements the forward pass for one block in Algorithm 6.
@@ -48,10 +39,6 @@ class EvoformerBlock(nn.Module):
             tuple: Transformed tensors m and z of the same shape as the inputs.
         """
 
-        ##########################################################################
-        # TODO: Implement  the forward pass for Algorithm 6.                     #
-        ##########################################################################
-
         m = m + self.dropout_rowwise_m(self.msa_att_row(m, z))
         m = m + self.msa_att_col(m)
         m = m + self.msa_transition(m)
@@ -60,17 +47,11 @@ class EvoformerBlock(nn.Module):
 
         z = self.core(z)
 
-        ##########################################################################
-        #               END OF YOUR CODE                                         #
-        ##########################################################################
-
         return m, z
 
 class EvoformerStack(nn.Module):
-    """
-    Implements Algorithm 6.
-    """
-    
+    # Implements Algorithm 6.
+
     def __init__(self, c_m, c_z, num_blocks, c_s=384):
         """
         Initializes the EvoformerStack.
@@ -84,17 +65,10 @@ class EvoformerStack(nn.Module):
         """
         super().__init__()
 
-        ##########################################################################
-        # TODO: Initialize self.blocks as a ModuleList of EvoformerBlocks        #
-        #   and self.linear as the extraction of the single representation.      #
-        ##########################################################################
+        # Initialize self.blocks as a ModuleList of EvoformerBlocks and self.linear as the extraction of the single representation.
 
         self.blocks = nn.ModuleList([EvoformerBlock(c_m, c_z) for _ in range(num_blocks)])
         self.linear = nn.Linear(c_m, c_s)
-
-        ##########################################################################
-        #               END OF YOUR CODE                                         #
-        ##########################################################################
 
     def forward(self, m, z):
         """
@@ -111,7 +85,6 @@ class EvoformerStack(nn.Module):
 
         s = None
 
-        ##########################################################################
         # TODO: Implement  the forward pass for Algorithm 6.                     #
         #   The single representation is created by embedding the first row      #
         #   of the msa representation.                                           #

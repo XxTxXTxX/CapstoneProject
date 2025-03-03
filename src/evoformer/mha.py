@@ -9,11 +9,6 @@ class MultiHeadAttention(nn.Module):
 
     def __init__(self, c_in, c, N_head, attn_dim, gated=False, is_global=False, use_bias_for_embeddings=False):
         """
-        Initializes the module. MultiHeadAttention theoretically consists of 
-        N_head separate linear layers for the query, key and value embeddings.
-        However, the embeddings can be computed jointly and split afterwards,
-        so we only need one query, key and value layer with larger c_out.
-
         Args:
             - c_in (int): Input dimension for the embeddings.
             - c (int): Embedding dimension for each individual head.
@@ -37,12 +32,9 @@ class MultiHeadAttention(nn.Module):
         self.attn_dim = attn_dim
         self.is_global = is_global
 
-        # TODO: Initialize the query, key, value and output layers.              #
-        #   Whether or not query, key, and value layers use bias is determined   #
-        #   by `use_bias` (False for AlphaFold). The output layer should always  #
-        #   use a bias. If gated is true, initialize another linear with bias.   #
-        #   For compatibility use the names linear_q, linear_k, linear_v,        #
-        #   linear_o and linear_g.                                               #
+        # Whether or not query, key, and value layers use bias is determined
+        # by `use_bias` (False for AlphaFold). The output layer should always use a bias. If gated is true, initialize another linear with bias.
+        # For compatibility use the names linear_q, linear_k, linear_v, linear_o and linear_g
         
         self.linear_q = nn.Linear(c_in, c*N_head, bias=use_bias_for_embeddings)
 
