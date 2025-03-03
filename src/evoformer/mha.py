@@ -1,6 +1,7 @@
 import torch
 import math
 from torch import nn
+from evoformer.rotaryEmbedding import RotaryEmbedding, apply_rotary_pos_embedding
 
 class MultiHeadAttention(nn.Module):
     """
@@ -31,11 +32,12 @@ class MultiHeadAttention(nn.Module):
         self.gated = gated
         self.attn_dim = attn_dim
         self.is_global = is_global
+        self.rotary = RotaryEmbedding(c)
 
-        # Whether or not query, key, and value layers use bias is determined
-        # by `use_bias` (False for AlphaFold). The output layer should always use a bias. If gated is true, initialize another linear with bias.
-        # For compatibility use the names linear_q, linear_k, linear_v, linear_o and linear_g
+        # Whether or not query, key, and value layers use bias is determined by `use_bias` (False for AlphaFold). 
         
+        # The output layer should always use a bias. If gated is true, initialize another linear with bias.
+
         self.linear_q = nn.Linear(c_in, c*N_head, bias=use_bias_for_embeddings)
 
         c_kv = c if is_global else c*N_head
@@ -48,41 +50,23 @@ class MultiHeadAttention(nn.Module):
             self.linear_g = nn.Linear(c_in, c*N_head)
 
     def prepare_qkv(self, q: torch.Tensor, k: torch.Tensor, v: torch.Tensor):
-        """
-        Splits the embeddings into individual heads and transforms the input
-        shapes of form (*, q/k/v, *, N_head*c) into the shape 
-        (*, N_head, q/k/v, c). The position of the q/k/v dimension 
-        in the original tensors is given by attn_dim.
 
-        Args:
-            q (torch.Tensor): Query embedding of shape (*, q, *, N_head*c).
-            k (torch.Tensor): Key embedding of shape (*, k, *, N_head*c).
-            v (torch.Tensor): Value embedding of shape (*, v, *, N_head*c).
-
-        Returns:
-            tuple: The rearranged embeddings q, k, and v of 
-                shape (*, N_head, q/k/v, c) respectively.
-        """
-
-        # TODO: Rearrange the tensors with the following changes:                #
-        # (*, q/k/v, *, N_head*c) -> (*, q/k/v, N_head*c) with movedim
-        # (*, q/k/v, N_head*c) -> (*, q/k/v, N_head, c)
-        # (*, q/k/v, N_head, c) -> (*, N_head, q/k/v, c)
-        # Transposing to [*, q/k/v, N_head*c]
+        # batch, seq_len, h*d_k -> batch, seq_len, h*d_k
         q = q.movedim(self.attn_dim, -2)
         k = k.movedim(self.attn_dim, -2)
         v = v.movedim(self.attn_dim, -2)
 
-        # Unwrapping to [*, q/k/v, N_head, c]
+        # batch, seq_len, h, -1 = d_k
         q_shape = q.shape[:-1] + (self.N_head, -1)
         k_shape = k.shape[:-1] + (self.N_head, -1)
         v_shape = v.shape[:-1] + (self.N_head, -1)
 
+        # batch, seq_len, h, d_k
         q = q.view(q_shape)
         k = k.view(k_shape)
         v = v.view(v_shape)
 
-        # Transposing to [*, N_head, q/k/v, c]
+        # batch, h, seq_len, d_k
         q = q.transpose(-2, -3)
         k = k.transpose(-2, -3)
         v = v.transpose(-2, -3)
@@ -96,7 +80,6 @@ class MultiHeadAttention(nn.Module):
             - key and value embeddings use only one head.
             - the query vectors are contracted into one, average query vector.
         
-
         Args:
             q (torch.tensor): Query embeddings of shape (*, q, *, N_head*c).
             k (torch.tensor): Key embeddings of shape (*, k, *, c).
@@ -106,7 +89,6 @@ class MultiHeadAttention(nn.Module):
             tuple: The rearranged embeddings q, k, and v of
                 shape (*, N_head, 1, c) for q and shape (*, 1, k, c) for k and v. 
         """
-        # Rearrange the tensors to match the output dimensions. Use torch.mean for the contraction of q at the end of this function.
 
         q = q.movedim(self.attn_dim, -2)
         k = k.movedim(self.attn_dim, -2)
@@ -128,28 +110,24 @@ class MultiHeadAttention(nn.Module):
         Forward pass through the MultiHeadAttention module.
 
         Args:
-            x (torch.tensor): Input tensor of shape (*, q/k/v, *, c_in).
-            bias (torch.tensor, optional): Optional bias tensor of shape
-                (*, N_head, q, k) that will be added to the attention weights. 
-                Defaults to None.
-            attention_mask (torch.tensor, optional): Optional attention mask
-                of shape (*, k). If set, the keys with value 0 in the mask will
-                not be attended to.
+            x: batch, seq_len, dmodel
+            bias (torch.tensor, optional): Optional bias tensor of shape (batch, h, seq_len, seq_len) that will be added to the attention weights. Defaults to None.
+            attention_mask (torch.tensor, optional): Optional attention mask of shape (*, k). If set, the keys with value 0 in the mask will not be attended to.
 
         Returns:
             torch.tensor: Output tensor of shape (*, q/k/v, *, c_in)
         """
 
         out = None
+
         """
         Implement the forward pass consisting of the following steps:
             - Create query, key and value embeddings.
             - Rearrange the embeddings with prepare_qkv
             - Scale the queries by 1/sqrt(c).
-            - Calculate the attention weights of shape (*, N_head, q, k)from q and k. You can use torch.einsum for this.
+            - Calculate the attention weights of shape (batch, h, seq_len, seq_len) from q and k.
             - If a bias was given:
-               - extract the bias batch shape by omitting the last 3 dims       #
-        #         from bias.                                                     #
+               - extract the bias batch shape by omitting the last 3 dims from bias.
         #       - construct a broadcastable bias shape, by concatenating         #
         #           bias_batch_shape, (1,) * n, and the last three dims of bias. #
         #           Choose n such that the broadcastable shape has as many dims  #
@@ -178,15 +156,26 @@ class MultiHeadAttention(nn.Module):
         #       multiply it against the output.                                  #
         #   - apply linear_o to calculate the final output.
         """
+        # batch, seq_len, dmodel -> batch, seq_len, h*d_k
         q = self.linear_q(x)
         k = self.linear_k(x)
         v = self.linear_v(x)
 
         if self.is_global:
+            # q: batch, h, seq_len = 1, d_k
+            # 
             q, k, v = self.prepare_qkv_global(q, k, v)
         else:
+            # batch, h, seq_len, d_k
             q, k, v = self.prepare_qkv(q, k, v)
 
+        # Apply rotary embedding
+        seq_len = q.shape[-2]  # get sequence length
+        rotary_pos_emb = self.rotary(seq_len, x.device)
+        cos, sin = rotary_pos_emb.cos(), rotary_pos_emb.sin()
+        q, k = apply_rotary_pos_embedding(q, k, cos, sin)
+
+        # 
         q = q / math.sqrt(self.c)
 
         a = torch.einsum('...qc,...kc->...qk', q, k)

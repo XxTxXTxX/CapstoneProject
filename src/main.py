@@ -10,7 +10,7 @@ tf_dim = 21
 f_e = 25 # extra msa dimension
 c_e = 64
 
-batch = torch.load('src/preprocess/control_values/full_batch.pt', map_location='cpu')
+batch = torch.load('preprocess/control_values/full_batch.pt', map_location='cpu')
 print(batch.keys())
 # print(batch["msa_feat"].shape)
 # print(batch["target_feat"].shape)
