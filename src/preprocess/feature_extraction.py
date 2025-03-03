@@ -79,14 +79,14 @@ def initial_data_from_seqs(seqs):
               Lowercase letters represent deletions.
     Returns:
         A dictionary containing:
-            msa_aatype: A PyTorch tensor of one-hot encoded amino acid sequences of shape (N_seq, N_res, 22)
+            - msa_aatype: A PyTorch tensor of one-hot encoded amino acid sequences of shape (N_seq, N_res, 22)
             (N_seq: number of unique sequences (with deletions removed),
              N_res: the length of the sequences
              The dimension 22 corresponds to the 20 amino acids + [UNK] token + [GAP] token
-            * msa_deletion_count: A tensor of shape (N_seq, N_res) where 
-                  each element represents the number of deletions occurring before 
-                  the corresponding residue in the MSA.
-            * aa_distribution: A tensor of shape (N_res, 22) containing the 
+
+            - msa_deletion_count: A tensor of shape (N_seq, N_res) where each element represents the number of deletions occurring before the corresponding residue in the MSA.
+
+            - aa_distribution: A tensor of shape (N_res, 22) containing the 
                   overall amino acid distribution at each residue position 
                   across the MSA.  
     """
@@ -126,8 +126,7 @@ def initial_data_from_seqs(seqs):
 
 def select_cluster_centers(features, max_msa_clusters=512, seed=None):
     """
-    Selects representative sequences as cluster centers from the MSA to  
-    reduce redundancy.
+    Selects representative sequences as cluster centers from the MSA to reduce redundancy.
 
     Args:
         features: A dictionary containing feature representations of the MSA.
@@ -137,12 +136,10 @@ def select_cluster_centers(features, max_msa_clusters=512, seed=None):
 
     Modifies:
         The 'features' dictionary in-place by:
-            * Updating the 'msa_aatype' and 'msa_deletion_count' features to contain 
-              data for the cluster centers only.  
-            * Adding 'extra_msa_aatype' and 'extra_msa_deletion_count' features
-              to hold the data for the remaining (non-center) sequences. 
-    """
+            * Updating the 'msa_aatype' and 'msa_deletion_count' features to contain data for the cluster centers only.  
 
+            * Adding 'extra_msa_aatype' and 'extra_msa_deletion_count' features to hold the data for the remaining (non-center) sequences. 
+    """
     N_seq, N_res = features['msa_aatype'].shape[:2]
     MSA_FEATURE_NAMES = ['msa_aatype', 'msa_deletion_count']
     max_msa_clusters = min(max_msa_clusters, N_seq)
@@ -151,20 +148,16 @@ def select_cluster_centers(features, max_msa_clusters=512, seed=None):
     if seed is not None:
         gen = torch.Generator(features['msa_aatype'].device)
         gen.manual_seed(seed)
-
-    ##########################################################################
-    # TODO:
-    # 1. **Implement Shuffling:**
-    #      * Use  `torch.randperm(N_seq - 1)` with the provided  `gen` (random number generator) 
-    #        to shuffle the indices from 1 to (N_seq - 1). Ensure reproducibility if the seed is not None.
-    #      * Prepend a 0 to the shuffled indices to include the first sequence.
-    # 2. **Split Features:**
-    #      * Using the shuffled indices,  split the MSA feature representations (`msa_aatype` and
-    #        `msa_deletion_count`) into two sets:
-    #          *  The first `max_msa_clusters` sequences will be the cluster centers.
-    #          *  The remaining sequences will be stored with keys prefixed by  'extra_'. 
-    ##########################################################################
-
+    
+    """
+    1. Implement Shuffling:
+    - Use `torch.randperm(N_seq - 1)` with the provided  `gen` (random number generator) to shuffle the indices from 1 to (N_seq - 1). Ensure reproducibility if the seed is not None.
+    - Prepend a 0 to the shuffled indices to include the first sequence.
+    
+    2. Split Features:
+    - Using the shuffled indices,  split the MSA feature representations (`msa_aatype` and `msa_deletion_count`) into two sets: The first `max_msa_clusters` sequences will be the cluster centers.
+    - The remaining sequences will be stored with keys prefixed by  'extra_'. 
+    """
 
     shuffled = torch.randperm(N_seq-1, generator=gen) + 1
     # N_seq
@@ -172,14 +165,14 @@ def select_cluster_centers(features, max_msa_clusters=512, seed=None):
 
     for key in MSA_FEATURE_NAMES:
         extra_key = f'extra_{key}'
-        # N_seq, N_res, 23 | N_seq, N_res
+        # N_seq, N_res, 22 | N_seq, N_res
         value = features[key]
-        # N_extra, N_res, 23 | N_extra, N_res
+        # N_extra, N_res, 22 | N_extra, N_res
         features[extra_key] = value[shuffled[max_msa_clusters:]]
-        # N_cluster, N_res, 23 | N_cluster, N_res
+        # N_cluster, N_res, 22 | N_cluster, N_res
         features[key] = value[shuffled[:max_msa_clusters]]
         # N_cluster + N_extra = N_seq
-    print(features.keys())
+    print(features["aa_distribution"].shape)
     return features
 
 def mask_cluster_centers(features, mask_probability=0.15, seed=None):
