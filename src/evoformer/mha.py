@@ -2,6 +2,7 @@ import torch
 import math
 from torch import nn
 from evoformer.rotaryEmbedding import RotaryEmbedding, apply_rotary_pos_embedding
+from evoformer.evoformer import isRotated
 
 class MultiHeadAttention(nn.Module):
     """
@@ -89,7 +90,7 @@ class MultiHeadAttention(nn.Module):
             tuple: The rearranged embeddings q, k, and v of
                 shape (*, N_head, 1, c) for q and shape (*, 1, k, c) for k and v. 
         """
-
+        # batch, seq_len, h*dk
         q = q.movedim(self.attn_dim, -2)
         k = k.movedim(self.attn_dim, -2)
         v = v.movedim(self.attn_dim, -2)
@@ -170,10 +171,13 @@ class MultiHeadAttention(nn.Module):
             q, k, v = self.prepare_qkv(q, k, v)
 
         # Apply rotary embedding
-        seq_len = q.shape[-2]  # get sequence length
-        rotary_pos_emb = self.rotary(seq_len, x.device)
-        cos, sin = rotary_pos_emb.cos(), rotary_pos_emb.sin()
-        q, k = apply_rotary_pos_embedding(q, k, cos, sin)
+        if not isRotated():
+
+            seq_len = q.shape[-2]  # get sequence length
+            rotary_pos_emb = self.rotary(seq_len, x.device)
+            cos, sin = rotary_pos_emb.cos(), rotary_pos_emb.sin()
+            q, k = apply_rotary_pos_embedding(q, k, cos, sin)
+            rotated = True
 
         # 
         q = q / math.sqrt(self.c)
