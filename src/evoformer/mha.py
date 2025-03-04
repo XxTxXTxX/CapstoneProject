@@ -2,7 +2,16 @@ import torch
 import math
 from torch import nn
 from evoformer.rotaryEmbedding import RotaryEmbedding, apply_rotary_pos_embedding
-from evoformer.evoformer import isRotated
+
+rotated = 0
+
+def isRotated():
+    return rotated
+
+def plusOne():
+    global rotated
+    rotated += 1
+
 
 class MultiHeadAttention(nn.Module):
     """
@@ -171,13 +180,13 @@ class MultiHeadAttention(nn.Module):
             q, k, v = self.prepare_qkv(q, k, v)
 
         # Apply rotary embedding
-        if not isRotated():
-
+        if isRotated <= 2:
             seq_len = q.shape[-2]  # get sequence length
             rotary_pos_emb = self.rotary(seq_len, x.device)
             cos, sin = rotary_pos_emb.cos(), rotary_pos_emb.sin()
             q, k = apply_rotary_pos_embedding(q, k, cos, sin)
-            rotated = True
+            print(f"Rotated: {rotated}")
+            plusOne()
 
         # 
         q = q / math.sqrt(self.c)

@@ -5,8 +5,6 @@ from evoformer.msa_stack import MSARowAttentionWithPairBias, MSAColumnAttention,
 from evoformer.pair_stack import PairStack
 from evoformer.rotaryEmbedding import RotaryEmbedding
 
-rotated = False
-
 class EvoformerBlock(nn.Module):
     # Implements one block from Algorithm 6.
     
@@ -95,7 +93,7 @@ class EvoformerStack(nn.Module):
         for evo_block in self.blocks:
             print("inside evoformer loop")
             m, z = evo_block(m, z)
-            rotated = True
+            
         
         s = self.linear(m[..., 0, :, :])
         print(f"s:{s.shape}")
@@ -107,5 +105,3 @@ class EvoformerStack(nn.Module):
         return m, z, s
 
 
-def isRotated():
-    return rotated
