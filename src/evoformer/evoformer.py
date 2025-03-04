@@ -4,10 +4,12 @@ from evoformer.dropout import DropoutRowwise
 from evoformer.msa_stack import MSARowAttentionWithPairBias, MSAColumnAttention, OuterProductMean, MSATransition
 from evoformer.pair_stack import PairStack
 from evoformer.rotaryEmbedding import RotaryEmbedding
+from evoformer.util import imComing
+
 
 class EvoformerBlock(nn.Module):
     # Implements one block from Algorithm 6.
-    
+
     def __init__(self, c_m, c_z):
         """
         Initializes EvoformerBlock.
@@ -26,7 +28,6 @@ class EvoformerBlock(nn.Module):
         self.msa_transition = MSATransition(c_m)
         self.outer_product_mean = OuterProductMean(c_m, c_z)
         self.core = PairStack(c_z)
-        
 
     def forward(self, m, z):
         """
@@ -50,6 +51,7 @@ class EvoformerBlock(nn.Module):
 
         return m, z
 
+
 class EvoformerStack(nn.Module):
     # Implements Algorithm 6.
 
@@ -68,7 +70,8 @@ class EvoformerStack(nn.Module):
 
         # Initialize self.blocks as a ModuleList of EvoformerBlocks and self.linear as the extraction of the single representation.
 
-        self.blocks = nn.ModuleList([EvoformerBlock(c_m, c_z) for _ in range(num_blocks)])
+        self.blocks = nn.ModuleList(
+            [EvoformerBlock(c_m, c_z) for _ in range(num_blocks)])
         self.linear = nn.Linear(c_m, c_s)
 
     def forward(self, m, z):
@@ -90,11 +93,13 @@ class EvoformerStack(nn.Module):
         #   The single representation is created by embedding the first row      #
         #   of the msa representation.                                           #
         ##########################################################################
+        i = 1
         for evo_block in self.blocks:
-            print("inside evoformer loop")
+            imComing()
+            print(f"block nnumber:{i}\n")
+            i += 1
             m, z = evo_block(m, z)
-            
-        
+
         s = self.linear(m[..., 0, :, :])
         print(f"s:{s.shape}")
 
@@ -103,5 +108,3 @@ class EvoformerStack(nn.Module):
         ##########################################################################
 
         return m, z, s
-
-

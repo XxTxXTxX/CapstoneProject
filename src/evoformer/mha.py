@@ -2,13 +2,16 @@ import torch
 import math
 from torch import nn
 from evoformer.rotaryEmbedding import RotaryEmbedding, apply_rotary_pos_embedding
-
+from evoformer.util import isComing
 rotated = 0
+
 
 def isRotated():
     return rotated
 
+
 def plusOne():
+
     global rotated
     rotated += 1
 
@@ -44,8 +47,8 @@ class MultiHeadAttention(nn.Module):
         self.is_global = is_global
         self.rotary = RotaryEmbedding(c)
 
-        # Whether or not query, key, and value layers use bias is determined by `use_bias` (False for AlphaFold). 
-        
+        # Whether or not query, key, and value layers use bias is determined by `use_bias` (False for AlphaFold).
+
         # The output layer should always use a bias. If gated is true, initialize another linear with bias.
 
         self.linear_q = nn.Linear(c_in, c*N_head, bias=use_bias_for_embeddings)
@@ -89,7 +92,7 @@ class MultiHeadAttention(nn.Module):
         differences to the non-global version:
             - key and value embeddings use only one head.
             - the query vectors are contracted into one, average query vector.
-        
+
         Args:
             q (torch.tensor): Query embeddings of shape (*, q, *, N_head*c).
             k (torch.tensor): Key embeddings of shape (*, k, *, c).
@@ -173,14 +176,14 @@ class MultiHeadAttention(nn.Module):
 
         if self.is_global:
             # q: batch, h, seq_len = 1, d_k
-            # 
+            #
             q, k, v = self.prepare_qkv_global(q, k, v)
         else:
             # batch, h, seq_len, d_k
             q, k, v = self.prepare_qkv(q, k, v)
 
         # Apply rotary embedding
-        if isRotated <= 2:
+        if isRotated() < 2 and isComing():
             seq_len = q.shape[-2]  # get sequence length
             rotary_pos_emb = self.rotary(seq_len, x.device)
             cos, sin = rotary_pos_emb.cos(), rotary_pos_emb.sin()
@@ -188,20 +191,21 @@ class MultiHeadAttention(nn.Module):
             print(f"Rotated: {rotated}")
             plusOne()
 
-        # 
+        #
         q = q / math.sqrt(self.c)
 
         a = torch.einsum('...qc,...kc->...qk', q, k)
         if bias is not None:
             bias_batch_shape = bias.shape[:-3]
-            bias_bc_shape = bias_batch_shape + (1,) * (a.ndim-len(bias_batch_shape)-3) + bias.shape[-3:]
+            bias_bc_shape = bias_batch_shape + \
+                (1,) * (a.ndim-len(bias_batch_shape)-3) + bias.shape[-3:]
             bias = bias.view(bias_bc_shape)
 
             a = a + bias
 
         if attention_mask is not None:
             attention_mask = attention_mask[..., None, None, :]
-            offset = (attention_mask==0) * -1e8
+            offset = (attention_mask == 0) * -1e8
             a = a + offset
 
         a = torch.softmax(a, dim=-1)

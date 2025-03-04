@@ -168,7 +168,6 @@ class ExtraMsaStack(nn.Module):
         # Implement the forward pass for Algorithm 18.
 
         for block in self.blocks:
-            print("inside loop")
             e, z = block(e, z)
 
         return z
