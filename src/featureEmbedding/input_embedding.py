@@ -116,6 +116,7 @@ class InputEmbedder(nn.Module):
 
         # 3, 3
         combined_rotation = R_y @ R_z
+        # (3, 3) @ (N_res, 3, num_splits) --> (N_res, 3, num_splits)
         rotated_tensor = torch.matmul(combined_rotation, tensor_reshaped.transpose(1,2))
 
         # transpose back to (N_res, num_split, 3), then to (N_res, C_z)
