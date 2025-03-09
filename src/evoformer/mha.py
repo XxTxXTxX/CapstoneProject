@@ -11,7 +11,6 @@ def isRotated():
 
 
 def plusOne():
-
     global rotated
     rotated += 1
 

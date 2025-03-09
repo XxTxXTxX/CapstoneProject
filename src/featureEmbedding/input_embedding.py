@@ -67,7 +67,63 @@ class InputEmbedder(nn.Module):
         out = self.linear_relpos(d_onehot)
 
         return out
-        
+
+    def normalize(self, x, min_val, max_val):
+        # normalize value x to range [0,1] based on lower and upper bound
+        return (x-min_val)/(max_val-min_val)
+
+    def rotate_embeddings(
+        self,
+        input,
+        pH: float = 7.7,
+        temp: float = 280,
+        pH_range = [0, 14],
+        temp_range = [273, 300]
+    ):
+        """
+        Rotate the C_z embedding dimension in the input of shape (N_res, C_z)
+            - rotation happens before outer sum between "a" and "b"
+        returns rotated tensor of shape (N_res, C_z)
+        """
+        N_res, C_z = input.shape
+        assert C_z % 3 == 0, "C_z must be divisible by 3"
+
+        # Normalize pH and temperature
+        pH_norm = torch.tensor(self.normalize(pH, pH_range[0], pH_range[1]), dtype = torch.float32)
+        temp_norm = torch.tensor(self.normalize(temp, temp_range[0], temp_range[1]), dtype = torch.float32)
+
+        # convert normalized values into rotation angles 
+        theta_pH = pH_norm * (torch.pi/2)
+        theta_temp = temp_norm * (torch.pi/2)
+
+        num_splits = C_z // 3
+        # N_res, num_splits, 3
+        tensor_reshaped = input.view(N_res, num_splits, 3)
+
+        # Rotation matrix for pH (xy-plane --> z, vertical rotation)
+        R_z = torch.tensor([
+            [torch.cos(theta_pH), -torch.sin(theta_pH), 0],
+            [torch.sin(theta_pH), torch.cos(theta_pH),  0],
+            [0                  , 0                   , 1]
+        ], dtype = torch.float32)
+
+        # Rotation matrix for temperature (xz-plane --> y, "pointing at you")
+        R_y = torch.tensor([
+            [torch.cos(theta_temp), 0,   torch.sin(theta_temp)],
+            [0,                   1,                        0],
+            [-torch.sin(theta_temp), 0, torch.cos(theta_temp)]
+        ], dtype = torch.float32)
+
+        # 3, 3
+        combined_rotation = R_y @ R_z
+        rotated_tensor = torch.matmul(combined_rotation, tensor_reshaped.transpose(1,2))
+
+        # transpose back to (N_res, num_split, 3), then to (N_res, C_z)
+        final_tensor = rotated_tensor.transpose(1,2).reshape(N_res, C_z)
+        print(final_tensor)
+        return final_tensor
+
+
 
     def forward(self, batch):
         """
@@ -99,8 +155,15 @@ class InputEmbedder(nn.Module):
 
         # N_res, 21 -> N_res, C_z
         a = self.linear_tf_z_i(target_feat)
+        print("a = ", a)
         # N_res, 21 -> N_res, C_z
         b = self.linear_tf_z_j(target_feat)
+        print("b = ", b)
+        
+        # Rotate "a" and "b" before outer sum
+        a_rotated = self.rotate_embeddings(a)
+        b_rotated = self.rotate_embeddings(b)
+
         # (N_res, 1, C_z) + (1, N_res, C_z) -> (N_res, N_res, C_z)
         z = a.unsqueeze(-2) + b.unsqueeze(-3)
         # N_res, N_res, C_z
