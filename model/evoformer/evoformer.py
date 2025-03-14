@@ -4,7 +4,6 @@ from evoformer.dropout import DropoutRowwise
 from evoformer.msa_stack import MSARowAttentionWithPairBias, MSAColumnAttention, OuterProductMean, MSATransition
 from evoformer.pair_stack import PairStack
 from evoformer.rotaryEmbedding import RotaryEmbedding
-from evoformer.util import imComing
 
 
 class EvoformerBlock(nn.Module):
@@ -95,7 +94,6 @@ class EvoformerStack(nn.Module):
         ##########################################################################
         i = 1
         for evo_block in self.blocks:
-            imComing()
             print(f"block nnumber:{i}\n")
             i += 1
             m, z = evo_block(m, z)

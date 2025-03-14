@@ -2,7 +2,6 @@ import torch
 import math
 from torch import nn
 from evoformer.rotaryEmbedding import RotaryEmbedding, apply_rotary_pos_embedding
-from evoformer.util import isComing
 rotated = 0
 
 
@@ -182,13 +181,10 @@ class MultiHeadAttention(nn.Module):
             q, k, v = self.prepare_qkv(q, k, v)
 
         # Apply rotary embedding
-        if isRotated() < 2 and isComing():
-            seq_len = q.shape[-2]  # get sequence length
-            rotary_pos_emb = self.rotary(seq_len, x.device)
-            cos, sin = rotary_pos_emb.cos(), rotary_pos_emb.sin()
-            q, k = apply_rotary_pos_embedding(q, k, cos, sin)
-            print(f"Rotated: {rotated}")
-            plusOne()
+        seq_len = q.shape[-2]  # get sequence length
+        rotary_pos_emb = self.rotary(seq_len, x.device)
+        cos, sin = rotary_pos_emb.cos(), rotary_pos_emb.sin()
+        q, k = apply_rotary_pos_embedding(q, k, cos, sin)
 
         #
         q = q / math.sqrt(self.c)

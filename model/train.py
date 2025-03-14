@@ -33,7 +33,8 @@ def get_ds():
 
     train_dataloader = DataLoader(train_ds, batch_size=1, shuffle=True)
     val_dataloader = DataLoader(val_ds, batch_size=1, shuffle=True)
-    print(len(val_dataloader))
+    for batch in train_dataloader:
+        print(batch["msa_feat"].shape)
     return full_ds
     
 get_ds()
