@@ -4,9 +4,9 @@ import math
 from typing import Dict, List, Optional, Union, Tuple, Iterable
 
 from featureEmbedding.input_embedding import InputEmbedder
-from model.evoformer.evoformer import EvoformerStack
-from model.featureEmbedding.extra_msa_stack import ExtraMsaEmbedder, ExtraMsaStack
-from model.structure_module.structure_module import StructureModule
+from evoformer.evoformer import EvoformerStack
+from featureEmbedding.extra_msa_stack import ExtraMsaEmbedder, ExtraMsaStack
+from structure_module.structure_module import StructureModule
 
 class ModelArgs:
     def __init__(
@@ -80,9 +80,9 @@ def train():
             pred_positions = model(batch)
             
             # 计算损失
-            loss = compute_structure_loss(pred_positions, batch['native_positions'])
+            #loss = compute_structure_loss(pred_positions, batch['native_positions'])
             
             # 反向传播
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
+            #optimizer.zero_grad()
+            #loss.backward()
+            #optimizer.step()

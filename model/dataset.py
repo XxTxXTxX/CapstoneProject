@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset
 from model import ModelArgs
+from Bio import PDB
 import re
 import os
 
@@ -9,6 +10,12 @@ import os
 class ProcessDataset(Dataset):
     def __init__(self, temp_Ph_vals):
         self.msa_file_path = "model/msa_raw"
+        self.pdb_file_path = "model/targetPDB"
+        self.ATOM_TYPES = ["N", "CA", "C", "O", "CB", "CG", "CG1", "CG2", "OG", "OG1", "SG",
+                           "CD", "CD1", "CD2", "ND1", "ND2", "OD1", "OD2", "SD", "CE", "CE1", "CE2", "CE3",
+                           "NE", "NE1", "NE2", "OE1", "OE2", "CH2", "CZ", "CZ2", "CZ3", "NZ", "OXT", "OH", "TYR_OH"
+                          ]
+        self.ATOM_TYPE_INDEX = {atom: idx for idx, atom in enumerate(self.ATOM_TYPES)}
         self.msa_files = [
             os.path.join(self.msa_file_path, f) 
             for f in os.listdir(self.msa_file_path) 
@@ -18,11 +25,51 @@ class ProcessDataset(Dataset):
         self.feature_extractor = featureExtraction()
         self.features = []
         self.__preprocess_all_msa(temp_Ph_vals)
+        for atom in self.features:
+            atom['coordinates'] = self.__extract_residue_coordinates(os.path.join(self.pdb_file_path, atom['seq_name'] + ".pdb"))
 
     def __preprocess_all_msa(self, temp_Ph_vals):
         for msa_path in self.msa_files:
             batch = self.feature_extractor.create_features_from_a3m(msa_path, temp_Ph_vals)
             self.features.append(batch)
+
+    def __extract_residue_coordinates(self, pdb_file):
+        """
+        Extracts 3D coordinates for all standard residues (excluding HETATM) from a PDB file
+        and converts them into a tensor of shape (Nres, 37, 3).
+        
+        Returns:
+            torch.Tensor: (Nres, 37, 3) where each residue has XYZ coordinates for its atoms. --> Already containing masked information
+        """
+        parser = PDB.PDBParser(QUIET=True)
+        structure = parser.get_structure("protein", pdb_file)
+        residue_list = [] 
+        residue_coordinates = [] 
+        residue_masks = []  
+
+        for model in structure:
+            for chain in model:
+                for residue in chain:
+                    if not PDB.is_aa(residue, standard=True):
+                        continue  # Ignore HETATM
+                    residue_list.append(f"{chain.id}_{residue.get_id()[1]}_{residue.get_resname()}")
+
+                    # Initialize coordinate tensor and mask (Nres, 37, 3)
+                    coord_tensor = torch.zeros((37, 3))  
+                    mask_tensor = torch.zeros(37, dtype=torch.uint8) 
+                    for atom in residue.get_atoms():
+                        atom_name = atom.get_name()
+                        if atom_name in self.ATOM_TYPE_INDEX:  
+                            idx = self.ATOM_TYPE_INDEX[atom_name] 
+                            coord_tensor[idx] = torch.tensor(atom.get_coord(), dtype=torch.float32)
+                            mask_tensor[idx] = 1 
+
+                    residue_coordinates.append(coord_tensor)
+                    residue_masks.append(mask_tensor)
+
+        coords_tensor = torch.stack(residue_coordinates)  # Shape: (Nres, 37, 3)
+
+        return coords_tensor
     
     def __len__(self):
         return len(self.features)
@@ -285,28 +332,10 @@ class featureExtraction():
             'residue_index': residue_index,
             'seq_name' : file_name[14:-4],
             'pH' : temp_Ph_vals[file_name[14:-4]][0],
-            'temp': temp_Ph_vals[file_name[14:-4]][1],
-            'seq_mask' : , # Nres, 37, 3
-            'coordinates' :   # Nres, 37, 3
+            'temp': temp_Ph_vals[file_name[14:-4]][1]
+            # 'coordinates' :   # Nres, 37, 3 --> target
         }
 
 
 # t = ProcessDataset()
 # print(t.features)
-
-
-ATOM   3802  N   GLY P 120      -1.232  53.762   6.083  1.00 39.60           N  
-ATOM   3803  CA  GLY P 120      -0.001  53.052   6.379  1.00 38.98           C  
-ATOM   3804  C   GLY P 120       0.887  53.862   7.303  1.00 39.74           C  
-ATOM   3805  O   GLY P 120       1.734  53.311   8.007  1.00 39.36           O  
-
-Nres, 37, 3
-1, 37, 3
-1, 4, 3
-
-[[x1, y1, z1], [x2, y2, z2], [], [], [-,-,-], 0, 0, ...]
-
-N [1, 0, 0, ...] 
-CA[0, 1, 0, ...]
-C [0, 0, 1, ...]
-O [0, 0, 0, 1, ...]

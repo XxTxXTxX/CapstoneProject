@@ -85,6 +85,8 @@ class InputEmbedder(nn.Module):
             - rotation happens before outer sum between "a" and "b"
         returns rotated tensor of shape (N_res, C_z)
         """
+        print(input.shape)
+        input = input.squeeze(dim=0)
         N_res, C_z = input.shape
         assert C_z % 3 == 0, "C_z must be divisible by 3"
 
@@ -121,7 +123,7 @@ class InputEmbedder(nn.Module):
 
         # transpose back to (N_res, num_split, 3), then to (N_res, C_z)
         final_tensor = rotated_tensor.transpose(1,2).reshape(N_res, C_z)
-        print(final_tensor)
+        print(final_tensor.shape)
         return final_tensor
 
 
