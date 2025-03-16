@@ -285,9 +285,28 @@ class featureExtraction():
             'residue_index': residue_index,
             'seq_name' : file_name[14:-4],
             'pH' : temp_Ph_vals[file_name[14:-4]][0],
-            'temp': temp_Ph_vals[file_name[14:-4]][1]
+            'temp': temp_Ph_vals[file_name[14:-4]][1],
+            'seq_mask' : , # Nres, 37, 3
+            'coordinates' :   # Nres, 37, 3
         }
 
 
 # t = ProcessDataset()
 # print(t.features)
+
+
+ATOM   3802  N   GLY P 120      -1.232  53.762   6.083  1.00 39.60           N  
+ATOM   3803  CA  GLY P 120      -0.001  53.052   6.379  1.00 38.98           C  
+ATOM   3804  C   GLY P 120       0.887  53.862   7.303  1.00 39.74           C  
+ATOM   3805  O   GLY P 120       1.734  53.311   8.007  1.00 39.36           O  
+
+Nres, 37, 3
+1, 37, 3
+1, 4, 3
+
+[[x1, y1, z1], [x2, y2, z2], [], [], [-,-,-], 0, 0, ...]
+
+N [1, 0, 0, ...] 
+CA[0, 1, 0, ...]
+C [0, 0, 1, ...]
+O [0, 0, 0, 1, ...]
