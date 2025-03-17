@@ -47,42 +47,33 @@ class ProteinStructureModel(nn.Module):
         self.structure_module = StructureModule(c_s=384, c_z=c_z)
 
     def forward(self, batch):
-        # calculate m,z
+        # 1
         m, z = self.input_embedder.forward(batch)
-        print("m = ", m.shape)
-        print("Input embedder z = ", z.shape)
+
+        print("Input embedder section: \n")
+        print("m's shape: ", m.shape)
+        print("z's shape: ", z.shape)
+
         extra_msa_representation = self.extra_msa_Embedder.forward(batch)[:1, :, :]
-        print("Extra msa representation = ", extra_msa_representation.shape)
+        #print("Extra msa representation = ", extra_msa_representation.shape)
+
         z = self.extra_msa_stack(extra_msa_representation, z)
-        print("Extra msa stack = ", extra_msa_representation.shape)
+        #print("Extra msa stack = ", extra_msa_representation.shape)
+        
+        # 2
         m, z, s = self.evoformer_stack(m, z)
         print("Evoformer stack = ", m.shape, z.shape, s.shape)
 
-        msa_aatype = batch['msa_feat'][0, :, :20]
+        # 3
+        #msa_aatype = batch['msa_feat'][0, :, :20]
+        msa_aatype = batch['target_feat']
         F = torch.argmax(msa_aatype, dim=-1)
         print("F = ", F.shape)
         output = self.structure_module(s, z, F)
-        print("Structure module = ", output["final_positions"])
+        print("Structure module = ", output["final_positions"].shape)
         
         return output
 
 
 
-### Interact
-
-def train():
-    model = ProteinStructureModel()
-    optimizer = torch.optim.Adam(model.parameters())
-    
-    for epoch in range(num_epochs):
-        for batch in dataloader:
-            # 前向传播
-            pred_positions = model(batch)
-            
-            # 计算损失
-            #loss = compute_structure_loss(pred_positions, batch['native_positions'])
-            
-            # 反向传播
-            #optimizer.zero_grad()
-            #loss.backward()
-            #optimizer.step()
+#

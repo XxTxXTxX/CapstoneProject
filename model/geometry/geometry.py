@@ -597,7 +597,6 @@ def compute_global_transforms(T, alpha, F):
 
     alpha = alpha / torch.linalg.vector_norm(alpha, dim=-1, keepdim=True)
     omega, phi, psi, chi1, chi2, chi3, chi4 = torch.unbind(alpha, dim=-2)
-
     all_rigid_transforms = precalculate_rigid_transforms().to(dtype=dtype, device=device)
 
     local_transforms = all_rigid_transforms[F]

@@ -5,6 +5,8 @@ import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader, random_split
 import csv
 import torch.optim as optim
+import random
+import numpy as np
 
 
 # -------------------- DEVICE SETUP --------------------
@@ -30,6 +32,8 @@ class MaskedMSELoss(nn.Module):
         Returns:
             masked loss: Mean loss computed only for valid (non-masked) coordinates
         """
+        print("pred shape = ", pred.shape)
+        print("Target shape = ", target.shape)
         mask = (target != 0).any(dim=-1)  # Mask where at least one xyz value ≠ 0
         loss = self.mse(pred, target)  # Compute per-element MSE loss
         masked_loss = loss * mask.unsqueeze(-1)  # Apply mask (broadcasted to match xyz dims)
@@ -61,12 +65,16 @@ def read_pH_temp_csv(file_path):
 
 
 # -------------------- DATASET LOADING --------------------
-def get_ds():
+def get_ds(seed = 42):
     """
     Creates train and validation DataLoaders from ProcessDataset.
     Returns:
         tuple: (train_dataloader, val_dataloader)
     """
+    torch.manual_seed(seed)
+    np.random.seed(seed)
+    random.seed(seed)
+
     temp_pH_vals = read_pH_temp_csv("model/pH_temp.csv")
     full_ds = ProcessDataset(temp_pH_vals)
 
@@ -75,7 +83,7 @@ def get_ds():
     val_ds_size = len(full_ds) - train_ds_size
     train_ds, val_ds = random_split(full_ds, [train_ds_size, val_ds_size])
 
-    train_dataloader = DataLoader(train_ds, batch_size=1, shuffle=True)
+    train_dataloader = DataLoader(train_ds, batch_size=1, shuffle=False)
     val_dataloader = DataLoader(val_ds, batch_size=1, shuffle=False)
 
     return train_dataloader, val_dataloader
@@ -87,57 +95,59 @@ train_dataloader, val_dataloader = get_ds()
 
 
 # -------------------- TRAINING LOOP --------------------
-def train(model, train_loader, val_loader, num_epochs=10, lr=1e-3, device=device):
+def train(model, train_loader, val_loader, num_epochs=10, lr=1e-3, device="cuda"):
     """
     Trains the model using the custom masked MSE loss.
-
+    
     Args:
         model: The protein structure model (expects input shape Nres, 37, 3)
-        train_loader: Training DataLoader
-        val_loader: Validation DataLoader
+        train_loader: Training data DataLoader
+        val_loader: Validation data DataLoader
         num_epochs: Number of epochs
         lr: Learning rate
-        device: 'cuda', 'mps', or 'cpu'
+        device: 'cuda' or 'cpu'
     """
-    model.to(device)  # Ensure model is on correct device
+    model.to(device)
     optimizer = optim.Adam(model.parameters(), lr=lr)
-    criterion = MaskedMSELoss().to(device)  # Move loss function to device
+    criterion = MaskedMSELoss()  # Use custom loss function
 
     for epoch in range(num_epochs):
         model.train()
         train_loss = 0
-
         for batch in train_loader:
-            if 'coordinates' not in batch or 'target_feat' not in batch:
-                print("Warning: Missing keys in batch, skipping iteration!")
-                continue
-
-            # Move all tensors to MPS and convert to float32
-            batch = {key: val.to(device, dtype=torch.float32) if isinstance(val, torch.Tensor) else val for key, val in batch.items()}
-
-            coordinates = batch['coordinates']  # Ground truth (Nres, 37, 3)
-            pred_coords = model(batch)  # Model output (Nres, 37, 3)
-
-            loss = criterion(pred_coords, coordinates)  # Compute loss
+            coordinates = batch['coordinates']
+            print(type(coordinates))
+            print(coordinates)
+              # Ground truth (Nres, 37, 3)
+            pred = model(batch)  # Model returns a dictionary
+            
+            # Extract the relevant tensors
+            pred_coords = pred["final_positions"].to(device)
+            print(f"predcoords shape: {pred_coords.shape}")
+            target_coords = coordinates  # Already extracted
+            print(f"target shape: {target_coords.shape}")
+            loss = criterion(pred_coords, target_coords)  # Compute loss
             optimizer.zero_grad()
             loss.backward()
-            optimizer.step()
+            optimizer.step()       
 
             train_loss += loss.item()
-
+        
         # Validation
         model.eval()
         val_loss = 0
         with torch.no_grad():
             for batch in val_loader:
-                if 'coordinates' not in batch:
-                    continue
+                coordinates = batch['coordinates'].to(device)
+                pred = model(batch)
 
-                batch = {key: val.to(device, dtype=torch.float32) if isinstance(val, torch.Tensor) else val for key, val in batch.items()}
+                # Extract the relevant tensors
+                pred_coords = pred["final_positions"].to(device)
+                print(f"pred_coords shape: {pred_coords}")
+                target_coords = coordinates  # Already extracted
+                print(f"target coords shape: {target_coords.shape}")
 
-                coordinates = batch['coordinates']
-                pred_coords = model(batch)
-                loss = criterion(pred_coords, coordinates)
+                loss = criterion(pred_coords, target_coords)
                 val_loss += loss.item()
 
         print(f"Epoch [{epoch+1}/{num_epochs}], Train Loss: {train_loss / len(train_loader):.4f}, Val Loss: {val_loss / len(val_loader):.4f}")

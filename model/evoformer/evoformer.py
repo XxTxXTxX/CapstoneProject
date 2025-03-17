@@ -94,7 +94,7 @@ class EvoformerStack(nn.Module):
         ##########################################################################
         i = 1
         for evo_block in self.blocks:
-            print(f"block nnumber:{i}\n")
+            #print(f"block nnumber:{i}\n")
             i += 1
             m, z = evo_block(m, z)
 

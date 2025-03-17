@@ -27,6 +27,10 @@ def extract_all_chains_sequences(pdb_file):
     return chain_sequences, final
 
 
+pdb_file = "1A04.pdb" 
+_, final = extract_all_chains_sequences(pdb_file=pdb_file)
+print(len(final))
+
 def get_aligned_sequences(input_seq, pdb_seq):
     """
     Args:
@@ -66,45 +70,44 @@ ATOM_TYPES = [
 ]
 ATOM_TYPE_INDEX = {atom: idx for idx, atom in enumerate(ATOM_TYPES)}
 
-def extract_residue_coordinates(pdb_file):
-    """
-    Extracts 3D coordinates for all standard residues (excluding HETATM) from a PDB file
-    and converts them into a tensor of shape (Nres, 37, 3).
-    
-    Returns:
-        torch.Tensor: (Nres, 37, 3) where each residue has XYZ coordinates for its atoms. --> Already containing masked information
-    """
+from Bio import PDB
+import numpy as np
+
+def extract_residue_coordinates(pdb_file, include_hetatm=False):
     parser = PDB.PDBParser(QUIET=True)
     structure = parser.get_structure("protein", pdb_file)
 
-    residue_list = [] 
-    residue_coordinates = [] 
-    residue_masks = []  
+    residue_coordinates = []
+    residue_masks = []
 
     for model in structure:
         for chain in model:
             for residue in chain:
-                if not PDB.is_aa(residue, standard=True):
-                    continue  # Ignore HETATM
-                residue_list.append(f"{chain.id}_{residue.get_id()[1]}_{residue.get_resname()}")
+                if not PDB.is_aa(residue, standard=True) and not include_hetatm:
+                    continue  # Skip HETATM unless specified
 
-                # Initialize coordinate tensor and mask (Nres, 37, 3)
-                coord_tensor = torch.zeros((37, 3))  
-                mask_tensor = torch.zeros(37, dtype=torch.uint8) 
+                coord_tensor = torch.zeros((37, 3))
+                mask_tensor = torch.zeros(37, dtype=torch.uint8)
+
                 for atom in residue.get_atoms():
                     atom_name = atom.get_name()
                     if atom_name in ATOM_TYPE_INDEX:  
-                        idx = ATOM_TYPE_INDEX[atom_name] 
+                        idx = ATOM_TYPE_INDEX[atom_name]
                         coord_tensor[idx] = torch.tensor(atom.get_coord(), dtype=torch.float32)
                         mask_tensor[idx] = 1 
 
                 residue_coordinates.append(coord_tensor)
                 residue_masks.append(mask_tensor)
 
-    coords_tensor = torch.stack(residue_coordinates)  # Shape: (Nres, 37, 3)
+    coords_tensor = torch.stack(residue_coordinates)
+    mask_tensor = torch.stack(residue_masks)
 
-    return coords_tensor
+    return coords_tensor, mask_tensor
 
-# pdb_file = "1914.pdb"
-# coords_tensor, mask_tensor = extract_residue_coordinates(pdb_file)
-# print(f"Coordinates Tensor Shape: {coords_tensor[0]}")  # (Nres, 37, 3)
+# Example usage:
+coords_tensor, mask_tensor = extract_residue_coordinates("1A07.pdb", include_hetatm=True)
+pdb_file = "1A07.pdb"  # Replace with your actual PDB file path
+coords_tensor, _ = extract_residue_coordinates(pdb_file)
+
+print(coords_tensor.shape)
+

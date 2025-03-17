@@ -3,6 +3,7 @@ import torch.nn as nn
 from torch.utils.data import Dataset
 from model import ModelArgs
 from Bio import PDB
+import targetPDB.testtt as tt
 import re
 import os
 
@@ -26,50 +27,56 @@ class ProcessDataset(Dataset):
         self.features = []
         self.__preprocess_all_msa(temp_Ph_vals)
         for atom in self.features:
-            atom['coordinates'] = self.__extract_residue_coordinates(os.path.join(self.pdb_file_path, atom['seq_name'] + ".pdb"))
+            filename = atom['seq_name']
+            file = "model/input_seqs/" + filename + ".fasta"
+            with open(file, 'r') as f:
+                lines = f.readlines()
+            seq = lines[1].strip()
+            # print(seq)
+            atom['coordinates'] = tt.process_pdb(seq, os.path.join(self.pdb_file_path, atom['seq_name'] + ".pdb"))
 
     def __preprocess_all_msa(self, temp_Ph_vals):
         for msa_path in self.msa_files:
             batch = self.feature_extractor.create_features_from_a3m(msa_path, temp_Ph_vals)
             self.features.append(batch)
 
-    def __extract_residue_coordinates(self, pdb_file):
-        """
-        Extracts 3D coordinates for all standard residues (excluding HETATM) from a PDB file
-        and converts them into a tensor of shape (Nres, 37, 3).
+    # def __extract_residue_coordinates(self, pdb_file):
+    #     """
+    #     Extracts 3D coordinates for all standard residues (excluding HETATM) from a PDB file
+    #     and converts them into a tensor of shape (Nres, 37, 3).
         
-        Returns:
-            torch.Tensor: (Nres, 37, 3) where each residue has XYZ coordinates for its atoms. --> Already containing masked information
-        """
-        parser = PDB.PDBParser(QUIET=True)
-        structure = parser.get_structure("protein", pdb_file)
-        residue_list = [] 
-        residue_coordinates = [] 
-        residue_masks = []  
+    #     Returns:
+    #         torch.Tensor: (Nres, 37, 3) where each residue has XYZ coordinates for its atoms. --> Already containing masked information
+    #     """
+    #     parser = PDB.PDBParser(QUIET=True)
+    #     structure = parser.get_structure("protein", pdb_file)
+    #     residue_list = [] 
+    #     residue_coordinates = [] 
+    #     residue_masks = []  
 
-        for model in structure:
-            for chain in model:
-                for residue in chain:
-                    if not PDB.is_aa(residue, standard=True):
-                        continue  # Ignore HETATM
-                    residue_list.append(f"{chain.id}_{residue.get_id()[1]}_{residue.get_resname()}")
+    #     for model in structure:
+    #         for chain in model:
+    #             for residue in chain:
+    #                 if not PDB.is_aa(residue, standard=True):
+    #                     continue  # Ignore HETATM
+    #                 residue_list.append(f"{chain.id}_{residue.get_id()[1]}_{residue.get_resname()}")
 
-                    # Initialize coordinate tensor and mask (Nres, 37, 3)
-                    coord_tensor = torch.zeros((37, 3))  
-                    mask_tensor = torch.zeros(37, dtype=torch.uint8) 
-                    for atom in residue.get_atoms():
-                        atom_name = atom.get_name()
-                        if atom_name in self.ATOM_TYPE_INDEX:  
-                            idx = self.ATOM_TYPE_INDEX[atom_name] 
-                            coord_tensor[idx] = torch.tensor(atom.get_coord(), dtype=torch.float32)
-                            mask_tensor[idx] = 1 
+    #                 # Initialize coordinate tensor and mask (Nres, 37, 3)
+    #                 coord_tensor = torch.zeros((37, 3))  
+    #                 mask_tensor = torch.zeros(37, dtype=torch.uint8) 
+    #                 for atom in residue.get_atoms():
+    #                     atom_name = atom.get_name()
+    #                     if atom_name in self.ATOM_TYPE_INDEX:  
+    #                         idx = self.ATOM_TYPE_INDEX[atom_name] 
+    #                         coord_tensor[idx] = torch.tensor(atom.get_coord(), dtype=torch.float32)
+    #                         mask_tensor[idx] = 1 
 
-                    residue_coordinates.append(coord_tensor)
-                    residue_masks.append(mask_tensor)
+    #                 residue_coordinates.append(coord_tensor)
+    #                 residue_masks.append(mask_tensor)
 
-        coords_tensor = torch.stack(residue_coordinates)  # Shape: (Nres, 37, 3)
+    #     coords_tensor = torch.stack(residue_coordinates)  # Shape: (Nres, 37, 3)
 
-        return coords_tensor
+    #     return coords_tensor
     
     def __len__(self):
         return len(self.features)

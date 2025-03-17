@@ -85,9 +85,9 @@ class InputEmbedder(nn.Module):
             - rotation happens before outer sum between "a" and "b"
         returns rotated tensor of shape (N_res, C_z)
         """
-        print(input.shape)
         input = input.squeeze(dim=0)
         N_res, C_z = input.shape
+        input.unsqueeze(dim=0)
         assert C_z % 3 == 0, "C_z must be divisible by 3"
 
         # Normalize pH and temperature
@@ -123,7 +123,6 @@ class InputEmbedder(nn.Module):
 
         # transpose back to (N_res, num_split, 3), then to (N_res, C_z)
         final_tensor = rotated_tensor.transpose(1,2).reshape(N_res, C_z)
-        print(final_tensor.shape)
         return final_tensor
 
 
@@ -158,20 +157,17 @@ class InputEmbedder(nn.Module):
 
         # N_res, 21 -> N_res, C_z
         a = self.linear_tf_z_i(target_feat)
-        print("a = ", a)
         # N_res, 21 -> N_res, C_z
         b = self.linear_tf_z_j(target_feat)
-        print("b = ", b)
         
         # Rotate "a" and "b" before outer sum
         a_rotated = self.rotate_embeddings(a)
         b_rotated = self.rotate_embeddings(b)
 
         # (N_res, 1, C_z) + (1, N_res, C_z) -> (N_res, N_res, C_z)
-        z = a.unsqueeze(-2) + b.unsqueeze(-3)
+        z = a_rotated.unsqueeze(-2) + b_rotated.unsqueeze(-3)
         # N_res, N_res, C_z
-        z += self.relpos(residue_index) 
-        
+        z = z + self.relpos(residue_index.squeeze(0))        
         #TODO: Add PH and temperature rotations
         
         # (1, N_res, 21)
@@ -179,5 +175,5 @@ class InputEmbedder(nn.Module):
 
         # (N_clust, N_res, C_m) + (1, N_res, C_m) -> (N_clust, N_res, C_m)
         m = self.linear_msa_m(msa_feat) + self.linear_tf_m(target_feat)
-
+        z = z.unsqueeze(0)
         return m, z
