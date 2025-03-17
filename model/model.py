@@ -68,7 +68,8 @@ class ProteinStructureModel(nn.Module):
         #msa_aatype = batch['msa_feat'][0, :, :20]
         msa_aatype = batch['target_feat']
         F = torch.argmax(msa_aatype, dim=-1)
-        print("F = ", F)
+        F = torch.clamp(F, min=0, max=19)
+        #print("F = ", F.shape)
         output = self.structure_module(s, z, F)
         print("Structure module = ", output["final_positions"].shape)
         

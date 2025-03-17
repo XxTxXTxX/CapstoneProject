@@ -7,12 +7,10 @@ import csv
 import torch.optim as optim
 import random
 import numpy as np
-
-
+import os
 # -------------------- DEVICE SETUP --------------------
-device = torch.device("cpu")
+device = torch.device("mps")
 print(f"Using device: {device}")
-#device = torch.device("cpu")
 
 
 # -------------------- CUSTOM MASKED MSE LOSS --------------------
@@ -65,7 +63,21 @@ def read_pH_temp_csv(file_path):
 
 
 # -------------------- DATASET LOADING --------------------
-def get_ds(seed = 42):
+def collate_fn(batch):
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    collated = {}
+    for key in batch[0].keys():
+        samples = [item[key] for item in batch]
+        if isinstance(samples[0], torch.Tensor):
+            try:
+                collated[key] = torch.stack(samples).to(device)
+            except RuntimeError:
+                collated[key] = nn.utils.rnn.pad_sequence(samples, batch_first=True).to(device)
+        else:
+            collated[key] = samples 
+    return collated
+
+def get_ds(seed = 43):
     """
     Creates train and validation DataLoaders from ProcessDataset.
     Returns:
@@ -83,19 +95,23 @@ def get_ds(seed = 42):
     val_ds_size = len(full_ds) - train_ds_size
     train_ds, val_ds = random_split(full_ds, [train_ds_size, val_ds_size])
 
-    train_dataloader = DataLoader(train_ds, batch_size=1, shuffle=False)
-    val_dataloader = DataLoader(val_ds, batch_size=1, shuffle=False)
+    train_dataloader = DataLoader(train_ds, batch_size=1, shuffle=False, collate_fn=collate_fn)
+    val_dataloader = DataLoader(val_ds, batch_size=1, shuffle=False, collate_fn=collate_fn)
 
     return train_dataloader, val_dataloader
 
 
+
 # -------------------- MODEL SETUP --------------------
-model = ProteinStructureModel().to(device)
+model = ProteinStructureModel()
+model.to(device)
 train_dataloader, val_dataloader = get_ds()
+# train_dataloader = train_dataloader.to(device)
+# val_dataloader = val_dataloader.to(device)
 
 
 # -------------------- TRAINING LOOP --------------------
-def train(model, train_loader, val_loader, num_epochs=10, lr=1e-3, device="cuda"):
+def train(model, train_loader, val_loader, num_epochs=2, lr=1e-3, device=device):
     """
     Trains the model using the custom masked MSE loss.
     
@@ -107,24 +123,21 @@ def train(model, train_loader, val_loader, num_epochs=10, lr=1e-3, device="cuda"
         lr: Learning rate
         device: 'cuda' or 'cpu'
     """
-    model.to(device)
     optimizer = optim.Adam(model.parameters(), lr=lr)
     criterion = MaskedMSELoss()  # Use custom loss function
-    torch.autograd.set_detect_anomaly(True)
 
 
     for epoch in range(num_epochs):
         model.train()
         train_loss = 0
         for batch in train_loader:
+            batch = {k: v.to(device) if torch.is_tensor(v) else v for k, v in batch.items()}
             coordinates = batch['coordinates']
-            print(type(coordinates))
-            print(coordinates)
               # Ground truth (Nres, 37, 3)
             pred = model(batch)  # Model returns a dictionary
             
             # Extract the relevant tensors
-            pred_coords = pred["final_positions"].to(device)
+            pred_coords = pred["final_positions"]
             print(f"predcoords shape: {pred_coords.shape}")
             
             target_coords = coordinates  # Already extracted
@@ -135,17 +148,20 @@ def train(model, train_loader, val_loader, num_epochs=10, lr=1e-3, device="cuda"
             optimizer.step()       
 
             train_loss += loss.item()
+            del batch, pred, pred_coords, target_coords, loss  
+            torch.cuda.empty_cache()
         
         # Validation
         model.eval()
         val_loss = 0
         with torch.no_grad():
             for batch in val_loader:
-                coordinates = batch['coordinates'].to(device)
+                batch = {k: v.to(device) if torch.is_tensor(v) else v for k, v in batch.items()}
+                coordinates = batch['coordinates']
                 pred = model(batch)
 
                 # Extract the relevant tensors
-                pred_coords = pred["final_positions"].to(device)
+                pred_coords = pred["final_positions"]
                 print(f"pred_coords shape: {pred_coords}")
                 target_coords = coordinates  # Already extracted
                 print(f"target coords shape: {target_coords.shape}")
@@ -157,3 +173,4 @@ def train(model, train_loader, val_loader, num_epochs=10, lr=1e-3, device="cuda"
 
 # -------------------- RUN TRAINING --------------------
 train(model, train_dataloader, val_dataloader, num_epochs=20, lr=1e-4, device=device)
+print("finished!!")

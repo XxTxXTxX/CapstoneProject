@@ -6,7 +6,7 @@ class MSARowAttentionWithPairBias(nn.Module):
     """
     Implements Algorithm 7.
     """
-    def __init__(self, c_m, c_z, c=32, N_head=8):
+    def __init__(self, c_m, c_z, c=32, N_head=1):
         """
         Initializes MSARowAttentionWithPairBias.
 
@@ -67,7 +67,7 @@ class MSAColumnAttention(nn.Module):
     """
     Implements Algorithm 8.
     """
-    def __init__(self, c_m, c=32, N_head=8):
+    def __init__(self, c_m, c=32, N_head=1):
         """
         Initializes MSAColumnAttention.
 

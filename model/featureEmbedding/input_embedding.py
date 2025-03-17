@@ -86,13 +86,14 @@ class InputEmbedder(nn.Module):
         returns rotated tensor of shape (N_res, C_z)
         """
         input = input.squeeze(dim=0)
+        device = input.device
         N_res, C_z = input.shape
         input.unsqueeze(dim=0)
         assert C_z % 3 == 0, "C_z must be divisible by 3"
 
         # Normalize pH and temperature
-        pH_norm = torch.tensor(self.normalize(pH, pH_range[0], pH_range[1]), dtype = torch.float32)
-        temp_norm = torch.tensor(self.normalize(temp, temp_range[0], temp_range[1]), dtype = torch.float32)
+        pH_norm = torch.tensor(self.normalize(pH, pH_range[0], pH_range[1]), dtype = torch.float32, device=device)
+        temp_norm = torch.tensor(self.normalize(temp, temp_range[0], temp_range[1]), dtype = torch.float32, device=device)
 
         # convert normalized values into rotation angles 
         theta_pH = pH_norm * (torch.pi/2)
@@ -107,14 +108,14 @@ class InputEmbedder(nn.Module):
             [torch.cos(theta_pH), -torch.sin(theta_pH), 0],
             [torch.sin(theta_pH), torch.cos(theta_pH),  0],
             [0                  , 0                   , 1]
-        ], dtype = torch.float32)
+        ], dtype = torch.float32, device=device)
 
         # Rotation matrix for temperature (xz-plane --> y, "pointing at you")
         R_y = torch.tensor([
             [torch.cos(theta_temp), 0,   torch.sin(theta_temp)],
             [0,                   1,                        0],
             [-torch.sin(theta_temp), 0, torch.cos(theta_temp)]
-        ], dtype = torch.float32)
+        ], dtype = torch.float32, device=device)
 
         # 3, 3
         combined_rotation = R_y @ R_z
