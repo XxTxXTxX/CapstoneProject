@@ -1,8 +1,9 @@
 import json
 import requests
 import os
+import subprocess
 
-
+## Get all PDB IDs
 def loadAllId():
     all_id = []
 
@@ -89,10 +90,11 @@ def loadAllId():
     return all_id
 
 
-
+# Get fasta and pdb files
 def getSequence():
-    prevVal = False
-    all_id = ['1A0R', '1A1A', '1A04', '1A07', '1914']
+    counter = 0
+    # prevVal = False
+    all_id = loadAllId()
     ## Default do not change
     query = '''
     query ($id: String!) {
@@ -110,23 +112,18 @@ def getSequence():
         "Content-Type": "application/json"
     }
     ##################################################
-    # with open('src/dataCollection/id.txt', 'r') as all_id:
+    # For every PDB ID, download pdb file and fasta file -> then generate MSA
     for id in all_id:
         id = id.strip() # remove \n
-        # if id == "3CY1":
-        #     prevVal = True
-        # if prevVal == True:
         url = f"https://files.rcsb.org/download/{id}.pdb"
-        folder_path = 'model/targetPDB/'
-        # print(folder_path)
-
-        ## Download pdb file and put to local
-        # if not os.path.exists(folder_path):
-        #     os.makedirs(folder_path)
+        pdb_path = 'model/targetPDB/'
+        seq_path = 'model/input_seqs'
+        
+        # Download pdb file
         try:
             response = requests.get(url)
             if response.status_code == 200:
-                file_path = os.path.join(folder_path, f"{id}.pdb")
+                file_path = os.path.join(pdb_path, f"{id}.pdb")
                 with open(file_path, 'wb') as file:
                     file.write(response.content)
                 
@@ -136,22 +133,54 @@ def getSequence():
         except Exception as e:
             print("error message: ", str(e))
 
-        # ## get sequence and write to local
-        # variables = {
-        #     "id": f"{id}"
-        # }
-        # payload = {
-        #     "query": query,
-        #     "variables": variables
-        # }
-        # response = requests.post(urlSequence, json=payload, headers=headers)
-        # if response.status_code == 200:
-        #     data = response.json()
-        #     file_path = os.path.join(folder_path, f"{id}.txt")
-        #     with open(file_path, 'w') as file:
-        #         file.write(data['data']['entry']['polymer_entities'][0]['entity_poly']['pdbx_seq_one_letter_code_can'])
-        #         print(f"write {id}.txt successfully!")
-        # else:
-        #     print(f"write {id}.txt failed!")
+        ## get sequence and write fasta file
+        fasta_url = f"https://rcsb.org/fasta/entry/{id}"
+        variables = {
+            "id": f"{id}"
+        }
+        payload = {
+            "query": query,
+            "variables": variables
+        }
+        response = requests.post(fasta_url, json=payload, headers=headers)
+        if response.status_code == 200:
+            file_path = os.path.join(seq_path, f"{id}.fasta")
+            with open(file_path, 'w') as file:
+                file.write(response.text)
+                print(f"write {id}.fasta successfully!")
+        else:
+            print(f"write {id}.fasta failed!")
+
+        # Generate MSA
+        processMsa(id)
+
+        counter += 1
+        if counter == 10:
+            print("10 MSA/PDB files/fasta files processed")
+
+## Get MSA
+def processMsa(file):
+    input_fasta = f"model/input_seqs/{file}.fasta"  # sequence
+    output_a3m = f"model/msa_raw/{file}.a3m"    # msa
+    database_path = "/Users/hahayes/Desktop/Capstone/hh-suite/databases/uniclust30_2016_09/uniclust30_2016_09" # database
+
+    # HHblits command
+    hhblits_command = [
+        "hhblits", 
+        "cpu", "4",
+        "-i", input_fasta,          # sequence
+        "-d", database_path,        # database
+        "-oa3m", output_a3m,        # msa
+        "-norealign",               # norealign
+        "-n", "3"                   # iteration
+    ]
+
+    # run command
+    try:
+        subprocess.run(hhblits_command, check=True)
+        print(f"MSA successfully generated: {output_a3m}")
+    except subprocess.CalledProcessError as e:
+        print(f"HHblits error: {e}")
+
 
 getSequence()

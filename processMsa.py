@@ -1,11 +1,9 @@
 import subprocess
 import os
 
-inn = ["1A07", "1A0R", "1A1A"]
-
-for file in inn:
-    input_fasta = f"msa/{file}.fasta"  # sequence
-    output_a3m = f"{file}.a3m"    # msa
+def processMsa(file):
+    input_fasta = f"model/input_seqs/{file}.fasta"  # sequence
+    output_a3m = f"model/msa_raw/{file}.a3m"    # msa
     database_path = "/Users/hahayes/Desktop/Capstone/hh-suite/databases/uniclust30_2016_09/uniclust30_2016_09" # database
 
     # HHblits command
@@ -22,6 +20,6 @@ for file in inn:
     # run command
     try:
         subprocess.run(hhblits_command, check=True)
-        print(f"MSA 文件已生成: {output_a3m}")
+        print(f"MSA successfully generated: {output_a3m}")
     except subprocess.CalledProcessError as e:
-        print(f"运行 HHblits 时出错: {e}")
+        print(f"HHblits error: {e}")
