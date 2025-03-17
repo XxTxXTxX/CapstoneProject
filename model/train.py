@@ -110,6 +110,8 @@ def train(model, train_loader, val_loader, num_epochs=10, lr=1e-3, device="cuda"
     model.to(device)
     optimizer = optim.Adam(model.parameters(), lr=lr)
     criterion = MaskedMSELoss()  # Use custom loss function
+    torch.autograd.set_detect_anomaly(True)
+
 
     for epoch in range(num_epochs):
         model.train()
@@ -124,6 +126,7 @@ def train(model, train_loader, val_loader, num_epochs=10, lr=1e-3, device="cuda"
             # Extract the relevant tensors
             pred_coords = pred["final_positions"].to(device)
             print(f"predcoords shape: {pred_coords.shape}")
+            
             target_coords = coordinates  # Already extracted
             print(f"target shape: {target_coords.shape}")
             loss = criterion(pred_coords, target_coords)  # Compute loss

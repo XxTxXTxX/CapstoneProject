@@ -406,7 +406,7 @@ class StructureModule(nn.Module):
         T = torch.eye(4, device=device, dtype=dtype).broadcast_to(batch_dim+(N_res, 4, 4))
 
         for _ in range(self.n_layer):
-            s += self.ipa(s, z, T)
+            s = s + self.ipa(s, z, T)
             s = self.layer_norm_ipa(self.dropout_s(s))
             s = self.transition(s)
             T = T @ self.bb_update(s)
