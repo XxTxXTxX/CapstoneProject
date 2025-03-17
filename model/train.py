@@ -56,8 +56,16 @@ def read_pH_temp_csv(file_path):
         next(reader)  # Skip header
         for row in reader:
             pdb_id = row[0]
-            ph = float(row[1])
-            temp = float(row[2])
+            if row[1] == "Error": # Default pH value
+                row[1] = 7
+                ph = float(row[1])
+            else:
+                ph = float(row[1])
+            if row[2] == "Error": # Default temperature value
+                row[2] = 277
+                temp = float(row[2])
+            else:
+                temp = float(row[2])
             data_dict[pdb_id] = [ph, temp]
     return data_dict
 

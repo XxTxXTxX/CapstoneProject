@@ -28,12 +28,17 @@ class ProcessDataset(Dataset):
         self.__preprocess_all_msa(temp_Ph_vals)
         for atom in self.features:
             filename = atom['seq_name']
-            file = "model/input_seqs/" + filename + ".fasta"
-            with open(file, 'r') as f:
+            sequence_file = "model/input_seqs/" + filename + ".fasta"
+            pdb_file = os.path.join(self.pdb_file_path, atom['seq_name'] + ".pdb")
+            seq = ""
+            with open(sequence_file, 'r') as f:
                 lines = f.readlines()
-            seq = lines[1].strip()
-            # print(seq)
-            atom['coordinates'] = tt.process_pdb(seq, os.path.join(self.pdb_file_path, atom['seq_name'] + ".pdb"))
+            for line in lines:
+                if line.startswith('>'):
+                    continue
+                seq += line.strip()
+            
+            atom['coordinates'] = tt.create_final_tensor(seq, tt.extract_pdb_sequence(pdb_file), tt.extract_residue_coordinates(pdb_file))
 
     def __preprocess_all_msa(self, temp_Ph_vals):
         for msa_path in self.msa_files:
