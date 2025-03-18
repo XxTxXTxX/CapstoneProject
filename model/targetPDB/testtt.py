@@ -105,16 +105,16 @@ def create_final_tensor(fasta_seq, pdb_seq, pdb_coords):
 
 # -------------------- Example Usage --------------------
 
-# Example FASTA sequence
-fasta_seq = "MASMTGGQQMGRIPGNSPRMVLLESEQFLTELTRLFQKCRSSGSVFITLKKYDGRTKPIPRKSSVEGLEPAENKCLLRATDGKRKISTVVSSKEVNKFQMAYSNLLRANMDGLKKRDKKNKSKKSKPAQGGEQKLISEEDDSAGSPMPQFQTWEEFSRAAEKLYLADPMKVRVVLKYRHVDGNLCIKVTDDLVCLVYRTDQAQDVKKIEKFHSQLMRLMVAKESRNVTMETE"
+# # Example FASTA sequence
+# fasta_seq = "MASMTGGQQMGRIPGNSPRMVLLESEQFLTELTRLFQKCRSSGSVFITLKKYDGRTKPIPRKSSVEGLEPAENKCLLRATDGKRKISTVVSSKEVNKFQMAYSNLLRANMDGLKKRDKKNKSKKSKPAQGGEQKLISEEDDSAGSPMPQFQTWEEFSRAAEKLYLADPMKVRVVLKYRHVDGNLCIKVTDDLVCLVYRTDQAQDVKKIEKFHSQLMRLMVAKESRNVTMETE"
 
-# Load PDB file
-pdb_file = "1914.pdb"
-pdb_seq = extract_pdb_sequence(pdb_file)
-pdb_coords = extract_residue_coordinates(pdb_file)
+# # Load PDB file
+# pdb_file = "1914.pdb"
+# pdb_seq = extract_pdb_sequence(pdb_file)
+# pdb_coords = extract_residue_coordinates(pdb_file)
 
-# Generate final tensor
-final_tensor = create_final_tensor(fasta_seq, pdb_seq, pdb_coords)
+# # Generate final tensor
+# final_tensor = create_final_tensor(fasta_seq, pdb_seq, pdb_coords)
 
-# Output final tensor shape
-print("Final Tensor Shape:", final_tensor.shape)
+# # Output final tensor shape
+# print("Final Tensor Shape:", final_tensor.shape)
