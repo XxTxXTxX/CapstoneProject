@@ -9,7 +9,7 @@ import random
 import numpy as np
 import os
 # -------------------- DEVICE SETUP --------------------
-device = torch.device("mps")
+device = torch.device("cuda")
 print(f"Using device: {device}")
 
 
@@ -119,7 +119,7 @@ train_dataloader, val_dataloader = get_ds()
 
 
 # -------------------- TRAINING LOOP --------------------
-def train(model, train_loader, val_loader, num_epochs=2, lr=1e-3, device=device):
+def train(model, train_loader, val_loader, num_epochs=20, lr=1e-3, device=device):
     """
     Trains the model using the custom masked MSE loss.
     

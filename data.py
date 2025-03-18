@@ -93,7 +93,7 @@ def loadAllId():
 # Get fasta and pdb files
 def getSequence():
     counter = 0
-    # prevVal = False
+    prevVal = False
     all_id = loadAllId()
     ## Default do not change
     query = '''
@@ -115,48 +115,51 @@ def getSequence():
     # For every PDB ID, download pdb file and fasta file -> then generate MSA
     for id in all_id:
         id = id.strip() # remove \n
-        url = f"https://files.rcsb.org/download/{id}.pdb"
-        pdb_path = 'model/targetPDB/'
-        seq_path = 'model/input_seqs'
-        
-        # Download pdb file
-        try:
-            response = requests.get(url)
+        if id == "1B14":
+            prevVal = True
+        if prevVal:
+            url = f"https://files.rcsb.org/download/{id}.pdb"
+            pdb_path = 'model/targetPDB/'
+            seq_path = 'model/input_seqs'
+            
+            # Download pdb file
+            try:
+                response = requests.get(url)
+                if response.status_code == 200:
+                    file_path = os.path.join(pdb_path, f"{id}.pdb")
+                    with open(file_path, 'wb') as file:
+                        file.write(response.content)
+                    
+                    print(f"write {id}.pdb successfully!")
+                else:
+                    print(f"Failed to download {id}.pdb")
+            except Exception as e:
+                print("error message: ", str(e))
+
+            ## get sequence and write fasta file
+            fasta_url = f"https://rcsb.org/fasta/entry/{id}"
+            variables = {
+                "id": f"{id}"
+            }
+            payload = {
+                "query": query,
+                "variables": variables
+            }
+            response = requests.post(fasta_url, json=payload, headers=headers)
             if response.status_code == 200:
-                file_path = os.path.join(pdb_path, f"{id}.pdb")
-                with open(file_path, 'wb') as file:
-                    file.write(response.content)
-                
-                print(f"write {id}.pdb successfully!")
+                file_path = os.path.join(seq_path, f"{id}.fasta")
+                with open(file_path, 'w') as file:
+                    file.write(response.text)
+                    print(f"write {id}.fasta successfully!")
             else:
-                print(f"Failed to download {id}.pdb")
-        except Exception as e:
-            print("error message: ", str(e))
+                print(f"write {id}.fasta failed!")
 
-        ## get sequence and write fasta file
-        fasta_url = f"https://rcsb.org/fasta/entry/{id}"
-        variables = {
-            "id": f"{id}"
-        }
-        payload = {
-            "query": query,
-            "variables": variables
-        }
-        response = requests.post(fasta_url, json=payload, headers=headers)
-        if response.status_code == 200:
-            file_path = os.path.join(seq_path, f"{id}.fasta")
-            with open(file_path, 'w') as file:
-                file.write(response.text)
-                print(f"write {id}.fasta successfully!")
-        else:
-            print(f"write {id}.fasta failed!")
+            # Generate MSA
+            processMsa(id)
 
-        # Generate MSA
-        processMsa(id)
-
-        counter += 1
-        if counter == 10:
-            print("10 MSA/PDB files/fasta files processed")
+            counter += 1
+            if counter == 10:
+                print(f"{counter} MSA/PDB files/fasta files processed")
 
 ## Get MSA
 def processMsa(file):
@@ -178,7 +181,7 @@ def processMsa(file):
     # run command
     try:
         subprocess.run(hhblits_command, check=True)
-        print(f"MSA successfully generated: {output_a3m}")
+        print(f"MSA successfully generated: {file}")
     except subprocess.CalledProcessError as e:
         print(f"HHblits error: {e}")
 
