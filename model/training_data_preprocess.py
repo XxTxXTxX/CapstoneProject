@@ -30,7 +30,7 @@ def process_files(input_dir, output_dir=None):
             with open(input_path, 'w') as f:
                 f.writelines(lines)
             
-            print(f"Processed {filename}")
+            # print(f"Processed {filename}")
 
 if __name__ == "__main__":
     input_dirs = ['model/input_seqs', 'model/msa_raw']
