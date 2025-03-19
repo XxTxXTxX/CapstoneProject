@@ -54,7 +54,7 @@ class ProteinStructureModel(nn.Module):
         print("m's shape: ", m.shape)
         print("z's shape: ", z.shape)
 
-        extra_msa_representation = self.extra_msa_Embedder.forward(batch)[:1, :, :]
+        extra_msa_representation = self.extra_msa_Embedder.forward(batch)
         #print("Extra msa representation = ", extra_msa_representation.shape)
 
         z = self.extra_msa_stack(extra_msa_representation, z)
