@@ -1,0 +1,806 @@
+Query         1CQV_1|Chain A|PROTEIN (STAPHYLOCOCCAL ENTEROTOXIN C2)|Staphylococcus aureus (1280)
+Match_columns 239
+No_of_seqs    137 out of 176
+Neff          5.18248
+Searched_HMMs 331
+Date          Wed Mar 19 05:01:09 2025
+Command       hhblits cpu 4 -i model/input_seqs/1CQV.fasta -d /Users/hahayes/Desktop/Capstone/hh-suite/databases/uniclust30_2016_09/uniclust30_2016_09 -oa3m model/msa_raw/1CQV.a3m -norealign -n 3 
+
+ No Hit                             Prob E-value P-value  Score    SS Cols Query HMM  Template HMM
+  1 tr|A0A0H2UVG4|A0A0H2UVG4_STRP3 100.0 1.6E-68   9E-74  480.4   0.0  222    2-237    30-251 (251)
+  2 tr|A0A170LCF9|A0A170LCF9_STAAU 100.0 9.6E-44 4.2E-49  306.4   0.0  182    1-193    24-208 (210)
+  3 tr|Q1JIS3|Q1JIS3_STRPD Enterot 100.0 2.3E-35   1E-40  258.4   0.0  166   47-226    57-222 (234)
+  4 tr|A0A0G2UVJ3|A0A0G2UVJ3_STRPY  99.9 1.1E-32 5.1E-38  246.3   0.0  189   24-237    51-250 (254)
+  5 tr|G8I0Y7|G8I0Y7_STAAU Enterot  99.9 1.7E-32 6.6E-38  233.3   0.0  173    1-173    28-200 (212)
+  6 tr|A0A0N7KC19|A0A0N7KC19_STAAU  99.9 7.1E-31 2.7E-36  218.1   0.0  154   64-232     6-173 (173)
+  7 tr|A0A0U5AY67|A0A0U5AY67_STAAU  99.9 1.2E-30   5E-36  215.5   0.0  119  111-234    10-144 (150)
+  8 tr|A9LN29|A9LN29_STRPY Exotoxi  99.9 1.5E-27 5.7E-33  199.5   0.0  146   33-189    33-178 (179)
+  9 tr|Q6DTL4|Q6DTL4_STRPY Superan  99.9 3.7E-27 1.4E-32  197.3   0.0  177   32-226     1-180 (180)
+ 10 tr|A0A0E0VMW5|A0A0E0VMW5_STAA5  99.9 7.1E-27 3.7E-32  209.8   0.0  109   75-200    93-205 (231)
+ 11 tr|A0A077ULR8|A0A077ULR8_STAAU  99.7 6.1E-21 2.6E-26  174.2   0.0  102   80-200   186-290 (316)
+ 12 tr|A0A077UEC3|A0A077UEC3_STAAU  99.7 8.2E-21 3.5E-26  169.2   0.0  110   75-200   100-212 (241)
+ 13 tr|A0A0A0R6J3|A0A0A0R6J3_STAAU  99.6 4.5E-19 1.8E-24  148.1   0.0  105   10-121    46-152 (165)
+ 14 tr|Q7WYA2|Q7WYA2_STRPY Pyrogen  99.5 1.1E-17 4.3E-23  142.4   0.0  165   24-205    11-187 (188)
+ 15 tr|A0A0U5BCK5|A0A0U5BCK5_STAAU  99.5 2.4E-17 9.2E-23  132.0   0.0  106   14-119     7-112 (119)
+ 16 tr|A0A0P0UW68|A0A0P0UW68_STAAU  99.5 5.4E-17 2.1E-22  129.4   0.0   91  111-204     1-107 (115)
+ 17 tr|B0I1V6|B0I1V6_STAAU Enterot  99.4 2.1E-16 8.9E-22  139.0   0.0  153   55-234    58-214 (216)
+ 18 tr|A0A181I0E4|A0A181I0E4_STAAU  99.3 2.9E-15 1.1E-20  125.2   0.0  114    1-122    43-157 (157)
+ 19 tr|A0A126G9S3|A0A126G9S3_CLOPF  99.1 2.1E-13   8E-19  120.4   0.0  122   64-198    77-203 (234)
+ 20 tr|Q711S9|Q711S9_STAIN Putativ  98.8 1.5E-11   6E-17   94.9   0.0   82  133-216     1-86  (86)
+ 21 tr|A0A0H3JXY5|A0A0H3JXY5_STAAW  98.4 1.2E-09 4.8E-15   80.3   0.0   62  173-237     1-62  (62)
+ 22 tr|Q5XCI8|Q5XCI8_STRP6 Enterot  98.0   5E-08   2E-13   77.9   0.0   66  148-215     2-78  (98)
+ 23 tr|A0A0P0UW46|A0A0P0UW46_STAAU  97.9   1E-07 4.1E-13   72.1   0.0   53  111-166     1-53  (70)
+ 24 tr|U2TPG8|U2TPG8_STRPY Exotoxi  97.8 2.2E-07 8.6E-13   75.7   0.0   60    2-65     30-89  (110)
+ 25 tr|A0A181HZT5|A0A181HZT5_STAAU  96.9   5E-05   2E-10   70.3   0.0  169   13-200    63-232 (258)
+ 26 tr|A0A085UFA1|A0A085UFA1_9STAP  96.3 0.00036 1.6E-09   63.6   0.0   50  147-199   106-155 (184)
+ 27 tr|A0A140JWZ3|A0A140JWZ3_STAAU  96.1 0.00079 3.1E-09   59.1   0.0   69   60-142    72-140 (155)
+ 28 tr|A0A0U5AQ00|A0A0U5AQ00_STAAU  95.1  0.0083 3.2E-08   52.7   0.0   67  114-185    73-143 (145)
+ 29 tr|Q4EVY5|Q4EVY5_STRPY Type A   94.0   0.038 1.5E-07   34.1   0.0   20   67-86      1-20  (20)
+ 30 tr|D2JAI7|D2JAI7_STAAU Unchara  93.0   0.091 3.6E-07   42.1   0.0   38  140-177    25-62  (73)
+ 31 tr|Q4EVY4|Q4EVY4_STRPY Type A   91.1    0.27 1.1E-06   30.7   0.0   19   67-85      1-19  (20)
+ 32 tr|A0A127SRD9|A0A127SRD9_9BACT  83.2     2.2 8.7E-06   31.4   0.0   22  179-201    16-37  (41)
+ 33 tr|X1S7G2|X1S7G2_9ZZZZ Unchara  67.5      13   5E-05   31.9   0.0   49  160-218    33-81  (87)
+ 34 tr|A0A0F3QYV0|A0A0F3QYV0_ORITS  61.7      20 7.7E-05   32.4   0.0   38  152-190     6-43  (118)
+ 35 tr|A0A166J2H3|A0A166J2H3_9HOMO  61.5      20 7.8E-05   33.8   0.0   59  167-227    85-143 (159)
+ 36 tr|A0A087H0W3|A0A087H0W3_ARAAL  52.5      36 0.00014   37.1   0.0   64  106-173    90-153 (508)
+ 37 tr|X0XCA2|X0XCA2_9ZZZZ Unchara  40.7      73 0.00029   32.3   0.0   24  154-177    26-51  (244)
+ 38 tr|A0A158QB21|A0A158QB21_ENTVE  39.0      77 0.00032   31.1   0.0   43  129-171    30-74  (166)
+ 39 tr|A0A151WPY9|A0A151WPY9_9HYME  36.6      94 0.00037   30.7   0.0   30  155-184    34-63  (193)
+ 40 tr|A0A191YX24|A0A191YX24_9PSED  28.9 1.4E+02 0.00059   26.7   0.0   30  144-173    24-53  (88)
+ 41 tr|A0A0R1WWB7|A0A0R1WWB7_9LACO  26.0 1.9E+02 0.00072   26.3   0.0   38  162-199    63-100 (100)
+ 42 tr|A0A077YZI2|A0A077YZI2_TRITR  25.5 1.9E+02 0.00075   31.3   0.0   21  147-167   148-168 (373)
+ 43 tr|Q5P4K9|Q5P4K9_AROAE Unchara  24.2 2.1E+02 0.00082   26.2   0.0   36   45-86     12-47  (103)
+ 44 tr|A0A0D2RN44|A0A0D2RN44_GOSRA  21.7 2.5E+02 0.00099   27.9   0.0   34   59-92     50-83  (177)
+ 45 tr|A0A0T6YKN0|A0A0T6YKN0_9RHIZ  21.2 2.6E+02   0.001   26.0   0.0   54    5-58      4-59  (114)
+ 46 tr|A0A061EL45|A0A061EL45_THECC  20.6 2.4E+02  0.0011   29.1   0.0   33   60-92     54-86  (201)
+ 47 tr|A0A0X8JT56|A0A0X8JT56_9FUSO  20.4 2.8E+02  0.0011   32.6   0.0   25  147-171   568-592 (780)
+
+No 1
+>tr|A0A0H2UVG4|A0A0H2UVG4_STRP3 Exotoxin type A-phage-associated OS=Streptococcus pyogenes serotype M3 (strain ATCC BAA-595 / MGAS315) GN=speA3 PE=4 SV=1
+Probab=100.00  E-value=1.6e-68  Score=480.40  Aligned_cols=222  Identities=55%  Similarity=0.950  Sum_probs=215.6  Template_Neff=4.500
+
+Q 1CQV_1|Chain      2 SQPDPTPDELHKSSEFTGTMGNMKYLYDDHYVSATKVMSVDKFLAHDLIYNISDKKLKNYDKVKTELLNEDLAKKYKDEV   81 (239)
+Q Consensus         2 ~~~~~~~~~l~k~s~~~~~~~Nlr~~Y~~~~v~~~n~~~~d~~l~h~Lif~~~~~~~~~~~~l~se~~~~~~~~k~k~k~   81 (239)
+                      ++|+|.|++||++|+++ .|+||++||++..+++..+.+.|+||+||||+.+.+   .+++.+++|+.++++|.+||+.-
+T Consensus        30 ~~~~p~~~~L~k~Se~~-~~~Nlr~lY~~~~v~~~nvks~dq~LshdLif~~~~---~~~~~Lk~Ef~n~~la~kfK~K~  105 (251)
+T tr|A0A0H2UVG4|   30 SQPDPKPSELHKKSEFD-NMGNLRNLYTDPPVDEENVKSSDQFLSHDLIFKIID---ANYNDLKVEFNNKDLADKFKGKK  105 (251)
+Confidence            58999999999999999 999999999996699999999999999999999998   89999999999999999999999
+
+
+Q 1CQV_1|Chain     82 VDVYGSNYYVNCYFSSKDNVGKVTGGKTCMYGGITKHEGNHFDNGNLQNVLIRVYENKRNTISFEVQTDKKSVTAQELDI  161 (239)
+Q Consensus        82 VDVFgv~y~~~~~~~~~~~~~~~~~~~~~~yGGVT~~n~~~~d~~~~~~i~inv~~~~~~~~~~~i~inKk~VTlQELDf  161 (239)
+                      ||+||.+|+.+||++.+.      .+++|||||+|.|+||+.+  ..+++.|.||++.+++.+|.|+|+|+.|||||||+
+T Consensus       106 VDIfGv~Y~~~C~~~~~~------~~~~cmYGGvT~~~~n~l~--~~k~I~Vnv~idg~q~~~~~isTnKk~VTaQElD~  177 (251)
+T tr|A0A0H2UVG4|  106 VDIFGVNYYYNCYGSKKN------NKTACMYGGVTLHEGNQLD--EPKNIPVNVWIDGKQQTSFTISTNKKKVTAQELDY  177 (251)
+Confidence            999999999999998776      7889999999999999988  77899999999999999999999999999999999
+
+
+Q 1CQV_1|Chain    162 KARNFLINKKNLYEFNSSPYETGYIKFIENNGNTFWYDMMPAPGDKFDQSKYLMMYNDNKTVDSKSVKIEVHLTTK  237 (239)
+Q Consensus       162 KlRk~Li~~~~LY~~~~s~~~~G~I~i~~kdg~~~~~DLf~~~~~~~~~~~~lkiY~DNktids~~~hidV~l~~~  237 (239)
+                      |+|+.|+++.+||+|+.|+|++|||+|++++|..|||||||.+|  |++++||++|+||||++|+...|+|+|+++
+T Consensus       178 K~R~~L~~~~~lY~~~~s~~~~GyI~F~~n~~~sf~YDLf~~~~--~~~~~~LkiY~DNKtv~S~~~hidV~L~~~  251 (251)
+T tr|A0A0H2UVG4|  178 KVRKYLIKKYNLYEFNGSKYEKGYIKFHENNGDSFWYDLFYTGG--FDPESFLKIYNDNKTVDSDKFHIDVYLTTK  251 (251)
+Confidence            99999999999999999999999999999999999999999998  999999999999999999999999999875
+
+
+No 2
+>tr|A0A170LCF9|A0A170LCF9_STAAU Enterotoxin OS=Staphylococcus aureus GN=entA PE=4 SV=1
+Probab=100.00  E-value=9.6e-44  Score=306.36  Aligned_cols=182  Identities=34%  Similarity=0.607  Sum_probs=0.0  Template_Neff=2.021
+
+Q 1CQV_1|Chain      1 ESQPDPTPDELHKSSEFTG-TMGNMKYLYDDHYVSATKVMSVDKFLAHDLIYNISDKKLKNYDKVKTELLNEDLAKKYKD   79 (239)
+Q Consensus         1 ~~~~~~~~~~l~k~s~~~~-~~~Nlr~~Y~~~~v~~~n~~~~d~~l~h~Lif~~~~~~~~~~~~l~se~~~~~~~~k~k~   79 (239)
+                      ++.......+||+-||..| ..+||+..|-. -+-...-.|-|.||+|+|++.=---.-.-|...+.++-+++++.+|+.
+T Consensus        24 ~~~~~i~~~DLh~KSeL~~~aL~N~r~~y~~-~~~~ENK~s~dqfL~~tlLF~dfftnh~~ynDllV~f~sk~~~~k~k~  102 (210)
+T tr|A0A170LCF9|   24 EKSEEINEKDLHKKSELQGKALGNLKQIYYY-KAKTENKESNDQFLQHTILFKGFFTNHSWYNDLLVDFDSKDIVDKYKG  102 (210)
+
+
+Q 1CQV_1|Chain     80 EVVDVYGSNYYVNCYFSSKDNVGKVTGGKTCMYGGITKHEGNHFDNGNLQNVLIRVY-ENKRNTISFE-VQTDKKSVTAQ  157 (239)
+Q Consensus        80 k~VDVFgv~y~~~~~~~~~~~~~~~~~~~~~~yGGVT~~n~~~~d~~~~~~i~inv~-~~~~~~~~~~-i~inKk~VTlQ  157 (239)
+                      .-||.||..|-..|       .|--+.-..|||||+|-|+.|..|.-  .||-|..| ..+.++|+++ |.|+||.||.|
+T Consensus       103 K~vDiYg~~YgyqC-------~GG~pNKT~C~YGGvTlhdnNkl~~~--K~vPiNLWiDG~Q~~v~l~~VKT~KK~VTiQ  173 (210)
+T tr|A0A170LCF9|  103 KKVDLYGAYYGYQC-------AGGTPNKTACMYGGVTLHDNNRLTEE--KKVPINLWLDGKQNTVPLETVKTNKKNVTVQ  173 (210)
+
+
+Q 1CQV_1|Chain    158 ELDIKARNFLINKKNLYEFNSSPYETGYIKFIENNG  193 (239)
+Q Consensus       158 ELDfKlRk~Li~~~~LY~~~~s~~~~G~I~i~~kdg  193 (239)
+                      |||..||++|-.|-+||+- ......|+|+|-..+|
+T Consensus       174 ELD~QaR~yL~~ky~LY~~-gGkiqkG~i~fH~~~~  208 (210)
+T tr|A0A170LCF9|  174 ELDLQARRYLQEKYNLYNS-DGKVQRGLIVFHTSTE  208 (210)
+
+
+No 3
+>tr|Q1JIS3|Q1JIS3_STRPD Enterotoxin OS=Streptococcus pyogenes serotype M2 (strain MGAS10270) GN=speG PE=4 SV=1
+Probab=100.00  E-value=2.3e-35  Score=258.44  Aligned_cols=166  Identities=25%  Similarity=0.377  Sum_probs=0.0  Template_Neff=2.000
+
+Q 1CQV_1|Chain     47 HDLIYNISDKKLKNYDKVKTELLNEDLAKKYKDEVVDVYGSNYYVNCYFSSKDNVGKVTGGKTCMYGGITKHEGNHFDNG  126 (239)
+Q Consensus        47 h~Lif~~~~~~~~~~~~l~se~~~~~~~~k~k~k~VDVFgv~y~~~~~~~~~~~~~~~~~~~~~~yGGVT~~n~~~~d~~  126 (239)
+                      |++--+.+.++-+..--|-.|.--+--.+--|+.-|||+|-.|-.+-|            ..--.|||||+|..+...+-
+T Consensus        57 h~~~I~t~~y~sk~~~yvdSevs~~it~kF~k~dkVdVFGLpYifs~~------------~~~~IYGGitp~~n~~~~~~  124 (234)
+T tr|Q1JIS3|Q1JI   57 HNIHINTQQYRSKCVLYVDSEVSLGITDKFIKGDKVDVFGLPYIFSSP------------NVDNIYGGITPHSNDKNQSL  124 (234)
+
+
+Q 1CQV_1|Chain    127 NLQNVLIRVYENKRNTISFEVQTDKKSVTAQELDIKARNFLINKKNLYEFNSSPYETGYIKFIENNGNTFWYDMMPAPGD  206 (239)
+Q Consensus       127 ~~~~i~inv~~~~~~~~~~~i~inKk~VTlQELDfKlRk~Li~~~~LY~~~~s~~~~G~I~i~~kdg~~~~~DLf~~~~~  206 (239)
+                      .+-..|. .-.....+.+=.+.-+|+-+|.||.|.|.|-||....+.|.-+ |||-.|-+..-.+++...-.|+.-++..
+T Consensus       125 ~~vGnl~-idG~~q~~l~n~I~i~k~i~T~QEfDFKIRkfLMe~y~IYd~~-SpYisGslei~tkd~KHe~idLfd~~~~  202 (234)
+T tr|Q1JIS3|Q1JI  125 QFVGNLN-IDGEEQQLLSNPIIIKKKIFTLQEFDFKIRKFLMENYKIYDSE-SPYISGSLEIATKDSKHEEVDLFDKDDK  202 (234)
+
+
+Q 1CQV_1|Chain    207 KFDQSKYLMMYNDNKTVDSK  226 (239)
+Q Consensus       207 ~~~~~~~lkiY~DNktids~  226 (239)
+                      ....|...--|.|||+..++
+T Consensus       203 ~~tRsd~FkkYkDNk~iNmk  222 (234)
+T tr|Q1JIS3|Q1JI  203 SLTRSDFFKKYKDNKIINMK  222 (234)
+
+
+No 4
+>tr|A0A0G2UVJ3|A0A0G2UVJ3_STRPY Pyrogenic exotoxin SpeK OS=Streptococcus pyogenes GN=DI45_05770 PE=4 SV=1
+Probab=99.95  E-value=1.1e-32  Score=246.31  Aligned_cols=189  Identities=21%  Similarity=0.355  Sum_probs=0.0  Template_Neff=2.563
+
+Q 1CQV_1|Chain     24 MKYLYDDHYVSATKVMSVDKFLAHDLIYNISDKKLKNYDK-----VKTELLNEDLAKKYKDEVVDVYGSNYYVNCYFSSK   98 (239)
+Q Consensus        24 lr~~Y~~~~v~~~n~~~~d~~l~h~Lif~~~~~~~~~~~~-----l~se~~~~~~~~k~k~k~VDVFgv~y~~~~~~~~~   98 (239)
+                      ||.+|... +..++=+..+--+..+|||....-.-.|.+.     +.+.+.......+-+|.+|||||+-+.++-.+   
+T Consensus        51 Lr~iY~kd-~i~k~N~~I~~k~gTq~I~~t~~~t~VW~~n~~~k~issnl~Ps~e~~F~~gd~V~If~i~~S~~v~~---  126 (254)
+T tr|A0A0G2UVJ3|   51 LREIYNKD-IIEKNNISITAKQGTQLIFNTDENTTVWNDNTFNKVISSNLSPSQERMFNVGDHVNIFGIVKSYHVVC---  126 (254)
+
+
+Q 1CQV_1|Chain     99 DNVGKVTGGKTCMYGGITKHEGNHFDNGNLQNVLIRVYENKRNTISF---EVQTDKKSVTAQELDIKARNFLI--NKKNL  173 (239)
+Q Consensus        99 ~~~~~~~~~~~~~yGGVT~~n~~~~d~~~~~~i~inv~~~~~~~~~~---~i~inKk~VTlQELDfKlRk~Li--~~~~L  173 (239)
+                            .....++=||+|..++-+ .  ..+.|-+|+++++......   +|.-+|..||.||||.++|+-||  ++-+|
+T Consensus       127 ------k~q~~yinGGl~Ktsd~~-~--~~k~iymNIf~~~~~k~~tsk~Kitf~~~~vTfQEIDvrlRKslM~ds~IkL  197 (254)
+T tr|A0A0G2UVJ3|  127 ------KEQFNYINGGIIKTSDVK-P--EEKAIYMNIFGEKELKTLTSKDKITFKKNIVTFQEIDVRLRKSLMGDSKIKL  197 (254)
+
+
+Q 1CQV_1|Chain    174 YEFNSSPYETGYIKFIENNGNTFWYDMMPAPGDKFDQSKYLMMYNDNKTVDSKS-VKIEVHLTTK  237 (239)
+Q Consensus       174 Y~~~~s~~~~G~I~i~~kdg~~~~~DLf~~~~~~~~~~~~lkiY~DNktids~~-~hidV~l~~~  237 (239)
+                      |+.+ |.+.+|+-.||-++|..-.=|||--|+           |.||+++++.+ .|+||||...
+T Consensus       198 Y~y~-s~~~~G~W~i~ykd~~~k~t~lF~yPd-----------Y~~Ne~id~~kvSH~DVYL~~~  250 (254)
+T tr|A0A0G2UVJ3|  198 YEYD-SLYKKGFWDIHYKDGGTKHTNLFTYPD-----------YRDNETIDMSKVSHFDVYLNED  250 (254)
+
+
+No 5
+>tr|G8I0Y7|G8I0Y7_STAAU Enterotoxin type C3 OS=Staphylococcus aureus PE=4 SV=1
+Probab=99.95  E-value=1.7e-32  Score=233.33  Aligned_cols=173  Identities=98%  Similarity=1.409  Sum_probs=171.3  Template_Neff=1.000
+
+Q 1CQV_1|Chain      1 ESQPDPTPDELHKSSEFTGTMGNMKYLYDDHYVSATKVMSVDKFLAHDLIYNISDKKLKNYDKVKTELLNEDLAKKYKDE   80 (239)
+Q Consensus         1 ~~~~~~~~~~l~k~s~~~~~~~Nlr~~Y~~~~v~~~n~~~~d~~l~h~Lif~~~~~~~~~~~~l~se~~~~~~~~k~k~k   80 (239)
+                      ||||||-||+||||||||||||||||||||||||||||-|||||||||||||||||||||||||||||||||||||||||
+T Consensus        28 esqpdpmpddlhksseftgtmgnmkylyddhyvsatkvksvdkflahdliynisdkklknydkvktellnedlakkykde  107 (212)
+T tr|G8I0Y7|G8I0   28 ESQPDPMPDDLHKSSEFTGTMGNMKYLYDDHYVSATKVMSVDKFLAHDLIYNISDKKLKNYDKVKTELLNEDLAKKYKDE  107 (212)
+Confidence            79999999999999999999999999999999999999999999999999999999999999999999999999999999
+
+
+Q 1CQV_1|Chain     81 VVDVYGSNYYVNCYFSSKDNVGKVTGGKTCMYGGITKHEGNHFDNGNLQNVLIRVYENKRNTISFEVQTDKKSVTAQELD  160 (239)
+Q Consensus        81 ~VDVFgv~y~~~~~~~~~~~~~~~~~~~~~~yGGVT~~n~~~~d~~~~~~i~inv~~~~~~~~~~~i~inKk~VTlQELD  160 (239)
+                      ||||||||||||||||||||||||||||||||||||||||||||||||||||+|||||||||||||||||||||||||||
+T Consensus       108 vvdvygsnyyvncyfsskdnvgkvtggktcmyggitkhegnhfdngnlqnvlvrvyenkrntisfevqtdkksvtaqeld  187 (212)
+T tr|G8I0Y7|G8I0  108 VVDVYGSNYYVNCYFSSKDNVGKVTGGKTCMYGGITKHEGNHFDNGNLQNVLIRVYENKRNTISFEVQTDKKSVTAQELD  187 (212)
+Confidence            99999999999999999999999999999999999999999999999999999999999999999999999999999999
+
+
+Q 1CQV_1|Chain    161 IKARNFLINKKNL  173 (239)
+Q Consensus       161 fKlRk~Li~~~~L  173 (239)
+                      |||||||||||--
+T Consensus       188 ikarnflinkkic  200 (212)
+T tr|G8I0Y7|G8I0  188 IKARNFLINKKIC  200 (212)
+Confidence            9999999999854
+
+
+No 6
+>tr|A0A0N7KC19|A0A0N7KC19_STAAU Enterotoxin M OS=Staphylococcus aureus PE=4 SV=1 
+Probab=99.93  E-value=7.1e-31  Score=218.07  Aligned_cols=154  Identities=36%  Similarity=0.594  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain     64 VKTELLNEDLAKKYKDEVVDVYGSNYYVNCYFSSKDNVGKVTGGKTCMYGGITKHEGNHFDNGNLQNVLIRVYENKRNTI  143 (239)
+Q Consensus        64 l~se~~~~~~~~k~k~k~VDVFgv~y~~~~~~~~~~~~~~~~~~~~~~yGGVT~~n~~~~d~~~~~~i~inv~~~~~~~~  143 (239)
+                      |..|.-|-|-.||+|...|||||-.|---|.            -.-..|||+| ..|.......---+-+.|-......-
+T Consensus         6 vtaefknvddvkkfknhavdvyglsysgycl------------knkyiyggvt-lagdyleksrripinlwvngehqtis   72 (173)
+T tr|A0A0N7KC19|    6 VTAEFKNVDDVKKFKNHAVDVYGLSYSGYCL------------KNKYIYGGVT-LAGDYLEKSRRIPINLWVNGEHQTIS   72 (173)
+
+
+Q 1CQV_1|Chain    144 SFEVQTDKKSVTAQELDIKARNFLINKKNLYEFN--------------SSPYETGYIKFIENNGNTFWYDMMPAPGDKFD  209 (239)
+Q Consensus       144 ~~~i~inKk~VTlQELDfKlRk~Li~~~~LY~~~--------------~s~~~~G~I~i~~kdg~~~~~DLf~~~~~~~~  209 (239)
+                      .=.|.|.||-|||||+|.|.|..|...-|+|.||              ||.+..|-|-|--|.|..|-||+.......-.
+T Consensus        73 tdkvstnkklvtaqeidtklrrylqeeyniygfndtnkgrkygnkskfssgfnagkilfhlndgssfsydlfdtgtgqae  152 (173)
+T tr|A0A0N7KC19|   73 TDKVSTNKKLVTAQEIDTKLRRYLQEEYNIYGFNDTNKGRKYGNKSKFSSGFNAGKILFHLNDGSSFSYDLFDTGTGQAE  152 (173)
+
+
+Q 1CQV_1|Chain    210 QSKYLMMYNDNKTVDSKSVKIEV  232 (239)
+Q Consensus       210 ~~~~lkiY~DNktids~~~hidV  232 (239)
+                      .  +|-.|||||||.........
+T Consensus       153 s--flkiyndnktvetekfpfrm  173 (173)
+T tr|A0A0N7KC19|  153 S--FLKIYNDNKTVETEKFPFRM  173 (173)
+
+
+No 7
+>tr|A0A0U5AY67|A0A0U5AY67_STAAU Enterotoxin P OS=Staphylococcus aureus PE=4 SV=1
+Probab=99.93  E-value=1.2e-30  Score=215.46  Aligned_cols=119  Identities=39%  Similarity=0.591  Sum_probs=0.0  Template_Neff=1.657
+
+Q 1CQV_1|Chain    111 MYGGITKHEGNHFDNGNLQNVLIRVYEN-KRNTIS-FEVQTDKKSVTAQELDIKARNFLINKKNLYEFNSS---------  179 (239)
+Q Consensus       111 ~yGGVT~~n~~~~d~~~~~~i~inv~~~-~~~~~~-~~i~inKk~VTlQELDfKlRk~Li~~~~LY~~~~s---------  179 (239)
+                      ||||+|-...|   -..-.|+-|.+|-| +.+||| ..|.|.|+-|||||+|||.|..|++.-|+|.+|..         
+T Consensus        10 ~ygg~t~an~~---~~k~~~ipinlwi~g~~~t~~t~~vst~kk~vtaqeidik~rk~l~~~y~iy~~~~~kkg~eyg~~   86 (150)
+T tr|A0A0U5AY67|   10 MYGGITLANQN---LKKERNIPINLWINGKQETISTNKVSTQKKIVTAQEIDIKLRKYLQSEYNIYGNNDTKKGQEYGHQ   86 (150)
+
+
+Q 1CQV_1|Chain    180 -----PYETGYIKFIENNGNTFWYDMMPAPGDKFDQSKYLMMYNDNKTVDSKSVKIEVHL  234 (239)
+Q Consensus       180 -----~~~~G~I~i~~kdg~~~~~DLf~~~~~~~~~~~~lkiY~DNktids~~~hidV~l  234 (239)
+                           .|..|-+.|--||+..|-||+.-.....|+.  +|-.|+||+||++....+.|.+
+T Consensus        87 skf~s~~~~g~vt~~~n~~~~~tydl~y~g~g~~~s--~lkiy~~~~tv~~~~~h~dv~i  144 (150)
+T tr|A0A0U5AY67|   87 SKFYSGFNKGKVTFHLNNEPSFTYDLFYTGTGQAES--FLKIYIDNKTVTSEQFHLDVVI  144 (150)
+
+
+No 8
+>tr|A9LN29|A9LN29_STRPY Exotoxin A (Fragment) OS=Streptococcus pyogenes GN=speA PE=4 SV=1 
+Probab=99.89  E-value=1.5e-27  Score=199.55  Aligned_cols=146  Identities=47%  Similarity=0.800  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain     33 VSATKVMSVDKFLAHDLIYNISDKKLKNYDKVKTELLNEDLAKKYKDEVVDVYGSNYYVNCYFSSKDNVGKVTGGKTCMY  112 (239)
+Q Consensus        33 v~~~n~~~~d~~l~h~Lif~~~~~~~~~~~~l~se~~~~~~~~k~k~k~VDVFgv~y~~~~~~~~~~~~~~~~~~~~~~y  112 (239)
+                      |.-..|-|||..|..|-|||+|..|   |||.|||.-|-++|.-+||.-||+|.-.||--||....      .....|.|
+T Consensus        33 vthenvksvdqllsqdpiynvsgsk---ydklkterknlematffkdknvdiydveyyhlcylcen------aersaciy  103 (179)
+T tr|A9LN29|A9LN   33 VTHENVKSVDQLLSQDPIYNVSGSK---YDKLKTERKNLEMATFFKDKNVDIYDVEYYHLCYLCEN------AERSACIY  103 (179)
+
+
+Q 1CQV_1|Chain    113 GGITKHEGNHFDNGNLQNVLIRVYENKRNTISFEVQTDKKSVTAQELDIKARNFLINKKNLYEFNSSPYETGYIKFI  189 (239)
+Q Consensus       113 GGVT~~n~~~~d~~~~~~i~inv~~~~~~~~~~~i~inKk~VTlQELDfKlRk~Li~~~~LY~~~~s~~~~G~I~i~  189 (239)
+                      ||+|.|||||.--.  ..+.+.|--..-..+||...|.||-|||||||-|.|..|...|.||.-..|.|||||||||
+T Consensus       104 ggvtnhegnhlvip--kkivvkvsidgiqslsfdtetnkkmvtaqeldykvrkyltdnkqlytngpskyetgyikfi  178 (179)
+T tr|A9LN29|A9LN  104 GGVTNHEGNHLVIP--KKIVVKVSIDGIQSLSFDTETNKKMVTAQELDYKVRKYLTDNKQLYTNGPSKYETGYIKFI  178 (179)
+
+
+No 9
+>tr|Q6DTL4|Q6DTL4_STRPY Superantigen SmeZ-28 (Fragment) OS=Streptococcus pyogenes PE=4 SV=1
+Probab=99.89  E-value=3.7e-27  Score=197.30  Aligned_cols=177  Identities=24%  Similarity=0.352  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain     32 YVSATKVMSVDKFLAHDLIYNISDKKLKNYDKVKTELLNEDLAKKYKDEVVDVYGSNYYVNCYFSSKDNVGKVTGGKTCM  111 (239)
+Q Consensus        32 ~v~~~n~~~~d~~l~h~Lif~~~~~~~~~~~~l~se~~~~~~~~k~k~k~VDVFgv~y~~~~~~~~~~~~~~~~~~~~~~  111 (239)
+                      .+-+.+-...|...+|+|+-+..+   .....+.+|++..+..++-.|.++.||.||+.++...    .    +..+++.
+T Consensus         1 ivyeysdtvidfktshnlvtkkld---ardffinsemdeyaandfkagdkiavfsvpfdwnyls----k----gkvtayt   69 (180)
+T tr|Q6DTL4|Q6DT    1 IVYEYSDTVIDFKTSHNLVTKKLD---ARDFFINSEMDEYAANDFKAGDKIAVFSVPFDWNYLS----K----GKVTAYT   69 (180)
+
+
+Q 1CQV_1|Chain    112 YGGITKHEGNHFDNGNLQNVLIRVYENKRNTISF--EVQTDKKSVTAQELDIKARNFLINKKNLYEFNSSPYETGYIKFI  189 (239)
+Q Consensus       112 yGGVT~~n~~~~d~~~~~~i~inv~~~~~~~~~~--~i~inKk~VTlQELDfKlRk~Li~~~~LY~~~~s~~~~G~I~i~  189 (239)
+                      |||+|+.+...+.    ++||||+|++|+|....  .|+|+|..|||||||.|+|++|+.+.+||.++ |.|.+|.++||
+T Consensus        70 yggitpyqktsip----knipvnlwingkqisvpyneistnkttvtaqeidlkvrkfliaqhqlyssg-ssyksgrlvfh  144 (180)
+T tr|Q6DTL4|Q6DT   70 YGGITPYQKTSIP----KNIPVNLWINGKQISVPYNEISTNKTTVTAQEIDLKVRKFLIAQHQLYSSG-SSYKSGKLVFH  144 (180)
+
+
+Q 1CQV_1|Chain    190 ENNG-NTFWYDMMPAPGDKFDQSKYLMMYNDNKTVDSK  226 (239)
+Q Consensus       190 ~kdg-~~~~~DLf~~~~~~~~~~~~lkiY~DNktids~  226 (239)
+                      ++++ ..+++|||+.+.  .+.+++|++|+|||.++.+
+T Consensus       145 tndnsdkysfdlfyvgy--rdkesifkvykdnksfnid  180 (180)
+T tr|Q6DTL4|Q6DT  145 TNDNSDKYSFDLFYVGY--RDKESIFKVYKDNKSFNID  180 (180)
+
+
+No 10
+>tr|A0A0E0VMW5|A0A0E0VMW5_STAA5 Exotoxin OS=Staphylococcus aureus subsp. aureus 71193 GN=ST398NM01_0490 PE=4 SV=1
+Probab=99.88  E-value=7.1e-27  Score=209.82  Aligned_cols=109  Identities=25%  Similarity=0.348  Sum_probs=0.0  Template_Neff=3.700
+
+Q 1CQV_1|Chain     75 KKYKD---EVVDVYGSNYYVNCYFSSKDNVGKVTGGKTCMYGGITKHEGNHF-DNGNLQNVLIRVYENKRNTISFEVQTD  150 (239)
+Q Consensus        75 ~k~k~---k~VDVFgv~y~~~~~~~~~~~~~~~~~~~~~~yGGVT~~n~~~~-d~~~~~~i~inv~~~~~~~~~~~i~in  150 (239)
+                      ++|+.   ..+|||-|+=...-..            ..+.-||||..+.... +  ......+.|.........+..+.+
+T Consensus        93 ~ky~~~~~~~lDVFvV~E~~~~~~------------~~~SIGGITKtN~~~~~D--~v~~p~l~v~k~~~~~~~~~~~I~  158 (231)
+T tr|A0A0E0VMW5|   93 NKYKEGKNPGLDVFVVREGIDRQG------------RNYSIGGITKTNKKSYFD--YVSTPRLIVKKKNEFVSDEPFYIN  158 (231)
+
+
+Q 1CQV_1|Chain    151 KKSVTAQELDIKARNFLINKKNLYEFNSSPYETGYIKFIENNGNTFWYDM  200 (239)
+Q Consensus       151 Kk~VTlQELDfKlRk~Li~~~~LY~~~~s~~~~G~I~i~~kdg~~~~~DL  200 (239)
+                      |..|++-|||+|+|+.|+++|.||..+   +..|.|++.++||..+.+||
+T Consensus       159 KEeISLKELDFKLRk~LI~~~gLY~~~---~k~GkI~I~Mkdg~~yt~eL  205 (231)
+T tr|A0A0E0VMW5|  159 KEEISLKELDFKLRKHLIEKYGLYKNG---PKDGKITINMKDGGKYTIDL  205 (231)
+
+
+No 11
+>tr|A0A077ULR8|A0A077ULR8_STAAU Exotoxin OS=Staphylococcus aureus GN=ERS140147_02549 PE=4 SV=1
+Probab=99.71  E-value=6.1e-21  Score=174.20  Aligned_cols=102  Identities=30%  Similarity=0.434  Sum_probs=0.0  Template_Neff=1.700
+
+Q 1CQV_1|Chain     80 EVVDVYGSNYYVNCYFSSKDNVGKVTGGKTCMYGGITKHEGNHFDNGNLQNVLIRVYENKRNTISF---EVQTDKKSVTA  156 (239)
+Q Consensus        80 k~VDVFgv~y~~~~~~~~~~~~~~~~~~~~~~yGGVT~~n~~~~d~~~~~~i~inv~~~~~~~~~~---~i~inKk~VTl  156 (239)
+                      .+||||=|==......            ..+.-||||..+..+.+  ....+.| --.|++-..+.   .-+..|.++.+
+T Consensus       186 ~niDvFiVLEdNkY~l------------kKYSVGGITKtNsKKvd--hKa~lsI-tked~kg~IS~DvSEykITKEeiSL  250 (316)
+T tr|A0A077ULR8|  186 DNIDVFIVLEDNKYQL------------KKYSVGGITKTNSKKVD--HKAELSI-TKEDNKGTISHDVSEYKITKEEISL  250 (316)
+
+
+Q 1CQV_1|Chain    157 QELDIKARNFLINKKNLYEFNSSPYETGYIKFIENNGNTFWYDM  200 (239)
+Q Consensus       157 QELDfKlRk~Li~~~~LY~~~~s~~~~G~I~i~~kdg~~~~~DL  200 (239)
+                      .|||+|+|+-|+++++||++-    .+|.|++-+++|..+.|.|
+T Consensus       251 KELDFKLRKQLiE~hnlygni----gsgtiviKmknggkytfel  290 (316)
+T tr|A0A077ULR8|  251 KELDFKLRKQLIEKHNLYGNI----GSGTIVIKMKNGGKYTFEL  290 (316)
+
+
+No 12
+>tr|A0A077UEC3|A0A077UEC3_STAAU Putative exotoxin OS=Staphylococcus aureus GN=ERS140147_00222 PE=4 SV=1
+Probab=99.70  E-value=8.2e-21  Score=169.16  Aligned_cols=110  Identities=26%  Similarity=0.382  Sum_probs=0.0  Template_Neff=2.000
+
+Q 1CQV_1|Chain     75 KKYKDEVVDVYGSNYYVNCYFSSKDNVGKVTGGKTCMYGGITKHEGNHFDNGNLQNVLIRVYENKRNTISF---EVQTDK  151 (239)
+Q Consensus        75 ~k~k~k~VDVFgv~y~~~~~~~~~~~~~~~~~~~~~~yGGVT~~n~~~~d~~~~~~i~inv~~~~~~~~~~---~i~inK  151 (239)
+                      ++.++|-|||||+.=......--..        ....-|||||+. ...+  +..++.| -+.|..++.+.   --+.+|
+T Consensus       100 NqLr~kyVDvFG~KD~~T~~~~w~y--------~EtFTGGVTPAA-~~sd--k~Y~l~V-~yKdk~~t~~g~~~~y~gnK  167 (241)
+T tr|A0A077UEC3|  100 NQLRNKYVDIFGIKDKDTSQSWWLY--------QETFTGGVTPAA-TSSD--KPYKLFV-TYKDKAQTIIGGHKFYQGNK  167 (241)
+
+
+Q 1CQV_1|Chain    152 KSVTAQELDIKARNFLINKKNLYEFNSSPYETGYIKFIENNGNTFWYDM  200 (239)
+Q Consensus       152 k~VTlQELDfKlRk~Li~~~~LY~~~~s~~~~G~I~i~~kdg~~~~~DL  200 (239)
+                      +.+|+.|||+.+|+-|++..+||+.+   +.+|.|++...++ .|..||
+T Consensus       168 pvlTLKElDFriRqtLIkNk~LYn~~---~NKG~i~ITg~~N-nytiDL  212 (241)
+T tr|A0A077UEC3|  168 PVLTLKELDFRIRQTLIKNKKLYNNN---YNKGQIKITGGGN-NYTIDL  212 (241)
+
+
+No 13
+>tr|A0A0A0R6J3|A0A0A0R6J3_STAAU EntP OS=Staphylococcus aureus PE=4 SV=1
+Probab=99.62  E-value=4.5e-19  Score=148.13  Aligned_cols=105  Identities=37%  Similarity=0.655  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain     10 ELHKSSEFTGT-MGNMKYLY-DDHYVSATKVMSVDKFLAHDLIYNISDKKLKNYDKVKTELLNEDLAKKYKDEVVDVYGS   87 (239)
+Q Consensus        10 ~l~k~s~~~~~-~~Nlr~~Y-~~~~v~~~n~~~~d~~l~h~Lif~~~~~~~~~~~~l~se~~~~~~~~k~k~k~VDVFgv   87 (239)
+                      ||||.||...| ..|||.-| |..-+-...-..-|.||...|+|.---..|-|++..-...-..++|..+|..-||||.-
+T Consensus        46 elhkkselsstalnnmkhsyadknpiigenkstgdqflentllyknfftdlinfedllinfnskemaqhfksknvdvyai  125 (165)
+T tr|A0A0A0R6J3|   46 ELHKKSELSSTALNNMKHSYADKNPIIGENKSTGDQFLENTLLYKNFFTDLSNFKIYLINFNSKEMAQHFKSKNVDVYAI  125 (165)
+
+
+Q 1CQV_1|Chain     88 NYYVNCYFSSKDNVGKVTGGKTCMYGGITKHEGN  121 (239)
+Q Consensus        88 ~y~~~~~~~~~~~~~~~~~~~~~~yGGVT~~n~~  121 (239)
+                      .|-+|||-..-|...       |.|||+|.||||
+T Consensus       126 rysincyggeidkta-------ctyggvtphegn  152 (165)
+T tr|A0A0A0R6J3|  126 RYSINCYGGEIDKTA-------CTYGGVTPHEGN  152 (165)
+
+
+No 14
+>tr|Q7WYA2|Q7WYA2_STRPY Pyrogenic exotoxin M (Fragment) OS=Streptococcus pyogenes GN=SpeM PE=4 SV=2
+Probab=99.53  E-value=1.1e-17  Score=142.42  Aligned_cols=165  Identities=26%  Similarity=0.466  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain     24 MKYLYDDHYVSATKVMSVDKFLAHDLIYNISDKK----LKNYDKVKTELLNEDLAKKYKDEVVDVYGS--NYYVNCYFSS   97 (239)
+Q Consensus        24 lr~~Y~~~~v~~~n~~~~d~~l~h~Lif~~~~~~----~~~~~~l~se~~~~~~~~k~k~k~VDVFgv--~y~~~~~~~~   97 (239)
+                      |+++|... +.-.--.........+|+|+....-    ..+|+.+.+.--+.+....||...||||++  +|...|..  
+T Consensus        11 lkniytkd-vinrtnmkitkkigtqlvfntnektrvwdddnynkvissnvspaqerrfkeeevdiyaliksysvicke--   87 (188)
+T tr|Q7WYA2|Q7WY   11 LKNIYTKD-VINRTNMKITKKIGTQLIFNTNEKTRVWDDDNYNKVISSNVSPAQERRFKEEEVDIYALIKSYSVICKE--   87 (188)
+
+
+Q 1CQV_1|Chain     98 KDNVGKVTGGKTCMYGG-ITKHEGNHFDNGNLQNVLIRVYENKRNTISF---EVQTDKKSVTAQELDIKARNFLI--NKK  171 (239)
+Q Consensus        98 ~~~~~~~~~~~~~~yGG-VT~~n~~~~d~~~~~~i~inv~~~~~~~~~~---~i~inKk~VTlQELDfKlRk~Li--~~~  171 (239)
+                               .-.+.=|| +-.++.++|+    ..|-.|+++...+...-   +|.-..|-||.||||..+|+-||  ++.
+T Consensus        88 ---------qynyvdgglirtsdrekld----stiymnifgeqiplkeqskykitfqnkfvtfqeidvrlrkslmsdnri  154 (188)
+T tr|Q7WYA2|Q7WY   88 ---------QYNYVDGGLIRTSDREKLD----STIYMNIFGEQIPLKEQSKYKITFQNRFVTFQEIDVRLRKSLMSDNRI  154 (188)
+
+
+Q 1CQV_1|Chain    172 NLYEFNSSPYETGYIKFIENNGNTFWYDMMPAPG  205 (239)
+Q Consensus       172 ~LY~~~~s~~~~G~I~i~~kdg~~~~~DLf~~~~  205 (239)
+                      +||+++ |--.+||--+|-+++..-.-|||..|+
+T Consensus       155 klyehn-sickkgywgihykdnttkftdlfthpn  187 (188)
+T tr|Q7WYA2|Q7WY  155 KLYEHN-SICKKGYWGIHYKDNTTKFTDLFTHPN  187 (188)
+
+
+No 15
+>tr|A0A0U5BCK5|A0A0U5BCK5_STAAU Enterotoxin C2 OS=Staphylococcus aureus PE=4 SV=1 
+Probab=99.50  E-value=2.4e-17  Score=132.05  Aligned_cols=106  Identities=95%  Similarity=1.428  Sum_probs=99.3  Template_Neff=1.000
+
+Q 1CQV_1|Chain     14 SSEFTGTMGNMKYLYDDHYVSATKVMSVDKFLAHDLIYNISDKKLKNYDKVKTELLNEDLAKKYKDEVVDVYGSNYYVNC   93 (239)
+Q Consensus        14 ~s~~~~~~~Nlr~~Y~~~~v~~~n~~~~d~~l~h~Lif~~~~~~~~~~~~l~se~~~~~~~~k~k~k~VDVFgv~y~~~~   93 (239)
+                      +-+++++|+||+.+|++..+++..+.+.|.||+|||||++.+-++.+++.+++|+-|+++|.+||+.-||+||.+|+.+|
+T Consensus         7 slqftgtmgnmkylyddhyvsatkvmsvdkflahdliynisdkklknydkvktellnedlakkykdevvdvygsnyyvnc   86 (119)
+T tr|A0A0U5BCK5|    7 SLQFTGTMGNMKYLYDDHYVSATKVMSVDKFLAHDLIYNISDKKLKNYDKVKTELLNEDLAKKYKDEVVDVYGSNYYVNC   86 (119)
+Confidence            45688899999999999779999999999999999999999999999999999999999999999999999999999999
+
+
+Q 1CQV_1|Chain     94 YFSSKDNVGKVTGGKTCMYGGITKHE  119 (239)
+Q Consensus        94 ~~~~~~~~~~~~~~~~~~yGGVT~~n  119 (239)
+                      +++...........++|||||+|...
+T Consensus        87 yfsskdnvgnvtggktcmyggitktp  112 (119)
+T tr|A0A0U5BCK5|   87 YFSSKDNVGNVTGGKTCMYGGITKTP  112 (119)
+Confidence            99988877777788999999999754
+
+
+No 16
+>tr|A0A0P0UW68|A0A0P0UW68_STAAU Enterotoxin I OS=Staphylococcus aureus PE=4 SV=1 
+Probab=99.48  E-value=5.4e-17  Score=129.42  Aligned_cols=91  Identities=34%  Similarity=0.567  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain    111 MYGGITKHEGNHFDNGNLQNVLIRVYENKRNTISF--EVQTDKKSVTAQELDIKARNFLINKKNLYEFN-----------  177 (239)
+Q Consensus       111 ~yGGVT~~n~~~~d~~~~~~i~inv~~~~~~~~~~--~i~inKk~VTlQELDfKlRk~Li~~~~LY~~~-----------  177 (239)
+                      ||||.|++ +..|.  ..++||||+|.+|++.++.  +|.|+||.|||||||.|+|+||+++|+||.++           
+T Consensus         1 myggatls-gqyln--sarkipinlwvngkhktistdkiatnkklvtaqeidvklrrylqeeyniyghnntgkgkeygyk   77 (115)
+T tr|A0A0P0UW68|    1 MYGGATLS-GQYLN--SARKIPINLWVNGKHKTISTDKIATNKKLVTAQEIDVKLRRYLQEEYNIYGHNNTGKGKEYGYK   77 (115)
+
+
+Q 1CQV_1|Chain    178 ---SSPYETGYIKFIENNGNTFWYDMMPAP  204 (239)
+Q Consensus       178 ---~s~~~~G~I~i~~kdg~~~~~DLf~~~  204 (239)
+                         .|+|..|.+.||.+++++|+||||+++
+T Consensus        78 skfysgfnngkvlfhlnneksfsydlfytg  107 (115)
+T tr|A0A0P0UW68|   78 SKFYSGFNNGKVLFHLNNEKSFSYDLFYTG  107 (115)
+
+
+No 17
+>tr|B0I1V6|B0I1V6_STAAU Enterotoxin T OS=Staphylococcus aureus GN=set PE=4 SV=1
+Probab=99.43  E-value=2.1e-16  Score=138.98  Aligned_cols=153  Identities=19%  Similarity=0.284  Sum_probs=0.0  Template_Neff=1.620
+
+Q 1CQV_1|Chain     55 DKKLKNYDKVKTELLNEDLAKKYKDEVVDVYGSNYYVNCYFSSKDNVGKVTGGKTCMYGGITKHEGNHFDNGNLQNVLIR  134 (239)
+Q Consensus        55 ~~~~~~~~~l~se~~~~~~~~k~k~k~VDVFgv~y~~~~~~~~~~~~~~~~~~~~~~yGGVT~~n~~~~d~~~~~~i~in  134 (239)
+                      +.+...|..-.+-++...+.++--|..||++|--|..+..+           +..-.|-|-...- ..++...-..-.+|
+T Consensus        58 d~~vd~y~~r~~~~~~~~l~~fk~~d~v~~wg~~~~n~~~~-----------~~~k~y~g~~~k~-~p~~k~tn~syr~n  125 (216)
+T tr|B0I1V6|B0I1   58 DIKVDTYNVRTVLYNTDYLKQFKNQDKVNIWGTLYENQQIG-----------KVSKVYRGTVVKY-DPISKVTNLSYRMN  125 (216)
+
+
+Q 1CQV_1|Chain    135 VYENKRNTISF---EVQTDKKSVTAQELDIKARNFLINKKNLYEFNSSPYETGYIKFIENNGNTFWYDMMPAPGDKFDQS  211 (239)
+Q Consensus       135 v~~~~~~~~~~---~i~inKk~VTlQELDfKlRk~Li~~~~LY~~~~s~~~~G~I~i~~kdg~~~~~DLf~~~~~~~~~~  211 (239)
+                      ++.+|+|+...   .....-+..|..|+|+.+|+||.++-+||..    |..|.|.+.+.+|+.-..||=..-.  ..+ 
+T Consensus       126 lf~~~~qt~v~p~k~le~~n~~l~~k~~d~ri~~yl~~k~qly~~----~~~g~~~i~m~~g~~h~idl~~~~~--d~~-  198 (216)
+T tr|B0I1V6|B0I1  126 LFVNGHQTKVNPDKLLEVKNKQLSLKETDFRIRKYLLEKEQLYSN----YNSGELIIEMKNGKRHFIDLGDILS--DSQ-  198 (216)
+
+
+Q 1CQV_1|Chain    212 KYLMMYNDNKTVDSKS-VKIEVHL  234 (239)
+Q Consensus       212 ~~lkiY~DNktids~~-~hidV~l  234 (239)
+                              |++++-.+ .|+|+|.
+T Consensus       199 --------~~~~d~~~ish~diym  214 (216)
+T tr|B0I1V6|B0I1  199 --------EKTFDFDNISHIDIYM  214 (216)
+
+
+No 18
+>tr|A0A181I0E4|A0A181I0E4_STAAU Toxin OB-fold domain-containing protein OS=Staphylococcus aureus GN=entA_2 PE=4 SV=1
+Probab=99.32  E-value=2.9e-15  Score=125.17  Aligned_cols=114  Identities=27%  Similarity=0.492  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain      1 ESQPDPTPDELHKSSEFTG-TMGNMKYLYDDHYVSATKVMSVDKFLAHDLIYNISDKKLKNYDKVKTELLNEDLAKKYKD   79 (239)
+Q Consensus         1 ~~~~~~~~~~l~k~s~~~~-~~~Nlr~~Y~~~~v~~~n~~~~d~~l~h~Lif~~~~~~~~~~~~l~se~~~~~~~~k~k~   79 (239)
+                      ++.+.+..++||++|.+++ .++|.+..+..+ ...+|....|.+|.|||+|.+.+.+....++.+|||.+++++++|-+
+T Consensus        43 nsasaieysdlhhkskfdskrlsnakmsfinp-tqlenkntndrllkhdllfhdmfvnvaskkdfkvefenealskkfin  121 (157)
+T tr|A0A181I0E4|   43 NSASAIEYSDLHHKSKFDSKRLSNAKMSFINP-TQLENKNTNDRLLKHDLLFHDMFVNVASKKDFKVEFENEALSKKFIN  121 (157)
+
+
+Q 1CQV_1|Chain     80 EVVDVYGSNYYVNCYFSSKDNVGKVTGGKTCMYGGITKHEGNH  122 (239)
+Q Consensus        80 k~VDVFgv~y~~~~~~~~~~~~~~~~~~~~~~yGGVT~~n~~~  122 (239)
+                      |++|||+-+|.+.|       .+|..+++.|.|||||++++|+
+T Consensus       122 knidiyagsysyec-------hggatnktqcsyggvtlsdnnk  157 (157)
+T tr|A0A181I0E4|  122 KNIDIYAGSYSYEC-------HGGATNKTQCSYGGVTLSDNNK  157 (157)
+
+
+No 19
+>tr|A0A126G9S3|A0A126G9S3_CLOPF Mitogenic protein OS=Clostridium perfringens GN=JFP838_pB0020 PE=4 SV=1 
+Probab=99.11  E-value=2.1e-13  Score=120.37  Aligned_cols=122  Identities=28%  Similarity=0.414  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain     64 VKTELLNEDLAKKYK-DEVVDVYGSNYYVNCYFSSKDNVGKVTGGKTCMYGGITKHEGNHFDNGNLQNVLIRVYENKRNT  142 (239)
+Q Consensus        64 l~se~~~~~~~~k~k-~k~VDVFgv~y~~~~~~~~~~~~~~~~~~~~~~yGGVT~~n~~~~d~~~~~~i~inv~~~~~~~  142 (239)
+                      ++||+.+.--.-+|| |.-||.||-+-...-+-|..+.       .-.--||+|.-...+.+    +.|..||....-+.
+T Consensus        77 ikvelrsglyhhkfkegdfvdfyggsrdgggyicdcee-------vifkeggitalprtkvd----kqiqanvldkkgnh  145 (234)
+T tr|A0A126G9S3|   77 IKVELRSGLYHHKFKEGDFVDFYGGSRDGGGYICDCEE-------VIFKEGGITALPRTKVD----KQIQANVLDKKGNH  145 (234)
+
+
+Q 1CQV_1|Chain    143 ISF---EVQTDKKSVTAQELDIKARNFLINKKNLYEFNSSPYETGYIKFIENNG-NTFWY  198 (239)
+Q Consensus       143 ~~~---~i~inKk~VTlQELDfKlRk~Li~~~~LY~~~~s~~~~G~I~i~~kdg-~~~~~  198 (239)
+                      +..   -.+-.-|.|++||||..+|+.|+++-+-|.  .+.-.+|.|-+|-++| ..|-|
+T Consensus       146 piinhsllkfpykevsiqeidlrirklliekenwyk--dgstvkgkigihfkdgserfiy  203 (234)
+T tr|A0A126G9S3|  146 PIINHSLLKFPYKEVSIQEIDLRIRKLLIEKENWYK--DGSTVKGKIGIHFKDGSERFIY  203 (234)
+
+
+No 20
+>tr|Q711S9|Q711S9_STAIN Putative enterotoxin (Fragment) OS=Staphylococcus intermedius GN=ea PE=4 SV=1 
+Probab=98.82  E-value=1.5e-11  Score=94.89  Aligned_cols=82  Identities=33%  Similarity=0.459  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain    133 IRVYENKRNTISF--EVQTDKKSVTAQELDIKARNFLINKKNLYEFN--SSPYETGYIKFIENNGNTFWYDMMPAPGDKF  208 (239)
+Q Consensus       133 inv~~~~~~~~~~--~i~inKk~VTlQELDfKlRk~Li~~~~LY~~~--~s~~~~G~I~i~~kdg~~~~~DLf~~~~~~~  208 (239)
+                      ||+|--|+|+...  +|.|=||.||+||||.|+|+||.++|+||+.+  ++++++|.|+|.+.-..+-+||||.+.+  .
+T Consensus         1 vnlwlhgkqtsvpldtvrtykkevtvqeldlkarhylhekynlynpdafggkiqrglivfetsrkhsasydlyaaeg--k   78 (86)
+T tr|Q711S9|Q711    1 VNLWLHGKQTSVPLDTVRTYKKEVTVQELDLKARHYLHEKYNLYNPDAFGGKIQRGLIVFETSRKHSASYDLYAAEG--K   78 (86)
+
+
+Q 1CQV_1|Chain    209 DQSKYLMM  216 (239)
+Q Consensus       209 ~~~~~lki  216 (239)
+                      ..+.+|+|
+T Consensus        79 gadtilri   86 (86)
+T tr|Q711S9|Q711   79 GADTILRI   86 (86)
+
+
+No 21
+>tr|A0A0H3JXY5|A0A0H3JXY5_STAAW MW0052 protein OS=Staphylococcus aureus (strain MW2) GN=MW0052 PE=4 SV=1 
+Probab=98.43  E-value=1.2e-09  Score=80.28  Aligned_cols=62  Identities=29%  Similarity=0.617  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain    173 LYEFNSSPYETGYIKFIENNGNTFWYDMMPAPGDKFDQSKYLMMYNDNKTVDSKSVKIEVHLTTK  237 (239)
+Q Consensus       173 LY~~~~s~~~~G~I~i~~kdg~~~~~DLf~~~~~~~~~~~~lkiY~DNktids~~~hidV~l~~~  237 (239)
+                      .|++..+.+++|+|+||+. ..+|+||||+.+-  .-+-+||+.|+||+-|..++.|||++|+.+
+T Consensus         1 mydsetgdiqkgyikfhst-kssfyydlfdfkv--kkrvdflkfyndnelistkklhidiylfnk   62 (62)
+T tr|A0A0H3JXY5|    1 MYDSETGDIQKGYIKFHST-KSSFYYDLFDFKV--KKRVDFLKFYNDNELISTKKLHIDIYLFNK   62 (62)
+
+
+No 22
+>tr|Q5XCI8|Q5XCI8_STRP6 Enterotoxin OS=Streptococcus pyogenes serotype M6 (strain ATCC BAA-946 / MGAS10394) GN=M6_Spy0740 PE=4 SV=1 
+Probab=98.01  E-value=5e-08  Score=77.91  Aligned_cols=66  Identities=35%  Similarity=0.480  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain    148 QTDKKSVTAQELDIKARNFLINKKNLYEFN-----------SSPYETGYIKFIENNGNTFWYDMMPAPGDKFDQSKYLM  215 (239)
+Q Consensus       148 ~inKk~VTlQELDfKlRk~Li~~~~LY~~~-----------~s~~~~G~I~i~~kdg~~~~~DLf~~~~~~~~~~~~lk  215 (239)
+                      +|+||.|.+||+|.|.|.||++.++|-.+.           .|+.+.|.|+||.|.|..++|.||++.-  ++++++||
+T Consensus         2 stdkkevaiqefdvksryylqkhfnicgfsdvknfgrssrfksgleegnivfhlnsgekisynlfdtef--gdresilk   78 (98)
+T tr|Q5XCI8|Q5XC    2 STDKKEVAIQEFDVKSRYYLQKHFNICGFSDVKNFGRSSRFKSGLEEGNIVFHLNSGEKISYNLFDTEF--GDRESILK   78 (98)
+
+
+No 23
+>tr|A0A0P0UW46|A0A0P0UW46_STAAU Enterotoxin G OS=Staphylococcus aureus PE=4 SV=1 
+Probab=97.91  E-value=1e-07  Score=72.13  Aligned_cols=53  Identities=36%  Similarity=0.622  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain    111 MYGGITKHEGNHFDNGNLQNVLIRVYENKRNTISFEVQTDKKSVTAQELDIKARNF  166 (239)
+Q Consensus       111 ~yGGVT~~n~~~~d~~~~~~i~inv~~~~~~~~~~~i~inKk~VTlQELDfKlRk~  166 (239)
+                      ||||.|....+. +  +.+-|.|.|.+|++|.+.|+|.|+|.+||+||||+|+|+|
+T Consensus         1 myggltfnssen-e--rdklitvqvtidnrqslgftittnknmvtiqeldykarhw   53 (70)
+T tr|A0A0P0UW46|    1 MYGGLTFNSSEN-E--RDKLITVQVTIDNRQSLGFTITTNKNMVTIQELDYKARHW   53 (70)
+
+
+No 24
+>tr|U2TPG8|U2TPG8_STRPY Exotoxin type A domain protein OS=Streptococcus pyogenes GA06023 GN=HMPREF1231_0092 PE=4 SV=1 
+Probab=97.81  E-value=2.2e-07  Score=75.75  Aligned_cols=60  Identities=48%  Similarity=0.827  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain      2 SQPDPTPDELHKSSEFTGTMGNMKYLYDDHYVSATKVMSVDKFLAHDLIYNISDKKLKNYDKVK   65 (239)
+Q Consensus         2 ~~~~~~~~~l~k~s~~~~~~~Nlr~~Y~~~~v~~~n~~~~d~~l~h~Lif~~~~~~~~~~~~l~   65 (239)
+                      .|.||.|..||.|| ......|.-+||...-|--..|-|||..|.||||||+|.   -||||.|
+T Consensus        30 aqqdpnpsqlhrss-lvknlqniyflyegdpvvhenvksvdqllshdliynvsg---lnydklk   89 (110)
+T tr|U2TPG8|U2TP   30 AQQDPNPSQLHRSS-LVKNLQNIYFLYEGDPVVHENVKSVDQLLSHDLIYNVSG---LNYDKLK   89 (110)
+
+
+No 25
+>tr|A0A181HZT5|A0A181HZT5_STAAU Toxic shock syndrome toxin-1 OS=Staphylococcus aureus GN=tst PE=4 SV=1
+Probab=96.86  E-value=5e-05  Score=70.33  Aligned_cols=169  Identities=20%  Similarity=0.126  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain     13 KSSEFTGTMGNMKYLYDDHYVSATKVMSVDKFLAHDLIYNISDKKLKNYDKVKTELLNEDLAKKYKDEVVDVYGSNYYVN   92 (239)
+Q Consensus        13 k~s~~~~~~~Nlr~~Y~~~~v~~~n~~~~d~~l~h~Lif~~~~~~~~~~~~l~se~~~~~~~~k~k~k~VDVFgv~y~~~   92 (239)
+                      ++|.-+ .+..|-..|.+..-.-.|-...+..|+.--|-++..     .-.+.+--.+.....+-|+.+||+=.-+-.-.
+T Consensus        63 kastnd-nikdlldwyssgsdtftnsevldnslgsmrikntdg-----sisliifpspyyspaftkgekvdlntkrtkks  136 (258)
+T tr|A0A181HZT5|   63 KASTND-NIKDLLDWYSSGSDTFTNSEVLDNSLGSMRIKNTDG-----SISLIIFPSPYYSPAFTKGEKVDLNTKRTKKS  136 (258)
+
+
+Q 1CQV_1|Chain     93 CYFSSKDNVGKVTGGKTCMYGGITKHEGNHFDNGNLQNVLIRVYENKRNTISF-EVQTDKKSVTAQELDIKARNFLINKK  171 (239)
+Q Consensus        93 ~~~~~~~~~~~~~~~~~~~yGGVT~~n~~~~d~~~~~~i~inv~~~~~~~~~~-~i~inKk~VTlQELDfKlRk~Li~~~  171 (239)
+                      ...+...-       ...-+.|||.++.-+    .+..+++.|..-++....- --+++|+++.+.-|||.+|++|..-+
+T Consensus       137 qhtsegty-------ihfqisgvtnteklp----tpielplkvkvhgkdsplkywpkfdkkqlaistldfeirhqltqih  205 (258)
+T tr|A0A181HZT5|  137 QHTSEGTY-------IHFQISGVTNTEKLP----TPIELPLKVKVHGKDSPLKYWPKFDKKQLAISTLDFEIRHQLTQIH  205 (258)
+
+
+Q 1CQV_1|Chain    172 NLYEFNSSPYETGYIKFIENNGNTFWYDM  200 (239)
+Q Consensus       172 ~LY~~~~s~~~~G~I~i~~kdg~~~~~DL  200 (239)
+                      +||..  |.-.-|+|+|+|+||..|.-||
+T Consensus       206 glyrs--sdktggywkitmndgstyqsdl  232 (258)
+T tr|A0A181HZT5|  206 GLYRS--SDKTGGYWKITMNDGSTYQSDL  232 (258)
+
+
+No 26
+>tr|A0A085UFA1|A0A085UFA1_9STAP Putative exotoxin OS=Staphylococcus agnetis GN=SAGN_05560 PE=4 SV=1
+Probab=96.33  E-value=0.00036  Score=63.59  Aligned_cols=50  Identities=26%  Similarity=0.304  Sum_probs=0.0  Template_Neff=1.889
+
+Q 1CQV_1|Chain    147 VQTDKKSVTAQELDIKARNFLINKKNLYEFNSSPYETGYIKFIENNGNTFWYD  199 (239)
+Q Consensus       147 i~inKk~VTlQELDfKlRk~Li~~~~LY~~~~s~~~~G~I~i~~kdg~~~~~D  199 (239)
+                      ++.+|..|||+|||-=+|-.-+. |+||..+  ..-+|.|+|+.+||.+|+++
+T Consensus       106 itl~kg~itlkeldhivr~ahvs-ygly~gd--~lpkg~ivi~tk~g~rytle  155 (184)
+T tr|A0A085UFA1|  106 ITLNKEVVTLKELDHIIRFAHIS-YGLYMGE--HLPKGNIVINTKDGGKYTLE  155 (184)
+
+
+No 27
+>tr|A0A140JWZ3|A0A140JWZ3_STAAU Enterotoxin L OS=Staphylococcus aureus PE=4 SV=1 
+Probab=96.12  E-value=0.00079  Score=59.10  Aligned_cols=69  Identities=26%  Similarity=0.335  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain     60 NYDKVKTELLNEDLAKKYKDEVVDVYGSNYYVNCYFSSKDNVGKVTGGKTCMYGGITKHEGNHFDNGNLQNVLIRVYENK  139 (239)
+Q Consensus        60 ~~~~l~se~~~~~~~~k~k~k~VDVFgv~y~~~~~~~~~~~~~~~~~~~~~~yGGVT~~n~~~~d~~~~~~i~inv~~~~  139 (239)
+                      +.+.|..||+++.+....|||+|||||++|.+...+            -.-..==.-..++|+|+  .++-||||+.++|
+T Consensus        72 nndtlyaefdneyitsdlkgknvdvfgisykygsnf------------fvlymvvllkqennkld--spriipinliing  137 (155)
+T tr|A0A140JWZ3|   72 NNDTLYAEFDNEYITSDLKGKNVDVFGISYKYGSNF------------FVLYMVVLLKQENNKLD--SPRIIPINLIING  137 (155)
+
+
+Q 1CQV_1|Chain    140 RNT  142 (239)
+Q Consensus       140 ~~~  142 (239)
+                      ++.
+T Consensus       138 kps  140 (155)
+T tr|A0A140JWZ3|  138 KPS  140 (155)
+
+
+No 28
+>tr|A0A0U5AQ00|A0A0U5AQ00_STAAU Snterotoxin A OS=Staphylococcus aureus PE=4 SV=1 
+Probab=95.09  E-value=0.0083  Score=52.70  Aligned_cols=67  Identities=30%  Similarity=0.422  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain    114 GITKHEGNHFDNGNLQNVLIRVYENKRNTISF--EVQTDKKSVTAQELDIKARNFLINKKNLYEFN--SSPYETGY  185 (239)
+Q Consensus       114 GVT~~n~~~~d~~~~~~i~inv~~~~~~~~~~--~i~inKk~VTlQELDfKlRk~Li~~~~LY~~~--~s~~~~G~  185 (239)
+                      |.--|++..+.   ..+||||+|.+|++.+..  +|.|+||.||+| ||.|+|+|-++ |+|-+++  +-+|--||
+T Consensus        73 gplyhdntyip---aikipinlwvngknktistdkiatnkklvtaq-idvklrrypqe-ynicghnltgkgyffgy  143 (145)
+T tr|A0A0U5AQ00|   73 GPLYHDNTYIP---AIKIPINLWVNGKNKTISTDKIATNKKLVTAQ-IDVKLRRYPQE-YNICGHNLTGKGYFFGY  143 (145)
+
+
+No 29
+>tr|Q4EVY5|Q4EVY5_STRPY Type A exotoxin (Fragment) OS=Streptococcus pyogenes GN=speA PE=4 SV=1
+Probab=93.95  E-value=0.038  Score=34.09  Aligned_cols=20  Identities=45%  Similarity=0.903  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain     67 ELLNEDLAKKYKDEVVDVYG   86 (239)
+Q Consensus        67 e~~~~~~~~k~k~k~VDVFg   86 (239)
+                      |+.+.+++..||+++|||||
+T Consensus         1 elknqematlfkdknvdiyg   20 (20)
+T tr|Q4EVY5|Q4EV    1 ELKNQEMATLFKDKNIDIYG   20 (20)
+
+
+No 30
+>tr|D2JAI7|D2JAI7_STAAU Uncharacterized protein OS=Staphylococcus aureus GN=SAP054A_002 PE=4 SV=1 
+Probab=92.95  E-value=0.091  Score=42.05  Aligned_cols=38  Identities=26%  Similarity=0.483  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain    140 RNTISFEVQTDKKSVTAQELDIKARNFLINKKNLYEFN  177 (239)
+Q Consensus       140 ~~~~~~~i~inKk~VTlQELDfKlRk~Li~~~~LY~~~  177 (239)
+                      .+.....+.|-|++|.|+.|||+.|..|+++|+.|..+
+T Consensus        25 rqyadyqfpilkeeiplkkldfqsrniliknygvyken   62 (73)
+T tr|D2JAI7|D2JA   25 RQYADYQFPILKEEIPLKKLDFQSRNILIKNYGVYKEN   62 (73)
+
+
+No 31
+>tr|Q4EVY4|Q4EVY4_STRPY Type A exotoxin (Fragment) OS=Streptococcus pyogenes GN=speA PE=4 SV=1 
+Probab=91.06  E-value=0.27  Score=30.67  Aligned_cols=19  Identities=47%  Similarity=0.840  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain     67 ELLNEDLAKKYKDEVVDVY   85 (239)
+Q Consensus        67 e~~~~~~~~k~k~k~VDVF   85 (239)
+                      |+.+.+++..||+++||||
+T Consensus         1 elknqematlfkdknvdiy   19 (20)
+T tr|Q4EVY4|Q4EV    1 ELKNQEMATLFKDKNVDIY   19 (20)
+
+
+No 32
+>tr|A0A127SRD9|A0A127SRD9_9BACT Uncharacterized protein (Fragment) OS=uncultured bacterium PE=4 SV=1 
+Probab=83.23  E-value=2.2  Score=31.43  Aligned_cols=22  Identities=27%  Similarity=0.431  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain    179 SPYETGYIKFIENNGNTFWYDMM  201 (239)
+Q Consensus       179 s~~~~G~I~i~~kdg~~~~~DLf  201 (239)
+                      |..++|-|.|.|.|| .|+++||
+T Consensus        16 stlesgaiiirmadg-hftielf   37 (41)
+T tr|A0A127SRD9|   16 STLESGAIIIRMADG-HFTIELF   37 (41)
+
+
+No 33
+>tr|X1S7G2|X1S7G2_9ZZZZ Uncharacterized protein (Fragment) OS=marine sediment metagenome GN=S12H4_03456 PE=4 SV=1 
+Probab=67.46  E-value=13  Score=31.90  Aligned_cols=49  Identities=27%  Similarity=0.519  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain    160 DIKARNFLINKKNLYEFNSSPYETGYIKFIENNGNTFWYDMMPAPGDKFDQSKYLMMYN  218 (239)
+Q Consensus       160 DfKlRk~Li~~~~LY~~~~s~~~~G~I~i~~kdg~~~~~DLf~~~~~~~~~~~~lkiY~  218 (239)
+                      ..++|+.|.++-.||+.-.|-.++|++-=+.+|| .|.|-|.+.+.         +||.
+T Consensus        33 eiqlrkelkkksslynslkslvksgyvmrtfkdg-kyyyalspnga---------kiye   81 (87)
+T tr|X1S7G2|X1S7   33 EIQLRKELKKKSSLYNSLKSLVKSGYVMRTFKDG-KYYYALSPNGA---------KIYE   81 (87)
+
+
+No 34
+>tr|A0A0F3QYV0|A0A0F3QYV0_ORITS 50S ribosomal protein L5 OS=Orientia tsutsugamushi str. UT76 GN=rplE PE=4 SV=1 
+Probab=61.68  E-value=20  Score=32.42  Aligned_cols=38  Identities=21%  Similarity=0.161  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain    152 KSVTAQELDIKARNFLINKKNLYEFNSSPYETGYIKFIE  190 (239)
+Q Consensus       152 k~VTlQELDfKlRk~Li~~~~LY~~~~s~~~~G~I~i~~  190 (239)
+                      ++++++||-.|.|+.|+++++ |.++.....--+|+++|
+T Consensus         6 eelsfkeikekerqelqkkfg-ysnnhqtprikkivvtm   43 (118)
+T tr|A0A0F3QYV0|    6 EELSFKEIKEKERQELQKKFG-YSNNHQTPRIKKIVVTM   43 (118)
+
+
+No 35
+>tr|A0A166J2H3|A0A166J2H3_9HOMO Uncharacterized protein OS=Peniophora sp. CONT GN=PENSPDRAFT_235311 PE=4 SV=1 
+Probab=61.49  E-value=20  Score=33.82  Aligned_cols=59  Identities=19%  Similarity=0.324  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain    167 LINKKNLYEFNSSPYETGYIKFIENNGNTFWYDMMPAPGDKFDQSKYLMMYNDNKTVDSKS  227 (239)
+Q Consensus       167 Li~~~~LY~~~~s~~~~G~I~i~~kdg~~~~~DLf~~~~~~~~~~~~lkiY~DNktids~~  227 (239)
+                      ||++-.|-+.+ |-..+|-+-+...--..-.|.||+.++.. .+-+|||||...|.+..++
+T Consensus        85 lierreleegg-slctsgivplklraadepkfqlfddkgnp-lppdflkiygqekavsfeq  143 (159)
+T tr|A0A166J2H3|   85 LIERRELEEGG-SLCTSGIVPLKLRAADEPKFQLFDDKGNP-LPPDFLKIYGQEKAVSFEQ  143 (159)
+
+
+No 36
+>tr|A0A087H0W3|A0A087H0W3_ARAAL Uncharacterized protein OS=Arabis alpina GN=AALP_AA4G033400 PE=3 SV=1 
+Probab=52.54  E-value=36  Score=37.11  Aligned_cols=64  Identities=20%  Similarity=0.264  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain    106 GGKTCMYGGITKHEGNHFDNGNLQNVLIRVYENKRNTISFEVQTDKKSVTAQELDIKARNFLINKKNL  173 (239)
+Q Consensus       106 ~~~~~~yGGVT~~n~~~~d~~~~~~i~inv~~~~~~~~~~~i~inKk~VTlQELDfKlRk~Li~~~~L  173 (239)
+                      +-++.||-||-..-....+  +.....--+|..+.-..+..+-.--++|+  |||||+|+..++.++|
+T Consensus        90 nptnpmyegvgidmaense--kvneftqllwpqgnisfseavllftkqvs--eldfkirrmvmesfgl  153 (508)
+T tr|A0A087H0W3|   90 NPTNPMYEGVGIDMAENSE--KVNEFTQLLWPQGNISFSEAVLLFTKQVS--ELDFKIRRMVMESFGL  153 (508)
+
+
+No 37
+>tr|X0XCA2|X0XCA2_9ZZZZ Uncharacterized protein (Fragment) OS=marine sediment metagenome GN=S01H1_67767 PE=4 SV=1 
+Probab=40.70  E-value=73  Score=32.34  Aligned_cols=24  Identities=33%  Similarity=0.610  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain    154 VTAQELDIKARNFLI--NKKNLYEFN  177 (239)
+Q Consensus       154 VTlQELDfKlRk~Li--~~~~LY~~~  177 (239)
+                      |+-||||-++|+.|+  .+.+|++++
+T Consensus        26 istqelddrvrrvlmmkaqqglfeng   51 (244)
+T tr|X0XCA2|X0XC   26 ISTQELDDRVRRVLMMKAQQGLFENG   51 (244)
+
+
+No 38
+>tr|A0A158QB21|A0A158QB21_ENTVE Uncharacterized protein OS=Enterobius vermicularis PE=4 SV=1
+Probab=38.96  E-value=77  Score=31.10  Aligned_cols=43  Identities=21%  Similarity=0.459  Sum_probs=0.0  Template_Neff=1.578
+
+Q 1CQV_1|Chain    129 QNVLIRVYENK--RNTISFEVQTDKKSVTAQELDIKARNFLINKK  171 (239)
+Q Consensus       129 ~~i~inv~~~~--~~~~~~~i~inKk~VTlQELDfKlRk~Li~~~  171 (239)
+                      ++-++.++.-.  +|.....++|.|-.||+||-|-+.|+.||+..
+T Consensus        30 rk~rl~~~~~e~~~q~~~~~~siek~iv~v~~~~~~e~~llmnd~   74 (166)
+T tr|A0A158QB21|   30 RKNRLSVYNREWVQQMQTYNISIEKTIVSVQQASQKERQLLMNDR   74 (166)
+
+
+No 39
+>tr|A0A151WPY9|A0A151WPY9_9HYME Icarapin-like protein OS=Trachymyrmex zeteki GN=ALC60_11046 PE=4 SV=1 
+Probab=36.60  E-value=94  Score=30.75  Aligned_cols=30  Identities=27%  Similarity=0.439  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain    155 TAQELDIKARNFLINKKNLYEFNSSPYETG  184 (239)
+Q Consensus       155 TlQELDfKlRk~Li~~~~LY~~~~s~~~~G  184 (239)
+                      ||.-||-++|++|.+.+=|+..+.|+|.+.
+T Consensus        34 tlrtldkqirqqllddhflfkegrsgydss   63 (193)
+T tr|A0A151WPY9|   34 TLRTLDKQIRQQLLDDHFLFKEGRSGYDSS   63 (193)
+
+
+No 40
+>tr|A0A191YX24|A0A191YX24_9PSED Uncharacterized protein OS=Pseudomonas sp. A3(2016) GN=PMA3_20650 PE=4 SV=1
+Probab=28.94  E-value=1.4e+02  Score=26.69  Aligned_cols=30  Identities=30%  Similarity=0.368  Sum_probs=0.0  Template_Neff=1.466
+
+Q 1CQV_1|Chain    144 SFEVQTDKKSVTAQELDIKARNFLINKKNL  173 (239)
+Q Consensus       144 ~~~i~inKk~VTlQELDfKlRk~Li~~~~L  173 (239)
+                      +..+...|..||+|||=.++|.-..-.++|
+T Consensus        24 s~p~ev~k~sit~~el~l~vrse~l~~~gl   53 (88)
+T tr|A0A191YX24|   24 SHPIEVQKPSITMQELWLQVRSEMLCSWGL   53 (88)
+
+
+No 41
+>tr|A0A0R1WWB7|A0A0R1WWB7_9LACO Uncharacterized protein OS=Lactobacillus hayakitensis DSM 18933 = JCM 14209 GN=FC40_GL000415 PE=4 SV=1 
+Probab=25.97  E-value=1.9e+02  Score=26.35  Aligned_cols=38  Identities=16%  Similarity=0.340  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain    162 KARNFLINKKNLYEFNSSPYETGYIKFIENNGNTFWYD  199 (239)
+Q Consensus       162 KlRk~Li~~~~LY~~~~s~~~~G~I~i~~kdg~~~~~D  199 (239)
+                      ++...|.+..-+++-+-.+-++|.|+++.++|..|+|+
+T Consensus        63 qiaeklnkdemifnlgitkknsgnitvtlkngrqftfe  100 (100)
+T tr|A0A0R1WWB7|   63 QIAEKLNKDEMIFNLGITKKNSGNITVTLKNGRQFTFE  100 (100)
+
+
+No 42
+>tr|A0A077YZI2|A0A077YZI2_TRITR Uncharacterized protein OS=Trichuris trichiura GN=TTRE_0000141201 PE=4 SV=1 
+Probab=25.53  E-value=1.9e+02  Score=31.33  Aligned_cols=21  Identities=48%  Similarity=0.683  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain    147 VQTDKKSVTAQELDIKARNFL  167 (239)
+Q Consensus       147 i~inKk~VTlQELDfKlRk~L  167 (239)
+                      +.++=+.+|+||+|.|.|++|
+T Consensus       148 fetdwetltaqevdlkerqhl  168 (373)
+T tr|A0A077YZI2|  148 FETDWETLTAQEVDLKERQHL  168 (373)
+
+
+No 43
+>tr|Q5P4K9|Q5P4K9_AROAE Uncharacterized protein OS=Aromatoleum aromaticum (strain EbN1) GN=ebA2893 PE=4 SV=1 
+Probab=24.21  E-value=2.1e+02  Score=26.18  Aligned_cols=36  Identities=25%  Similarity=0.398  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain     45 LAHDLIYNISDKKLKNYDKVKTELLNEDLAKKYKDEVVDVYG   86 (239)
+Q Consensus        45 l~h~Lif~~~~~~~~~~~~l~se~~~~~~~~k~k~k~VDVFg   86 (239)
+                      ..|-||....      .+--.+||++.-+.+-|-+..+||||
+T Consensus        12 vehalileel------gdparvefdparlvqvfggrhldvfg   47 (103)
+T tr|Q5P4K9|Q5P4   12 VEHALILEEL------GDPARVEFDPARLVQVFGGRHLDVFG   47 (103)
+
+
+No 44
+>tr|A0A0D2RN44|A0A0D2RN44_GOSRA Uncharacterized protein OS=Gossypium raimondii GN=B456_011G158200 PE=4 SV=1 
+Probab=21.68  E-value=2.5e+02  Score=27.85  Aligned_cols=34  Identities=12%  Similarity=0.152  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain     59 KNYDKVKTELLNEDLAKKYKDEVVDVYGSNYYVN   92 (239)
+Q Consensus        59 ~~~~~l~se~~~~~~~~k~k~k~VDVFgv~y~~~   92 (239)
+                      .|..-+.+.|......+-||+++|=|||++-.++
+T Consensus        50 swdegvtsnfsttsvndifkgkkvvifglpgayt   83 (177)
+T tr|A0A0D2RN44|   50 SWDEGVTSNFSTTSVNDIFKGKKVVIFGLPGAYT   83 (177)
+
+
+No 45
+>tr|A0A0T6YKN0|A0A0T6YKN0_9RHIZ Uncharacterized protein OS=Sinorhizobium sp. Sb3 GN=N183_21960 PE=4 SV=1 
+Probab=21.20  E-value=2.6e+02  Score=26.05  Aligned_cols=54  Identities=22%  Similarity=0.290  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain      5 DPTPDELHKSSEFTGTMGNMKYLYDD--HYVSATKVMSVDKFLAHDLIYNISDKKL   58 (239)
+Q Consensus         5 ~~~~~~l~k~s~~~~~~~Nlr~~Y~~--~~v~~~n~~~~d~~l~h~Lif~~~~~~~   58 (239)
+                      +|..---|++.++.+.+.|||+--.-  ....+.--....-+|.|+.+|.....+.
+T Consensus         4 dpaalvehkkaefsslldnlrnenafqsyleqetyhlptpvllnhdvlfgsifskv   59 (114)
+T tr|A0A0T6YKN0|    4 DPAALVEHKKAEFSSLLDNLRNENAFQSYLEQETYHLPTPVLLNHDVLFGSIFSKV   59 (114)
+
+
+No 46
+>tr|A0A061EL45|A0A061EL45_THECC Peroxiredoxin IIF OS=Theobroma cacao GN=TCM_020545 PE=4 SV=1
+Probab=20.64  E-value=2.4e+02  Score=29.14  Aligned_cols=33  Identities=15%  Similarity=0.168  Sum_probs=0.0  Template_Neff=2.200
+
+Q 1CQV_1|Chain     60 NYDKVKTELLNEDLAKKYKDEVVDVYGSNYYVN   92 (239)
+Q Consensus        60 ~~~~l~se~~~~~~~~k~k~k~VDVFgv~y~~~   92 (239)
+                      |..-+.+.|...-+.+.||+++|=|||++-.++
+T Consensus        54 wDeGvsskFsTTpl~DiFk~kKVViFGLPGAyT   86 (201)
+T tr|A0A061EL45|   54 WDEGVSSKFSTTPLKDIFKGKKVVIFGLPGAYT   86 (201)
+
+
+No 47
+>tr|A0A0X8JT56|A0A0X8JT56_9FUSO ATP-dependent zinc metalloprotease FtsH OS=Leptotrichia sp. oral taxon 847 GN=ftsH PE=3 SV=1 
+Probab=20.38  E-value=2.8e+02  Score=32.60  Aligned_cols=25  Identities=28%  Similarity=0.514  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1CQV_1|Chain    147 VQTDKKSVTAQELDIKARNFLINKK  171 (239)
+Q Consensus       147 i~inKk~VTlQELDfKlRk~Li~~~  171 (239)
+                      +-++|..-|+.|||..+|+.||++|
+T Consensus       568 fmtnksdetmreidlevrkilmdey  592 (780)
+T tr|A0A0X8JT56|  568 FMTNKSDETMREIDLEVRKILMDEY  592 (780)
+
+

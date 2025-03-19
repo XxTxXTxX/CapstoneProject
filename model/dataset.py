@@ -3,10 +3,12 @@ import torch.nn as nn
 from torch.utils.data import Dataset
 from model import ModelArgs
 from Bio import PDB
-import targetPDB.testtt as tt
+import model.pdbAlign as tt
 import re
 import os
 
+# if no msa, ignore
+# if length > 500, ignore
 
 class ProcessDataset(Dataset):
     def __init__(self, temp_Ph_vals):
@@ -27,18 +29,21 @@ class ProcessDataset(Dataset):
         self.features = []
         self.__preprocess_all_msa(temp_Ph_vals)
         for atom in self.features:
-            filename = atom['seq_name']
-            sequence_file = "model/input_seqs/" + filename + ".fasta"
-            pdb_file = os.path.join(self.pdb_file_path, atom['seq_name'] + ".pdb")
-            seq = ""
+            filename = atom['seq_name'] # sequence name
+            sequence_file = "model/input_seqs/" + filename + ".fasta" # fasta file
+            pdb_file = os.path.join(self.pdb_file_path, atom['seq_name'] + ".pdb") # pdb file
+            seq = "" # Sequence
             with open(sequence_file, 'r') as f:
                 lines = f.readlines()
             for line in lines:
                 if line.startswith('>'):
                     continue
-                seq += line.strip()
+                seq += line.strip() # Get sequecnce
             # Fasta, seq_name, pdb_path --> final_tensor
-            atom['coordinates'] = tt.create_final_tensor(seq, tt.extract_pdb_sequence(pdb_file), tt.extract_residue_coordinates(pdb_file))
+            pdb_sequence = tt.extract_pdb_sequence(pdb_file)
+            pdb_idx, fasta_idx = tt.align_sequences(seq, pdb_sequence)
+            pdb_coordinates = tt.extract_residue_coordinates(pdb_file)
+            atom['coordinates'] = tt.create_final_tensor(seq, pdb_coordinates, fasta_idx, pdb_idx)
 
     def __preprocess_all_msa(self, temp_Ph_vals):
         for msa_path in self.msa_files:
