@@ -39,8 +39,8 @@ class MaskedMSELoss(nn.Module):
         Returns:
             masked loss: Mean loss computed only for valid (non-masked) coordinates
         """
-        #print("pred shape = ", pred.shape)
-        #print("Target shape = ", target.shape)
+        print("pred shape = ", pred.shape)
+        print("Target shape = ", target.shape)
         mask = (target != 0).any(dim=-1)  # Mask where at least one xyz value ≠ 0
         loss = self.mse(pred, target)  # Compute per-element MSE loss
         masked_loss = loss * mask.unsqueeze(-1)  # Apply mask (broadcasted to match xyz dims)
@@ -173,8 +173,13 @@ def train(model, train_loader, val_loader, num_epochs=10, lr=1e-3, device=device
                 
                 # Extract the relevant tensors
                 pred_coords = pred["final_positions"]
-                
+                 
                 target_coords = coordinates  # Already extracted
+                # match shape (added code)
+                if pred_coords.shape[1] < target_coords.shape[1]:
+                    target_coords = target_coords[:, :pred_coords.shape[1], :, :]
+                elif pred_coords.shape[1] > target_coords.shape[1]:
+                    pred_coords = pred_coords[:, :target_coords.shape[1], :, :]
                 loss = criterion(pred_coords, target_coords)  # Compute loss
                 optimizer.zero_grad()
                 loss.backward()
