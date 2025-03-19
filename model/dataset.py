@@ -120,7 +120,7 @@ class featureExtraction():
         return { 'msa_aatype': unique_seqs, 'msa_deletion_count': deletion_count_matrix, 'aa_distribution': aa_distribution}
     
 
-    def select_cluster_centers(self, features, max_msa_clusters=512, seed=None):
+    def select_cluster_centers(self, features, max_msa_clusters=256, seed=None):
         N_seq, N_res = features['msa_aatype'].shape[:2]
         MSA_FEATURE_NAMES = ['msa_aatype', 'msa_deletion_count']
         max_msa_clusters = min(max_msa_clusters, N_seq)
