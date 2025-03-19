@@ -1,4 +1,5 @@
 import os
+resType = ["A","R","N","D","C", "Q", "E", "G", "H", "I", "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V","X","-"]
 def process_files(input_dir, output_dir=None):
     """
     处理指定目录下的所有文件，将双数行中的'Z'替换为'-'
@@ -22,6 +23,7 @@ def process_files(input_dir, output_dir=None):
                 if i % 2 == 1:  # 双数行
                     lines[i] = lines[i].replace('B', '-')
                     lines[i] = lines[i].replace('Z', '-')
+                    lines[i] = lines[i].replace('U', '-')
 
             
             # 写入处理后的内容
