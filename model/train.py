@@ -168,6 +168,7 @@ def train(model, train_loader, val_loader, num_epochs=10, lr=1e-3, device=device
             for batch in t:
                 batch = {k: v.to(device) if torch.is_tensor(v) else v for k, v in batch.items()}
                 coordinates = batch['coordinates']  # Ground truth (Nres, 37, 3)
+                print(batch["seq_name"])
                 pred = model(batch)  # Model returns a dictionary
                 
                 # Extract the relevant tensors
