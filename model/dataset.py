@@ -3,11 +3,10 @@ import torch.nn as nn
 from torch.utils.data import Dataset
 from model import ModelArgs
 from Bio import PDB
-import model.pdbAlign as tt
+import pdbAlign as tt
 import re
 import os
 
-# if no msa, ignore
 # if length > 500, ignore
 
 class ProcessDataset(Dataset):
@@ -48,7 +47,8 @@ class ProcessDataset(Dataset):
     def __preprocess_all_msa(self, temp_Ph_vals):
         for msa_path in self.msa_files:
             batch = self.feature_extractor.create_features_from_a3m(msa_path, temp_Ph_vals)
-            self.features.append(batch)
+            if batch != None:
+                self.features.append(batch)
     
     def __len__(self):
         return len(self.features)
@@ -286,34 +286,37 @@ class featureExtraction():
             crop_extra_seed = seed+2
 
         seqs = self.load_a3m_file(file_name)
-        features = self.initial_data_from_seqs(seqs)
+        if len(seqs[0]) < 500:
+            features = self.initial_data_from_seqs(seqs)
 
-        transforms = [
-            lambda x: self.select_cluster_centers(x, seed=select_clusters_seed),
-            lambda x: self.mask_cluster_centers(x, seed=mask_clusters_seed),
-            self.cluster_assignment,
-            self.summarize_clusters,
-            lambda x: self.crop_extra_msa(x, seed=crop_extra_seed)
-        ]
+            transforms = [
+                lambda x: self.select_cluster_centers(x, seed=select_clusters_seed),
+                lambda x: self.mask_cluster_centers(x, seed=mask_clusters_seed),
+                self.cluster_assignment,
+                self.summarize_clusters,
+                lambda x: self.crop_extra_msa(x, seed=crop_extra_seed)
+            ]
 
-        for transform in transforms:
-            features = transform(features)
+            for transform in transforms:
+                features = transform(features)
 
-        msa_feat = self.calculate_msa_feat(features)
-        extra_msa_feat = self.calculate_extra_msa_feat(features)
-        target_feat = self.onehot_encode_aa_type(seqs[0], include_gap_token=False).float()
-        residue_index = torch.arange(len(seqs[0]))
+            msa_feat = self.calculate_msa_feat(features)
+            extra_msa_feat = self.calculate_extra_msa_feat(features)
+            target_feat = self.onehot_encode_aa_type(seqs[0], include_gap_token=False).float()
+            residue_index = torch.arange(len(seqs[0]))
 
-        return {
-            'msa_feat': msa_feat,
-            'extra_msa_feat': extra_msa_feat,
-            'target_feat': target_feat,
-            'residue_index': residue_index,
-            'seq_name' : file_name[14:-4],
-            'pH' : temp_Ph_vals[file_name[14:-4]][0],
-            'temp': temp_Ph_vals[file_name[14:-4]][1]
-            # 'coordinates' :   # Nres, 37, 3 --> target
-        }
+            return {
+                'msa_feat': msa_feat,
+                'extra_msa_feat': extra_msa_feat,
+                'target_feat': target_feat,
+                'residue_index': residue_index,
+                'seq_name' : file_name[14:-4],
+                'pH' : temp_Ph_vals[file_name[14:-4]][0],
+                'temp': temp_Ph_vals[file_name[14:-4]][1]
+                # 'coordinates' :   # Nres, 37, 3 --> target
+            }
+        else:
+            return None
 
 
 # t = ProcessDataset()
