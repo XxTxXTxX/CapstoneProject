@@ -50,9 +50,9 @@ class ProteinStructureModel(nn.Module):
         # 1
         m, z = self.input_embedder.forward(batch)
 
-        print("Input embedder section: \n")
-        print("m's shape: ", m.shape)
-        print("z's shape: ", z.shape)
+        #print("Input embedder section: \n")
+        #print("m's shape: ", m.shape)
+        #print("z's shape: ", z.shape)
 
         extra_msa_representation = self.extra_msa_Embedder.forward(batch)
         #print("Extra msa representation = ", extra_msa_representation.shape)
@@ -62,7 +62,7 @@ class ProteinStructureModel(nn.Module):
         
         # 2
         m, z, s = self.evoformer_stack(m, z)
-        print("Evoformer stack = ", m.shape, z.shape, s.shape)
+        #print("Evoformer stack = ", m.shape, z.shape, s.shape)
 
         # 3
         #msa_aatype = batch['msa_feat'][0, :, :20]
@@ -71,7 +71,7 @@ class ProteinStructureModel(nn.Module):
         F = torch.clamp(F, min=0, max=19)
         #print("F = ", F.shape)
         output = self.structure_module(s, z, F)
-        print("Structure module = ", output["final_positions"].shape)
+        #print("Structure module = ", output["final_positions"].shape)
         
         return output
 

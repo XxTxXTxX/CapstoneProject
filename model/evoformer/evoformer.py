@@ -99,7 +99,7 @@ class EvoformerStack(nn.Module):
             m, z = evo_block(m, z)
 
         s = self.linear(m[..., 0, :, :])
-        print(f"s:{s.shape}")
+        #print(f"s:{s.shape}")
 
         ##########################################################################
         #               END OF YOUR CODE                                         #
