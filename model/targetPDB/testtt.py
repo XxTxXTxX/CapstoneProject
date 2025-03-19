@@ -27,34 +27,87 @@ def extract_pdb_sequence(pdb_file):
     return sequence
 
 
-def align_sequences(fasta_seq, pdb_seq):
-    """
-    Aligns the FASTA sequence with the PDB sequence while keeping the length of the longer sequence.
+
+def align_sequences(seq1, seq2, match_score=1, mismatch_score=-1, gap_penalty=-2):
+
+    m, n = len(seq1), len(seq2)
+
+    # **1. Initialize DP matrix and traceback matrix**
+    dp = np.zeros((m + 1, n + 1))
+    traceback = np.zeros((m + 1, n + 1), dtype=int)  # 0 = diagonal, 1 = up, 2 = left
+
+    # **2. Initialize first row and column with gap penalties**
+    for i in range(1, m + 1):
+        dp[i][0] = dp[i-1][0] + gap_penalty
+        traceback[i][0] = 1  # Up direction (gap in seq2)
+    for j in range(1, n + 1):
+        dp[0][j] = dp[0][j-1] + gap_penalty
+        traceback[0][j] = 2  # Left direction (gap in seq1)
+
+    # **3. Fill DP matrix**
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            match = dp[i-1][j-1] + (match_score if seq1[i-1] == seq2[j-1] else mismatch_score)
+            delete = dp[i-1][j] + gap_penalty  # Gap in seq2
+            insert = dp[i][j-1] + gap_penalty  # Gap in seq1
+
+            dp[i][j] = max(match, delete, insert)
+            traceback[i][j] = np.argmax([match, delete, insert])  # Store direction
+
+    # **4. Backtrack to get alignment**
+    aligned_seq1, aligned_seq2 = [], []
+    mask_seq1, mask_seq2 = [], []
+
+    i, j = m, n
+    while i > 0 or j > 0:
+        if i > 0 and j > 0 and traceback[i][j] == 0:  # Diagonal (match/mismatch)
+            aligned_seq1.append(seq1[i-1])
+            aligned_seq2.append(seq2[j-1])
+            mask_seq1.append(1)
+            mask_seq2.append(1)
+            i -= 1
+            j -= 1
+        elif i > 0 and traceback[i][j] == 1:  # Up (gap in seq2)
+            aligned_seq1.append(seq1[i-1])
+            aligned_seq2.append('-')
+            mask_seq1.append(1)
+            mask_seq2.append(0)
+            i -= 1
+        else:  # Left (gap in seq1)
+            aligned_seq1.append('-')
+            aligned_seq2.append(seq2[j-1])
+            mask_seq1.append(0)
+            mask_seq2.append(1)
+            j -= 1
+
+    # Reverse the sequences (since we built them backward)
+    aligned_seq1 = ''.join(aligned_seq1[::-1])
+    aligned_seq2 = ''.join(aligned_seq2[::-1])
+    mask_seq1 = np.array(mask_seq1[::-1])
+    mask_seq2 = np.array(mask_seq2[::-1])
+
+    assert len(aligned_seq2) == len(aligned_seq1)
+
+    li = []
+    pdb, fasta = 0, 0
+    pdb_idx = []
+    fasta_idx = []
+    i = 0
+    aligned_fasta = aligned_seq1
+    aligned_pdb = aligned_seq2
     
-    Returns:
-        aligned_fasta (str): Aligned FASTA sequence.
-        aligned_pdb (str): Aligned PDB sequence.
-        mask_fasta (torch.Tensor): 1 for matched positions in FASTA, 0 for unmatched.
-        mask_pdb (torch.Tensor): 1 for matched positions in PDB, 0 for unmatched.
-    """
-    max_len = max(len(fasta_seq), len(pdb_seq))  # Ensure the final length matches the longest sequence
+    while (i < len(aligned_pdb)):
+      if aligned_pdb[i] == aligned_fasta[i]:
+        li.append(aligned_fasta[i])
+        fasta_idx.append(fasta)
+        pdb_idx.append(pdb)
+      if aligned_fasta[i] != "-":
+        fasta += 1
+      if aligned_pdb[i] != "-":
+        pdb += 1
+      i += 1
 
-    aligner = PairwiseAligner()
-    aligner.mode = 'global'
-    aligner.open_gap_score = -10  # Strong gap penalties
-    aligner.extend_gap_score = -1
-    aligner.target_end_gap_score = 0
-    aligner.query_end_gap_score = 0
-
-    alignment = aligner.align(fasta_seq, pdb_seq)[0]
-    aligned_fasta = str(alignment[0]).ljust(max_len, "-")
-    aligned_pdb = str(alignment[1]).ljust(max_len, "-")
-
-    # Generate masks: 1 for real residues, 0 for gaps
-    mask_fasta = torch.tensor([1 if res_fasta != '-' else 0 for res_fasta in aligned_fasta], dtype=torch.uint8)
-    mask_pdb = torch.tensor([1 if res_pdb != '-' else 0 for res_pdb in aligned_pdb], dtype=torch.uint8)
-
-    return aligned_fasta, aligned_pdb, mask_fasta, mask_pdb
+    return aligned_fasta, aligned_pdb, pdb_idx, fasta_idx
 
 
 def extract_residue_coordinates(pdb_file):
@@ -80,41 +133,26 @@ def extract_residue_coordinates(pdb_file):
     return residue_coordinates
 
 
-def create_final_tensor(fasta_seq, pdb_seq, pdb_coords):
+def create_final_tensor(fasta_seq, pdb_seq, pdb_coords, fasta_idx, pdb_idx):
     """
-    Creates a tensor of shape (fasta_seq_len, 37, 3), where matched residues take values from PDB coordinates,
-    and unmatched residues are filled with (0,0,0).
+    Creates a final tensor of shape (N_fasta, 37, 3), where matched residues
+    get real PDB coordinates and unmatched ones get zero tensors.
+
+    Args:
+        fasta_seq (str): The original FASTA sequence.
+        pdb_seq (str): The aligned PDB sequence.
+        pdb_coords (list of tensors): List of coordinate tensors from PDB.
+        fasta_idx (list of int): Indices in FASTA where residues match PDB.
+        pdb_idx (list of int): Indices in PDB where residues match FASTA.
 
     Returns:
-        final_tensor (torch.Tensor): Final tensor of shape (fasta_seq_len, 37, 3).
+        torch.Tensor: Final tensor of shape (N_fasta, 37, 3).
     """
-    aligned_fasta, aligned_pdb, mask_fasta, mask_pdb = align_sequences(fasta_seq, pdb_seq)
+    fasta_length = len(fasta_seq)
+    final_tensor = torch.zeros((fasta_length, 37, 3), dtype=torch.float32)  # Default to zeros
 
-    fasta_len = len(fasta_seq)
-    final_tensor = torch.zeros((fasta_len, 37, 3), dtype=torch.float32)  # Initialize full tensor with zeros
-
-    pdb_index = 0
-    for i in range(fasta_len):
-        if mask_fasta[i] == 1 and mask_pdb[i] == 1:
-            # Copy matched residue coordinates
-            final_tensor[i] = pdb_coords[pdb_index]
-            pdb_index += 1
+    # Map the PDB coordinates to the matching FASTA indices
+    for fasta_position, pdb_position in zip(fasta_idx, pdb_idx):
+        final_tensor[fasta_position] = pdb_coords[pdb_position]
 
     return final_tensor
-
-
-# -------------------- Example Usage --------------------
-
-# # Example FASTA sequence
-# fasta_seq = "MASMTGGQQMGRIPGNSPRMVLLESEQFLTELTRLFQKCRSSGSVFITLKKYDGRTKPIPRKSSVEGLEPAENKCLLRATDGKRKISTVVSSKEVNKFQMAYSNLLRANMDGLKKRDKKNKSKKSKPAQGGEQKLISEEDDSAGSPMPQFQTWEEFSRAAEKLYLADPMKVRVVLKYRHVDGNLCIKVTDDLVCLVYRTDQAQDVKKIEKFHSQLMRLMVAKESRNVTMETE"
-
-# # Load PDB file
-# pdb_file = "1914.pdb"
-# pdb_seq = extract_pdb_sequence(pdb_file)
-# pdb_coords = extract_residue_coordinates(pdb_file)
-
-# # Generate final tensor
-# final_tensor = create_final_tensor(fasta_seq, pdb_seq, pdb_coords)
-
-# # Output final tensor shape
-# print("Final Tensor Shape:", final_tensor.shape)

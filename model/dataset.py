@@ -37,7 +37,7 @@ class ProcessDataset(Dataset):
                 if line.startswith('>'):
                     continue
                 seq += line.strip()
-            
+            # Fasta, seq_name, pdb_path --> final_tensor
             atom['coordinates'] = tt.create_final_tensor(seq, tt.extract_pdb_sequence(pdb_file), tt.extract_residue_coordinates(pdb_file))
 
     def __preprocess_all_msa(self, temp_Ph_vals):
