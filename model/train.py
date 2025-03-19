@@ -8,6 +8,7 @@ import torch.optim as optim
 import random
 import numpy as np
 import os
+from tqdm import tqdm
 # -------------------- DEVICE SETUP --------------------
 device = torch.device("cuda")
 print(f"Using device: {device}")
@@ -30,8 +31,8 @@ class MaskedMSELoss(nn.Module):
         Returns:
             masked loss: Mean loss computed only for valid (non-masked) coordinates
         """
-        print("pred shape = ", pred.shape)
-        print("Target shape = ", target.shape)
+        #print("pred shape = ", pred.shape)
+        #print("Target shape = ", target.shape)
         mask = (target != 0).any(dim=-1)  # Mask where at least one xyz value ≠ 0
         loss = self.mse(pred, target)  # Compute per-element MSE loss
         masked_loss = loss * mask.unsqueeze(-1)  # Apply mask (broadcasted to match xyz dims)
@@ -42,6 +43,22 @@ class MaskedMSELoss(nn.Module):
 
         return masked_loss.sum() / mask.sum()  # Mean over non-masked values
 
+# -------------------- LOAD LATEST CHECKPOINT --------------------
+def load_latest_checkpoint(model, model_dir="./model/model_weights/"):
+    os.makedirs(model_dir, exist_ok=True)  
+
+    checkpoint_files = [f for f in os.listdir(model_dir) if f.endswith(".pt")]
+    if not checkpoint_files:
+        print("No checkpoint found, training from scratch.")
+        return model  
+
+    checkpoint_files.sort(key=lambda x: int(x.split("_")[-1].split(".")[0]))  
+    latest_checkpoint = checkpoint_files[-1]
+    latest_checkpoint_path = os.path.join(model_dir, latest_checkpoint)
+
+    model.load_state_dict(torch.load(latest_checkpoint_path, map_location=device))
+    print(f"Loaded checkpoint: {latest_checkpoint_path}")
+    return model
 
 # -------------------- CSV LOADING --------------------
 def read_pH_temp_csv(file_path):
@@ -56,16 +73,8 @@ def read_pH_temp_csv(file_path):
         next(reader)  # Skip header
         for row in reader:
             pdb_id = row[0]
-            if row[1] == "Error": # Default pH value
-                row[1] = 7
-                ph = float(row[1])
-            else:
-                ph = float(row[1])
-            if row[2] == "Error": # Default temperature value
-                row[2] = 277
-                temp = float(row[2])
-            else:
-                temp = float(row[2])
+            ph = float(row[1])
+            temp = float(row[2])
             data_dict[pdb_id] = [ph, temp]
     return data_dict
 
@@ -113,16 +122,20 @@ def get_ds(seed = 43):
 # -------------------- MODEL SETUP --------------------
 model = ProteinStructureModel()
 model.to(device)
+model = load_latest_checkpoint(model)  # Load checkpoint if available
 train_dataloader, val_dataloader = get_ds()
-# train_dataloader = train_dataloader.to(device)
-# val_dataloader = val_dataloader.to(device)
+
+
 
 
 # -------------------- TRAINING LOOP --------------------
-def train(model, train_loader, val_loader, num_epochs=20, lr=1e-3, device=device):
+from tqdm import tqdm
+
+# -------------------- TRAINING LOOP --------------------
+def train(model, train_loader, val_loader, num_epochs=10, lr=1e-3, device=device):
     """
-    Trains the model using the custom masked MSE loss.
-    
+    Trains the model using the custom masked MSE loss with tqdm progress bars.
+
     Args:
         model: The protein structure model (expects input shape Nres, 37, 3)
         train_loader: Training data DataLoader
@@ -134,50 +147,59 @@ def train(model, train_loader, val_loader, num_epochs=20, lr=1e-3, device=device
     optimizer = optim.Adam(model.parameters(), lr=lr)
     criterion = MaskedMSELoss()  # Use custom loss function
 
-
     for epoch in range(num_epochs):
         model.train()
         train_loss = 0
-        for batch in train_loader:
-            batch = {k: v.to(device) if torch.is_tensor(v) else v for k, v in batch.items()}
-            coordinates = batch['coordinates']
-              # Ground truth (Nres, 37, 3)
-            pred = model(batch)  # Model returns a dictionary
-            
-            # Extract the relevant tensors
-            pred_coords = pred["final_positions"]
-            print(f"predcoords shape: {pred_coords.shape}")
-            
-            target_coords = coordinates  # Already extracted
-            print(f"target shape: {target_coords.shape}")
-            loss = criterion(pred_coords, target_coords)  # Compute loss
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()       
 
-            train_loss += loss.item()
-            del batch, pred, pred_coords, target_coords, loss  
-            torch.cuda.empty_cache()
-        
+        # Training loop with tqdm progress bar
+        with tqdm(train_loader, desc=f"Epoch {epoch+1}/{num_epochs} - Training", unit="batch") as t:
+            for batch in t:
+                batch = {k: v.to(device) if torch.is_tensor(v) else v for k, v in batch.items()}
+                coordinates = batch['coordinates']  # Ground truth (Nres, 37, 3)
+                pred = model(batch)  # Model returns a dictionary
+                
+                # Extract the relevant tensors
+                pred_coords = pred["final_positions"]
+                
+                target_coords = coordinates  # Already extracted
+                loss = criterion(pred_coords, target_coords)  # Compute loss
+                optimizer.zero_grad()
+                loss.backward()
+                optimizer.step()
+
+                train_loss += loss.item()
+                t.set_postfix(loss=train_loss / (t.n + 1))  # Update tqdm progress bar
+                
+                del batch, pred, pred_coords, target_coords, loss  
+                torch.cuda.empty_cache()
+
         # Validation
         model.eval()
         val_loss = 0
+
         with torch.no_grad():
-            for batch in val_loader:
-                batch = {k: v.to(device) if torch.is_tensor(v) else v for k, v in batch.items()}
-                coordinates = batch['coordinates']
-                pred = model(batch)
+            with tqdm(val_loader, desc=f"Epoch {epoch+1}/{num_epochs} - Validation", unit="batch") as t:
+                for batch in t:
+                    batch = {k: v.to(device) if torch.is_tensor(v) else v for k, v in batch.items()}
+                    coordinates = batch['coordinates']
+                    pred = model(batch)
 
-                # Extract the relevant tensors
-                pred_coords = pred["final_positions"]
-                print(f"pred_coords shape: {pred_coords}")
-                target_coords = coordinates  # Already extracted
-                print(f"target coords shape: {target_coords.shape}")
+                    # Extract the relevant tensors
+                    pred_coords = pred["final_positions"]
+                    target_coords = coordinates  # Already extracted
+                    loss = criterion(pred_coords, target_coords)
+                    val_loss += loss.item()
 
-                loss = criterion(pred_coords, target_coords)
-                val_loss += loss.item()
+                    t.set_postfix(loss=val_loss / (t.n + 1))  # Update tqdm progress bar
 
         print(f"Epoch [{epoch+1}/{num_epochs}], Train Loss: {train_loss / len(train_loader):.4f}, Val Loss: {val_loss / len(val_loader):.4f}")
+
+        # Save the model after each epoch
+        model_save_path = f"./model/model_weights/model_epoch_{epoch+1}.pt"
+        torch.save(model.state_dict(), model_save_path)
+        print(f"Model saved: {model_save_path}")
+
+
 
 # -------------------- RUN TRAINING --------------------
 train(model, train_dataloader, val_dataloader, num_epochs=20, lr=1e-4, device=device)
