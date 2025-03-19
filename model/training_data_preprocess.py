@@ -31,7 +31,6 @@ def process_files(input_dir, output_dir=None):
             print(f"Processed {filename}")
 
 if __name__ == "__main__":
-    # 处理两个目录
     input_dirs = ['model/input_seqs', 'model/msa_raw']
     
     for dir_path in input_dirs:

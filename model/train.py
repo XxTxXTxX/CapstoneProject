@@ -9,6 +9,14 @@ import random
 import numpy as np
 import os
 from tqdm import tqdm
+from training_data_preprocess import process_files
+
+# ---------------- Preprocess data --------------
+input_dirs = ['model/input_seqs', 'model/msa_raw']
+for dir_path in input_dirs:
+        print(f"\nProcessing files in {dir_path}")
+        process_files(dir_path)
+
 # -------------------- DEVICE SETUP --------------------
 device = torch.device("cuda")
 print(f"Using device: {device}")
