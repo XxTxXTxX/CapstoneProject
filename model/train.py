@@ -144,7 +144,7 @@ train_dataloader, val_dataloader = get_ds()
 from tqdm import tqdm
 
 # -------------------- TRAINING LOOP --------------------
-def train(model, train_loader, val_loader, num_epochs=10, lr=1e-3, device=device):
+def train(model, train_loader, val_loader, num_epochs=40, lr=1e-3, device=device):
     """
     Trains the model using the custom masked MSE loss with tqdm progress bars.
 
