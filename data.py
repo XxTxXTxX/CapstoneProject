@@ -115,7 +115,7 @@ def getSequence():
     # For every PDB ID, download pdb file and fasta file -> then generate MSA
     for id in all_id:
         id = id.strip() # remove \n
-        if id == "1C3X":
+        if id == "1D7F":
             prevVal = True
         if prevVal:
             url = f"https://files.rcsb.org/download/{id}.pdb"
@@ -158,8 +158,7 @@ def getSequence():
             processMsa(id)
 
             counter += 1
-            if counter == 10:
-                print(f"{counter} MSA/PDB files/fasta files processed")
+            print(f"{counter} MSA/PDB files/fasta files processed")
 
 ## Get MSA
 def processMsa(file):
@@ -170,7 +169,7 @@ def processMsa(file):
     # HHblits command
     hhblits_command = [
         "hhblits", 
-        "cpu", "4",
+        "-cpu", "8",
         "-i", input_fasta,          # sequence
         "-d", database_path,        # database
         "-oa3m", output_a3m,        # msa
