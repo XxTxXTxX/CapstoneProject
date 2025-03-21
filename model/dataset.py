@@ -291,7 +291,9 @@ class featureExtraction():
             crop_extra_seed = seed+2
 
         seqs = self.load_a3m_file(file_name)
-        if len(seqs[0]) < 256 and len(seqs) >= 256:
+        # len(seqs[0]) must be less than 400 residues (next time try 450)
+        # len(seqs) must be at least 256
+        if len(seqs[0]) < 400 and len(seqs) >= 256:
             features = self.initial_data_from_seqs(seqs)
 
             transforms = [

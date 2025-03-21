@@ -165,7 +165,9 @@ def train(model, train_loader, val_loader, num_epochs=40, lr=1e-3, device=device
 
         # Training loop with tqdm progress bar
         with tqdm(train_loader, desc=f"Epoch {epoch+1}/{num_epochs} - Training", unit="batch") as t:
+            count = 0
             for batch in t:
+                count += 1
                 batch = {k: v.to(device) if torch.is_tensor(v) else v for k, v in batch.items()}
                 coordinates = batch['coordinates']  # Ground truth (Nres, 37, 3)
                 #print(batch["seq_name"])
@@ -190,7 +192,7 @@ def train(model, train_loader, val_loader, num_epochs=40, lr=1e-3, device=device
                 
                 del batch, pred, pred_coords, target_coords, loss  
                 torch.cuda.empty_cache()
-
+            print(count)
         # Validation
         model.eval()
         val_loss = 0
@@ -220,5 +222,6 @@ def train(model, train_loader, val_loader, num_epochs=40, lr=1e-3, device=device
 
 
 # -------------------- RUN TRAINING --------------------
-train(model, train_dataloader, val_dataloader, num_epochs=20, lr=1e-4, device=device)
+# next time lr = 5e-5
+train(model, train_dataloader, val_dataloader, num_epochs=40, lr=5e-5, device=device)
 print("finished!!")
