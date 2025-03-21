@@ -106,26 +106,26 @@ def collate_fn(batch):
             collated[key] = samples 
     return collated
 
-def get_ds(seed = 43):
+def get_ds():
     """
     Creates train and validation DataLoaders from ProcessDataset.
     Returns:
         tuple: (train_dataloader, val_dataloader)
     """
-    torch.manual_seed(seed)
-    np.random.seed(seed)
-    random.seed(seed)
+    #torch.manual_seed(seed)
+    #np.random.seed(seed)
+    #random.seed(seed)
 
     temp_pH_vals = read_pH_temp_csv("model/pH_temp.csv")
     full_ds = ProcessDataset(temp_pH_vals)
 
     # Fix dataset splitting issue
-    train_ds_size = int(0.8 * len(full_ds))
+    train_ds_size = int(0.85 * len(full_ds))
     val_ds_size = len(full_ds) - train_ds_size
     train_ds, val_ds = random_split(full_ds, [train_ds_size, val_ds_size])
 
-    train_dataloader = DataLoader(train_ds, batch_size=1, shuffle=False, collate_fn=collate_fn)
-    val_dataloader = DataLoader(val_ds, batch_size=1, shuffle=False, collate_fn=collate_fn)
+    train_dataloader = DataLoader(train_ds, batch_size=1, shuffle=True, collate_fn=collate_fn)
+    val_dataloader = DataLoader(val_ds, batch_size=1, shuffle=True, collate_fn=collate_fn)
 
     return train_dataloader, val_dataloader
 
