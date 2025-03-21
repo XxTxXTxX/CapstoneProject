@@ -170,15 +170,15 @@ def train(model, train_loader, val_loader, num_epochs=20, lr=1e-3, device=device
                 count += 1
                 batch = {k: v.to(device) if torch.is_tensor(v) else v for k, v in batch.items()}
                 coordinates = batch['coordinates']  # Ground truth (Nres, 37, 3)
-                print(batch["seq_name"])
+                #print(batch["seq_name"])
                 pred = model(batch)  # Model returns a dictionary
                 
                 # Extract the relevant tensors
                 pred_coords = pred["final_positions"]
 
                 target_coords = coordinates  # Already extracted
-                print(f"label: {target_coords.shape}")
-                print(f"prediction: {pred_coords.shape}")
+                #print(f"label: {target_coords.shape}")
+                #print(f"prediction: {pred_coords.shape}")
                 # match shape (added code)
                 if pred_coords.shape[1] < target_coords.shape[1]:
                     target_coords = target_coords[:, :pred_coords.shape[1], :, :]
@@ -225,5 +225,5 @@ def train(model, train_loader, val_loader, num_epochs=20, lr=1e-3, device=device
 
 # -------------------- RUN TRAINING --------------------
 # next time lr = 5e-5
-train(model, train_dataloader, val_dataloader, num_epochs=20, lr=5e-5, device=device)
+train(model, train_dataloader, val_dataloader, num_epochs=20, lr=4e-5, device=device)
 print("finished!!")
