@@ -173,7 +173,7 @@ def train(model, train_loader, val_loader, num_epochs=40, lr=1e-3, device=device
                 
                 # Extract the relevant tensors
                 pred_coords = pred["final_positions"]
-                 
+                
                 target_coords = coordinates  # Already extracted
                 # match shape (added code)
                 if pred_coords.shape[1] < target_coords.shape[1]:

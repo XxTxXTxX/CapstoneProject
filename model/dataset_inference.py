@@ -11,7 +11,7 @@ import os
 
 class ProcessDataset(Dataset):
     def __init__(self, temp_Ph_vals):
-        self.msa_file_path = "model/msa_raw"
+        self.msa_file_path = "model/msa_raw_inference"
         self.pdb_file_path = "model/targetPDB"
         self.ATOM_TYPES = ["N", "CA", "C", "O", "CB", "CG", "CG1", "CG2", "OG", "OG1", "SG",
                            "CD", "CD1", "CD2", "ND1", "ND2", "OD1", "OD2", "SD", "CE", "CE1", "CE2", "CE3",
@@ -29,7 +29,7 @@ class ProcessDataset(Dataset):
         self.__preprocess_all_msa(temp_Ph_vals)
         for atom in self.features:
             filename = atom['seq_name'] # sequence name
-            sequence_file = "model/input_seqs/" + filename + ".fasta" # fasta file
+            sequence_file = "model/input_seqs_inference/" + filename + ".fasta" # fasta file
             pdb_file = os.path.join(self.pdb_file_path, atom['seq_name'] + ".pdb") # pdb file
             seq = "" # Sequence
             with open(sequence_file, 'r') as f:
@@ -309,15 +309,15 @@ class featureExtraction():
             extra_msa_feat = self.calculate_extra_msa_feat(features)
             target_feat = self.onehot_encode_aa_type(seqs[0], include_gap_token=False).float()
             residue_index = torch.arange(len(seqs[0]))
-
+            print(file_name)
             return {
                 'msa_feat': msa_feat,
                 'extra_msa_feat': extra_msa_feat,
                 'target_feat': target_feat,
                 'residue_index': residue_index,
-                'seq_name' : file_name[14:-4],
-                'pH' : temp_Ph_vals[file_name[14:-4]][0],
-                'temp': temp_Ph_vals[file_name[14:-4]][1]
+                'seq_name' : file_name.split("/")[2].split(".")[0],
+                'pH' : temp_Ph_vals[file_name.split("/")[2].split(".")[0]][0],
+                'temp': temp_Ph_vals[file_name.split("/")[2].split(".")[0]][1]
                 # 'coordinates' :   # Nres, 37, 3 --> target
             }
         else:
