@@ -52,7 +52,7 @@ class MaskedMSELoss(nn.Module):
         return masked_loss.sum() / mask.sum()  # Mean over non-masked values
 
 # -------------------- LOAD LATEST CHECKPOINT --------------------
-def load_latest_checkpoint(model, model_dir="./model/model_weights/"):
+def load_latest_checkpoint(model, model_dir="../model_weights/"):
     os.makedirs(model_dir, exist_ok=True)  
 
     checkpoint_files = [f for f in os.listdir(model_dir) if f.endswith(".pt")]
@@ -217,7 +217,7 @@ def train(model, train_loader, val_loader, num_epochs=20, lr=1e-3, device=device
         print(f"Epoch [{epoch+1}/{num_epochs}], Train Loss: {train_loss / len(train_loader):.4f}, Val Loss: {val_loss / len(val_loader):.4f}")
 
         # Save the model after each epoch
-        model_save_path = f"./model/model_weights/model_epoch_{epoch+1}.pt"
+        model_save_path = f"../model_weights/model_epoch_{epoch+1}.pt"
         torch.save(model.state_dict(), model_save_path)
         print(f"Model saved: {model_save_path}")
 

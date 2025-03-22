@@ -23,7 +23,7 @@ print(f"Using device: {device}")
 
 
 # -------------------- LOAD LATEST CHECKPOINT --------------------
-def load_latest_checkpoint(model, model_dir="./model/model_weights/"):
+def load_latest_checkpoint(model, model_dir="../model_weights/"):
     os.makedirs(model_dir, exist_ok=True)  
 
     checkpoint_files = [f for f in os.listdir(model_dir) if f.endswith(".pt")]
