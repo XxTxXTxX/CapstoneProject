@@ -20,29 +20,53 @@ class MaskedMSELoss(nn.Module):
     """
     Custom loss function that computes MSE loss only for non-masked positions.
     """
-    def __init__(self):
+    def __init__(self, mask_penalty=1.0):
         super(MaskedMSELoss, self).__init__()
         self.mse = nn.MSELoss(reduction='none')  # Compute loss per element
+        self.mask_penalty = mask_penalty
 
-    def forward(self, pred, target):
+    
+    def forward(self, pred, target, mask):
         """
         Args:
             pred: (Nres, 37, 3) predicted coordinates
             target: (Nres, 37, 3) ground truth coordinates
+            mask: (Nres, 37) mask tensor
         Returns:
             masked loss: Mean loss computed only for valid (non-masked) coordinates
         """
-        #print("pred shape = ", pred.shape)
-        #print("Target shape = ", target.shape)
-        mask = (target != 0).any(dim=-1)  # Mask where at least one xyz value ≠ 0
-        loss = self.mse(pred, target)  # Compute per-element MSE loss
-        masked_loss = loss * mask.unsqueeze(-1)  # Apply mask (broadcasted to match xyz dims)
-
-        # Avoid dividing by zero when all values are masked
-        if mask.sum() == 0:
+        target_mask = (target != 0).any(dim=-1)  # (batch, Nres, 37)
+        
+        # uclidean distance loss
+        coord_loss = torch.sum((pred - target) ** 2, dim=-1)  # (batch, Nres, 37)
+        total_loss = torch.zeros_like(coord_loss)
+        
+        # pred mask = 1 but target is 0, wrong mask, penalty
+        case1 = mask & ~target_mask
+        total_loss[case1] = self.mask_penalty * torch.ones_like(total_loss)[case1]
+        
+        # Correct mask and target is 0, no penalty
+        case2 = ~mask & ~target_mask
+        total_loss[case2] = 0.0
+        
+        # Both pred and target are not 0, calculate coord loss by uclidean distance
+        case3 = mask & target_mask
+        total_loss[case3] = coord_loss[case3]
+        
+        # pred mask = 0 but target coord != 0, penalty on both
+        case4 = ~mask & target_mask
+        total_loss[case4] = coord_loss[case4] + self.mask_penalty
+        
+        # Average loss
+        valid_positions = (case1 | case3 | case4).sum()
+        if valid_positions == 0:
             return torch.tensor(0.0, requires_grad=True, device=pred.device)
-
-        return masked_loss.sum() / mask.sum()  # Mean over non-masked values
+        
+        return {
+            'total_loss': total_loss.sum() / valid_positions,
+            'coord_loss': coord_loss[case3].mean() if case3.sum() > 0 else torch.tensor(0.0),
+            'mask_penalty': (total_loss[case1].sum() + total_loss[case4].sum()) / (case1.sum() + case4.sum() + 1e-8)
+        }
 
 # -------------------- LOAD LATEST CHECKPOINT --------------------
 def load_latest_checkpoint(model, model_dir="../model_weights/"):
@@ -154,7 +178,11 @@ def train(model, train_loader, val_loader, num_epochs=20, lr=1e-3, device=device
 
     for epoch in range(num_epochs):
         model.train()
-        train_loss = 0
+        epoch_losses = {
+            'total': 0.0,
+            'coord': 0.0,
+            'mask_penalty': 0.0
+        }
 
         # Training loop with tqdm progress bar
         with tqdm(train_loader, desc=f"Epoch {epoch+1}/{num_epochs} - Training", unit="batch") as t:
@@ -177,20 +205,32 @@ def train(model, train_loader, val_loader, num_epochs=20, lr=1e-3, device=device
                     target_coords = target_coords[:, :pred_coords.shape[1], :, :]
                 elif pred_coords.shape[1] > target_coords.shape[1]:
                     pred_coords = pred_coords[:, :target_coords.shape[1], :, :]
-                loss = criterion(pred_coords, target_coords)  # Compute loss
+
+                loss_dict = criterion(pred_coords, target_coords, batch['position_mask'])  # Compute loss
+                loss = loss_dict['total_loss']
                 optimizer.zero_grad()
                 loss.backward()
                 optimizer.step()
 
-                train_loss += loss.item()
-                t.set_postfix(loss=train_loss / (t.n + 1))  # Update tqdm progress bar
+                epoch_losses['total'] += loss_dict['total_loss'].item()
+                epoch_losses['coord'] += loss_dict['coord_loss'].item()
+                epoch_losses['mask_penalty'] += loss_dict['mask_penalty'].item()
+                t.set_postfix({
+                    'total_loss': epoch_losses['total'] / count,
+                    'coord_loss': epoch_losses['coord'] / count,
+                    'mask_loss': epoch_losses['mask_penalty'] / count
+                })  # Update tqdm progress bar
                 
                 del batch, pred, pred_coords, target_coords, loss  
                 torch.cuda.empty_cache()
             print(count)
         # Validation
         model.eval()
-        val_loss = 0
+        val_losses = {
+            'total': 0.0,
+            'coord': 0.0,
+            'mask_penalty': 0.0
+        }
 
         with torch.no_grad():
             with tqdm(val_loader, desc=f"Epoch {epoch+1}/{num_epochs} - Validation", unit="batch") as t:
@@ -202,12 +242,24 @@ def train(model, train_loader, val_loader, num_epochs=20, lr=1e-3, device=device
                     # Extract the relevant tensors
                     pred_coords = pred["final_positions"]
                     target_coords = coordinates  # Already extracted
-                    loss = criterion(pred_coords, target_coords)
-                    val_loss += loss.item()
+                    loss_dict = criterion(pred_coords, coordinates, pred['position_mask'])
+                    val_losses['total'] += loss_dict['total_loss'].item()
+                    val_losses['coord'] += loss_dict['coord_loss'].item()
+                    val_losses['mask_penalty'] += loss_dict['mask_penalty'].item()
 
-                    t.set_postfix(loss=val_loss / (t.n + 1))  # Update tqdm progress bar
+                    t.set_postfix({
+                        'val_total': val_losses['total'] / t.n + 1,
+                        'val_coord': val_losses['coord'] / t.n + 1,
+                        'val_mask': val_losses['mask_penalty'] / t.n + 1
+                    })  # Update tqdm progress bar
 
-        print(f"Epoch [{epoch+1}/{num_epochs}], Train Loss: {train_loss / len(train_loader):.4f}, Val Loss: {val_loss / len(val_loader):.4f}")
+        print(f"\nEpoch [{epoch+1}/{num_epochs}]")
+        print(f"Training - Total Loss: {epoch_losses['total']/count:.4f}, "
+              f"Coord Loss: {epoch_losses['coord']/count:.4f}, "
+              f"Mask Loss: {epoch_losses['mask_penalty']/count:.4f}")
+        print(f"Validation - Total Loss: {val_losses['total']/t.n+1:.4f}, "
+              f"Coord Loss: {val_losses['coord']/t.n+1:.4f}, "
+              f"Mask Loss: {val_losses['mask_penalty']/t.n+1:.4f}")
 
         # Save the model after each epoch
         model_save_path = f"../model_weights/model_epoch_{epoch+1}.pt"

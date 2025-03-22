@@ -43,7 +43,6 @@ class ProcessDataset(Dataset):
                 pdb_sequence = tt.extract_pdb_sequence(pdb_file)
                 pdb_idx, fasta_idx = tt.align_sequences(seq, pdb_sequence)
                 pdb_coordinates = tt.extract_residue_coordinates(pdb_file)
-                print(pdb_coordinates)
                 atom['coordinates'] = tt.create_final_tensor(seq, pdb_coordinates, fasta_idx, pdb_idx)
             except Exception as e:
                 print(e)
