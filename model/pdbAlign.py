@@ -110,7 +110,7 @@ def align_sequences(seq1, seq2, match_score=1, mismatch_score=-1, gap_penalty=-2
     return pdb_idx, fasta_idx
 
 
-def extract_residue_coordinates(pdb_file):
+def extract_residue_coordinates(pdb_file): # MASK
     """Extracts residue 3D coordinates from the PDB file."""
     parser = PDB.PDBParser(QUIET=True)
     structure = parser.get_structure("protein", pdb_file)
@@ -154,6 +154,5 @@ def create_final_tensor(fasta_seq, pdb_coords, fasta_idx, pdb_idx):
     # Map the PDB coordinates to the matching FASTA indices
     for fasta_position, pdb_position in zip(fasta_idx, pdb_idx):
         final_tensor[fasta_position] = pdb_coords[pdb_position]
-        final_mask[fasta_position] = pdb_coords[pdb_position].abs().sum(dim=-1) > 0
 
-    return final_tensor, final_mask
+    return final_tensor
