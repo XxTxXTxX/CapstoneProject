@@ -206,7 +206,7 @@ def train(model, train_loader, val_loader, num_epochs=20, lr=1e-3, device=device
                 elif pred_coords.shape[1] > target_coords.shape[1]:
                     pred_coords = pred_coords[:, :target_coords.shape[1], :, :]
 
-                loss_dict = criterion(pred_coords, target_coords, batch['position_mask'])  # Compute loss
+                loss_dict = criterion(pred_coords, target_coords, pred['position_mask'])  # Compute loss
                 loss = loss_dict['total_loss']
                 optimizer.zero_grad()
                 loss.backward()
