@@ -1,0 +1,1850 @@
+Query         1HEK_1|Chains A, B|GAG POLYPROTEIN, CORE PROTEIN P15|EQUINE INFECTIOUS ANEMIA VIRUS (11665)
+Match_columns 131
+No_of_seqs    33 out of 46
+Neff          1.51443
+Searched_HMMs 189
+Date          Sat Mar 22 09:39:51 2025
+Command       hhblits -cpu 8 -i model/input_seqs/1HEK.fasta -d /Users/hahayes/Desktop/Capstone/hh-suite/databases/uniclust30_2016_09/uniclust30_2016_09 -oa3m model/msa_raw/1HEK.a3m -norealign -n 3 
+
+ No Hit                             Prob E-value P-value  Score    SS Cols Query HMM  Template HMM
+  1 tr|W8QIF9|W8QIF9_9RETR Gag pro 100.0 7.5E-84 3.2E-89  484.8   0.0  119    8-126     1-119 (119)
+  2 tr|D9IU54|D9IU54_9RETR Gag pol 100.0 3.3E-73 1.4E-78  487.1   0.0  124    8-131     1-126 (428)
+  3 tr|A8R0G2|A8R0G2_9RETR Gag pro 100.0 9.1E-73 3.7E-78  432.7   0.0  115   17-131     1-115 (138)
+  4 tr|I4DUD8|I4DUD8_9RETR Gag pro 100.0 7.6E-71   3E-76  449.4   0.0  127    5-131    17-143 (247)
+  5 tr|D0F0B5|D0F0B5_9RETR Gag (Fr 100.0 7.6E-51   3E-56  301.0   0.0   92   39-131     1-92  (102)
+  6 tr|Q66719|Q66719_9RETR P26 rec  99.8 5.8E-23 2.2E-28  137.4   0.0   42    6-47      5-46  (46)
+  7 tr|G4V2W8|G4V2W8_9RETR Gag pro  98.0 4.2E-08 1.6E-13   54.3   0.0   14    8-21      1-14  (14)
+  8 tr|G4V2V8|G4V2V8_9RETR Gag pro  98.0 4.7E-08 1.8E-13   54.2   0.0   14    8-21      1-14  (14)
+  9 tr|G4V2W0|G4V2W0_9RETR Gag pro  98.0 4.7E-08 1.8E-13   54.2   0.0   14    8-21      1-14  (14)
+ 10 tr|G4V2W7|G4V2W7_9RETR Gag pro  98.0 4.7E-08 1.8E-13   54.2   0.0   14    8-21      1-14  (14)
+ 11 tr|G4V2W3|G4V2W3_9RETR Gag pro  98.0 4.7E-08 1.8E-13   54.2   0.0   14    8-21      1-14  (14)
+ 12 tr|G4V2W1|G4V2W1_9RETR Gag pro  98.0 4.7E-08 1.8E-13   54.2   0.0   14    8-21      1-14  (14)
+ 13 tr|G4V2W5|G4V2W5_9RETR Gag pro  98.0 4.7E-08 1.8E-13   54.2   0.0   14    8-21      1-14  (14)
+ 14 tr|G4V2W2|G4V2W2_9RETR Gag pro  98.0 4.7E-08 1.8E-13   54.2   0.0   14    8-21      1-14  (14)
+ 15 tr|G4V2W4|G4V2W4_9RETR Gag pro  98.0 4.7E-08 1.8E-13   54.2   0.0   14    8-21      1-14  (14)
+ 16 tr|A0A0F9DLW6|A0A0F9DLW6_9ZZZZ  95.2  0.0066 2.6E-08   41.3   0.0   26   55-80      9-34  (34)
+ 17 tr|F2YGD9|F2YGD9_CAEV Matrix p  94.5   0.016 7.6E-08   48.7   0.0   93   16-110    12-109 (138)
+ 18 tr|Q1W387|Q1W387_CAEV Gag prot  91.9    0.15 6.9E-07   44.8   0.0   93   16-110    17-114 (174)
+ 19 tr|A0A151JFS0|A0A151JFS0_9VIBR  90.3    0.37 1.4E-06   39.7   0.0   34   24-57     24-57  (100)
+ 20 tr|J6J2K7|J6J2K7_9RHOB Unchara  89.6    0.31 1.9E-06   39.8   0.0   40   59-98     10-49  (118)
+ 21 tr|D3VWU2|D3VWU2_9RETR Gag pro  89.4    0.52   2E-06   45.9   0.0   97   28-126    23-123 (428)
+ 22 tr|A0A119C3E4|A0A119C3E4_9BURK  88.5     0.7 2.7E-06   37.6   0.0   26   97-122    50-75  (88)
+ 23 tr|D3VWV4|D3VWV4_9RETR Gag pro  88.4    0.72 2.8E-06   45.0   0.0   97   28-126    23-123 (429)
+ 24 tr|W8VLI3|W8VLI3_9RETR Gag pol  88.3    0.74 2.9E-06   45.0   0.0   94   28-123    30-127 (435)
+ 25 tr|D3VWU0|D3VWU0_9RETR Gag pro  88.1    0.79 3.1E-06   44.8   0.0   97   28-126    23-123 (428)
+ 26 tr|D3VWT9|D3VWT9_9RETR Gag pro  88.0     0.8 3.1E-06   44.7   0.0   97   28-126    23-123 (428)
+ 27 tr|D3VWU1|D3VWU1_9RETR Gag pro  88.0     0.8 3.1E-06   44.7   0.0   97   28-126    23-123 (428)
+ 28 tr|D3VWT8|D3VWT8_9RETR Gag pro  88.0     0.8 3.1E-06   44.7   0.0   97   28-126    23-123 (428)
+ 29 tr|D3VWT7|D3VWT7_9RETR Gag pro  87.7    0.87 3.4E-06   44.5   0.0   97   28-126    23-123 (428)
+ 30 tr|A0A142F3P6|A0A142F3P6_CAEV   87.4    0.94 3.6E-06   44.3   0.0  109   16-126    17-130 (429)
+ 31 tr|D3VWX4|D3VWX4_9RETR Gag pro  87.3    0.98 3.8E-06   44.2   0.0   93   28-122    23-119 (428)
+ 32 tr|D3VWX5|D3VWX5_9RETR Gag pro  87.2    0.99 3.8E-06   44.2   0.0   93   28-122    23-119 (428)
+ 33 tr|D3VWW5|D3VWW5_9RETR Gag pro  87.1       1   4E-06   44.1   0.0   97   28-126    23-123 (429)
+ 34 tr|H6TKH7|H6TKH7_CAEV Gag poly  87.0       1   4E-06   44.2   0.0   81   28-110    30-114 (442)
+ 35 tr|D3VWW8|D3VWW8_9RETR Gag pro  86.2     1.3 4.9E-06   43.6   0.0   93   32-126    27-123 (430)
+ 36 tr|D3VWW7|D3VWW7_9RETR Gag pro  86.0     1.3 5.1E-06   43.4   0.0   97   28-126    23-123 (429)
+ 37 tr|D3VWW4|D3VWW4_9RETR Gag pro  85.9     1.3 5.2E-06   43.4   0.0   97   28-126    23-123 (429)
+ 38 tr|D3VWW3|D3VWW3_9RETR Gag pro  85.9     1.4 5.3E-06   43.4   0.0   97   28-126    23-123 (429)
+ 39 tr|D3VWV0|D3VWV0_9RETR Gag pro  85.8     1.4 5.3E-06   43.3   0.0  109   16-126    10-123 (430)
+ 40 tr|D3VWW9|D3VWW9_9RETR Gag pro  85.7     1.4 5.4E-06   43.3   0.0   97   28-126    23-123 (430)
+ 41 tr|A0A0C3S0T7|A0A0C3S0T7_PHLGI  85.6     1.4 5.5E-06   40.6   0.0   67   16-85    145-211 (229)
+ 42 tr|A0A090SUQ9|A0A090SUQ9_9VIBR  85.4     1.5 5.8E-06   39.0   0.0   34   59-94     88-121 (166)
+ 43 tr|D3VWU7|D3VWU7_9RETR Gag pro  84.6     1.8 6.9E-06   42.7   0.0   97   28-126    23-123 (430)
+ 44 tr|H6TKH4|H6TKH4_CAEV Gag poly  84.0     1.9 7.5E-06   42.5   0.0   81   28-110    30-114 (443)
+ 45 tr|D3VWT1|D3VWT1_9RETR Gag pro  83.8       2 7.9E-06   42.3   0.0   97   28-126    23-123 (430)
+ 46 tr|D3VWT4|D3VWT4_9RETR Gag pro  83.8       2   8E-06   42.3   0.0   97   28-126    23-123 (430)
+ 47 tr|A0A016RUM4|A0A016RUM4_9BILA  83.6     2.1 8.2E-06   34.3   0.0   21   23-43     19-39  (76)
+ 48 tr|D3VWT3|D3VWT3_9RETR Gag pro  83.3     2.2 8.6E-06   42.1   0.0   81   28-110    23-107 (429)
+ 49 tr|D3VWW1|D3VWW1_9RETR Gag pro  83.2     2.2 8.7E-06   42.0   0.0   81   28-110    23-107 (430)
+ 50 tr|D3VWU6|D3VWU6_9RETR Gag pro  83.1     2.3 8.9E-06   42.0   0.0   97   28-126    23-123 (430)
+ 51 tr|H6TKH1|H6TKH1_CAEV Gag poly  83.1     2.3   9E-06   42.1   0.0   81   28-110    30-114 (440)
+ 52 tr|D3VWV5|D3VWV5_9RETR Gag pro  82.9     2.4 9.2E-06   41.9   0.0   97   28-126    23-123 (429)
+ 53 tr|D3VWS9|D3VWS9_9RETR Gag pro  82.9     2.4 9.2E-06   41.9   0.0   97   28-126    23-123 (430)
+ 54 tr|D3VWS7|D3VWS7_9RETR Gag pro  82.6     2.5 9.6E-06   41.8   0.0   97   28-126    23-123 (430)
+ 55 tr|Q9DKV9|Q9DKV9_CAEV Gag poly  82.5     2.5 9.8E-06   41.8   0.0   93   16-110    17-114 (432)
+ 56 tr|A0A0K8QR49|A0A0K8QR49_9GAMM  82.5     2.5 9.8E-06   36.2   0.0   54    4-57     35-88  (120)
+ 57 tr|D3VWU4|D3VWU4_9RETR Gag pro  82.4     2.6 9.9E-06   41.7   0.0   97   28-126    23-123 (430)
+ 58 tr|Q88987|Q88987_9RETR Gag pro  82.2     2.6   1E-05   42.2   0.0   97   28-126    80-180 (492)
+ 59 tr|D3VWT0|D3VWT0_9RETR Gag pro  81.5     2.9 1.1E-05   41.3   0.0  109   16-126    10-123 (429)
+ 60 tr|H6TKH6|H6TKH6_CAEV Gag poly  81.4       3 1.2E-05   41.4   0.0   81   28-110    30-114 (443)
+ 61 tr|H6TKH5|H6TKH5_CAEV Gag poly  80.9     3.2 1.2E-05   41.2   0.0   81   28-110    30-114 (442)
+ 62 tr|A8TCG8|A8TCG8_CAEV Gag prot  80.5     3.3 1.3E-05   41.2   0.0  102   28-131    31-137 (435)
+ 63 tr|H6TKH9|H6TKH9_CAEV Gag poly  80.2     3.5 1.4E-05   40.9   0.0   22   28-49     30-51  (442)
+ 64 tr|H6TKH2|H6TKH2_CAEV Gag poly  80.1     3.6 1.4E-05   40.9   0.0   22   28-49     30-51  (442)
+ 65 tr|M8AQW7|M8AQW7_AEGTA Unchara  80.1     3.6 1.4E-05   39.0   0.0   25   29-53     18-42  (276)
+ 66 tr|A0A142F3P5|A0A142F3P5_CAEV   79.8     3.7 1.5E-05   40.7   0.0   97   28-126    30-130 (430)
+ 67 tr|F5BD97|F5BD97_9RETR Gag pol  79.7     3.8 1.5E-05   40.8   0.0   22   28-49     30-51  (442)
+ 68 tr|H6TKH8|H6TKH8_CAEV Gag poly  79.7     3.8 1.5E-05   40.8   0.0   22   28-49     30-51  (447)
+ 69 tr|Q6H1V6|Q6H1V6_CAEV Gag poly  79.4     3.9 1.5E-05   40.7   0.0   22   28-49     30-51  (448)
+ 70 tr|D3VWW0|D3VWW0_9RETR Gag pro  77.6     4.9 1.9E-05   40.0   0.0   97   28-126    23-123 (430)
+ 71 tr|A0A0J9BI40|A0A0J9BI40_9FIRM  73.1     7.9 3.1E-05   32.0   0.0   21   66-86     26-46  (85)
+ 72 tr|H6TKH3|H6TKH3_CAEV Gag poly  71.8     8.9 3.5E-05   38.5   0.0   22   28-49     30-51  (443)
+ 73 tr|X0WBC7|X0WBC7_9ZZZZ Unchara  70.7     9.9 3.8E-05   32.9   0.0   24   63-86     18-41  (117)
+ 74 tr|A0A146TJ21|A0A146TJ21_FUNHE  70.1      10   4E-05   37.1   0.0   33   41-73    256-288 (337)
+ 75 tr|H1VUU7|H1VUU7_COLHI Unchara  69.7      11 4.2E-05   31.3   0.0   22   36-57     12-33  (85)
+ 76 tr|A0A087M6F1|A0A087M6F1_9RHIZ  69.7     5.7 4.2E-05   32.0   0.0   39   60-98      9-47  (117)
+ 77 tr|A0A090YPU0|A0A090YPU0_PAEMA  69.2      11 4.4E-05   29.0   0.0   36    8-43      1-36  (53)
+ 78 tr|U5LBW8|U5LBW8_9BACI Unchara  68.8      12 4.5E-05   32.6   0.0   26   75-100    69-96  (118)
+ 79 tr|A0A069D4P0|A0A069D4P0_9BACE  65.5      15 5.9E-05   28.1   0.0   37   16-52      4-41  (50)
+ 80 tr|A0A090GLB4|A0A090GLB4_9RHIZ  64.3      16 6.4E-05   33.5   0.0   12   38-49    127-138 (179)
+ 81 tr|C4WAF8|C4WAF8_STAWA Sigma-7  64.3      16 6.4E-05   30.5   0.0   29   55-83     19-47  (89)
+ 82 tr|A0A093VHD3|A0A093VHD3_TALMA  63.5      17 6.8E-05   29.8   0.0   24    2-25      1-24  (78)
+ 83 tr|C0KQT4|C0KQT4_CAEV Gag poly  62.1      18 7.5E-05   35.8   0.0   74   32-107     3-80  (334)
+ 84 tr|A5V618|A5V618_SPHWW Unchara  60.8      17 8.2E-05   31.6   0.0   39   60-98     10-48  (123)
+ 85 tr|F2UAV0|F2UAV0_SALR5 Putativ  60.1      22 8.6E-05   33.9   0.0   27   57-83     68-94  (243)
+ 86 tr|X0PFD1|X0PFD1_9LACO Unchara  58.8      24 9.4E-05   36.5   0.0   49   38-86    443-491 (531)
+ 87 tr|A0A0K6G894|A0A0K6G894_9HOMO  56.8      28 0.00011   29.4   0.0   23   64-86     29-51  (89)
+ 88 tr|H8ZCB7|H8ZCB7_NEMS1 Putativ  56.0      29 0.00011   36.0   0.0   49   58-108   353-401 (541)
+ 89 tr|A0A061G909|A0A061G909_THECC  55.9      29 0.00011   30.1   0.0   21   84-104    39-59  (109)
+ 90 tr|A0A067ES37|A0A067ES37_CITSI  53.0      35 0.00014   28.2   0.0   34   50-83     18-51  (76)
+ 91 tr|W0I2T6|W0I2T6_9EURY Unchara  52.2      21 0.00014   27.4   0.0   39   60-98     10-48  (73)
+ 92 tr|I3LG64|I3LG64_PIG Uncharact  49.7      43 0.00017   30.6   0.0   40   85-127    71-110 (155)
+ 93 tr|K9Y879|K9Y879_HALP7 Unchara  48.4      46 0.00018   32.4   0.0   19   32-50      4-22  (271)
+ 94 tr|A0A0A9H4U1|A0A0A9H4U1_ARUDO  48.1      47 0.00018   30.8   0.0   27   94-121    90-116 (173)
+ 95 tr|A0A085MH50|A0A085MH50_9BILA  48.0      48 0.00019   33.0   0.0   37   82-118   256-292 (322)
+ 96 tr|C5GND8|C5GND8_AJEDR Unchara  47.9      48 0.00019   30.8   0.0   27   39-66     94-120 (176)
+ 97 tr|A0A0P1AV53|A0A0P1AV53_9STRA  47.8      38 0.00019   30.6   0.0   46   40-85      9-54  (152)
+ 98 tr|A0A077ZAB3|A0A077ZAB3_TRITR  45.9      54 0.00021   32.8   0.0   39   80-118   270-308 (338)
+ 99 tr|L8WI91|L8WI91_THACA Unchara  45.4      55 0.00022   28.2   0.0   35   41-75     24-58  (98)
+100 tr|A5FHI3|A5FHI3_FLAJ1 Unchara  44.3      59 0.00023   30.6   0.0   32   24-55    107-138 (193)
+101 tr|A0A135LVA1|A0A135LVA1_PENPA  44.1      48 0.00023   33.4   0.0   19   66-84    331-349 (364)
+102 tr|A0A1B0GNN1|A0A1B0GNN1_PHLPP  43.9      61 0.00024   31.0   0.0   41   87-130    40-80  (217)
+103 tr|A0A031K414|A0A031K414_9SPHN  43.5      62 0.00024   34.8   0.0   62   41-102    24-86  (702)
+104 tr|W4YTQ2|W4YTQ2_STRPU Unchara  43.5      62 0.00024   27.1   0.0   43   79-126     7-49  (79)
+105 tr|W3X6P4|W3X6P4_9PEZI Unchara  43.0      47 0.00025   35.4   0.0   41   11-52     63-103 (659)
+106 tr|E8WN09|E8WN09_GEOS8 Unchara  41.8      69 0.00027   26.1   0.0   39   41-79     12-50  (66)
+107 tr|R5G733|R5G733_9FIRM Ribonuc  41.8      55 0.00027   30.2   0.0   28   46-73    141-168 (170)
+108 tr|K3X4G8|K3X4G8_PYTUL Unchara  40.6      74 0.00029   29.9   0.0   49   40-89    120-168 (185)
+109 tr|A0A0P9S3P9|A0A0P9S3P9_PSEA0  37.7      88 0.00034   30.5   0.0   20   60-79      6-25  (244)
+110 tr|A0A0L7R3W0|A0A0L7R3W0_9HYME  37.5      89 0.00035   31.6   0.0   27    2-28     50-76  (341)
+111 tr|A0A0F6SFZ9|A0A0F6SFZ9_9DELT  37.5      89 0.00035   31.9   0.0   43    6-51    250-292 (382)
+112 tr|A8JG72|A8JG72_CHLRE Predict  36.9      77 0.00036   33.0   0.0   23   24-46    330-352 (448)
+113 tr|A2CKV2|A2CKV2_9CARY Peptide  35.7      99 0.00039   26.7   0.0   26   87-112    15-40  (93)
+114 tr|D0MEW1|D0MEW1_RHOM4 Cna B d  35.6      76 0.00039   31.8   0.0   36   25-60    303-338 (339)
+115 tr|A0A0V0SFZ7|A0A0V0SFZ7_9BILA  35.2   1E+02  0.0004   25.6   0.0   42   43-84     14-55  (71)
+116 tr|A0A0N4XS10|A0A0N4XS10_NIPBR  34.7 1.1E+02 0.00041   27.1   0.0   38   60-97     15-52  (108)
+117 tr|A0A0M0K9X9|A0A0M0K9X9_9EUKA  33.1 1.2E+02 0.00045   29.8   0.0   64   62-125    57-120 (250)
+118 tr|A0A0G0UR43|A0A0G0UR43_9BACT  31.1 1.3E+02 0.00052   33.4   0.0   48   67-114   371-418 (900)
+119 tr|Q8E948|Q8E948_SHEON Two com  29.1 1.5E+02 0.00058   33.7   0.0   34   53-89    465-498 (1141)
+120 tr|K2BUR0|K2BUR0_9ZZZZ Unchara  28.5 1.6E+02 0.00061   28.2   0.0   47   75-121    93-144 (192)
+121 tr|B4CXF6|B4CXF6_9BACT Unchara  27.5 1.7E+02 0.00065   33.3   0.0   54   15-68   1048-1104(1116)
+122 tr|A0A0R2CX96|A0A0R2CX96_9LACO  27.4   1E+02 0.00066   28.8   0.0   43   89-131   107-149 (238)
+123 tr|A0A0M5KQ26|A0A0M5KQ26_9ACTO  26.8 1.3E+02 0.00068   27.4   0.0   32   60-91    106-137 (150)
+124 tr|A0A0M2UX64|A0A0M2UX64_9BACT  25.7 1.9E+02 0.00074   29.0   0.0   27   56-82     36-62  (286)
+125 tr|A0A0N5DSM9|A0A0N5DSM9_TRIMR  24.4 1.9E+02 0.00081   34.2   0.0   44   40-83    825-874 (1518)
+126 tr|A0A0G0N117|A0A0G0N117_9BACT  21.8 2.5E+02 0.00098   27.9   0.0   37   54-90     14-50  (249)
+
+No 1
+>tr|W8QIF9|W8QIF9_9RETR Gag protein (Fragment) OS=Equine infectious anemia virus GN=gag PE=4 SV=1
+Probab=100.00  E-value=7.5e-84  Score=484.75  Aligned_cols=119  Identities=88%  Similarity=1.354  Sum_probs=117.7  Template_Neff=1.600
+
+Q 1HEK_1|Chains     8 MGDPLTWSKALKKLEKVTVQGSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQTLSGQEREAFERTWW   87 (131)
+Q Consensus         8 mgdpltWskaLkKlEKVtVqGSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~qtLsGqEkeAFekTWW   87 (131)
+                      ||||+|||||||||||||||||||||+||||||||||||||||||+|||||||||||||||||.|||||||+||||||||
+T Consensus         1 mgdp~twskalkklekvtvqgsqklt~gncnwalslvdl~hdt~~~kekdwqlrdviplledvsqtlsgqekeafe~tww   80 (119)
+T tr|W8QIF9|W8QI    1 MGDPVTWSKALKKLEKVTVQGSQKLTVGNCNWALSLVDLFHDTNFVKEKDWQLRDIIPLLEDVSQTLSGQEKEAFERTWW   80 (119)
+Confidence            89999999999999999999999999999999999999999999999999999999999999999999999999999999
+
+
+Q 1HEK_1|Chains    88 AISAVKMGLQINNVVDGKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus        88 aIsAvKmGlqI~nv~DgkatfqllkaKyer~~~~kkq~~  126 (131)
+                      ||||||||||||||.||||+||||+||||++.+.++|+|
+T Consensus        81 aisavkmglqi~nv~dgkatfqllkak~er~~~~~k~~~  119 (119)
+T tr|W8QIF9|W8QI   81 AISAVKMGLQINNVGDGKATFQLLKAKFERQSNKKKQSE  119 (119)
+Confidence            999999999999999999999999999999999999875
+
+
+No 2
+>tr|D9IU54|D9IU54_9RETR Gag polyprotein (Fragment) OS=Equine infectious anemia virus GN=gag PE=4 SV=1
+Probab=100.00  E-value=3.3e-73  Score=487.07  Aligned_cols=124  Identities=95%  Similarity=1.409  Sum_probs=119.1  Template_Neff=1.400
+
+Q 1HEK_1|Chains     8 MGDPLTWSKALKKLEKVTVQGSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQTLSGQEREAFERTWW   87 (131)
+Q Consensus         8 mgdpltWskaLkKlEKVtVqGSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~qtLsGqEkeAFekTWW   87 (131)
+                      ||||+||||||||||||||||||||+.||||||||||||||||||+|||||||||+|||||||+||||||||||||+|||
+T Consensus         1 MGDpltWskaLkKLEkVTVqGSqKlt~~NcnWALsLVDL~HDTnf~kEKDWqLrdviPLLeDVsqtLsGqEkeAFekTWW   80 (428)
+T tr|D9IU54|D9IU    1 MGDPLTWSKALKKLEKVTVQGSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVSQTLSGQEREAFERTWW   80 (428)
+Confidence            89999999999999999999999999999999999999999999999999999999999999999999999999999999
+
+
+Q 1HEK_1|Chains    88 AISAVKMGLQINNVVDGKASFQLLRAKYEKKTAN-KKQSE-PSEEY  131 (131)
+Q Consensus        88 aIsAvKmGlqI~nv~DgkatfqllkaKyer~~~~-kkq~~-~~eey  131 (131)
+                      ||+||||||||+||+||+|+||||||||||+..+ +++++ |.|||
+T Consensus        81 aI~AvK~GLqIn~v~DgkatfqlLkAKye~~~~~~k~q~~~~~eey  126 (428)
+T tr|D9IU54|D9IU   81 AISAVKMGLQINNVGDGKATFQLLKAKYERKTANTKKQSEPPQEEY  126 (428)
+Confidence            9999999999999999999999999999999986 55534 57776
+
+
+No 3
+>tr|A8R0G2|A8R0G2_9RETR Gag protein (Fragment) OS=Equine infectious anemia virus GN=gag PE=4 SV=1
+Probab=100.00  E-value=9.1e-73  Score=432.67  Aligned_cols=115  Identities=90%  Similarity=1.322  Sum_probs=0.0  Template_Neff=1.265
+
+Q 1HEK_1|Chains    17 ALKKLEKVTVQGSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQTLSGQEREAFERTWWAISAVKMGL   96 (131)
+Q Consensus        17 aLkKlEKVtVqGSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~qtLsGqEkeAFekTWWaIsAvKmGl   96 (131)
+                      |||||||||||||||||+|||||||||||||||||++|||||||||||||||||+|||||||||||||||||||||||||
+T Consensus         1 alkklekvtvqgsqklt~gncnwalslvdlfhdt~y~kekdwqlrdviplledv~~tlsgqereafertwwaisavkmgl   80 (138)
+T tr|A8R0G2|A8R0    1 ALKKLEKVTVQGSQKLTTGNCNWALSLVDLFHDTNYMKEKDWQLRDVIPLLEDVIQTLSGQEREAFERTWWAISAVKMGL   80 (138)
+
+
+Q 1HEK_1|Chains    97 QINNVVDGKASFQLLRAKYEKKTANKKQSEPSEEY  131 (131)
+Q Consensus        97 qI~nv~DgkatfqllkaKyer~~~~kkq~~~~eey  131 (131)
+                      |||||-||||+||||+||||+|.+.|+|.|..|||
+T Consensus        81 qi~~v~dgka~fqllkakye~~~~skkqpeapeey  115 (138)
+T tr|A8R0G2|A8R0   81 QINNVGDGKATFQLLKAKYEKKAASKKQPEAPEEY  115 (138)
+
+
+No 4
+>tr|I4DUD8|I4DUD8_9RETR Gag protein (Fragment) OS=Equine infectious anemia virus GN=gag PE=4 SV=1
+Probab=100.00  E-value=7.6e-71  Score=449.37  Aligned_cols=127  Identities=83%  Similarity=1.313  Sum_probs=124.9  Template_Neff=1.154
+
+Q 1HEK_1|Chains     5 IGSMGDPLTWSKALKKLEKVTVQGSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQTLSGQEREAFER   84 (131)
+Q Consensus         5 ~g~mgdpltWskaLkKlEKVtVqGSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~qtLsGqEkeAFek   84 (131)
+                      .|.||||++|||||||||||||||||||+.|||||||+||||||||||+|+|||||+|+|||||||.|||||+||+||||
+T Consensus        17 tgkmgd~~~wsk~lkklekvtvqgsqkl~~gncnwal~lvdl~hdtnfvk~kdwql~dviplledv~qtlsg~e~~afe~   96 (247)
+T tr|I4DUD8|I4DU   17 TGKMGDPVSWSKTLKKLEKVTVQGSQKLSTGNCNWALNLVDLFHDTNFVKDKDWQLRDVIPLLEDVTQTLSGQERDAFER   96 (247)
+Confidence            58899999999999999999999999999999999999999999999999999999999999999999999999999999
+
+
+Q 1HEK_1|Chains    85 TWWAISAVKMGLQINNVVDGKASFQLLRAKYEKKTANKKQSEPSEEY  131 (131)
+Q Consensus        85 TWWaIsAvKmGlqI~nv~DgkatfqllkaKyer~~~~kkq~~~~eey  131 (131)
+                      |||||+||||||||+||.||||+|||||+||+|....|+|+.|+|.|
+T Consensus        97 twwai~avkmglqi~nv~dgkas~qllk~k~~~~~~gkkqs~ppet~  143 (247)
+T tr|I4DUD8|I4DU   97 TWWAISAVKMGLQINNVHDGKASFQLLKVKFERNDTGKKQSNPPETF  143 (247)
+Confidence            99999999999999999999999999999999999999999998876
+
+
+No 5
+>tr|D0F0B5|D0F0B5_9RETR Gag (Fragment) OS=Equine infectious anemia virus PE=4 SV=1 
+Probab=100.00  E-value=7.6e-51  Score=301.01  Aligned_cols=92  Identities=87%  Similarity=1.363  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    39 WALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQTLSGQEREAFERTWWAISAVKMGLQINNVVDGKASFQLLRAKYEKK  118 (131)
+Q Consensus        39 WALsLVDL~HdTn~~keKDWqLrdviPLLeDV~qtLsGqEkeAFekTWWaIsAvKmGlqI~nv~DgkatfqllkaKyer~  118 (131)
+                      ||||||||+|.||.||||||||||||||||||||||||.|||+||||||||.||||||||.||+||||.|||||+|||||
+T Consensus         1 walslvdlyhntnlvkekdwqlrdviplledvtqtlsgkereafertwwaiaavkmglqianvidgkatfqllrakyekk   80 (102)
+T tr|D0F0B5|D0F0    1 WALSLVDLYHNTNLVKEKDWQLRDVIPLLEDVTQTLSGKEREAFERTWWAIAAVKMGLQIANVIDGKATFQLLRAKYEKK   80 (102)
+
+
+Q 1HEK_1|Chains   119 TANKKQSEPSEEY  131 (131)
+Q Consensus       119 ~~~kkq~~~~eey  131 (131)
+                       +.|.|.||.|||
+T Consensus        81 -atkrqpepqeey   92 (102)
+T tr|D0F0B5|D0F0   81 -ATKRQPEPQEEY   92 (102)
+
+
+No 6
+>tr|Q66719|Q66719_9RETR P26 recombinant protein (Fragment) OS=Equine infectious anemia virus PE=4 SV=1 
+Probab=99.79  E-value=5.8e-23  Score=137.45  Aligned_cols=42  Identities=83%  Similarity=1.309  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains     6 GSMGDPLTWSKALKKLEKVTVQGSQKLTTGNCNWALSLVDLF   47 (131)
+Q Consensus         6 g~mgdpltWskaLkKlEKVtVqGSqklt~gNcnWALsLVDL~   47 (131)
+                      ||.|||||||||||||||||||||.-|..||||||||-.|||
+T Consensus         5 gspgdpltwskalkklekvtvqgsrglaagncnwalsrldlf   46 (46)
+T tr|Q66719|Q667    5 GSPGDPLTWSKALKKLEKVTVQGSRGLAAGNCNWALSRLDLF   46 (46)
+
+
+No 7
+>tr|G4V2W8|G4V2W8_9RETR Gag protein (Fragment) OS=Equine infectious anemia virus PE=4 SV=1
+Probab=98.03  E-value=4.2e-08  Score=54.34  Aligned_cols=14  Identities=100%  Similarity=1.571  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains     8 MGDPLTWSKALKKL   21 (131)
+Q Consensus         8 mgdpltWskaLkKl   21 (131)
+                      ||||||||||||||
+T Consensus         1 mgdpltwskalkkl   14 (14)
+T tr|G4V2W8|G4V2    1 MGDPLTWSKALKKL   14 (14)
+
+
+No 8
+>tr|G4V2V8|G4V2V8_9RETR Gag protein (Fragment) OS=Equine infectious anemia virus PE=4 SV=1
+Probab=98.02  E-value=4.7e-08  Score=54.17  Aligned_cols=14  Identities=93%  Similarity=1.519  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains     8 MGDPLTWSKALKKL   21 (131)
+Q Consensus         8 mgdpltWskaLkKl   21 (131)
+                      ||||.|||||||||
+T Consensus         1 mgdpvtwskalkkl   14 (14)
+T tr|G4V2V8|G4V2    1 MGDPVTWSKALKKL   14 (14)
+
+
+No 9
+>tr|G4V2W0|G4V2W0_9RETR Gag protein (Fragment) OS=Equine infectious anemia virus PE=4 SV=1 
+Probab=98.02  E-value=4.7e-08  Score=54.17  Aligned_cols=14  Identities=93%  Similarity=1.519  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains     8 MGDPLTWSKALKKL   21 (131)
+Q Consensus         8 mgdpltWskaLkKl   21 (131)
+                      ||||.|||||||||
+T Consensus         1 mgdpvtwskalkkl   14 (14)
+T tr|G4V2W0|G4V2    1 MGDPVTWSKALKKL   14 (14)
+
+
+No 10
+>tr|G4V2W7|G4V2W7_9RETR Gag protein (Fragment) OS=Equine infectious anemia virus PE=4 SV=1 
+Probab=98.02  E-value=4.7e-08  Score=54.17  Aligned_cols=14  Identities=93%  Similarity=1.519  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains     8 MGDPLTWSKALKKL   21 (131)
+Q Consensus         8 mgdpltWskaLkKl   21 (131)
+                      ||||.|||||||||
+T Consensus         1 mgdpvtwskalkkl   14 (14)
+T tr|G4V2W7|G4V2    1 MGDPVTWSKALKKL   14 (14)
+
+
+No 11
+>tr|G4V2W3|G4V2W3_9RETR Gag protein (Fragment) OS=Equine infectious anemia virus PE=4 SV=1 
+Probab=98.02  E-value=4.7e-08  Score=54.17  Aligned_cols=14  Identities=93%  Similarity=1.519  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains     8 MGDPLTWSKALKKL   21 (131)
+Q Consensus         8 mgdpltWskaLkKl   21 (131)
+                      ||||.|||||||||
+T Consensus         1 mgdpvtwskalkkl   14 (14)
+T tr|G4V2W3|G4V2    1 MGDPVTWSKALKKL   14 (14)
+
+
+No 12
+>tr|G4V2W1|G4V2W1_9RETR Gag protein (Fragment) OS=Equine infectious anemia virus PE=4 SV=1 
+Probab=98.02  E-value=4.7e-08  Score=54.17  Aligned_cols=14  Identities=93%  Similarity=1.519  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains     8 MGDPLTWSKALKKL   21 (131)
+Q Consensus         8 mgdpltWskaLkKl   21 (131)
+                      ||||.|||||||||
+T Consensus         1 mgdpvtwskalkkl   14 (14)
+T tr|G4V2W1|G4V2    1 MGDPVTWSKALKKL   14 (14)
+
+
+No 13
+>tr|G4V2W5|G4V2W5_9RETR Gag protein (Fragment) OS=Equine infectious anemia virus PE=4 SV=1 
+Probab=98.02  E-value=4.7e-08  Score=54.17  Aligned_cols=14  Identities=93%  Similarity=1.519  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains     8 MGDPLTWSKALKKL   21 (131)
+Q Consensus         8 mgdpltWskaLkKl   21 (131)
+                      ||||.|||||||||
+T Consensus         1 mgdpvtwskalkkl   14 (14)
+T tr|G4V2W5|G4V2    1 MGDPVTWSKALKKL   14 (14)
+
+
+No 14
+>tr|G4V2W2|G4V2W2_9RETR Gag protein (Fragment) OS=Equine infectious anemia virus PE=4 SV=1 
+Probab=98.02  E-value=4.7e-08  Score=54.17  Aligned_cols=14  Identities=93%  Similarity=1.519  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains     8 MGDPLTWSKALKKL   21 (131)
+Q Consensus         8 mgdpltWskaLkKl   21 (131)
+                      ||||.|||||||||
+T Consensus         1 mgdpvtwskalkkl   14 (14)
+T tr|G4V2W2|G4V2    1 MGDPVTWSKALKKL   14 (14)
+
+
+No 15
+>tr|G4V2W4|G4V2W4_9RETR Gag protein (Fragment) OS=Equine infectious anemia virus PE=4 SV=1 
+Probab=98.02  E-value=4.7e-08  Score=54.17  Aligned_cols=14  Identities=93%  Similarity=1.519  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains     8 MGDPLTWSKALKKL   21 (131)
+Q Consensus         8 mgdpltWskaLkKl   21 (131)
+                      ||||.|||||||||
+T Consensus         1 mgdpvtwskalkkl   14 (14)
+T tr|G4V2W4|G4V2    1 MGDPVTWSKALKKL   14 (14)
+
+
+No 16
+>tr|A0A0F9DLW6|A0A0F9DLW6_9ZZZZ Uncharacterized protein (Fragment) OS=marine sediment metagenome GN=LCGC14_2182380 PE=4 SV=1 
+Probab=95.22  E-value=0.0066  Score=41.31  Aligned_cols=26  Identities=62%  Similarity=0.822  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    55 EKDWQLRDVIPLLEDVTQTLSGQERE   80 (131)
+Q Consensus        55 eKDWqLrdviPLLeDV~qtLsGqEke   80 (131)
+                      ||||||.-|-|-||||--|-+||-|.
+T Consensus         9 ekdwqlslvrpsledvfvtctgqgrq   34 (34)
+T tr|A0A0F9DLW6|    9 EKDWQLSLVRPSLEDVFVTCTGQGRQ   34 (34)
+
+
+No 17
+>tr|F2YGD9|F2YGD9_CAEV Matrix protein (Fragment) OS=Small ruminant lentivirus GN=gag PE=4 SV=1
+Probab=94.53  E-value=0.016  Score=48.74  Aligned_cols=93  Identities=27%  Similarity=0.524  Sum_probs=0.0  Template_Neff=2.027
+
+Q 1HEK_1|Chains    16 KALKKLEKVTVQ-GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQTL----SGQEREAFERTWWAIS   90 (131)
+Q Consensus        16 kaLkKlEKVtVq-GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~qtL----sGqEkeAFekTWWaIs   90 (131)
+                      +.||+-=||.|. |...||-|||-|+|--+|.+..-  .+|.-|...-.-.+-+-+-|.-    |-.+-.+...|--.|-
+T Consensus        12 e~iK~ackIkVr~ggE~LTEGNCLWclKTle~m~Ed--~reEpWT~~K~~~~W~rlKqv~PEEssk~df~sLkaTlAgl~   89 (138)
+T tr|F2YGD9|F2YG   12 EVIKAACKIKVGAGKETLTEGNCLWCLKTLDFMFED--LKEEPWTITKMYTVWERLKQLTPEESSKREFASLQATLACLM   89 (138)
+
+
+Q 1HEK_1|Chains    91 AVKMGLQINNVVDGKASFQL  110 (131)
+Q Consensus        91 AvKmGlqI~nv~Dgkatfql  110 (131)
+                      .+.||+|-..+.|..|+..+
+T Consensus        90 C~qmGMqPETlQdA~atl~M  109 (138)
+T tr|F2YGD9|F2YG   90 CSQMGMKPETVQDARAIISM  109 (138)
+
+
+No 18
+>tr|Q1W387|Q1W387_CAEV Gag protein (Fragment) OS=Caprine arthritis encephalitis virus GN=gag PE=4 SV=1
+Probab=91.92  E-value=0.15  Score=44.76  Aligned_cols=93  Identities=23%  Similarity=0.442  Sum_probs=0.0  Template_Neff=1.800
+
+Q 1HEK_1|Chains    16 KALKKLEKVTVQ-GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQTL----SGQEREAFERTWWAIS   90 (131)
+Q Consensus        16 kaLkKlEKVtVq-GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~qtL----sGqEkeAFekTWWaIs   90 (131)
+                      +.+|+--|+.|. |...||.|||-|+|--.|.+..-  .||.-|...-.-.+-.-|-+.-    |..+--....|-..+-
+T Consensus        17 ~cik~aCKikVr~~gE~LTEGNClWcLKtldymfEe--~keepWt~~Kf~~iW~rvK~ltPEEssk~df~SLqATLaglm   94 (174)
+T tr|Q1W387|Q1W3   17 KCIKQACKIKVRPRGEHLTEGNCLWCLKTLDYMFEE--HKEEPWTKVKFRTIWQKVKNLTPEESNKKDFMSLQATLAGLM   94 (174)
+
+
+Q 1HEK_1|Chains    91 AVKMGLQINNVVDGKASFQL  110 (131)
+Q Consensus        91 AvKmGlqI~nv~Dgkatfql  110 (131)
+                      .+.||++-..+.|.-||...
+T Consensus        95 C~QmGMkPETlQdA~atv~M  114 (174)
+T tr|Q1W387|Q1W3   95 CCQMGMKPETLQDAMATVTM  114 (174)
+
+
+No 19
+>tr|A0A151JFS0|A0A151JFS0_9VIBR Uncharacterized protein OS=Vibrio sp. 2756-81 GN=AUQ44_01630 PE=4 SV=1 
+Probab=90.34  E-value=0.37  Score=39.66  Aligned_cols=34  Identities=38%  Similarity=0.651  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    24 VTVQGSQKLTTGNCNWALSLVDLFHDTNFVKEKD   57 (131)
+Q Consensus        24 VtVqGSqklt~gNcnWALsLVDL~HdTn~~keKD   57 (131)
+                      |.-|-.-||.+|||||-|...=+-|-..|-..-|
+T Consensus        24 vksqrtfklksgncnwylhiscinhvsdfdatad   57 (100)
+T tr|A0A151JFS0|   24 VKSQRTFKLKSGNCNWYLHISCINHVSDFDATAD   57 (100)
+
+
+No 20
+>tr|J6J2K7|J6J2K7_9RHOB Uncharacterized protein OS=Rhodovulum sp. PH10 GN=A33M_3641 PE=4 SV=1
+Probab=89.62  E-value=0.31  Score=39.81  Aligned_cols=40  Identities=28%  Similarity=0.537  Sum_probs=0.0  Template_Neff=3.588
+
+Q 1HEK_1|Chains    59 QLRDVIPLLEDVTQTLSGQEREAFERTWWAISAVKMGLQI   98 (131)
+Q Consensus        59 qLrdviPLLeDV~qtLsGqEkeAFekTWWaIsAvKmGlqI   98 (131)
+                      .|.+++.-++-+...|.|-+.+.|+..||...||..|++|
+T Consensus        10 Rl~hIld~i~gi~~a~~g~~~~df~~s~~l~raverai~I   49 (118)
+T tr|J6J2K7|J6J2   10 RLAHILDEIDGITAALAGVTFEDFQASWLLKRAVERAIQI   49 (118)
+
+
+No 21
+>tr|D3VWU2|D3VWU2_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1 
+Probab=89.41  E-value=0.52  Score=45.87  Aligned_cols=97  Identities=27%  Similarity=0.488  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.......|.+.|    .-|..|-..+..|--.+..-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtltkmytvwerlrqltpeetskrefaslqatmacltcsqmgmkpetvqa  100 (428)
+T tr|D3VWU2|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWERLRQLTPEETSKREFASLQATMACLTCSQMGMKPETVQA  100 (428)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .....-+-..--|.+..+.+..+
+T Consensus       101 aqgiigikeglrenkedkekkve  123 (428)
+T tr|D3VWU2|D3VW  101 AQGIIGIKEGLRENKEDKEKKVE  123 (428)
+
+
+No 22
+>tr|A0A119C3E4|A0A119C3E4_9BURK Uncharacterized protein OS=Burkholderia ubonensis GN=WK95_08075 PE=4 SV=1 
+Probab=88.51  E-value=0.7  Score=37.56  Aligned_cols=26  Identities=42%  Similarity=0.617  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    97 QINNVVDGKASFQLLRAKYEKKTANK  122 (131)
+Q Consensus        97 qI~nv~DgkatfqllkaKyer~~~~k  122 (131)
+                      |-..|+.|||+|||+-|-|.||.+-|
+T Consensus        50 qttavgegkatyqlivaiydrkknlk   75 (88)
+T tr|A0A119C3E4|   50 QTTAVGEGKATYQLIVAIYDRKKNLK   75 (88)
+
+
+No 23
+>tr|D3VWV4|D3VWV4_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1
+Probab=88.40  E-value=0.72  Score=45.03  Aligned_cols=97  Identities=26%  Similarity=0.486  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-+|++...  .|...|.|.......|.+.|    .-|..|-..+..|--.|-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktidfifed--iktepwtltkmytvwerlkqltpeetskrefaslqatiacimcsqmgmkpetvqa  100 (429)
+T tr|D3VWV4|D3VW   23 GKETLTEGNCLWALKTIDFIFED--IKTEPWTLTKMYTVWERLKQLTPEETSKREFASLQATMACMMCSQMGMKPETVQA  100 (429)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .+....+-..--|.+..+.+..+
+T Consensus       101 argiismkeglrenkedkekeve  123 (429)
+T tr|D3VWV4|D3VW  101 ARGIISMKEGLRENKEDKEKEVE  123 (429)
+
+
+No 24
+>tr|W8VLI3|W8VLI3_9RETR Gag polyprotein OS=Visna/maedi virus GN=gag PE=4 SV=1 
+Probab=88.33  E-value=0.74  Score=45.04  Aligned_cols=94  Identities=27%  Similarity=0.497  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||+....  .|...|.|.......+.+.|    .-|..|-..+..|.-.+-.-.||+.-..|..
+T Consensus        30 gketltegnclwalktvdfifed--iktepwtltkmytvwdrlkqltpeetskrefaslqatlaclmcsqmgmkpetvqa  107 (435)
+T tr|W8VLI3|W8VL   30 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWDRLKQLTPEETSKREFASLQATLACLMCSQMGMKPETVQA  107 (435)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKK  123 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kk  123 (131)
+                      ......+-..-.|.+...|+
+T Consensus       108 aqgiikmkqglhenkeqekk  127 (435)
+T tr|W8VLI3|W8VL  108 AQGIIKMKQGLHENKEQEKK  127 (435)
+
+
+No 25
+>tr|D3VWU0|D3VWU0_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1 
+Probab=88.06  E-value=0.79  Score=44.77  Aligned_cols=97  Identities=27%  Similarity=0.478  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.......|.+.|    .-|..|-..+..|--.+-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtltkmytvwerlrqltpeetskrefaslqatmaclmcsqmgmkpetvqa  100 (428)
+T tr|D3VWU0|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWERLRQLTPEETSKREFASLQATMACLMCSQMGMKPETVQA  100 (428)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .....-+-..--|.+..+.+..+
+T Consensus       101 aqgiigikeglrenkedkekkve  123 (428)
+T tr|D3VWU0|D3VW  101 AQGIIGIKEGLRENKEDKEKKVE  123 (428)
+
+
+No 26
+>tr|D3VWT9|D3VWT9_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1
+Probab=88.03  E-value=0.8  Score=44.74  Aligned_cols=97  Identities=27%  Similarity=0.478  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.......|.+.|    .-|..|-..+..|--.+-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtltkmytvwerlrqltpeetskrefaslqatmaclmcsqmgmkpetvqa  100 (428)
+T tr|D3VWT9|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWERLRQLTPEETSKREFASLQATMACLMCSQMGMKPETVQA  100 (428)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .....-+-..--|.+..+.+..+
+T Consensus       101 aqgiigikeglrenkedkekkve  123 (428)
+T tr|D3VWT9|D3VW  101 AQGIIGIKEGLRENKEDKEKKVE  123 (428)
+
+
+No 27
+>tr|D3VWU1|D3VWU1_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1 
+Probab=88.02  E-value=0.8  Score=44.74  Aligned_cols=97  Identities=27%  Similarity=0.478  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.......|.+.|    .-|..|-..+..|--.+-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtltkmytvwerlrqltpeetskrefaslqatmaclmcsqmgmkpetvqa  100 (428)
+T tr|D3VWU1|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWERLRQLTPEETSKREFASLQATMACLMCSQMGMKPETVQA  100 (428)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .....-+-..--|.+..+.+..+
+T Consensus       101 aqgiigikeglrenkedkekkve  123 (428)
+T tr|D3VWU1|D3VW  101 AQGIIGIKEGLRENKEDKEKKVE  123 (428)
+
+
+No 28
+>tr|D3VWT8|D3VWT8_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1 
+Probab=88.02  E-value=0.8  Score=44.74  Aligned_cols=97  Identities=27%  Similarity=0.478  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.......|.+.|    .-|..|-..+..|--.+-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtltkmytvwerlrqltpeetskrefaslqatmaclmcsqmgmkpetvqa  100 (428)
+T tr|D3VWT8|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWERLRQLTPEETSKREFASLQATMACLMCSQMGMKPETVQA  100 (428)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .....-+-..--|.+..+.+..+
+T Consensus       101 aqgiigikeglrenkedkekkve  123 (428)
+T tr|D3VWT8|D3VW  101 AQGIIGIKEGLRENKEDKEKKVE  123 (428)
+
+
+No 29
+>tr|D3VWT7|D3VWT7_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1
+Probab=87.72  E-value=0.87  Score=44.53  Aligned_cols=97  Identities=26%  Similarity=0.470  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.......|.+.|    .-|..|-..+..|--.+-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtltkmytvwerlrqltpeetskkefaslqatmaclmcsqmgmkpetvqa  100 (428)
+T tr|D3VWT7|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWERLRQLTPEETSKREFASLQATMACLMCSQMGMKPETVQA  100 (428)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .....-+-..--|.+..+.+..+
+T Consensus       101 aqgiigikeglrenkedkekkve  123 (428)
+T tr|D3VWT7|D3VW  101 AQGIIGIKEGLRENKEDKEKKVK  123 (428)
+
+
+No 30
+>tr|A0A142F3P6|A0A142F3P6_CAEV Gag polyprotein (Fragment) OS=Small ruminant lentivirus GN=gag PE=4 SV=1 
+Probab=87.44  E-value=0.94  Score=44.34  Aligned_cols=109  Identities=28%  Similarity=0.459  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    16 KALKKLEKVTV-QGSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVI----PLLEDVTQTLSGQEREAFERTWWAIS   90 (131)
+Q Consensus        16 kaLkKlEKVtV-qGSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdvi----PLLeDV~qtLsGqEkeAFekTWWaIs   90 (131)
+                      +|+|.--|+.| .|...||.|||-|||.-||++...  .|...|.|....    .|-|-.-+.-|..|-..+..|--.+-
+T Consensus        17 eaikatckikvgagketltegnclwalktvdfifed--ikaepwtltkmytvwgrlkeltpeetskrefaslqatiaclm   94 (429)
+T tr|A0A142F3P6|   17 EAIKATCKIKVGAGKETLTEGNCLWALKTVDFIFED--IKAEPWTLTKMYTVWGRLKELTPEETSKREFASLQATIACLM   94 (429)
+
+
+Q 1HEK_1|Chains    91 AVKMGLQINNVVDGKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus        91 AvKmGlqI~nv~DgkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .-.||+.-..|...+....+-..--|.+.++.+.-|
+T Consensus        95 csqmgmkpetvqaargiismkeglqenkeakeknie  130 (429)
+T tr|A0A142F3P6|   95 CSQMGMKPETVQAARGIISMKEGLQENKEAKEKNIE  130 (429)
+
+
+No 31
+>tr|D3VWX4|D3VWX4_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1 
+Probab=87.28  E-value=0.98  Score=44.22  Aligned_cols=93  Identities=26%  Similarity=0.483  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.......+.+.|    .-|..|-..+..|.-.+-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtltkmytvwdrlrqltpeetskrefaslqatlaclmcsqmgmkpetvqa  100 (428)
+T tr|D3VWX4|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWDRLRQLTPEETSKREFASLQATLACLMCSQMGMKPETVQA  100 (428)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANK  122 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~k  122 (131)
+                      .+....+--.--|.+..+|
+T Consensus       101 argiismkgglqenkeekk  119 (428)
+T tr|D3VWX4|D3VW  101 ARGIISMKGGLQENKEEKK  119 (428)
+
+
+No 32
+>tr|D3VWX5|D3VWX5_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1
+Probab=87.23  E-value=0.99  Score=44.19  Aligned_cols=93  Identities=26%  Similarity=0.483  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.......+.+.|    .-|..|-..+..|.-.+-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtltkmytvwdrlrqltpeetskrefaslqatlaclmcsqmgmkpetvqa  100 (428)
+T tr|D3VWX5|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWDRLRQLTPEETSKREFASLQATLACLMCSQMGMKPETVQA  100 (428)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANK  122 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~k  122 (131)
+                      .+....+--.--|.+..+|
+T Consensus       101 argiismkgglqenkeekk  119 (428)
+T tr|D3VWX5|D3VW  101 ARGIISMKGGLQENKEEKK  119 (428)
+
+
+No 33
+>tr|D3VWW5|D3VWW5_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1
+Probab=87.10  E-value=1  Score=44.11  Aligned_cols=97  Identities=27%  Similarity=0.473  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.........+.|    .-|..|-..+..|--.|-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtltkmytvwgrlkqltpeetskrefaslqatmacimcsqmgmkpetvqa  100 (429)
+T tr|D3VWW5|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWGRLKQLTPEETSKREFASLQATMACIMCSQMGMKPETVQA  100 (429)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      ......+-..--|.+..+.+..+
+T Consensus       101 aqgiismkeglrenkedkekeve  123 (429)
+T tr|D3VWW5|D3VW  101 AQGIISMKEGLRENKEDKEKEVE  123 (429)
+
+
+No 34
+>tr|H6TKH7|H6TKH7_CAEV Gag polyprotein OS=Small ruminant lentivirus GN=gag PE=4 SV=1 
+Probab=87.04  E-value=1  Score=44.20  Aligned_cols=81  Identities=26%  Similarity=0.534  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVT----QTLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~----qtLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .||..|.|.........+.    +.-|..|-..+..|--.+-.-.||+.-..|..
+T Consensus        30 gketltegnclwalktvdfifed--ikeepwtltkmytvwgrlkkltpeetskrefaslqatmaclmcsqmgmkpetvqa  107 (442)
+T tr|H6TKH7|H6TK   30 GKETLTEGNCLWALKTVDFIFED--IKEEPWTLTKMYTVWGRLKKLTPEETSKREFASLQATMACLMCSQMGMKPETVQA  107 (442)
+
+
+Q 1HEK_1|Chains   104 GKASFQL  110 (131)
+Q Consensus       104 gkatfql  110 (131)
+                      .+....+
+T Consensus       108 argilsm  114 (442)
+T tr|H6TKH7|H6TK  108 ARGILSM  114 (442)
+
+
+No 35
+>tr|D3VWW8|D3VWW8_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1 
+Probab=86.19  E-value=1.3  Score=43.56  Aligned_cols=93  Identities=28%  Similarity=0.474  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    32 LTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVDGKAS  107 (131)
+Q Consensus        32 lt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~Dgkat  107 (131)
+                      ||.|||-|||.-||++...  .|...|.|.......|.+.|    .-|..|-..+..|--.|-.-.||+.-..|......
+T Consensus        27 ltegnclwalktvdfifed--iktepwtltkmytvwerlkqltpeetskrefaslqatmacimcsqmgmkpetvqaaqgi  104 (430)
+T tr|D3VWW8|D3VW   27 LTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWERLKQLTPEETSKREFASLQATMACIMCSQMGMKPETVQAAQGI  104 (430)
+
+
+Q 1HEK_1|Chains   108 FQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       108 fqllkaKyer~~~~kkq~~  126 (131)
+                      .-+-..--|.+..+.+..|
+T Consensus       105 igmkeglrenkedkekeve  123 (430)
+T tr|D3VWW8|D3VW  105 IGMKEGLRENKEDKEKEVE  123 (430)
+
+
+No 36
+>tr|D3VWW7|D3VWW7_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1
+Probab=85.99  E-value=1.3  Score=43.43  Aligned_cols=97  Identities=27%  Similarity=0.469  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.........+.|    .-|..|-..+..|--.|-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtltkmytvwgrlkqltpeetskrefaslqatmacimcsqmgmkpetvqa  100 (429)
+T tr|D3VWW7|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWGRLKQLTPEETSKREFASLQATMACIMCSQMGMKPETVQA  100 (429)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .....-+-..--|.+..+.+..+
+T Consensus       101 aqgiigmkeglrenkedkekeve  123 (429)
+T tr|D3VWW7|D3VW  101 AQGIIGMKEGLRENKEDKEKEVE  123 (429)
+
+
+No 37
+>tr|D3VWW4|D3VWW4_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1 
+Probab=85.95  E-value=1.3  Score=43.41  Aligned_cols=97  Identities=27%  Similarity=0.469  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.........+.|    .-|..|-..+..|--.|-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtltkmytvwgrlkqltpeetskrefaslqatmacimcsqmgmkpetvqa  100 (429)
+T tr|D3VWW4|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWGRLKQLTPEETSKREFASLQATMACIMCSQMGMKPETVQA  100 (429)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .....-+-..--|.+..+.+..+
+T Consensus       101 aqgiigmkeglrenkedkekeve  123 (429)
+T tr|D3VWW4|D3VW  101 AQGIIGMKEGLRENKEDKEKEVE  123 (429)
+
+
+No 38
+>tr|D3VWW3|D3VWW3_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1 
+Probab=85.88  E-value=1.4  Score=43.37  Aligned_cols=97  Identities=27%  Similarity=0.469  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.........+.|    .-|..|-..+..|--.|-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtltkmytvwgrlkqltpeetskrefaslqatmacimcsqmgmkpetvqa  100 (429)
+T tr|D3VWW3|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWGRLKQLTPEETSKREFASLQATMACIMCSQMGMKPETVQA  100 (429)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .....-+-..--|.+..+.+..+
+T Consensus       101 aqgiigmkeglrenkedkekeve  123 (429)
+T tr|D3VWW3|D3VW  101 AQGIIGMKEGLRENKEDKEKEVE  123 (429)
+
+
+No 39
+>tr|D3VWV0|D3VWV0_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1
+Probab=85.82  E-value=1.4  Score=43.34  Aligned_cols=109  Identities=26%  Similarity=0.452  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    16 KALKKLEKVTV-QGSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAIS   90 (131)
+Q Consensus        16 kaLkKlEKVtV-qGSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIs   90 (131)
+                      +.+|.--|+|| .|...||.|||-|||.-||++...  .|...|.|.........+.|    .-|..|-..+..|--..-
+T Consensus        10 evikatckitvgagketltegnclwalktvdfifed--iktepwtltkmytvwgrlkqltpeetskrefaslqatmacmm   87 (430)
+T tr|D3VWV0|D3VW   10 EVIKATCKITVGAGKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWGRLKQLTPEETSKREFASLQATMACMM   87 (430)
+
+
+Q 1HEK_1|Chains    91 AVKMGLQINNVVDGKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus        91 AvKmGlqI~nv~DgkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .-.||+.-..|...+....+-..-...+..+.+.-+
+T Consensus        88 csqmgmkpetvqaargiiemkeglhgnkedkekeie  123 (430)
+T tr|D3VWV0|D3VW   88 CSQMGMKPETVQAARGIIEMKEGLHGNKEDKEKEIE  123 (430)
+
+
+No 40
+>tr|D3VWW9|D3VWW9_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1
+Probab=85.73  E-value=1.4  Score=43.29  Aligned_cols=97  Identities=27%  Similarity=0.469  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.........+.|    .-|..|-..+..|--.|-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtltkmytvwgrlkqltpeetskrefaslqatmacimcsqmgmkpetvqa  100 (430)
+T tr|D3VWW9|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWGRLKQLTPEETSKREFASLQATMACIMCSQMGMKPETVQA  100 (430)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .....-+-..--|.+..+.+..+
+T Consensus       101 aqgiigmkeglrenkedkekeve  123 (430)
+T tr|D3VWW9|D3VW  101 AQGIIGMKEGLRENKEDKEKEVE  123 (430)
+
+
+No 41
+>tr|A0A0C3S0T7|A0A0C3S0T7_PHLGI Uncharacterized protein OS=Phlebiopsis gigantea 11061_1 CR5-6 GN=PHLGIDRAFT_372535 PE=4 SV=1 
+Probab=85.64  E-value=1.4  Score=40.57  Aligned_cols=67  Identities=31%  Similarity=0.476  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    16 KALKKLEKVTVQGSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQTLSGQEREAFERT   85 (131)
+Q Consensus        16 kaLkKlEKVtVqGSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~qtLsGqEkeAFekT   85 (131)
+                      +.|.||.-+.|-=|.|||...|.   ||-||-.|......-.-|-|..+|..+.+.|-.+.+|-..||..
+T Consensus       145 etlaklpyisvplskkltaagcq---slddlakdsavrerltvqprkmvpwvdhilqpvtreeaqrfedl  211 (229)
+T tr|A0A0C3S0T7|  145 ETLAKLPYISVPLSKKLTAAGCQ---SLDDLAKDSAVRERLTVQPRKMVPWVDHILQPVTREEAQRFEDL  211 (229)
+
+
+No 42
+>tr|A0A090SUQ9|A0A090SUQ9_9VIBR Uncharacterized protein OS=Vibrio maritimus GN=JCM19235_1363 PE=4 SV=1 
+Probab=85.38  E-value=1.5  Score=38.95  Aligned_cols=34  Identities=47%  Similarity=0.719  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    59 QLRDVIPLLEDVTQTLSGQEREAFERTWWAISAVKM   94 (131)
+Q Consensus        59 qLrdviPLLeDV~qtLsGqEkeAFekTWWaIsAvKm   94 (131)
+                      ||||-+.|  -+..|=|+.|+..|||.|-|++|+-|
+T Consensus        88 qlrdslql--tivktdspsekaefervwkavsailm  121 (166)
+T tr|A0A090SUQ9|   88 QLRDSLQL--TIVKTDSPSEKAEFERVWKAVSAILM  121 (166)
+
+
+No 43
+>tr|D3VWU7|D3VWU7_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1
+Probab=84.56  E-value=1.8  Score=42.68  Aligned_cols=97  Identities=25%  Similarity=0.460  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.........+.|    .-|..|-..+..|--..-.-+||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktdpwtltkmytvwgrlkqltpeetskrefaslqatmacmmcsrmgmkpetvqa  100 (430)
+T tr|D3VWU7|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTDPWTLTKMYTVWGRLKQLTPEETSKREFASLQATMACMMCSRMGMKPETVQA  100 (430)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .+....+-..-...+..+.+.-|
+T Consensus       101 argiiemkeglhgnkedkekeie  123 (430)
+T tr|D3VWU7|D3VW  101 ARGIIEMKEGLHGNKEDKEKEIE  123 (430)
+
+
+No 44
+>tr|H6TKH4|H6TKH4_CAEV Gag polyprotein OS=Small ruminant lentivirus GN=gag PE=4 SV=1 
+Probab=84.05  E-value=1.9  Score=42.54  Aligned_cols=81  Identities=26%  Similarity=0.532  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVT----QTLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~----qtLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.......|.+.    +.-|..|-..+..|--.+-.-.||+.-..|..
+T Consensus        30 gketltegnclwalktvdfifed--lktepwtltkmytvwerlkkltpeetskrefaslqatmaclmcsqmgmkpetvqa  107 (443)
+T tr|H6TKH4|H6TK   30 GKETLTEGNCLWALKTVDFIFED--LKTEPWTLTKMYTVWERLKKLTPEETSKREFASLQATMACLMCSQMGMKPETVQA  107 (443)
+
+
+Q 1HEK_1|Chains   104 GKASFQL  110 (131)
+Q Consensus       104 gkatfql  110 (131)
+                      .+....+
+T Consensus       108 arsiidm  114 (443)
+T tr|H6TKH4|H6TK  108 ARSIIDM  114 (443)
+
+
+No 45
+>tr|D3VWT1|D3VWT1_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1
+Probab=83.76  E-value=2  Score=42.29  Aligned_cols=97  Identities=25%  Similarity=0.461  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.........+.|    .-|..|-..+..|--..-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtltkmytvwgrlkqltpeetskrefaslqatmacmmcsqmgmkpetvqa  100 (430)
+T tr|D3VWT1|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWGRLKQLTPEETSKREFASLQATMACMMCSQMGMKPETVQA  100 (430)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .+....+-..-...+..+.+..+
+T Consensus       101 argiiemkeglhgnkedkekeve  123 (430)
+T tr|D3VWT1|D3VW  101 ARGIIEMKEGLHGNKEDKEKEVE  123 (430)
+
+
+No 46
+>tr|D3VWT4|D3VWT4_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1 
+Probab=83.76  E-value=2  Score=42.29  Aligned_cols=97  Identities=25%  Similarity=0.461  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.........+.|    .-|..|-..+..|--..-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtltkmytvwgrlkqltpeetskrefaslqatmacmmcsqmgmkpetvqa  100 (430)
+T tr|D3VWT4|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWGRLKQLTPEETSKREFASLQATMACMMCSQMGMKPETVQA  100 (430)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .+....+-..-...+..+.+..+
+T Consensus       101 argiiemkeglhgnkedkekeve  123 (430)
+T tr|D3VWT4|D3VW  101 ARGIIEMKEGLHGNKEDKEKEVE  123 (430)
+
+
+No 47
+>tr|A0A016RUM4|A0A016RUM4_9BILA Uncharacterized protein OS=Ancylostoma ceylanicum GN=Acey_s0369.g78 PE=4 SV=1
+Probab=83.58  E-value=2.1  Score=34.35  Aligned_cols=21  Identities=57%  Similarity=0.832  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    23 KVTVQGSQKLTTGNCNWALSL   43 (131)
+Q Consensus        23 KVtVqGSqklt~gNcnWALsL   43 (131)
+                      +||.||.--||+..-||||||
+T Consensus        19 rvtaqgalcltsnqgnwalsl   39 (76)
+T tr|A0A016RUM4|   19 RVTAQGALCLTSNQGNWALSL   39 (76)
+
+
+No 48
+>tr|D3VWT3|D3VWT3_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1 
+Probab=83.32  E-value=2.2  Score=42.08  Aligned_cols=81  Identities=26%  Similarity=0.523  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.........+.|    .-|..|-..+..|--.+-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtlakmytvwgrlkqltpeetskrefaslqatmaclmcsqmgmkpetvqa  100 (429)
+T tr|D3VWT3|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLAKMYTVWGRLKQLTPEETSKREFASLQATMACLMCSQMGMKPETVQA  100 (429)
+
+
+Q 1HEK_1|Chains   104 GKASFQL  110 (131)
+Q Consensus       104 gkatfql  110 (131)
+                      .+....+
+T Consensus       101 argiiem  107 (429)
+T tr|D3VWT3|D3VW  101 ARGIIEM  107 (429)
+
+
+No 49
+>tr|D3VWW1|D3VWW1_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1
+Probab=83.21  E-value=2.2  Score=42.04  Aligned_cols=81  Identities=25%  Similarity=0.522  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.........+.|    .-|..|-..+..|--..-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--ikkepwtltkmytvwgrlkqltpeetskrefaslqatmacmmcsqmgmkpetvqa  100 (430)
+T tr|D3VWW1|D3VW   23 GKETLTEGNCLWALKTIDFIFED--IKTEPWTLTKMYTVWGRLKQLTPEETSKREFASLQATMACMMCSQMGMKPETVQA  100 (430)
+
+
+Q 1HEK_1|Chains   104 GKASFQL  110 (131)
+Q Consensus       104 gkatfql  110 (131)
+                      .+....+
+T Consensus       101 argiiem  107 (430)
+T tr|D3VWW1|D3VW  101 ARGIIEM  107 (430)
+
+
+No 50
+>tr|D3VWU6|D3VWU6_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1
+Probab=83.07  E-value=2.3  Score=41.97  Aligned_cols=97  Identities=25%  Similarity=0.458  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.........+.|    .-|..|-..+..|--..-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtltkmytvwgrlkqltpeetskrefaslqatmacmmcsqmgmkpetvqa  100 (430)
+T tr|D3VWU6|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWGRLKQLTPEETSKREFASLQATMACMMCSQMGMKPETVQA  100 (430)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .+....+-..-...+..+.+.-+
+T Consensus       101 argiiemkeglhgnkedkekeie  123 (430)
+T tr|D3VWU6|D3VW  101 ARGIIEMKEGLHGNKEDKEKEIE  123 (430)
+
+
+No 51
+>tr|H6TKH1|H6TKH1_CAEV Gag polyprotein OS=Small ruminant lentivirus GN=gag PE=4 SV=1 
+Probab=83.06  E-value=2.3  Score=42.06  Aligned_cols=81  Identities=26%  Similarity=0.513  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVT----QTLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~----qtLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.........+.    +.-|..|-..+..|--.|-.-.||+.-..|..
+T Consensus        30 gketltegnclwalktvdfifed--lktepwtltkmytvwgrlkkltpeetsrrefaslqatmaciicsqmgmkpetvqa  107 (440)
+T tr|H6TKH1|H6TK   30 GKETLTEGNCLWALKTVDFIFED--LKTEPWTLTKMYTVWGRLKKLTPEETSRREFASLQATMACIICSQMGMKPETVQA  107 (440)
+
+
+Q 1HEK_1|Chains   104 GKASFQL  110 (131)
+Q Consensus       104 gkatfql  110 (131)
+                      .+....+
+T Consensus       108 argiism  114 (440)
+T tr|H6TKH1|H6TK  108 ARGIISM  114 (440)
+
+
+No 52
+>tr|D3VWV5|D3VWV5_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1 
+Probab=82.90  E-value=2.4  Score=41.89  Aligned_cols=97  Identities=25%  Similarity=0.465  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-+|++...  .|...|.|.........+.|    .-|..|-..+..|--.|-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktidfifed--iktepwtltkmytvwgrlkqltpeetskrefaslqatmacimcsqmgmkpetvqa  100 (429)
+T tr|D3VWV5|D3VW   23 GKETLTEGNCLWALKTIDFIFED--IKTEPWTLTKMYTVWGRLKQLTPEETSKREFASLQATMACIMCSQMGMKPETVQA  100 (429)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .+....+-..-...+..+.+..+
+T Consensus       101 argiiemkeglhgnkedkekeve  123 (429)
+T tr|D3VWV5|D3VW  101 ARGIIEMKEGLHGNKEDKEKEVE  123 (429)
+
+
+No 53
+>tr|D3VWS9|D3VWS9_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1 
+Probab=82.88  E-value=2.4  Score=41.89  Aligned_cols=97  Identities=25%  Similarity=0.458  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.........+.|    .-|..|-..+..|--..-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtltkmytvwgrlkqltpeetskrefaslqatmacmmcsqmgmkpetvqa  100 (430)
+T tr|D3VWS9|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWGRLKQLTPEETSKREFASLQATMACMMCSQMGMKPETVQA  100 (430)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .+....+-..-...+..+.+.-+
+T Consensus       101 argiiemkeglhgnkedkekeie  123 (430)
+T tr|D3VWS9|D3VW  101 ARGIIEMKEGLHGNKEDKEKEIE  123 (430)
+
+
+No 54
+>tr|D3VWS7|D3VWS7_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1 
+Probab=82.64  E-value=2.5  Score=41.79  Aligned_cols=97  Identities=25%  Similarity=0.458  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.........+.|    .-|..|-..+..|--..-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktepwtltkmytvwgrlkqltpeetskrefaslqatmacmmcsqmgmkpetvqa  100 (430)
+T tr|D3VWS7|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWGRLKQLTPEETSKREFASLQATMACMMCSQMGMKPETVQA  100 (430)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .+....+-..-...+..+.+.-+
+T Consensus       101 argiiemkeglhgnkedkekeie  123 (430)
+T tr|D3VWS7|D3VW  101 ARGIIEMKEGLHGNKEDKEKEIE  123 (430)
+
+
+No 55
+>tr|Q9DKV9|Q9DKV9_CAEV Gag polyprotein OS=Caprine arthritis encephalitis virus GN=gag PE=4 SV=1
+Probab=82.54  E-value=2.5  Score=41.76  Aligned_cols=93  Identities=27%  Similarity=0.518  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    16 KALKKLEKVTVQ-GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQT----LSGQEREAFERTWWAIS   90 (131)
+Q Consensus        16 kaLkKlEKVtVq-GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~qt----LsGqEkeAFekTWWaIs   90 (131)
+                      +.|||--|+.|. |...||.|||-|.+.-..-+...  ..|..|.....-.|...+.|.    -|...-..+..|.-.|.
+T Consensus        17 eclkkackikvraggerltegnclwciktlecmyed--creepwtpekckqlwkklkqvepeesskadynslkatlagiv   94 (432)
+T tr|Q9DKV9|Q9DK   17 ECLKKACRIKVRAGGERLTEGNCLWCIKTLECMYED--CREKPWTPEKCKQLWKRLKQVEPEESSKADYNSLKATLAGIV   94 (432)
+
+
+Q 1HEK_1|Chains    91 AVKMGLQINNVVDGKASFQL  110 (131)
+Q Consensus        91 AvKmGlqI~nv~Dgkatfql  110 (131)
+                      .|.||+|-....|.-||..+
+T Consensus        95 cvqmgmqpetlqdaiatlnm  114 (432)
+T tr|Q9DKV9|Q9DK   95 CVQMGMQPETLQDAIATLNM  114 (432)
+
+
+No 56
+>tr|A0A0K8QR49|A0A0K8QR49_9GAMM Uncharacterized protein OS=Mizugakiibacter sediminis GN=MBSD_n2686 PE=4 SV=1
+Probab=82.50  E-value=2.5  Score=36.19  Aligned_cols=54  Identities=30%  Similarity=0.491  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains     4 DIGSMGDPLTWSKALKKLEKVTVQGSQKLTTGNCNWALSLVDLFHDTNFVKEKD   57 (131)
+Q Consensus         4 ~~g~mgdpltWskaLkKlEKVtVqGSqklt~gNcnWALsLVDL~HdTn~~keKD   57 (131)
+                      |.|...||-.||-|-|.-..-||...-.|....-.--=.|+||+|.....|...
+T Consensus        35 dggrvadpkpwspahkartdetvkanarliaaapdlldalidllhqsklskdeg   88 (120)
+T tr|A0A0K8QR49|   35 DGGRVADPKPWSPAHKARTDETVKANARLIAAAPDLLDALIDLLHQSKLSKDEG   88 (120)
+
+
+No 57
+>tr|D3VWU4|D3VWU4_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1 
+Probab=82.42  E-value=2.6  Score=41.70  Aligned_cols=97  Identities=25%  Similarity=0.456  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.|.........+.|    .-|..|-..+..|--..-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktvdfifed--iktdpwtltkmytvwgrlkqltpeetskrefaslqatmacmmcsqmgmkpetvqa  100 (430)
+T tr|D3VWU4|D3VW   23 GKETLTEGNCLWALKTVDFIFED--IKTDPWTLTKMYTVWGRLKQLTPEETSKREFASLQATMACMMCSQMGMKPETVQA  100 (430)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .+....+-..-...+..+.+.-+
+T Consensus       101 argiiemkeglhgnkedkekeie  123 (430)
+T tr|D3VWU4|D3VW  101 ARGIIEMKEGLHGNKEDKEKEIE  123 (430)
+
+
+No 58
+>tr|Q88987|Q88987_9RETR Gag protein (Fragment) OS=Visna/maedi virus GN=gag PE=4 SV=1
+Probab=82.17  E-value=2.6  Score=42.22  Aligned_cols=97  Identities=26%  Similarity=0.487  Sum_probs=0.0  Template_Neff=1.100
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVT----QTLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~----qtLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-+|++...  .|...|.+.......+.+.    +.-|..|-..+..|.-.|-.-.||+.-..|..
+T Consensus        80 gketltegnclwalktidfifed--lktepwtitkmytvwdrlkgltpeetskrefaslqatlacimcsqmgmkpetvqa  157 (492)
+T tr|Q88987|Q889   80 GKETLTEGNCLWALKTVDFIFED--LKTEPWTITKMYTVWDRLKGLTPEETSKREFASLQATLACIMCSQMGMKPETVQA  157 (492)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .|....+-..-.|.+.++-...+
+T Consensus       158 akgiismkeglhenkeakgekve  180 (492)
+T tr|Q88987|Q889  158 ARGIISMKEGLQENKEAKEKKVE  180 (492)
+
+
+No 59
+>tr|D3VWT0|D3VWT0_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1
+Probab=81.54  E-value=2.9  Score=41.33  Aligned_cols=109  Identities=27%  Similarity=0.475  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    16 KALKKLEKVTV-QGSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAIS   90 (131)
+Q Consensus        16 kaLkKlEKVtV-qGSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIs   90 (131)
+                      +|+|.--|+.| .|...||.|||-|||.-+|++...  .|...|.|.........+.|    .-|..|-..+..|--..-
+T Consensus        10 eaikatckikvgagketltegnclwalktidfifed--iktepwtltkmytvwgrlkqltpeetskrefaslqatmacmm   87 (429)
+T tr|D3VWT0|D3VW   10 EAIKATCKIKVGAGKETLTEGNCLWALKTIDFIFED--IKTEPWTLTKMYTVWERLRQVTPEETSKREFASLQATMACMM   87 (429)
+
+
+Q 1HEK_1|Chains    91 AVKMGLQINNVVDGKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus        91 AvKmGlqI~nv~DgkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .-.||+.-..|...+....+-..-...+..+.+..+
+T Consensus        88 csqmgmkpetvqaargiiemkeglhgnkedkekeve  123 (429)
+T tr|D3VWT0|D3VW   88 CSQMGMKPETVQAAQGIIEMKEGLHENKEDKEKKVE  123 (429)
+
+
+No 60
+>tr|H6TKH6|H6TKH6_CAEV Gag polyprotein OS=Small ruminant lentivirus GN=gag PE=4 SV=1 
+Probab=81.42  E-value=3  Score=41.41  Aligned_cols=81  Identities=25%  Similarity=0.514  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVT----QTLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~----qtLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.+.........+.    +.-|..|-..+..|--.|-.-.||+.-..|..
+T Consensus        30 gketltegnclwalktvdfifed--lkaepwtitkmytvwgrlkkltpeeaskrefaslqatmacimcsqmgmkpetvqa  107 (443)
+T tr|H6TKH6|H6TK   30 GKETLTEGNCLWALKTVDFIFED--LKAEPWTITKMYTVWGRLKKLTPEEASKREFASLQATMACIMCSQMGMKPETVQA  107 (443)
+
+
+Q 1HEK_1|Chains   104 GKASFQL  110 (131)
+Q Consensus       104 gkatfql  110 (131)
+                      .+....+
+T Consensus       108 argilsm  114 (443)
+T tr|H6TKH6|H6TK  108 ARGILSM  114 (443)
+
+
+No 61
+>tr|H6TKH5|H6TKH5_CAEV Gag polyprotein OS=Small ruminant lentivirus GN=gag PE=4 SV=1 
+Probab=80.91  E-value=3.2  Score=41.20  Aligned_cols=81  Identities=25%  Similarity=0.523  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVT----QTLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~----qtLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .|...|.+.......|.+.    +.-|..|-..+..|--.+-.-.||+.-..|..
+T Consensus        30 gketltegnclwalktvdfifed--lkaepwtitkmytvwerlkkltpeetskrefaslqatmaclmcsqmgmkpetvqa  107 (442)
+T tr|H6TKH5|H6TK   30 GKETLTEGNCLWALKTVDFIFED--LKAEPWTITKMYTVWERLKKLTPEETSKREFASLQATMACLMCSQMGMKPETVQA  107 (442)
+
+
+Q 1HEK_1|Chains   104 GKASFQL  110 (131)
+Q Consensus       104 gkatfql  110 (131)
+                      .+....+
+T Consensus       108 argiism  114 (442)
+T tr|H6TKH5|H6TK  108 ARGIISM  114 (442)
+
+
+No 62
+>tr|A8TCG8|A8TCG8_CAEV Gag protein (Fragment) OS=Small ruminant lentivirus PE=4 SV=1
+Probab=80.51  E-value=3.3  Score=41.17  Aligned_cols=102  Identities=25%  Similarity=0.458  Sum_probs=0.0  Template_Neff=1.175
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQTL----SGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~qtL----sGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|++.-+|++...  .|...|.+.......+.+.+..    |..|-..+..|--.+-.-.||+.-..|..
+T Consensus        31 gketltegnclw~~kt~dfifed--ik~epwt~tkmytvw~rlk~l~pee~s~refaslqat~a~~~csqmgmkpetvqa  108 (435)
+T tr|A8TCG8|A8TC   31 GKETLTEGNCLWALKTVDFIFED--IKTEPWTLTKMYTVWGRLKQLTPEETSKREFASLQATMACMMCSQMGMKPETVQA  108 (435)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE-PSEEY  131 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~-~~eey  131 (131)
+                      .+....+-..-..++....++-+ -.+-|
+T Consensus       109 argiiemkeg~~~~~e~~~k~~~k~~~~y  137 (435)
+T tr|A8TCG8|A8TC  109 ARGIIEMKEGLHGNKEDKEKELEKHREVY  137 (435)
+
+
+No 63
+>tr|H6TKH9|H6TKH9_CAEV Gag polyprotein OS=Small ruminant lentivirus GN=gag PE=4 SV=1 
+Probab=80.18  E-value=3.5  Score=40.93  Aligned_cols=22  Identities=50%  Similarity=1.013  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHD   49 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~Hd   49 (131)
+                      |...||.|||-|||.-||++..
+T Consensus        30 gketltegnclwalktvdfife   51 (442)
+T tr|H6TKH9|H6TK   30 GKETLTEGNCLWALKTVDFIFE   51 (442)
+
+
+No 64
+>tr|H6TKH2|H6TKH2_CAEV Gag polyprotein OS=Small ruminant lentivirus GN=gag PE=4 SV=1 
+Probab=80.09  E-value=3.6  Score=40.90  Aligned_cols=22  Identities=50%  Similarity=1.013  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHD   49 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~Hd   49 (131)
+                      |...||.|||-|||.-||++..
+T Consensus        30 gketltegnclwalktvdfife   51 (442)
+T tr|H6TKH2|H6TK   30 GKETLTEGNCLWALKTVDFIFE   51 (442)
+
+
+No 65
+>tr|M8AQW7|M8AQW7_AEGTA Uncharacterized protein OS=Aegilops tauschii GN=F775_24947 PE=4 SV=1 
+Probab=80.07  E-value=3.6  Score=39.02  Aligned_cols=25  Identities=48%  Similarity=0.796  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    29 SQKLTTGNCNWALSLVDLFHDTNFV   53 (131)
+Q Consensus        29 Sqklt~gNcnWALsLVDL~HdTn~~   53 (131)
+                      ||.=|.|||||--||+|.--..-|+
+T Consensus        18 sqrgtrgncnwpasladfnmsrvyv   42 (276)
+T tr|M8AQW7|M8AQ   18 SQRGTRGNCNWPASLADFNMSRVYV   42 (276)
+
+
+No 66
+>tr|A0A142F3P5|A0A142F3P5_CAEV Gag polyprotein (Fragment) OS=Small ruminant lentivirus GN=gag PE=4 SV=1 
+Probab=79.77  E-value=3.7  Score=40.68  Aligned_cols=97  Identities=27%  Similarity=0.461  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVI----PLLEDVTQTLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdvi----PLLeDV~qtLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-||++...  .....|.|....    .|-|-.-+.-|..|-..+..|--.+-.-.||+.-..|..
+T Consensus        30 gketltegnclwalktvdfifed--iqsepwtltkmytvwgrlkeltpeetskrefaslqatiaclmcsqmgmkpetvqa  107 (430)
+T tr|A0A142F3P5|   30 GKETLTEGNCLWALKTVDFIFED--IQSEPWTLTKMYTVWGRLKELTPEETSKREFASLQATIACLMCSQMGMKPETVQA  107 (430)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .+....+-..--|.+.++.+.-+
+T Consensus       108 argiismkeglqenkeakeknie  130 (430)
+T tr|A0A142F3P5|  108 ARGIISMKEGLQENKEAKEKNIE  130 (430)
+
+
+No 67
+>tr|F5BD97|F5BD97_9RETR Gag polyprotein OS=Visna/maedi virus PE=4 SV=1
+Probab=79.69  E-value=3.8  Score=40.76  Aligned_cols=22  Identities=50%  Similarity=1.013  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHD   49 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~Hd   49 (131)
+                      |...||.|||-|||.-||++..
+T Consensus        30 gketltegnclwalktvdfife   51 (442)
+T tr|F5BD97|F5BD   30 GKETLTEGNCLWALKTVDFIFE   51 (442)
+
+
+No 68
+>tr|H6TKH8|H6TKH8_CAEV Gag polyprotein OS=Small ruminant lentivirus GN=gag PE=4 SV=1
+Probab=79.67  E-value=3.8  Score=40.79  Aligned_cols=22  Identities=50%  Similarity=1.013  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHD   49 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~Hd   49 (131)
+                      |...||.|||-|||.-||++..
+T Consensus        30 gketltegnclwalktvdfife   51 (447)
+T tr|H6TKH8|H6TK   30 GKETLTEGNCLWALKTVDFIFE   51 (447)
+
+
+No 69
+>tr|Q6H1V6|Q6H1V6_CAEV Gag polyprotein OS=Small ruminant lentivirus GN=gag PE=4 SV=1 
+Probab=79.42  E-value=3.9  Score=40.72  Aligned_cols=22  Identities=50%  Similarity=1.013  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHD   49 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~Hd   49 (131)
+                      |...||.|||-|||.-||++..
+T Consensus        30 gketltegnclwalktvdfife   51 (448)
+T tr|Q6H1V6|Q6H1   30 GKETLTEGNCLWALKTVDFIFE   51 (448)
+
+
+No 70
+>tr|D3VWW0|D3VWW0_9RETR Gag protein (Fragment) OS=Ovine progressive pneumonia virus GN=gag PE=4 SV=1
+Probab=77.60  E-value=4.9  Score=39.97  Aligned_cols=97  Identities=26%  Similarity=0.489  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVD  103 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~D  103 (131)
+                      |...||.|||-|||.-+|++...  .|...|.|.........+.|    .-|..|-..+..|--..-.-.||+.-..|..
+T Consensus        23 gketltegnclwalktidfifed--iktepwtltkmytvwgrlkqltpeetskrefaslqatmacmmcsqmgmkpetvqa  100 (430)
+T tr|D3VWW0|D3VW   23 GKETLTEGNCLWALKTIDFIFED--IKTEPWTLTKMYTVWERLKQVTPEETSKREFASLQATMACMMCSQMGMKPETVQA  100 (430)
+
+
+Q 1HEK_1|Chains   104 GKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus       104 gkatfqllkaKyer~~~~kkq~~  126 (131)
+                      .+....+-..-...+..+.+..+
+T Consensus       101 argiiemkeglhgnkedkekeve  123 (430)
+T tr|D3VWW0|D3VW  101 ARGIIEMKEGLHENKEDKEKKVE  123 (430)
+
+
+No 71
+>tr|A0A0J9BI40|A0A0J9BI40_9FIRM Uncharacterized protein OS=[Clostridium] citroniae WAL-19142 GN=HMPREF9470_05282 PE=4 SV=1 
+Probab=73.07  E-value=7.9  Score=31.96  Aligned_cols=21  Identities=52%  Similarity=0.843  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    66 LLEDVTQTLSGQEREAFERTW   86 (131)
+Q Consensus        66 LLeDV~qtLsGqEkeAFekTW   86 (131)
+                      .+|||.|..-|||.|..|.||
+T Consensus        26 miedvrqayfgqeiedieetw   46 (85)
+T tr|A0A0J9BI40|   26 MIEDVRQAYFGQEIEDIEETW   46 (85)
+
+
+No 72
+>tr|H6TKH3|H6TKH3_CAEV Gag polyprotein OS=Small ruminant lentivirus GN=gag PE=4 SV=1
+Probab=71.81  E-value=8.9  Score=38.50  Aligned_cols=22  Identities=45%  Similarity=1.008  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    28 GSQKLTTGNCNWALSLVDLFHD   49 (131)
+Q Consensus        28 GSqklt~gNcnWALsLVDL~Hd   49 (131)
+                      |...||.|||-|||.-+|++..
+T Consensus        30 gketltegnclwalktidfife   51 (443)
+T tr|H6TKH3|H6TK   30 GKETLTEGNCLWALKTIDFIFE   51 (443)
+
+
+No 73
+>tr|X0WBC7|X0WBC7_9ZZZZ Uncharacterized protein OS=marine sediment metagenome GN=S01H1_60426 PE=4 SV=1 
+Probab=70.65  E-value=9.9  Score=32.89  Aligned_cols=24  Identities=46%  Similarity=0.872  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    63 VIPLLEDVTQTLSGQEREAFERTW   86 (131)
+Q Consensus        63 viPLLeDV~qtLsGqEkeAFekTW   86 (131)
+                      |-|||.||.-.|.|..+.||.+.|
+T Consensus        18 vepllpdvavelngaqqrafnkfw   41 (117)
+T tr|X0WBC7|X0WB   18 VEPLLPDVAVELNGAQQRAFNKFW   41 (117)
+
+
+No 74
+>tr|A0A146TJ21|A0A146TJ21_FUNHE Uncharacterized protein (Fragment) OS=Fundulus heteroclitus PE=4 SV=1 
+Probab=70.14  E-value=10  Score=37.10  Aligned_cols=33  Identities=42%  Similarity=0.532  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    41 LSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQT   73 (131)
+Q Consensus        41 LsLVDL~HdTn~~keKDWqLrdviPLLeDV~qt   73 (131)
+                      .|.+||.|||-|+.||.-|..--|-+=...+||
+T Consensus       256 vsvadlvhdtlfveekhvqvegpiiigpklsqt  288 (337)
+T tr|A0A146TJ21|  256 VSVADLVHDTLFVEEKHVQVEGPIIIGPKLSQT  288 (337)
+
+
+No 75
+>tr|H1VUU7|H1VUU7_COLHI Uncharacterized protein (Fragment) OS=Colletotrichum higginsianum (strain IMI 349063) GN=CH063_13550 PE=4 SV=1 
+Probab=69.74  E-value=11  Score=31.29  Aligned_cols=22  Identities=45%  Similarity=0.967  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    36 NCNWALSLVDLFHDTNFVKEKD   57 (131)
+Q Consensus        36 NcnWALsLVDL~HdTn~~keKD   57 (131)
+                      |-.|-..|+|.|||....||.|
+T Consensus        12 nnswnfalidyfhdmsllkegd   33 (85)
+T tr|H1VUU7|H1VU   12 NNSWNFALIDYFHDMSLLKEGD   33 (85)
+
+
+No 76
+>tr|A0A087M6F1|A0A087M6F1_9RHIZ Uncharacterized protein OS=Devosia riboflavina GN=JP75_02570 PE=4 SV=1
+Probab=69.70  E-value=5.7  Score=32.05  Aligned_cols=39  Identities=28%  Similarity=0.537  Sum_probs=0.0  Template_Neff=4.594
+
+Q 1HEK_1|Chains    60 LRDVIPLLEDVTQTLSGQEREAFERTWWAISAVKMGLQI   98 (131)
+Q Consensus        60 LrdviPLLeDV~qtLsGqEkeAFekTWWaIsAvKmGlqI   98 (131)
+                      |+|+..-++.+...++|.-.+.|+..|-.-.||.++|.|
+T Consensus         9 L~dIl~aI~~I~~~~~G~~f~~f~~d~~lr~AvER~LEI   47 (117)
+T tr|A0A087M6F1|    9 LRDILEAIAGIEDLTAGKSFEDFQADWLLRLAVERALEI   47 (117)
+
+
+No 77
+>tr|A0A090YPU0|A0A090YPU0_PAEMA Uncharacterized protein OS=Paenibacillus macerans GN=DJ90_6485 PE=4 SV=1 
+Probab=69.16  E-value=11  Score=29.01  Aligned_cols=36  Identities=42%  Similarity=0.554  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains     8 MGDPLTWSKALKKLEKVTVQGSQKLTTGNCNWALSL   43 (131)
+Q Consensus         8 mgdpltWskaLkKlEKVtVqGSqklt~gNcnWALsL   43 (131)
+                      |..|+||.+-.--||..|||--..|++.|-.-.-||
+T Consensus         1 mdspltwrrfvtlletatvqkvdtltspnreastsl   36 (53)
+T tr|A0A090YPU0|    1 MDSPLTWRRFVTLLETATVQKVDTLTSPNREASTSL   36 (53)
+
+
+No 78
+>tr|U5LBW8|U5LBW8_9BACI Uncharacterized protein OS=Bacillus infantis NRRL B-14911 GN=N288_10925 PE=4 SV=1
+Probab=68.78  E-value=12  Score=32.56  Aligned_cols=26  Identities=54%  Similarity=0.877  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    75 SGQEREAFERT--WWAISAVKMGLQINN  100 (131)
+Q Consensus        75 sGqEkeAFekT--WWaIsAvKmGlqI~n  100 (131)
+                      ||.|||-+..|  |..|+||--||.|..
+T Consensus        69 sgderelyrdtapwfsisavlgglsita   96 (118)
+T tr|U5LBW8|U5LB   69 SGDERELYRDTAPWFSISAVLGGLSITA   96 (118)
+
+
+No 79
+>tr|A0A069D4P0|A0A069D4P0_9BACE Uncharacterized protein OS=Bacteroides graminisolvens DSM 19988 = JCM 15093 GN=JCM15093_2630 PE=4 SV=1 
+Probab=65.45  E-value=15  Score=28.13  Aligned_cols=37  Identities=35%  Similarity=0.653  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    16 KALKKLEKVTVQGSQKLTTG-NCNWALSLVDLFHDTNF   52 (131)
+Q Consensus        16 kaLkKlEKVtVqGSqklt~g-NcnWALsLVDL~HdTn~   52 (131)
+                      |...||.--.+-|..-|.-| |.|||..-.|=+.|..|
+T Consensus         4 kvvekltgesiigasvlelgsnsnwaitdldgyydshf   41 (50)
+T tr|A0A069D4P0|    4 KVVEKLTGESIIGASVLELGSNSNWAITDLDGYYDSHF   41 (50)
+
+
+No 80
+>tr|A0A090GLB4|A0A090GLB4_9RHIZ Uncharacterized protein OS=Mesorhizobium sp. ORS3359 GN=MPLA_1870013 PE=4 SV=1 
+Probab=64.30  E-value=16  Score=33.47  Aligned_cols=12  Identities=67%  Similarity=1.334  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    38 NWALSLVDLFHD   49 (131)
+Q Consensus        38 nWALsLVDL~Hd   49 (131)
+                      |||..|+||+||
+T Consensus       127 nwavgladllhd  138 (179)
+T tr|A0A090GLB4|  127 NWAVGLADLLHD  138 (179)
+
+
+No 81
+>tr|C4WAF8|C4WAF8_STAWA Sigma-70, region 4 OS=Staphylococcus warneri L37603 GN=STAWA0001_0381 PE=4 SV=1 
+Probab=64.29  E-value=16  Score=30.53  Aligned_cols=29  Identities=45%  Similarity=0.615  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    55 EKDWQLRDVIPLLEDVTQTLSGQEREAFE   83 (131)
+Q Consensus        55 eKDWqLrdviPLLeDV~qtLsGqEkeAFe   83 (131)
+                      ||.----..|.||.|..+.|+.||||-||
+T Consensus        19 ekeiltceaikllndacekltkqerevfe   47 (89)
+T tr|C4WAF8|C4WA   19 EKEILTCEAIKLLNDACEKLTKQEREVFE   47 (89)
+
+
+No 82
+>tr|A0A093VHD3|A0A093VHD3_TALMA Uncharacterized protein OS=Talaromyces marneffei PM1 GN=GQ26_0200990 PE=4 SV=1 
+Probab=63.46  E-value=17  Score=29.82  Aligned_cols=24  Identities=46%  Similarity=0.580  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains     2 MADIGSMGDPLTWSKALKKLEKVT   25 (131)
+Q Consensus         2 ~~~~g~mgdpltWskaLkKlEKVt   25 (131)
+                      ||.+.+-.|.-.||||-||.|..|
+T Consensus         1 masttkeadtsswskaekkfenyt   24 (78)
+T tr|A0A093VHD3|    1 MASTTKEADTSSWSKAEKKFENYT   24 (78)
+
+
+No 83
+>tr|C0KQT4|C0KQT4_CAEV Gag polyprotein (Fragment) OS=Small ruminant lentivirus GN=gag PE=4 SV=1
+Probab=62.06  E-value=18  Score=35.76  Aligned_cols=74  Identities=27%  Similarity=0.501  Sum_probs=0.0  Template_Neff=1.400
+
+Q 1HEK_1|Chains    32 LTTGNCNWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQ----TLSGQEREAFERTWWAISAVKMGLQINNVVDGKAS  107 (131)
+Q Consensus        32 lt~gNcnWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~q----tLsGqEkeAFekTWWaIsAvKmGlqI~nv~Dgkat  107 (131)
+                      ||.|||-|+|.-.|.+....  ||..|..-.....-..|.+    .-+.++--....|--.+-...||+.-..+.|..|+
+T Consensus         3 ltegnclw~LkTldymFEdh--keEPWt~~kf~~iWqkvK~lTPEEsnKk~F~SLqATLagLMCcqMGMKPeTlqdA~at   80 (334)
+T tr|C0KQT4|C0KQ    3 LTEGNCLWCLKTLDFIFEDH--KEEPWTLTKMYTIWQRVKQLTPEESSKREFMSLQATLACLMCCQMGMKPETVQAAMGI   80 (334)
+
+
+No 84
+>tr|A5V618|A5V618_SPHWW Uncharacterized protein OS=Sphingomonas wittichii (strain RW1 / DSM 6014 / JCM 10273) GN=Swit_1369 PE=4 SV=1
+Probab=60.80  E-value=17  Score=31.64  Aligned_cols=39  Identities=31%  Similarity=0.577  Sum_probs=0.0  Template_Neff=2.196
+
+Q 1HEK_1|Chains    60 LRDVIPLLEDVTQTLSGQEREAFERTWWAISAVKMGLQI   98 (131)
+Q Consensus        60 LrdviPLLeDV~qtLsGqEkeAFekTWWaIsAvKmGlqI   98 (131)
+                      |.++.-+++-.+.++.+-.+++|++-|-+.-|+-|-||+
+T Consensus        10 l~~i~~~~~r~~~~~~~~d~~~f~~~~~t~da~~~~l~v   48 (123)
+T tr|A5V618|A5V6   10 LNHIEKSIERIREYTAKHDRESFDRDWITQDAVIMNLQV   48 (123)
+
+
+No 85
+>tr|F2UAV0|F2UAV0_SALR5 Putative uncharacterized protein OS=Salpingoeca rosetta (strain ATCC 50818 / BSB-021) GN=PTSG_12277 PE=4 SV=1 
+Probab=60.10  E-value=22  Score=33.92  Aligned_cols=27  Identities=41%  Similarity=0.855  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    57 DWQLRDVIPLLEDVTQTLSGQEREAFE   83 (131)
+Q Consensus        57 DWqLrdviPLLeDV~qtLsGqEkeAFe   83 (131)
+                      .|||..+-||+.-....|.|.|+|+.|
+T Consensus        68 nwqlnelsplmracdtvlggaekeale   94 (243)
+T tr|F2UAV0|F2UA   68 NWQLNELSPLMRACDTVLGGAEKEALE   94 (243)
+
+
+No 86
+>tr|X0PFD1|X0PFD1_9LACO Uncharacterized protein OS=Lactobacillus composti DSM 18527 = JCM 14202 GN=FC83_GL000206 PE=4 SV=1 
+Probab=58.85  E-value=24  Score=36.47  Aligned_cols=49  Identities=29%  Similarity=0.554  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    38 NWALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQTLSGQEREAFERTW   86 (131)
+Q Consensus        38 nWALsLVDL~HdTn~~keKDWqLrdviPLLeDV~qtLsGqEkeAFekTW   86 (131)
+                      .+-..|-||..-.-....|.|||+|....|.|....||+..-.-|.-.|
+T Consensus       443 dyivdlgdliyarylqtpkqwqlkdfagvlpdfvkqlspadvavfklvw  491 (531)
+T tr|X0PFD1|X0PF  443 DYIVDLGDLIYARYLQTPKQWQLKDFAGVLPDFVKQLSPADVAVFKLVW  491 (531)
+
+
+No 87
+>tr|A0A0K6G894|A0A0K6G894_9HOMO Uncharacterized protein OS=Rhizoctonia solani GN=RSOLAG22IIIB_05750 PE=4 SV=1 
+Probab=56.77  E-value=28  Score=29.37  Aligned_cols=23  Identities=35%  Similarity=0.720  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    64 IPLLEDVTQTLSGQEREAFERTW   86 (131)
+Q Consensus        64 iPLLeDV~qtLsGqEkeAFekTW   86 (131)
+                      .|-.-..++|+|+.|||.|-+.|
+T Consensus        29 vprvlalsetispserekfiklw   51 (89)
+T tr|A0A0K6G894|   29 VPRVLALSETISPSEREKFIKLW   51 (89)
+
+
+No 88
+>tr|H8ZCB7|H8ZCB7_NEMS1 Putative uncharacterized protein OS=Nematocida sp. 1 (strain ERTm2 / ATCC PRA-371) GN=NERG_01360 PE=4 SV=1
+Probab=55.96  E-value=29  Score=36.03  Aligned_cols=49  Identities=41%  Similarity=0.539  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    58 WQLRDVIPLLEDVTQTLSGQEREAFERTWWAISAVKMGLQINNVVDGKASF  108 (131)
+Q Consensus        58 WqLrdviPLLeDV~qtLsGqEkeAFekTWWaIsAvKmGlqI~nv~Dgkatf  108 (131)
+                      ||+|-+.||||||...|--.|.|.=-+.-=.|..  |-|.|+...|.-.-|
+T Consensus       353 wqirmlfplledvvnilhmseneddvkicdviks--melsinaasdsllrf  401 (541)
+T tr|H8ZCB7|H8ZC  353 WQIRMLFPLLEDVVNILHMSENEDDVKICDVISS--MELSINAASDSLLRF  401 (541)
+
+
+No 89
+>tr|A0A061G909|A0A061G909_THECC Uncharacterized protein OS=Theobroma cacao GN=TCM_015397 PE=4 SV=1 
+Probab=55.89  E-value=29  Score=30.08  Aligned_cols=21  Identities=43%  Similarity=0.939  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    84 RTWWAISAVKMGLQINNVVDG  104 (131)
+Q Consensus        84 kTWWaIsAvKmGlqI~nv~Dg  104 (131)
+                      ..||.++.--|||...||.||
+T Consensus        39 qiwwrlpvgymgleminvndg   59 (109)
+T tr|A0A061G909|   39 QIWWRLPVGYMGLEMINVNDG   59 (109)
+
+
+No 90
+>tr|A0A067ES37|A0A067ES37_CITSI Uncharacterized protein OS=Citrus sinensis GN=CISIN_1g041862mg PE=4 SV=1 
+Probab=52.97  E-value=35  Score=28.17  Aligned_cols=34  Identities=26%  Similarity=0.629  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    50 TNFVKEKDWQLRDVIPLLEDVTQTLSGQEREAFE   83 (131)
+Q Consensus        50 Tn~~keKDWqLrdviPLLeDV~qtLsGqEkeAFe   83 (131)
+                      ||......|||.-.|.-.+|++..-+++.+.-||
+T Consensus        18 tnclrkrtwqlttcissvddisssntppkkkmfe   51 (76)
+T tr|A0A067ES37|   18 TNCLRKRTWQLTTCISSVDDISSSNTPPKKKMFE   51 (76)
+
+
+No 91
+>tr|W0I2T6|W0I2T6_9EURY Uncharacterized protein OS=Thermococcus paralvinellae GN=TES1_0982 PE=4 SV=1
+Probab=52.19  E-value=21  Score=27.38  Aligned_cols=39  Identities=26%  Similarity=0.379  Sum_probs=0.0  Template_Neff=4.148
+
+Q 1HEK_1|Chains    60 LRDVIPLLEDVTQTLSGQEREAFERTWWAISAVKMGLQI   98 (131)
+Q Consensus        60 LrdviPLLeDV~qtLsGqEkeAFekTWWaIsAvKmGlqI   98 (131)
+                      |.|++.-++.+.+-.+|-..+.|++-|-.+-||-+.|.|
+T Consensus        10 l~DI~esi~~i~~y~~~~~f~~F~~d~~~~dAVvR~LEI   48 (73)
+T tr|W0I2T6|W0I2   10 LEDILESIEKIESYTEGMSFEDFSKDEKTVDAVVRNLEI   48 (73)
+
+
+No 92
+>tr|I3LG64|I3LG64_PIG Uncharacterized protein OS=Sus scrofa PE=4 SV=1 
+Probab=49.65  E-value=43  Score=30.57  Aligned_cols=40  Identities=35%  Similarity=0.655  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    85 TWWAISAVKMGLQINNVVDGKASFQLLRAKYEKKTANKKQSEP  127 (131)
+Q Consensus        85 TWWaIsAvKmGlqI~nv~DgkatfqllkaKyer~~~~kkq~~~  127 (131)
+                      .||--   +.|||-..-...+.+||-|..|||.-.++-+|..|
+T Consensus        71 lwwkk---rkglqtkartpargsfqnleekyenignkvqqtnp  110 (155)
+T tr|I3LG64|I3LG   71 LWWKK---RKGLQTKARTPARGSFQNLEEKYENIGNKVQQTNP  110 (155)
+
+
+No 93
+>tr|K9Y879|K9Y879_HALP7 Uncharacterized protein OS=Halothece sp. (strain PCC 7418) GN=PCC7418_0032 PE=4 SV=1 
+Probab=48.38  E-value=46  Score=32.44  Aligned_cols=19  Identities=47%  Similarity=0.868  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    32 LTTGNCNWALSLVDLFHDT   50 (131)
+Q Consensus        32 lt~gNcnWALsLVDL~HdT   50 (131)
+                      ++.+||.-|+.|.||-|||
+T Consensus         4 iscsncscairlidlehdt   22 (271)
+T tr|K9Y879|K9Y8    4 ISCSNCSCAIRLIDLEHDT   22 (271)
+
+
+No 94
+>tr|A0A0A9H4U1|A0A0A9H4U1_ARUDO Uncharacterized protein OS=Arundo donax PE=4 SV=1 
+Probab=48.11  E-value=47  Score=30.76  Aligned_cols=27  Identities=48%  Similarity=0.655  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    94 MGLQINNVVDGKASFQLLRAKYEKKTAN  121 (131)
+Q Consensus        94 mGlqI~nv~DgkatfqllkaKyer~~~~  121 (131)
+                      |||||..| |-||.|..||.|-.+-.++
+T Consensus        90 mglqiypv-drkacfeylkektdkvkkr  116 (173)
+T tr|A0A0A9H4U1|   90 MGLQIYPV-DRKACFEYLKEKTDKVKKR  116 (173)
+
+
+No 95
+>tr|A0A085MH50|A0A085MH50_9BILA Uncharacterized protein OS=Trichuris suis GN=M513_02650 PE=4 SV=1 
+Probab=47.98  E-value=48  Score=32.99  Aligned_cols=37  Identities=30%  Similarity=0.577  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    82 FERTWWAISAVKMGLQINNVVDGKASFQLLRAKYEKK  118 (131)
+Q Consensus        82 FekTWWaIsAvKmGlqI~nv~DgkatfqllkaKyer~  118 (131)
+                      |.+.++.|+.|||||.|.....|-|-..+--.-..|+
+T Consensus       256 fsknyyripgvkmgleirsldeglaymamadevlgrk  292 (322)
+T tr|A0A085MH50|  256 FSKNYYRIPGVKMGLEIRSLDEGLAYMAMADEVLGRK  292 (322)
+
+
+No 96
+>tr|C5GND8|C5GND8_AJEDR Uncharacterized protein OS=Ajellomyces dermatitidis (strain ER-3 / ATCC MYA-2586) GN=BDCG_06293 PE=4 SV=2 
+Probab=47.86  E-value=48  Score=30.79  Aligned_cols=27  Identities=44%  Similarity=0.906  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    39 WALSLVDLFHDTNFVKEKDWQLRDVIPL   66 (131)
+Q Consensus        39 WALsLVDL~HdTn~~keKDWqLrdviPL   66 (131)
+                      +|.||.|| |..|..-.|||.+..+|.|
+T Consensus        94 fafsltdl-hqsnifvdkdwnithiidl  120 (176)
+T tr|C5GND8|C5GN   94 FAFSLTDL-HQSNIFVDKDWNITHIIDL  120 (176)
+
+
+No 97
+>tr|A0A0P1AV53|A0A0P1AV53_9STRA Complex 1 LYR protein OS=Plasmopara halstedii PE=3 SV=1
+Probab=47.79  E-value=38  Score=30.57  Aligned_cols=46  Identities=33%  Similarity=0.418  Sum_probs=0.0  Template_Neff=2.362
+
+Q 1HEK_1|Chains    40 ALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQTLSGQEREAFERT   85 (131)
+Q Consensus        40 ALsLVDL~HdTn~~keKDWqLrdviPLLeDV~qtLsGqEkeAFekT   85 (131)
+                      .+||.=.+.-++..|.----||.++||-.||.+-+--+-|+-||.+
+T Consensus         9 ~~Sl~YFlNRs~VlkQYR~fLR~~~PLa~d~R~dvr~~iRa~Fea~   54 (152)
+T tr|A0A0P1AV53|    9 FLSLQYFLNRSQVLKQYRLFLREIKPLAPDVRQDVRKQIRAKFEAY   54 (152)
+
+
+No 98
+>tr|A0A077ZAB3|A0A077ZAB3_TRITR Deoxyribose phosphate aldolase OS=Trichuris trichiura GN=TTRE_0000501101 PE=4 SV=1 
+Probab=45.90  E-value=54  Score=32.83  Aligned_cols=39  Identities=28%  Similarity=0.553  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    80 EAFERTWWAISAVKMGLQINNVVDGKASFQLLRAKYEKK  118 (131)
+Q Consensus        80 eAFekTWWaIsAvKmGlqI~nv~DgkatfqllkaKyer~  118 (131)
+                      ..|.+.++.|+.|||||.|.....|-|-..+--.-..|+
+T Consensus       270 kqfsknyyripgvkmgleirtldeglaymamadevlgrk  308 (338)
+T tr|A0A077ZAB3|  270 KQFSKNYYRIPGVKMGLEIRTLDEGLAYMAMADEVLGRK  308 (338)
+
+
+No 99
+>tr|L8WI91|L8WI91_THACA Uncharacterized protein OS=Thanatephorus cucumeris (strain AG1-IA) GN=AG1IA_09528 PE=4 SV=1 
+Probab=45.43  E-value=55  Score=28.19  Aligned_cols=35  Identities=31%  Similarity=0.605  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    41 LSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQTLS   75 (131)
+Q Consensus        41 LsLVDL~HdTn~~keKDWqLrdviPLLeDV~qtLs   75 (131)
+                      ||.+.|+..-||...||-.-+++||+.|.....|+
+T Consensus        24 lsiasllatynfsrkkdkngkeiipivegavnslt   58 (98)
+T tr|L8WI91|L8WI   24 LSIASLLATYNFSRKKDKNGKEIIPIVEGAVNSLT   58 (98)
+
+
+No 100
+>tr|A5FHI3|A5FHI3_FLAJ1 Uncharacterized protein OS=Flavobacterium johnsoniae (strain ATCC 17061 / DSM 2064 / UW101) GN=Fjoh_2304 PE=4 SV=1 
+Probab=44.31  E-value=59  Score=30.62  Aligned_cols=32  Identities=34%  Similarity=0.601  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    24 VTVQGSQKLTTGNCNWALSLVDLFHDTNFVKE   55 (131)
+Q Consensus        24 VtVqGSqklt~gNcnWALsLVDL~HdTn~~ke   55 (131)
+                      |.+.|..-+...|.|+-||...|-|.|.|..|
+T Consensus       107 veisgpdlirieninfllsqinlnhktdfipe  138 (193)
+T tr|A5FHI3|A5FH  107 VEISGPDLIRIENINFLLSQINLNHKTDFIPE  138 (193)
+
+
+No 101
+>tr|A0A135LVA1|A0A135LVA1_PENPA Aminoglycoside phosphotransferase OS=Penicillium patulum GN=PGRI_081410 PE=4 SV=1
+Probab=44.08  E-value=48  Score=33.41  Aligned_cols=19  Identities=42%  Similarity=0.681  Sum_probs=0.0  Template_Neff=2.266
+
+Q 1HEK_1|Chains    66 LLEDVTQTLSGQEREAFER   84 (131)
+Q Consensus        66 LLeDV~qtLsGqEkeAFek   84 (131)
+                      |-|+..++|+|.|||.||+
+T Consensus       331 lr~~~l~~l~g~e~~~fe~  349 (364)
+T tr|A0A135LVA1|  331 LRETGLRQLTGKEKEDFEK  349 (364)
+
+
+No 102
+>tr|A0A1B0GNN1|A0A1B0GNN1_PHLPP Uncharacterized protein OS=Phlebotomus papatasi PE=4 SV=1 
+Probab=43.85  E-value=61  Score=30.97  Aligned_cols=41  Identities=32%  Similarity=0.599  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    87 WAISAVKMGLQINNVVDGKASFQLLRAKYEKKTANKKQSEPSEE  130 (131)
+Q Consensus        87 WaIsAvKmGlqI~nv~DgkatfqllkaKyer~~~~kkq~~~~ee  130 (131)
+                      ||-+|-...+.||   |.|.+||-|+.+|.|...+-...-+||.
+T Consensus        40 wadaaqevnmsin---dtkitfqslrqrysrelrkvrhgvaped   80 (217)
+T tr|A0A1B0GNN1|   40 WADAAQEVNMSIN---DTKITFQSLRQRYSRELRKVRHGVAPED   80 (217)
+
+
+No 103
+>tr|A0A031K414|A0A031K414_9SPHN Uncharacterized protein OS=Novosphingobium resinovorum GN=BV97_01147 PE=4 SV=1 
+Probab=43.51  E-value=62  Score=34.79  Aligned_cols=62  Identities=31%  Similarity=0.576  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    41 LSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQTLSG-QEREAFERTWWAISAVKMGLQINNVV  102 (131)
+Q Consensus        41 LsLVDL~HdTn~~keKDWqLrdviPLLeDV~qtLsG-qEkeAFekTWWaIsAvKmGlqI~nv~  102 (131)
+                      |.|.=|+.|..|.-...|.|.-||..|==....|-| .|-..|..|||.|.-|-...-+...+
+T Consensus        24 lcllillfdaafaitsgwtlsaviaflwlaaavllgwkeakdfaatwwrivtvplaalvtgig   86 (702)
+T tr|A0A031K414|   24 LCLLILLFDAAFAITSGWTLSAVIAFLWLAAAVLLGWKEAKDFAATWWRIVTVPLAALVTGIG   86 (702)
+
+
+No 104
+>tr|W4YTQ2|W4YTQ2_STRPU Uncharacterized protein OS=Strongylocentrotus purpuratus PE=4 SV=1 
+Probab=43.46  E-value=62  Score=27.07  Aligned_cols=43  Identities=42%  Similarity=0.594  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    79 REAFERTWWAISAVKMGLQINNVVDGKASFQLLRAKYEKKTANKKQSE  126 (131)
+Q Consensus        79 keAFekTWWaIsAvKmGlqI~nv~DgkatfqllkaKyer~~~~kkq~~  126 (131)
+                      ||.+|+|--.+.|.|..|.  .|..|-|+   ||||||...++|..-+
+T Consensus         7 redlektqrildaakanlr--eveegiat---lkakyedtvakkeele   49 (79)
+T tr|W4YTQ2|W4YT    7 REDLEKTQRILDAAKANLR--EVEEGIAT---LKAKYEDTVAKKEELE   49 (79)
+
+
+No 105
+>tr|W3X6P4|W3X6P4_9PEZI Uncharacterized protein OS=Pestalotiopsis fici W106-1 GN=PFICI_06711 PE=4 SV=1
+Probab=42.96  E-value=47  Score=35.40  Aligned_cols=41  Identities=27%  Similarity=0.463  Sum_probs=0.0  Template_Neff=2.738
+
+Q 1HEK_1|Chains    11 PLTWSKALKKLEKVTVQGSQKLTTGNCNWALSLVDLFHDTNF   52 (131)
+Q Consensus        11 pltWskaLkKlEKVtVqGSqklt~gNcnWALsLVDL~HdTn~   52 (131)
+                      +.||+.+=-- +.|+|.|--+-.+-||.+||..|-..|..+|
+T Consensus        63 SYTWgd~~~~-~~v~vN~r~m~vTkNC~yALtQi~~~~~~~~  103 (659)
+T tr|W3X6P4|W3X6   63 SYTWGDGCLT-EELLVNGRPMMVTKNCYYALTQINSRYSRNS  103 (659)
+
+
+No 106
+>tr|E8WN09|E8WN09_GEOS8 Uncharacterized protein OS=Geobacter sp. (strain M18) GN=GM18_1191 PE=4 SV=1 
+Probab=41.82  E-value=69  Score=26.14  Aligned_cols=39  Identities=36%  Similarity=0.537  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    41 LSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQTLSGQER   79 (131)
+Q Consensus        41 LsLVDL~HdTn~~keKDWqLrdviPLLeDV~qtLsGqEk   79 (131)
+                      |.|.--+..|.-+..|.--.|.+|.||-|..|.|...||
+T Consensus        12 lnllakldetddvaqknllfrqliqllcdleqrlksker   50 (66)
+T tr|E8WN09|E8WN   12 LNLLAKLDETDDVAQKNLLFRQLIQLLCDLEQRLKSKER   50 (66)
+
+
+No 107
+>tr|R5G733|R5G733_9FIRM Ribonuclease 3 OS=Coprobacillus sp. CAG:698 GN=BN756_01560 PE=4 SV=1
+Probab=41.78  E-value=55  Score=30.16  Aligned_cols=28  Identities=36%  Similarity=0.722  Sum_probs=0.0  Template_Neff=2.263
+
+Q 1HEK_1|Chains    46 LFHDTNFVKEKDWQLRDVIPLLEDVTQT   73 (131)
+Q Consensus        46 L~HdTn~~keKDWqLrdviPLLeDV~qt   73 (131)
+                      +|||.+|-+.|.|-+.-+.|||+.-.|+
+T Consensus       141 vf~D~~yd~~~~Wi~~~l~plL~~~~~~  168 (170)
+T tr|R5G733|R5G7  141 VFYDSGYDTTKEWILKWLLPLLESYKQC  168 (170)
+
+
+No 108
+>tr|K3X4G8|K3X4G8_PYTUL Uncharacterized protein OS=Pythium ultimum DAOM BR144 GN=PYU1_G012091 PE=4 SV=1 
+Probab=40.60  E-value=74  Score=29.92  Aligned_cols=49  Identities=35%  Similarity=0.472  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    40 ALSLVDLFHDTNFVKEKDWQLRDVIPLLEDVTQTLSGQEREAFERTWWAI   89 (131)
+Q Consensus        40 ALsLVDL~HdTn~~keKDWqLrdviPLLeDV~qtLsGqEkeAFekTWWaI   89 (131)
+                      |--+--|+|| .|..-||--|.|+|.||||-.......-....|+.+--|
+T Consensus       120 atvlnkllhd-qfaamkdevlgdiiklledsakevrdaaiqtlekfyahi  168 (185)
+T tr|K3X4G8|K3X4  120 ATVLNKLLHD-QFAAMKDEVLGDIIKLLEDSAKEVRDAAIQTLEKFYAHI  168 (185)
+
+
+No 109
+>tr|A0A0P9S3P9|A0A0P9S3P9_PSEA0 Anaerobic nitric oxide reductase transcription regulator OS=Pseudomonas amygdali pv. hibisci GN=ALO67_04006 PE=4 SV=1 
+Probab=37.69  E-value=88  Score=30.46  Aligned_cols=20  Identities=45%  Similarity=0.911  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    60 LRDVIPLLEDVTQTLSGQER   79 (131)
+Q Consensus        60 LrdviPLLeDV~qtLsGqEk   79 (131)
+                      ||.+|||..|.+..|..+||
+T Consensus         6 lreliplvsdlsrelpdeer   25 (244)
+T tr|A0A0P9S3P9|    6 LRELIPLVSDLSRELPDEER   25 (244)
+
+
+No 110
+>tr|A0A0L7R3W0|A0A0L7R3W0_9HYME Uncharacterized protein OS=Habropoda laboriosa GN=WH47_00545 PE=4 SV=1 
+Probab=37.53  E-value=89  Score=31.56  Aligned_cols=27  Identities=44%  Similarity=0.684  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains     2 MADIGSMGDPLTWSKALKKLEKVTVQG   28 (131)
+Q Consensus         2 ~~~~g~mgdpltWskaLkKlEKVtVqG   28 (131)
+                      |-.+...|||++.|..|..|||.|+.|
+T Consensus        50 mfataqvgdplslssslahlekctlmg   76 (341)
+T tr|A0A0L7R3W0|   50 MFATAQVGDPLSLSSSLAHLEKCTLMG   76 (341)
+
+
+No 111
+>tr|A0A0F6SFZ9|A0A0F6SFZ9_9DELT Uncharacterized protein OS=Sandaracinus amylolyticus GN=DB32_004973 PE=4 SV=1 
+Probab=37.47  E-value=89  Score=31.92  Aligned_cols=43  Identities=35%  Similarity=0.668  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains     6 GSMGDPLTWSKALKKLEKVTVQGSQKLTTGNCNWALSLVDLFHDTN   51 (131)
+Q Consensus         6 g~mgdpltWskaLkKlEKVtVqGSqklt~gNcnWALsLVDL~HdTn   51 (131)
+                      |.|||   ||-...++..|.|.|...--+||--+.|.|+-|+.-|.
+T Consensus       250 gemgd---wsgsvarigdvvvagagsagsgnrvyvldlaallaatd  292 (382)
+T tr|A0A0F6SFZ9|  250 GEMGD---WSGSVARIGDVVVAGAGSAGSGNRVYVLDLAALLAATD  292 (382)
+
+
+No 112
+>tr|A8JG72|A8JG72_CHLRE Predicted protein (Fragment) OS=Chlamydomonas reinhardtii GN=CHLREDRAFT_140337 PE=3 SV=1
+Probab=36.94  E-value=77  Score=32.97  Aligned_cols=23  Identities=43%  Similarity=0.495  Sum_probs=0.0  Template_Neff=2.016
+
+Q 1HEK_1|Chains    24 VTVQGSQKLTTGNCNWALSLVDL   46 (131)
+Q Consensus        24 VtVqGSqklt~gNcnWALsLVDL   46 (131)
+                      +.|+|+.++|..+|.=+|.||||
+T Consensus       330 l~~~g~n~~t~~~~~~~l~lvdl  352 (448)
+T tr|A8JG72|A8JG  330 LAIQGENKTTGAFRHAALHLVDL  352 (448)
+
+
+No 113
+>tr|A2CKV2|A2CKV2_9CARY Peptide transporter 1 (Fragment) OS=Nepenthes tomoriana GN=PTR1 PE=4 SV=1 
+Probab=35.69  E-value=99  Score=26.67  Aligned_cols=26  Identities=31%  Similarity=0.641  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    87 WAISAVKMGLQINNVVDGKASFQLLR  112 (131)
+Q Consensus        87 WaIsAvKmGlqI~nv~Dgkatfqllk  112 (131)
+                      +.|+|..||+.|...-.|.|.|.|.|
+T Consensus        15 fgipa~smgiaiasffsg~alyrl~k   40 (93)
+T tr|A2CKV2|A2CK   15 FGIPAXSMGIAIASFFSGXALYRLXK   40 (93)
+
+
+No 114
+>tr|D0MEW1|D0MEW1_RHOM4 Cna B domain protein OS=Rhodothermus marinus (strain ATCC 43812 / DSM 4252 / R-10) GN=Rmar_0509 PE=4 SV=1
+Probab=35.59  E-value=76  Score=31.83  Aligned_cols=36  Identities=33%  Similarity=0.578  Sum_probs=0.0  Template_Neff=2.577
+
+Q 1HEK_1|Chains    25 TVQGSQKLTTGNCNWALSLVDLFHDTNFVKEKDWQL   60 (131)
+Q Consensus        25 tVqGSqklt~gNcnWALsLVDL~HdTn~~keKDWqL   60 (131)
+                      |+.-.+.|+.|..-|-+|+||.|-.+.-.||..+|.
+T Consensus       303 ~~~~~~~L~pG~Y~W~v~vvD~FGN~srSkE~~Fq~  338 (339)
+T tr|D0MEW1|D0ME  303 TYRLPQPLDPGDYYWTVSVVDIFGNRSRSKEAGFQV  338 (339)
+
+
+No 115
+>tr|A0A0V0SFZ7|A0A0V0SFZ7_9BILA Uncharacterized protein OS=Trichinella nelsoni GN=T07_13141 PE=4 SV=1 
+Probab=35.18  E-value=1e+02  Score=25.56  Aligned_cols=42  Identities=33%  Similarity=0.498  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    43 LVDLFHDTNFVKEKDWQLRDVIPLLEDVTQTLSGQEREAFER   84 (131)
+Q Consensus        43 LVDL~HdTn~~keKDWqLrdviPLLeDV~qtLsGqEkeAFek   84 (131)
+                      |-|+--|..-+.|.-|.|..|+.||..|--.-|..||.-=|+
+T Consensus        14 lddiavdekameehfwrlaevlhllqsvglktsseerqmpek   55 (71)
+T tr|A0A0V0SFZ7|   14 LDDIAVDEKAMEEHFWRLAEVLHLLQSVGLKTSSEERQMPEK   55 (71)
+
+
+No 116
+>tr|A0A0N4XS10|A0A0N4XS10_NIPBR Uncharacterized protein OS=Nippostrongylus brasiliensis PE=4 SV=1
+Probab=34.74  E-value=1.1e+02  Score=27.10  Aligned_cols=38  Identities=39%  Similarity=0.438  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    60 LRDVIPLLEDVTQTLSGQEREAFERTWWAISAVKMGLQ   97 (131)
+Q Consensus        60 LrdviPLLeDV~qtLsGqEkeAFekTWWaIsAvKmGlq   97 (131)
+                      ||..--||+||.|.=|..-||..-..--||.....|||
+T Consensus        15 lrqfslllddvvqkgsrstredivellmaitsfneglq   52 (108)
+T tr|A0A0N4XS10|   15 LRQFSLLLDDVVQKGSRSTREDIVELLMAITSFNEGLQ   52 (108)
+
+
+No 117
+>tr|A0A0M0K9X9|A0A0M0K9X9_9EUKA Uncharacterized protein OS=Chrysochromulina sp. CCMP291 GN=Ctob_015244 PE=4 SV=1 
+Probab=33.05  E-value=1.2e+02  Score=29.83  Aligned_cols=64  Identities=25%  Similarity=0.358  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    62 DVIPLLEDVTQTLSGQEREAFERTWWAISAVKMGLQINNVVDGKASFQLLRAKYEKKTANKKQS  125 (131)
+Q Consensus        62 dviPLLeDV~qtLsGqEkeAFekTWWaIsAvKmGlqI~nv~DgkatfqllkaKyer~~~~kkq~  125 (131)
+                      |.+||+..+.......|||.--+.--.-+|..|..|-..-.-.-...||--+.|-|+...|...
+T Consensus        57 dmlpliqqiqaevkakereetakangfasaaemdaqaaakdaaagavqlaaaeylrkkrekeee  120 (250)
+T tr|A0A0M0K9X9|   57 DMLPLIQQIQAEVKAKEREETAKANGFASAAEMDAQAAAKDAAAGAVQLAAAEYLRKKREKEEE  120 (250)
+
+
+No 118
+>tr|A0A0G0UR43|A0A0G0UR43_9BACT Uncharacterized protein OS=Candidatus Woesebacteria bacterium GW2011_GWD2_40_19 GN=UT88_C0021G0002 PE=4 SV=1
+Probab=31.08  E-value=1.3e+02  Score=33.42  Aligned_cols=48  Identities=27%  Similarity=0.529  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    67 LEDVTQTLSGQEREAFERTWWAISAVKMGLQINNVVDGKASFQLLRAK  114 (131)
+Q Consensus        67 LeDV~qtLsGqEkeAFekTWWaIsAvKmGlqI~nv~DgkatfqllkaK  114 (131)
+                      +.||...|...||||.|..||---..|....=..|...-..+--+||+
+T Consensus       371 iqdvinalndsereaienawwkqlgfknaadgkevigdpemwipikar  418 (900)
+T tr|A0A0G0UR43|  371 IQDVINALNDSEREAIENAWWKQLGFKNAADGKEVIGDPEMWIPIKAR  418 (900)
+
+
+No 119
+>tr|Q8E948|Q8E948_SHEON Two component signal transduction system hybrid histidine kinase/response regulator OS=Shewanella oneidensis (strain MR-1) GN=SO_4445 PE=4 SV=1 
+Probab=29.15  E-value=1.5e+02  Score=33.71  Aligned_cols=34  Identities=38%  Similarity=0.838  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    53 VKEKDWQLRDVIPLLEDVTQTLSGQEREAFERTWWAI   89 (131)
+Q Consensus        53 ~keKDWqLrdviPLLeDV~qtLsGqEkeAFekTWWaI   89 (131)
+                      ..|.-|||   |||+..|-..+|..|+.....||-|+
+T Consensus       465 irepywql---iplinrvfssmsekekqqirntwlav  498 (1141)
+T tr|Q8E948|Q8E9  465 IREPYWQL---IPLINRVFSSMSEKEKQQIRNTWLAV  498 (1141)
+
+
+No 120
+>tr|K2BUR0|K2BUR0_9ZZZZ Uncharacterized protein OS=groundwater metagenome GN=ACD_45C00634G0001 PE=4 SV=1 
+Probab=28.50  E-value=1.6e+02  Score=28.20  Aligned_cols=47  Identities=32%  Similarity=0.559  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    75 SGQEREAFERTWWAISA---VKMGLQINNVVDGKA--SFQLLRAKYEKKTAN  121 (131)
+Q Consensus        75 sGqEkeAFekTWWaIsA---vKmGlqI~nv~Dgka--tfqllkaKyer~~~~  121 (131)
+                      |+.|.+|+.|.|=|++.   +|.|.--..-..|+|  ..|++|.||.+..++
+T Consensus        93 spaeldaydrfwdavstektlkagayaegkaegkaetliqmikrkfnkslsk  144 (192)
+T tr|K2BUR0|K2BU   93 SPAELDAYDRFWDAVSTEKTLKAGAYAEGKAEGKAETLIQMIKRKFNKSLSK  144 (192)
+
+
+No 121
+>tr|B4CXF6|B4CXF6_9BACT Uncharacterized protein OS=Chthoniobacter flavus Ellin428 GN=CfE428DRAFT_1247 PE=4 SV=1 
+Probab=27.47  E-value=1.7e+02  Score=33.33  Aligned_cols=54  Identities=30%  Similarity=0.477  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    15 SKALKKLEKVTVQGSQKLTTGNCNWALSLVD---LFHDTNFVKEKDWQLRDVIPLLE   68 (131)
+Q Consensus        15 skaLkKlEKVtVqGSqklt~gNcnWALsLVD---L~HdTn~~keKDWqLrdviPLLe   68 (131)
+                      ..|+|.|..|.+||--.+++||..+|+|-.|   -.|...-.....-|+|.|..||.
+T Consensus      1048 tdaikalrdvdlqgilsmssgnwpyaisecdqvlavhqresfangrkqirniaalln 1104 (1116)
+T tr|B4CXF6|B4CX 1048 TDAIKALRDVDLQGILSMSSGNWPYAISECDQVLAVHQRESFANGRKQIRNIAALLN 1104 (1116)
+
+
+No 122
+>tr|A0A0R2CX96|A0A0R2CX96_9LACO Uncharacterized protein OS=Lactobacillus florum DSM 22689 = JCM 16035 GN=FC87_GL000104 PE=4 SV=1
+Probab=27.36  E-value=1e+02  Score=28.79  Aligned_cols=43  Identities=23%  Similarity=0.353  Sum_probs=0.0  Template_Neff=4.000
+
+Q 1HEK_1|Chains    89 ISAVKMGLQINNVVDGKASFQLLRAKYEKKTANKKQSEPSEEY  131 (131)
+Q Consensus        89 IsAvKmGlqI~nv~DgkatfqllkaKyer~~~~kkq~~~~eey  131 (131)
+                      |-+|-+|+||.||.=|-..||=|...|....-+-.|.+.+..+
+T Consensus       107 IlgICRG~QliNVa~GGtLYQDL~~q~~~~~i~H~Q~pt~~~~  149 (238)
+T tr|A0A0R2CX96|  107 ILGICRGMQLINVAFGGTLYQDLSLQYQGSSIKHEQQPTPFQF  149 (238)
+
+
+No 123
+>tr|A0A0M5KQ26|A0A0M5KQ26_9ACTO Uncharacterized protein OS=Trueperella pyogenes GN=AN946_09620 PE=4 SV=1
+Probab=26.78  E-value=1.3e+02  Score=27.37  Aligned_cols=32  Identities=44%  Similarity=0.590  Sum_probs=0.0  Template_Neff=2.683
+
+Q 1HEK_1|Chains    60 LRDVIPLLEDVTQTLSGQEREAFERTWWAISA   91 (131)
+Q Consensus        60 LrdviPLLeDV~qtLsGqEkeAFekTWWaIsA   91 (131)
+                      ++||..+|+....-|||++-+||.-..=||.+
+T Consensus       106 ~~dv~~~L~~~~~elsG~~A~Ayd~L~dAie~  137 (150)
+T tr|A0A0M5KQ26|  106 LHDVKTLLDEYDMELSGQAAEAYDALYDAIEA  137 (150)
+
+
+No 124
+>tr|A0A0M2UX64|A0A0M2UX64_9BACT Uncharacterized protein OS=Candidatus Brocadia fulgida GN=BROFUL_01737 PE=4 SV=1 
+Probab=25.71  E-value=1.9e+02  Score=29.04  Aligned_cols=27  Identities=41%  Similarity=0.564  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    56 KDWQLRDVIPLLEDVTQTLSGQEREAF   82 (131)
+Q Consensus        56 KDWqLrdviPLLeDV~qtLsGqEkeAF   82 (131)
+                      .|-.-.||-.|||||..-+|..|.|.|
+T Consensus        36 rdldpedinalledvfsgmspeeiesf   62 (286)
+T tr|A0A0M2UX64|   36 RDLDPEDINALLEDVFSGMSPEEIESF   62 (286)
+
+
+No 125
+>tr|A0A0N5DSM9|A0A0N5DSM9_TRIMR Uncharacterized protein OS=Trichuris muris PE=4 SV=1
+Probab=24.39  E-value=1.9e+02  Score=34.21  Aligned_cols=44  Identities=32%  Similarity=0.597  Sum_probs=0.0  Template_Neff=1.586
+
+Q 1HEK_1|Chains    40 ALSLV-DLFHDTNFVKEKDWQLRDVIPLLEDVT-----QTLSGQEREAFE   83 (131)
+Q Consensus        40 ALsLV-DL~HdTn~~keKDWqLrdviPLLeDV~-----qtLsGqEkeAFe   83 (131)
+                      ||+.. .+.|+.||--..|+.+..-||+|||..     +.|.-.||...|
+T Consensus       825 a~a~tan~~h~~~~e~dsdf~i~~ei~~ledll~~~~~~~l~~rer~rle  874 (1518)
+T tr|A0A0N5DSM9|  825 SVSFSANTLHDIHIELDSDFKVENEIPLLEDLLDLESFQYLDKREKNRLE  874 (1518)
+
+
+No 126
+>tr|A0A0G0N117|A0A0G0N117_9BACT Uncharacterized protein OS=Candidatus Woesebacteria bacterium GW2011_GWA1_39_21 GN=UT39_C0025G0002 PE=4 SV=1 
+Probab=21.83  E-value=2.5e+02  Score=27.88  Aligned_cols=37  Identities=38%  Similarity=0.503  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1HEK_1|Chains    54 KEKDWQLRDVIPLLEDVTQTLSGQEREAFERTWWAIS   90 (131)
+Q Consensus        54 keKDWqLrdviPLLeDV~qtLsGqEkeAFekTWWaIs   90 (131)
+                      ||..=|--.++|..|...-.||+.-||||-|..--|+
+T Consensus        14 keregqsgeimpyveryagslspsareafyrslenis   50 (249)
+T tr|A0A0G0N117|   14 KEREGQSGEIMPYVERYAGSLSPSAREAFYRSLENIS   50 (249)
+
+

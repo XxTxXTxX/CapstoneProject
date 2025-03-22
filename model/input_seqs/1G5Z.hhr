@@ -1,0 +1,1082 @@
+Query         1G5Z_1|Chain A|OUTER SURFACE PROTEIN C|Borrelia burgdorferi (139)
+Match_columns 164
+No_of_seqs    243 out of 284
+Neff          3.44251
+Searched_HMMs 169
+Date          Sat Mar 22 05:30:52 2025
+Command       hhblits -cpu 8 -i model/input_seqs/1G5Z.fasta -d /Users/hahayes/Desktop/Capstone/hh-suite/databases/uniclust30_2016_09/uniclust30_2016_09 -oa3m model/msa_raw/1G5Z.a3m -norealign -n 3 
+
+ No Hit                             Prob E-value P-value  Score    SS Cols Query HMM  Template HMM
+  1 tr|A0A0A7UWS2|A0A0A7UWS2_9SPIR 100.0 3.8E-63 1.9E-68  415.3   0.0  163    1-164    41-205 (211)
+  2 tr|I0FF99|I0FF99_BORCA Vsp pro 100.0 3.1E-61 1.6E-66  392.5   0.0  155    6-161     2-163 (166)
+  3 tr|W5SRX8|W5SRX8_9SPIR Variabl 100.0 4.8E-57 2.3E-62  384.9   0.0  158    2-161    75-241 (247)
+  4 tr|W5SVV9|W5SVV9_9SPIR Variabl 100.0 2.5E-53 1.3E-58  363.2   0.0  155    1-161    76-238 (247)
+  5 tr|C7AI07|C7AI07_BORVA Outer s 100.0 5.3E-53 2.3E-58  342.8   0.0  153    1-153    13-170 (170)
+  6 tr|B5RP90|B5RP90_BORDL Vsp pro 100.0 3.4E-49 1.6E-54  335.4   0.0  159    2-161    77-241 (242)
+  7 tr|W5SLV6|W5SLV6_9SPIR Variabl 100.0 1.5E-43 6.2E-49  305.8   0.0  159    2-161   132-296 (302)
+  8 tr|A9XDD9|A9XDD9_9SPIR Outer s 100.0 1.8E-42   8E-48  271.6   0.0  124   25-149     1-126 (126)
+  9 tr|Q5I5B6|Q5I5B6_9SPIR Outer s 100.0 2.5E-42   1E-47  272.6   0.0  126    1-126     9-135 (135)
+ 10 tr|W5ST63|W5ST63_BORPR Variabl 100.0 1.6E-38 6.6E-44  263.0   0.0  119    2-121    67-190 (194)
+ 11 tr|W5T1X0|W5T1X0_BORHE Variabl 100.0 8.5E-37 3.9E-42  248.7   0.0  117    2-119    40-162 (162)
+ 12 tr|W5SJ94|W5SJ94_9SPIR Variabl 100.0 4.7E-34 1.9E-39  235.9   0.0  118    2-120    68-191 (191)
+ 13 tr|W5SB36|W5SB36_BORHE Variabl  99.9 2.3E-28 8.8E-34  190.0   0.0  110   26-138     1-118 (118)
+ 14 tr|W5T1M6|W5T1M6_BORHE Variabl  99.9 1.6E-27 7.1E-33  186.2   0.0   73    2-75     40-114 (114)
+ 15 tr|F8SPH4|F8SPH4_BORAF Outer s  99.8 1.5E-24   6E-30  163.0   0.0   85   37-121     1-89  (89)
+ 16 tr|W5TC22|W5TC22_BORHE Variabl  99.8 4.1E-24 1.7E-29  172.1   0.0  101   53-161    28-133 (142)
+ 17 tr|W5T6X8|W5T6X8_BORHE Variabl  99.8 1.2E-23 5.3E-29  165.4   0.0  104   58-161     1-113 (119)
+ 18 tr|W5T790|W5T790_BORHE Variabl  99.7 3.8E-21 1.6E-26  148.4   0.0   86   77-162    10-95  (102)
+ 19 tr|Q32UP8|Q32UP8_BORBG Outer s  99.6 2.7E-19 1.1E-24  134.1   0.0   81   67-147     2-84  (85)
+ 20 tr|W6TFQ3|W6TFQ3_9SPIR Variabl  99.6 8.9E-19 3.5E-24  134.7   0.0   90   23-114     1-100 (101)
+ 21 tr|W5SRC8|W5SRC8_9SPIR Variabl  99.6 8.2E-19 3.6E-24  131.4   0.0   69   93-161     8-77  (80)
+ 22 tr|P70822|P70822_9SPIR Outer s  99.5 5.8E-17 2.4E-22  124.0   0.0   54    1-54     39-92  (93)
+ 23 tr|I0FF10|I0FF10_BORCA Lipopro  99.4 5.1E-16   2E-21  125.7   0.0   62    2-64     67-132 (143)
+ 24 tr|P70821|P70821_9SPIR Outer s  99.4 7.6E-16 2.9E-21  117.1   0.0   53    1-54     38-90  (90)
+ 25 tr|W6TGT2|W6TGT2_9SPIR Variabl  99.2 1.6E-14 6.1E-20  106.9   0.0   58   15-73      2-63  (74)
+ 26 tr|F6M701|F6M701_BORBG OspC (F  99.1 1.8E-13 6.9E-19  100.4   0.0   45    1-46     24-68  (69)
+ 27 tr|W5SM02|W5SM02_9SPIR Variabl  98.9 4.7E-12   2E-17   94.8   0.0   62   72-133     4-67  (74)
+ 28 tr|W5SGA5|W5SGA5_9SPIR Variabl  98.8 1.7E-11 6.8E-17   95.3   0.0   69   80-148    14-82  (98)
+ 29 tr|A0A142JDD1|A0A142JDD1_BORHE  98.7 5.7E-11 2.3E-16   86.3   0.0   40    1-41     22-61  (61)
+ 30 tr|H6WU70|H6WU70_BORBG Outer s  98.7 6.2E-11 2.4E-16   88.6   0.0   49  112-160    15-64  (74)
+ 31 tr|I0FF09|I0FF09_BORCA Lipopro  98.6 2.3E-10 9.1E-16   89.8   0.0   83   78-161     8-91  (102)
+ 32 tr|W5SAT8|W5SAT8_BORHE Variabl  98.6 3.6E-10 1.4E-15   86.2   0.0   45    1-46     26-70  (83)
+ 33 tr|W5ST11|W5ST11_BORPR Variabl  98.5   8E-10 3.1E-15   77.2   0.0   46  119-164     1-46  (48)
+ 34 tr|W5T289|W5T289_BORHE Variabl  98.3 6.2E-09 2.5E-14   72.6   0.0   39  126-164     1-39  (46)
+ 35 tr|W5SCK8|W5SCK8_BORHE Variabl  98.2 1.3E-08 5.2E-14   67.1   0.0   33    8-41      2-34  (34)
+ 36 tr|W5SCP2|W5SCP2_BORHE Variabl  98.1 2.6E-08   1E-13   74.0   0.0   53   51-103     6-63  (67)
+ 37 tr|W5TC15|W5TC15_BORHE Variabl  97.7 4.1E-07 1.6E-12   66.2   0.0   48   48-95      3-55  (57)
+ 38 tr|W5SXH9|W5SXH9_9SPIR Unchara  97.0   2E-05 7.9E-11   63.6   0.0   72   85-156    22-96  (105)
+ 39 tr|W5SEV2|W5SEV2_9SPIR Variabl  96.8 7.8E-05   3E-10   49.3   0.0   28   15-43      4-31  (31)
+ 40 tr|W5STW6|W5STW6_BORPR Variabl  96.6 0.00015 5.7E-10   48.7   0.0   29  133-161     1-29  (33)
+ 41 tr|W5T217|W5T217_BORHE Variabl  96.4 0.00027 1.1E-09   48.8   0.0   31  133-163     1-31  (38)
+ 42 tr|I0FF05|I0FF05_BORCA Lipopro  96.4  0.0003 1.2E-09   49.7   0.0   24   18-42      7-30  (43)
+ 43 tr|W6TGI3|W6TGI3_9SPIR Variabl  96.1 0.00078 3.1E-09   44.9   0.0   27  136-162     3-29  (31)
+ 44 tr|W5SB52|W5SB52_BORHE Variabl  96.0  0.0012 4.8E-09   51.2   0.0   53   64-117     1-58  (73)
+ 45 tr|W5T696|W5T696_BORHE Variabl  95.8  0.0021   8E-09   44.3   0.0   29  136-164     1-29  (36)
+ 46 tr|W5T6F1|W5T6F1_BORHE Variabl  95.4  0.0043 1.7E-08   44.6   0.0   29  136-164     3-31  (45)
+ 47 tr|W6TET7|W6TET7_9SPIR Variabl  94.7   0.015 5.7E-08   40.0   0.0   32   97-128     3-34  (34)
+ 48 tr|W5SEV8|W5SEV8_9SPIR Variabl  94.3   0.027   1E-07   42.6   0.0   32   80-111    15-46  (57)
+ 49 tr|W5T0R9|W5T0R9_BORHE Variabl  93.3   0.071 2.8E-07   42.3   0.0   62   33-95      3-73  (74)
+ 50 tr|W5SH18|W5SH18_BORHE Variabl  88.9    0.63 2.4E-06   33.9   0.0   37   98-134     1-39  (41)
+ 51 tr|W5T1S0|W5T1S0_BORHE Variabl  84.3     1.9 7.2E-06   32.6   0.0   25  136-160    14-38  (48)
+ 52 tr|I0FF37|I0FF37_BORCA Unchara  82.8     2.4 9.3E-06   30.6   0.0   31   64-94      1-37  (37)
+ 53 tr|W5T2G8|W5T2G8_BORHE Variabl  79.9     3.7 1.4E-05   31.5   0.0   36   98-133     1-38  (51)
+ 54 tr|W5SFF0|W5SFF0_9SPIR Variabl  69.2      10 4.4E-05   30.4   0.0   21    1-21     34-54  (60)
+ 55 tr|A0A0S7XWT4|A0A0S7XWT4_9COXI  61.4      18 7.9E-05   32.2   0.0   34   38-71     71-104 (111)
+ 56 tr|A0A0F9YNJ9|A0A0F9YNJ9_9BACT  54.7      31 0.00012   33.0   0.0   26   15-40     52-79  (195)
+ 57 tr|F0T8U9|F0T8U9_METLA Unchara  54.2      33 0.00013   27.7   0.0   23    1-23      5-27  (59)
+ 58 tr|J6UCM4|J6UCM4_9RHOB Unchara  52.9      35 0.00014   30.2   0.0   24   55-78     14-37  (107)
+ 59 tr|I0FES0|I0FES0_BORCA Unchara  50.2      42 0.00016   29.3   0.0   28  136-163    62-89  (95)
+ 60 tr|M1IB40|M1IB40_9PHYC Unchara  50.1      42 0.00016   33.1   0.0   39    2-42     16-54  (239)
+ 61 tr|A0A0Q7FWI7|A0A0Q7FWI7_9BURK  43.5      62 0.00024   27.8   0.0   43   55-97     15-58  (84)
+ 62 tr|A0A0F9A7T6|A0A0F9A7T6_9ZZZZ  42.5      66 0.00026   31.9   0.0   18   56-73    169-186 (237)
+ 63 tr|A0A062UJW4|A0A062UJW4_9RHOB  31.5 1.2E+02  0.0005   30.2   0.0   51   56-106    62-114 (207)
+ 64 tr|A0A174U6Y7|A0A174U6Y7_9BACT  31.4 1.3E+02  0.0005   25.3   0.0   40   95-134    14-53  (68)
+ 65 tr|F9WG75|F9WG75_TRYCI Unchara  31.2 1.3E+02 0.00051   27.6   0.0   25   20-44     34-58  (123)
+ 66 tr|W1KKP9|W1KKP9_9SPHN Unchara  31.1 1.3E+02 0.00052   27.3   0.0   48   58-105    11-58  (113)
+ 67 tr|D0TYK1|D0TYK1_9BACE Unchara  27.3 1.4E+02 0.00066   31.3   0.0   55   31-86     82-139 (313)
+ 68 tr|Q2QKM0|Q2QKM0_KALBL Flavono  26.1 1.8E+02 0.00072   26.4   0.0   55   58-113     1-55  (103)
+ 69 tr|M1IB40|M1IB40_9PHYC Unchara  24.3 2.1E+02 0.00081   28.9   0.0   39    2-42     66-104 (239)
+ 70 tr|A0A0F9AQ76|A0A0F9AQ76_9ZZZZ  21.8 2.5E+02 0.00098   24.8   0.0   33   56-89     20-52  (87)
+ 71 tr|A5BXU0|A5BXU0_VITVI Putativ  21.1 2.7E+02   0.001   30.1   0.0   56   65-120    40-104 (407)
+ 72 tr|C5LST3|C5LST3_PERM5 Putativ  21.1 2.7E+02   0.001   31.6   0.0   32  131-162   191-222 (669)
+ 73 tr|A0A0E0VTR9|A0A0E0VTR9_STAA5  20.3 2.5E+02  0.0011   27.6   0.0   79   70-153    66-144 (172)
+
+No 1
+>tr|A0A0A7UWS2|A0A0A7UWS2_9SPIR Cell surface protein OS=Borreliella chilensis GN=OY14_04250 PE=4 SV=1
+Probab=100.00  E-value=3.8e-63  Score=415.33  Aligned_cols=163  Identities=71%  Similarity=0.938  Sum_probs=157.9  Template_Neff=3.000
+
+Q 1G5Z_1|Chain      1 PNLTEISKKITESNAVVLAVKEVETLLASIDELATKAIGKKIGN-NGLEANQSKNTSLLSGAYAISDLIAEKLNVL-KNE   78 (164)
+Q Consensus         1 ~dL~~ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKKI~~-~g~~~~~~~NgsLlAGay~i~~~i~~KL~~L-~~~   78 (164)
+                      |||++||+||+++|++|++|||||||+.|||||| |||||||.+ +|+.....+|.||+.|+|.|+-+|.+||..| ..+
+T Consensus        41 ~dL~~ISkKIkds~afv~aVKEVeTLv~SIDELA-KAIGKKI~~~~gl~~~a~~NgsLlAGay~i~~~I~~KL~~L~~s~  119 (211)
+T tr|A0A0A7UWS2|   41 PNLTEISKKITDSNAFVLAVKEVETLVKSIDELA-KAIGKKIQNNNGLGAEANHNGSLLAGAYAISTLITQKLSGLKNSE  119 (211)
+Confidence            7999999999999999999999999999999999 999999999 5677778999999999999999999999999 579
+
+
+Q 1G5Z_1|Chain     79 ELKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDDNAQRAILKKHANKDKGAAELEKLFKAVENLSKAAQDTLKNAVKEL  158 (164)
+Q Consensus        79 ~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~~AKkAI~kt~~~~dKGa~EL~~Ln~aVd~LlkaA~~~v~~aIkEL  158 (164)
+                      +||+||..+|.||..|++|||++|+-||.++.||++|++||++.|+.+|||+.||++||.+|+.|++|||+.+.++|+||
+T Consensus       120 ~LK~Ki~~aK~~s~~F~~KLK~~ha~LG~~~~tD~~AKkAI~k~~~~kdKGa~EL~~L~~aV~~L~kAA~~~l~~aIkeL  199 (211)
+T tr|A0A0A7UWS2|  120 ELKEKIEAAKKCSEAFTNKLKDSHADLGKEGATDDNAKKAILKTNATKDKGAKELEKLFESVESLLKAAKEALANSVKEL  199 (211)
+Confidence            99999999999999999999999999999889999999999999999999999999999999999999999999999999
+
+
+Q 1G5Z_1|Chain    159 TSPIVA  164 (164)
+Q Consensus       159 t~p~~~  164 (164)
+                      |+|.++
+T Consensus       200 T~p~~~  205 (211)
+T tr|A0A0A7UWS2|  200 TSPVVA  205 (211)
+Confidence            999764
+
+
+No 2
+>tr|I0FF99|I0FF99_BORCA Vsp protein OS=Borrelia crocidurae (strain Achema) GN=Q7M_1157 PE=4 SV=1
+Probab=100.00  E-value=3.1e-61  Score=392.54  Aligned_cols=155  Identities=51%  Similarity=0.683  Sum_probs=0.0  Template_Neff=3.142
+
+Q 1G5Z_1|Chain      6 ISKKITESNAVVLAVKEVETLLASIDELATKAIGKKIGNN-GLEANQSKNTSLLSGAYAISDLIAEKLNVLK-----NEE   79 (164)
+Q Consensus         6 ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKKI~~~-g~~~~~~~NgsLlAGay~i~~~i~~KL~~L~-----~~~   79 (164)
+                      ||+||+++++.+..||||+||+.|||||| |||||||.++ ++.....+|.||+.|+|.|+-.|-.||..|.     ..+
+T Consensus         2 iskki~d~~~Fa~~VKEV~tLvKSiDELA-KAIGKKI~~~~~l~~~a~~NGsLiAGa~~vi~~v~~KL~~Le~~~~is~~   80 (166)
+T tr|I0FF99|I0FF    2 ISKKIKDAVEFAGKVKEVHTLVKSIDELA-KAIGKKIKNDGGLDDEANQNGSLIAGAYSVISAVKTKLDGLEKTDGISDE   80 (166)
+
+
+Q 1G5Z_1|Chain     80 LKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDDNAQRAILKKHAN-KDKGAAELEKLFKAVENLSKAAQDTLKNAVKEL  158 (164)
+Q Consensus        80 LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~~AKkAI~kt~~~-~dKGa~EL~~Ln~aVd~LlkaA~~~v~~aIkEL  158 (164)
+                      |+.||..+|.+|..|++|||++|+.||-..-+|+|+.+||++-++. +|||+.||++|..|++.|.++|++.+.++++||
+T Consensus        81 LK~kv~~aK~~~~aF~~KlK~~~~dLgk~datD~naKkAI~~t~at~~dKGa~EL~~LntAIdeLlKaA~~av~~aI~EL  160 (166)
+T tr|I0FF99|I0FF   81 LKAKVTDAKTKSKAFLNKLKGSHADLGKKDATDDNAKKAIDRTNATDGDKGATELIALNTAIDELLKAANDAVEAAIKEL  160 (166)
+
+
+Q 1G5Z_1|Chain    159 TSP  161 (164)
+Q Consensus       159 t~p  161 (164)
+                      |.|
+T Consensus       161 t~~  163 (166)
+T tr|I0FF99|I0FF  161 TVP  163 (166)
+
+
+No 3
+>tr|W5SRX8|W5SRX8_9SPIR Variable outer membrane protein OS=Borrelia crocidurae DOU GN=BCD_1745 PE=4 SV=1
+Probab=100.00  E-value=4.8e-57  Score=384.87  Aligned_cols=158  Identities=49%  Similarity=0.665  Sum_probs=0.0  Template_Neff=2.600
+
+Q 1G5Z_1|Chain      2 NLTEISKKITESNAVVLAVKEVETLLASIDELATKAIGKKIGNNGL----EANQSKNTSLLSGAYAISDLIAEKLNVLKN   77 (164)
+Q Consensus         2 dL~~ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKKI~~~g~----~~~~~~NgsLlAGay~i~~~i~~KL~~L~~   77 (164)
+                      .|.-||+||...-...--||||+||..|||||| |||||||.+||.    .++..+|-||+.|+|.|---+-.||..|..
+T Consensus        75 DLKvVskKIkdAVeFa~~VKEV~tLVKSVdELA-KAIgKKI~~~g~~~~~~~~~~~NGsLlAGa~svis~vktKL~~Le~  153 (247)
+T tr|W5SRX8|W5SR   75 DLKVVSKKIKDAVEFAEKVKEVHTLVKSVDELA-KAIGKKIKNNGGLIAADANANHNGSLIAGAYSVISAVKTKLETLEK  153 (247)
+
+
+Q 1G5Z_1|Chain     78 -----EELKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDDNAQRAILKKHANKDKGAAELEKLFKAVENLSKAAQDTLK  152 (164)
+Q Consensus        78 -----~~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~~AKkAI~kt~~~~dKGa~EL~~Ln~aVd~LlkaA~~~v~  152 (164)
+                           .+||.|++.+++-++.|.+|||++ +-||-...+|++++.||++.++++|||+.||.+|-.++..|-+++.+.+.
+T Consensus       154 k~~is~~lK~Kv~~~k~k~~aFLdKlK~~-~~LgK~~atD~~aK~Aid~~~~tkdKGa~EL~~LNt~Id~LL~aan~~v~  232 (247)
+T tr|W5SRX8|W5SR  154 KDGISDELKTKVTDVKTKSTAFLDKLKSD-ADLGKKDATDDDAKKAIDKNNATKDKGAKELGELNTAIDELLKAANKAVE  232 (247)
+
+
+Q 1G5Z_1|Chain    153 NAVKELTSP  161 (164)
+Q Consensus       153 ~aIkELt~p  161 (164)
+                      .+++|||.|
+T Consensus       233 ~aI~ELt~~  241 (247)
+T tr|W5SRX8|W5SR  233 DAIKELTVK  241 (247)
+
+
+No 4
+>tr|W5SVV9|W5SVV9_9SPIR Variable outer membrane protein OS=Borrelia coriaceae Co53 GN=BCO_0015804 PE=4 SV=1
+Probab=100.00  E-value=2.5e-53  Score=363.16  Aligned_cols=155  Identities=49%  Similarity=0.662  Sum_probs=0.0  Template_Neff=3.057
+
+Q 1G5Z_1|Chain      1 PNLTEISKKITESNAVVLAVKEVETLLASI-DELATKAIGKKIGNNG--LEANQSKNTSLLSGAYAISDLIAEKLNVLKN   77 (164)
+Q Consensus         1 ~dL~~ISkKIkda~afa~~VKEV~tLvkSI-DELA~KAIGKKI~~~g--~~~~~~~NgsLlAGay~i~~~i~~KL~~L~~   77 (164)
+                      .+|.+||+||.+.-+....|||||||..|| |||| |+|||||.++|  ......+|.+|+.|+|.+.--|.-|+..|..
+T Consensus        76 iDL~kvskKIKdav~FA~~VKEI~TLVKSi~dELA-KaIgKKI~~~~~~~~~~~nkNg~LiAG~f~vi~~i~~Kl~~Le~  154 (247)
+T tr|W5SVV9|W5SV   76 IDLAKISKKIKDAVAFAASVKEVETLVKSIIDELA-KAIGKKIKNDGLTDDTENNKNGSLIAGAFSVILTVKTKLKALEK  154 (247)
+
+
+Q 1G5Z_1|Chain     78 -----EELKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDDNAQRAILKKHANKDKGAAELEKLFKAVENLSKAAQDTLK  152 (164)
+Q Consensus        78 -----~~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~~AKkAI~kt~~~~dKGa~EL~~Ln~aVd~LlkaA~~~v~  152 (164)
+                           .+|+.||..++.-+.+|-+|||+.|+.||-+.    ||+.||=+ +.+++||+.||.+|-.+|..|-++|.+.++
+T Consensus       155 ~~~i~~~Lk~Kv~~vk~k~~~Fl~Klk~~h~~Lg~~~----~akkAId~-~~~g~kGa~EL~~LNtaId~LLk~An~~v~  229 (247)
+T tr|W5SVV9|W5SV  155 ESGISDELKTKVTDVKTKSEAFLNKLKSQHADLGKND----NAKKAIDI-NPDGDKGASELIALNTAIDELLKAANGAVE  229 (247)
+
+
+Q 1G5Z_1|Chain    153 NAVKELTSP  161 (164)
+Q Consensus       153 ~aIkELt~p  161 (164)
+                      .+++||+.|
+T Consensus       230 aai~elt~p  238 (247)
+T tr|W5SVV9|W5SV  230 AAIKELTAP  238 (247)
+
+
+No 5
+>tr|C7AI07|C7AI07_BORVA Outer surface protein C (Fragment) OS=Borreliella valaisiana GN=ospC PE=4 SV=1
+Probab=100.00  E-value=5.3e-53  Score=342.76  Aligned_cols=153  Identities=66%  Similarity=0.870  Sum_probs=147.3  Template_Neff=1.700
+
+Q 1G5Z_1|Chain      1 PNLTEISKKITESNAVVLAVKEVETLLASIDELATKAIGKKIGNN-GLEAN-QSKNTSLLSGAYAISDLIAEKLNVL-KN   77 (164)
+Q Consensus         1 ~dL~~ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKKI~~~-g~~~~-~~~NgsLlAGay~i~~~i~~KL~~L-~~   77 (164)
+                      |||++|||||+|||+||++|||||+|++||||||.|||||||+++ ++..+ ++||+|||||||.|+++|++||+.| +|
+T Consensus        13 PNL~eISKKITdSNa~VLAVKEVEaLlsSIDELa~kaIGkkI~~n~~l~~~~~~~N~sLLAGAyaIStLItqKLd~lk~~   92 (170)
+T tr|C7AI07|C7AI   13 PNLIEISKKITDSNAFVLAVKEVEALLSSIDELANKAIGKKIDQNGGLAAATANHNTSLLAGAYAISTLIKQKLDGLKNS   92 (170)
+Confidence            799999999999999999999999999999999999999999995 54443 7999999999999999999999999 99
+
+
+Q 1G5Z_1|Chain     78 EELKEKIDTAKQCSTEFTNKLKSEHAVLGLDN--LTDDNAQRAILKKHANKDKGAAELEKLFKAVENLSKAAQDTLKN  153 (164)
+Q Consensus        78 ~~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~--~tD~~AKkAI~kt~~~~dKGa~EL~~Ln~aVd~LlkaA~~~v~~  153 (164)
+                      ++|+.+|+.||+||++|++||+++|++||..+  +||+|||+||+++|+++|||++||.+|+++|+.|+||||+++.|
+T Consensus        93 e~Lk~eie~AK~cS~aFT~kLk~~ha~Lg~~~g~aTdd~AK~AILKT~~t~dKG~~eL~~L~~SVesL~KaAq~Al~N  170 (170)
+T tr|C7AI07|C7AI   93 EGLKKEIEKAKKCSEAFTKKLKDSHADLGVAAGAATDDNAKAAILKTHGTKDKGAKELKELSESVESLSKAAQAALSN  170 (170)
+Confidence            99999999999999999999999999999987  99999999999999999999999999999999999999999864
+
+
+No 6
+>tr|B5RP90|B5RP90_BORDL Vsp protein OS=Borrelia duttonii (strain Ly) GN=vsp PE=4 SV=1
+Probab=100.00  E-value=3.4e-49  Score=335.37  Aligned_cols=159  Identities=47%  Similarity=0.636  Sum_probs=0.0  Template_Neff=2.140
+
+Q 1G5Z_1|Chain      2 NLTEISKKITESNAVVLAVKEVETLLASIDELATKAIGKKIGNNGLEANQSKNTSLLSGAYAISDLIAEKLNVL------   75 (164)
+Q Consensus         2 dL~~ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKKI~~~g~~~~~~~NgsLlAGay~i~~~i~~KL~~L------   75 (164)
+                      .|.-||++|.|..+.+..|+||.+|..|||+|| ++|||||+++|--....+|.+|.+|+|.|---+.-||.+|      
+T Consensus        77 DL~~iS~kIKe~s~F~~~vkEVh~LVkSid~La-k~iGKKI~a~g~l~~A~kN~~Lv~g~y~ii~~v~TKl~~LE~~~~~  155 (242)
+T tr|B5RP90|B5RP   77 DLKKISAKIKEASAFAVGVKEVHTLVKSIDELA-KAIGKKIKANGTLTDADKNGSLVSGVYSIISSVKTKLTVLETEVGA  155 (242)
+
+
+Q 1G5Z_1|Chain     76 KNEELKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDDNAQRAILKKHANKDKGAAELEKLFKAVENLSKAAQDTLKNAV  155 (164)
+Q Consensus        76 ~~~~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~~AKkAI~kt~~~~dKGa~EL~~Ln~aVd~LlkaA~~~v~~aI  155 (164)
+                      +..+||.||-.+|.-++-|..++|+.|+-+|-|..+|..+|.++-....++||||.||-+|.-+++.|-.+|...+.+.+
+T Consensus       156 ~~~~lK~ki~~aK~~~~~Fltk~K~~~aD~gKdd~~d~dakka~~~~~~~~~KGA~eL~kLntaI~~Lv~aA~~l~~~tI  235 (242)
+T tr|B5RP90|B5RP  156 ISDGMKAKITAAKTKSEAFLTKVKSKSADLGKDDVQDTDAKKALDIIDGDKDKGAEELGKLNTAIDDLVTAANELAEATI  235 (242)
+
+
+Q 1G5Z_1|Chain    156 KELTSP  161 (164)
+Q Consensus       156 kELt~p  161 (164)
+                      ++|+.|
+T Consensus       236 ~~l~~~  241 (242)
+T tr|B5RP90|B5RP  236 KELTTP  241 (242)
+
+
+No 7
+>tr|W5SLV6|W5SLV6_9SPIR Variable outer membrane protein OS=Borrelia crocidurae DOU GN=BCD_1791 PE=4 SV=1
+Probab=100.00  E-value=1.5e-43  Score=305.78  Aligned_cols=159  Identities=42%  Similarity=0.599  Sum_probs=0.0  Template_Neff=1.399
+
+Q 1G5Z_1|Chain      2 NLTEISKKITESNAVVLAVKEVETLLASIDELATKAIGKKIGNNG-LEANQSKNTSLLSGAYAISDLIAEKLNVLKNE--   78 (164)
+Q Consensus         2 dL~~ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKKI~~~g-~~~~~~~NgsLlAGay~i~~~i~~KL~~L~~~--   78 (164)
+                      .|.-++.+|.+.-+....+|||.+|.-|||+|| |+||||+..|| |++.|..|.+|++|.|.|..-+.-||..|..+  
+T Consensus       132 dlkvv~e~ik~~~~f~~~~kev~~lv~sv~~la-k~igkk~~~~g~l~~~~nhng~l~~g~~q~~~~v~~kl~ale~~a~  210 (302)
+T tr|W5SLV6|W5SL  132 DLKVVSEQIKSAVEFAGKVKEVHTLVKSIDELA-KAIGKKFKQDGSLEDEQNHNGSLVSGSFQIMSDVNVKLDALEQKAE  210 (302)
+
+
+Q 1G5Z_1|Chain     79 ---ELKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDDNAQRAILKKHANKDKGAAELEKLFKAVENLSKAAQDTLKNAV  155 (164)
+Q Consensus        79 ---~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~~AKkAI~kt~~~~dKGa~EL~~Ln~aVd~LlkaA~~~v~~aI  155 (164)
+                         +.+.||..+|.-...|..|||..|.-+|-..-+|.|+..||.+..+..|||+.+|-+|-.|+..|-++|...+..++
+T Consensus       211 ~~~~mk~kv~~~kt~~e~f~~klk~~h~d~~k~da~d~~~kka~~~~n~~~~kga~~l~~lnta~~~l~~~a~~~~~s~i  290 (302)
+T tr|W5SLV6|W5SL  211 ISNEMKSKISDVKTKVEAFSKKLKDNHSDIGKNDAQDANAKKAIDIDNADNDKGANDLIKLNTAFDDLVNGAEVAVESAI  290 (302)
+
+
+Q 1G5Z_1|Chain    156 KELTSP  161 (164)
+Q Consensus       156 kELt~p  161 (164)
+                      |+||.|
+T Consensus       291 k~ltt~  296 (302)
+T tr|W5SLV6|W5SL  291 KELTTP  296 (302)
+
+
+No 8
+>tr|A9XDD9|A9XDD9_9SPIR Outer surface protein C (Fragment) OS=Borreliella lusitaniae GN=ospC PE=4 SV=1
+Probab=100.00  E-value=1.8e-42  Score=271.62  Aligned_cols=124  Identities=59%  Similarity=0.827  Sum_probs=0.0  Template_Neff=1.777
+
+Q 1G5Z_1|Chain     25 TLLASIDELATKAIGKKIGNNGLEANQSKNTSLLSGAYAISDLIAEKLNVLKNEELKEKIDTAKQCSTEFTNKLKSEHAV  104 (164)
+Q Consensus        25 tLvkSIDELA~KAIGKKI~~~g~~~~~~~NgsLlAGay~i~~~i~~KL~~L~~~~LK~KI~~aK~~s~aF~~KLK~~ha~  104 (164)
+                      +|..||||++|||||++|+.|||.++...|+|||.|||+|+.||-|||+-||.||||.|||.+|.||..||.|||++|+-
+T Consensus         1 aLvsSIDei~tKAiGqkI~qngL~a~an~n~SLLAGAY~Ia~LITeKL~~LkSEeLk~KId~aKkcSe~FtaKLk~~haq   80 (126)
+T tr|A9XDD9|A9XD    1 ALVSSIDEIGTKAIGQKIDQNGLSAMANHNGSLLAGAYVIATLITEKLDGLKSEELKDKIDEAKKCSEDFTAKLKQEHAQ   80 (126)
+
+
+Q 1G5Z_1|Chain    105 LGLDNL--TDDNAQRAILKKHANKDKGAAELEKLFKAVENLSKAAQD  149 (164)
+Q Consensus       105 LGk~~~--tD~~AKkAI~kt~~~~dKGa~EL~~Ln~aVd~LlkaA~~  149 (164)
+                      ||+.+-  ||.|+..+|||-. +-|+|..||.+|++.||.|.|+||+
+T Consensus        81 lg~~~gaatD~~ak~AILkTd-~GdkGvkElkkLi~SVEdLAkaAqe  126 (126)
+T tr|A9XDD9|A9XD   81 LGVAAGAATDAHAKNAILKTD-PGDKGVKELKKLIESVEDLAKAAQE  126 (126)
+
+
+No 9
+>tr|Q5I5B6|Q5I5B6_9SPIR Outer surface protein C (Fragment) OS=uncultured Borrelia sp. GN=ospC PE=4 SV=1
+Probab=100.00  E-value=2.5e-42  Score=272.60  Aligned_cols=126  Identities=68%  Similarity=0.886  Sum_probs=123.0  Template_Neff=1.483
+
+Q 1G5Z_1|Chain      1 PNLTEISKKITESNAVVLAVKEVETLLASIDELATKAIGKKIGNNGLEANQSKNTSLLSGAYAISDLIAEKLNVL-KNEE   79 (164)
+Q Consensus         1 ~dL~~ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKKI~~~g~~~~~~~NgsLlAGay~i~~~i~~KL~~L-~~~~   79 (164)
+                      |||++|||||+||||||++|||||+|++||||||+++|||+|++++++..+++|||||||||.|+.+|++||++| +|++
+T Consensus         9 pnl~eiskkitdsna~vlavkeve~l~ssi~ela~~~~~k~~~~~~lg~~~~~ngsllagay~is~litkkl~~lk~~~~   88 (135)
+T tr|Q5I5B6|Q5I5    9 PNLTEISKKITDSNAFVLAVKEVETLVSSIDELATQAIGKKIDQNGLGALQNQNGSLLAGAYAISVLITKKLDGLKNSEE   88 (135)
+Confidence            799999999999999999999999999999999999999999999999999999999999999999999999999 9999
+
+
+Q 1G5Z_1|Chain     80 LKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDDNAQRAILKKHANK  126 (164)
+Q Consensus        80 LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~~AKkAI~kt~~~~  126 (164)
+                      |+++|+.||+||.+|++|||++|++||.+..||+|||+||+++++++
+T Consensus        89 l~~~i~~ak~~s~aft~klk~~~~elg~a~~td~~ak~ailkt~~~k  135 (135)
+T tr|Q5I5B6|Q5I5   89 LKTEIEKAKNCSAAFTNKLKTSHAELGAANGTDENAKKAILKTDPTK  135 (135)
+Confidence            99999999999999999999999999999899999999999987653
+
+
+No 10
+>tr|W5ST63|W5ST63_BORPR Variable outer membrane protein OS=Borrelia parkeri SLO GN=BPA_0900022 PE=4 SV=1
+Probab=100.00  E-value=1.6e-38  Score=262.98  Aligned_cols=119  Identities=50%  Similarity=0.670  Sum_probs=0.0  Template_Neff=1.552
+
+Q 1G5Z_1|Chain      2 NLTEISKKITESNAVVLAVKEVETLLASIDELATKAIGKKIGNNGLEANQSKNTSLLSGAYAISDLIAEKLNVLK-----   76 (164)
+Q Consensus         2 dL~~ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKKI~~~g~~~~~~~NgsLlAGay~i~~~i~~KL~~L~-----   76 (164)
+                      .|..|+++|++.-|..-.||||.||..|||||| |||||||+.+|+..+..+|.||+.|+|.+...+..||++|.     
+T Consensus        67 dl~~it~~i~~avafaksvkevhtlvksidela-kaigkki~a~gl~d~~~~ngsllag~~svi~av~tklg~lek~~g~  145 (194)
+T tr|W5ST63|W5ST   67 DLATISSKITEAVAFAKSVKEVHTLVKSIDELA-KAIGKKIQADGLQDESGHNGSLLAGAYSVIEAVKTKLGQLEKQDGL  145 (194)
+
+
+Q 1G5Z_1|Chain     77 NEELKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDDNAQRAILK  121 (164)
+Q Consensus        77 ~~~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~~AKkAI~k  121 (164)
+                      ..+||.|...+|.-++.|..+++.+|.-+|-..-.+|.+..||++
+T Consensus       146 s~~lk~kv~~~k~~~~aflt~~k~~~sd~~k~~a~~d~~k~ai~~  190 (194)
+T tr|W5ST63|W5ST  146 SSELKQKVTSAKTESTAFLTKLKDEHSDLGKEGAKTDHAKSAIDK  190 (194)
+
+
+No 11
+>tr|W5T1X0|W5T1X0_BORHE Variable outer membrane protein OS=Borrelia hermsii YBT GN=BHO_0015802 PE=4 SV=1
+Probab=100.00  E-value=8.5e-37  Score=248.71  Aligned_cols=117  Identities=44%  Similarity=0.600  Sum_probs=0.0  Template_Neff=2.108
+
+Q 1G5Z_1|Chain      2 NLTEISKKITESNAVVLAVKEVETLLASIDELATKAIGKKIGNNGLE-ANQSKNTSLLSGAYAISDLIAEKLNVLKN---   77 (164)
+Q Consensus         2 dL~~ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKKI~~~g~~-~~~~~NgsLlAGay~i~~~i~~KL~~L~~---   77 (164)
+                      .|+.||++|+|.-+..-.||||+||..|||||| |+||+||-++|-- ....+|.||++|+|.|--...-|+..|.+   
+T Consensus        40 Dl~kis~~I~eAV~Fak~VKev~tLVKSvdelA-K~iGkKi~~~gt~g~d~~kNgsL~aG~~svi~a~~~Kl~~Le~~~G  118 (162)
+T tr|W5T1X0|W5T1   40 DLAKISKKITEAVEFAKSVKEVHTLVKSVDELA-KAIGKKIKNDGTLGDDTGKNGSLLAGVHSVISAVKTKLGALETKDG  118 (162)
+
+
+Q 1G5Z_1|Chain     78 --EELKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDDNAQRAI  119 (164)
+Q Consensus        78 --~~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~~AKkAI  119 (164)
+                        .|||-+|+..|.-|..|-+++|..|..+|-..+.|+.+...+
+T Consensus       119 is~~lK~~i~~vK~~s~~fLdk~K~~~~~~~k~~~~~~~~k~~~  162 (162)
+T tr|W5T1X0|W5T1  119 ISAELKTKITDVKAKSKAFLDKVKDQSEELGKKEVSDDHAKKLW  162 (162)
+
+
+No 12
+>tr|W5SJ94|W5SJ94_9SPIR Variable outer membrane protein (Fragment) OS=Borrelia crocidurae DOU GN=BCD_0894 PE=4 SV=1
+Probab=100.00  E-value=4.7e-34  Score=235.93  Aligned_cols=118  Identities=45%  Similarity=0.618  Sum_probs=0.0  Template_Neff=1.387
+
+Q 1G5Z_1|Chain      2 NLTEISKKITESNAVVLAVKEVETLLASIDELATKAIGKKI-GNNGLEANQSKNTSLLSGAYAISDLIAEKLNVLK----   76 (164)
+Q Consensus         2 dL~~ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKKI-~~~g~~~~~~~NgsLlAGay~i~~~i~~KL~~L~----   76 (164)
+                      .|.-+|++|...--..--||||.||..|+|||| ||||||| |...|.....+|.|+++|||.|.--+..||..|.    
+T Consensus        68 dlkvvskkikdavefa~~vke~~tlvksvdela-kaigkk~~~~~~l~~~~~~n~s~~~~a~~~~~~v~tkl~~le~~~~  146 (191)
+T tr|W5SJ94|W5SJ   68 DLKVVSKKIKDAVEFAQEVKEVQTLVKSVDELA-KAIGKKVEGAGNLGDDGGQNGSLISAAYSIISSVSTKLERLEQQAE  146 (191)
+
+
+Q 1G5Z_1|Chain     77 -NEELKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDDNAQRAIL  120 (164)
+Q Consensus        77 -~~~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~~AKkAI~  120 (164)
+                       .+||+.||-..+..|+.|+|++|...|-||-|..|||||..+|+
+T Consensus       147 ~s~elkak~~~~~tas~~f~~~~k~~~a~lgk~~~td~~akka~~  191 (191)
+T tr|W5SJ94|W5SJ  147 VSVELKAKITVVKTASKKFTDTVKGASAELGKKDATDENAKKAID  191 (191)
+
+
+No 13
+>tr|W5SB36|W5SB36_BORHE Variable outer membrane protein OS=Borrelia hermsii YOR GN=BHY_1204 PE=4 SV=1 
+Probab=99.91  E-value=2.3e-28  Score=190.03  Aligned_cols=110  Identities=49%  Similarity=0.667  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     26 LLASIDELATKAIGKKIGNN---GLEANQSKNTSLLSGAYAISDLIAEKLNVLK-----NEELKEKIDTAKQCSTEFTNK   97 (164)
+Q Consensus        26 LvkSIDELA~KAIGKKI~~~---g~~~~~~~NgsLlAGay~i~~~i~~KL~~L~-----~~~LK~KI~~aK~~s~aF~~K   97 (164)
+                      +..|||||| |+|||||.|.   |-|+||  |.|||.|.+.+.--+.-+|.||.     ...|+-||..+|.-.-.|..|
+T Consensus         1 mvksidela-kaigkkianadqlgdeanq--ngsllagvfqlmidvkvrlevlekttgisdslkgkisdaktktidfskk   77 (118)
+T tr|W5SB36|W5SB    1 MVKSIDELA-KAIGKKIANADQLGDEANQ--NGSLLAGVFQLMIDVKVRLEVLEKTTGISDSLKGKISDAKTKTIDFSKK   77 (118)
+
+
+Q 1G5Z_1|Chain     98 LKSEHAVLGLDNLTDDNAQRAILKKHANKDKGAAELEKLFK  138 (164)
+Q Consensus        98 LK~~ha~LGk~~~tD~~AKkAI~kt~~~~dKGa~EL~~Ln~  138 (164)
+                      ||..||-||...-..|.+..+|-+.....|||+.|||.|-+
+T Consensus        78 lkdshaqlgvaaaqsddakkaidrtnkpgdkgaselealnk  118 (118)
+T tr|W5SB36|W5SB   78 LKDSHAQLGVAAAQSDDAKKAIDRTNKPGDKGASELEALNK  118 (118)
+
+
+No 14
+>tr|W5T1M6|W5T1M6_BORHE Variable outer membrane protein OS=Borrelia hermsii YBT GN=BHO_0115200 PE=4 SV=1
+Probab=99.89  E-value=1.6e-27  Score=186.22  Aligned_cols=73  Identities=48%  Similarity=0.635  Sum_probs=0.0  Template_Neff=1.897
+
+Q 1G5Z_1|Chain      2 NLTEISKKITESNAVVLAVKEVETLLASIDELATKAIGKKIGNNGLE--ANQSKNTSLLSGAYAISDLIAEKLNVL   75 (164)
+Q Consensus         2 dL~~ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKKI~~~g~~--~~~~~NgsLlAGay~i~~~i~~KL~~L   75 (164)
+                      +|..||.||.+.++..-.||||+||..|||||| |||||||+.+|+.  .+...|.||++|+|.+-+-..-||..|
+T Consensus        40 dlakis~kik~a~~fa~svkevhtlvksvdela-kai~kki~~~~~~~~~~~~~n~sliaga~~vi~~~~~kl~~l  114 (114)
+T tr|W5T1M6|W5T1   40 DLAKISNKIKDAVAFAESVKEVHTLVKSVDELA-KAIGKKIQAVGLQFCDIDNHNGSLIAGAYQVILSVGYKLKFL  114 (114)
+
+
+No 15
+>tr|F8SPH4|F8SPH4_BORAF Outer surface protein C (Fragment) OS=Borreliella afzelii GN=ospC PE=4 SV=1
+Probab=99.83  E-value=1.5e-24  Score=163.02  Aligned_cols=85  Identities=66%  Similarity=0.932  Sum_probs=0.0  Template_Neff=1.225
+
+Q 1G5Z_1|Chain     37 AIGKKIG-NNGLEANQSKNTSLLSGAYAISDLIAEKLNVLKNEELKEKIDTAKQCSTEFTNKLKSEHAVLGLD---NLTD  112 (164)
+Q Consensus        37 AIGKKI~-~~g~~~~~~~NgsLlAGay~i~~~i~~KL~~L~~~~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~---~~tD  112 (164)
+                      +|||+|. ||||.++...|+|||.|+|+||.||.+||.+|..|+|++||..+|.||..||+|||..||-||..   .-||
+T Consensus         1 aigk~idnnngl~a~~n~n~sllagayaistlit~kls~lnse~l~~ki~~akn~s~aft~klk~~haelg~agngattd   80 (89)
+T tr|F8SPH4|F8SP    1 AIGKKIDNNNGLSANNNQNTSLLAGAYAISTLITQKLSKLNSEELNEKIEKAKNCSEAFTNKLKNSHAELGVAGNGATTD   80 (89)
+
+
+Q 1G5Z_1|Chain    113 DNAQRAILK  121 (164)
+Q Consensus       113 ~~AKkAI~k  121 (164)
+                      +|+..+|||
+T Consensus        81 enak~ailk   89 (89)
+T tr|F8SPH4|F8SP   81 ENAKKAILK   89 (89)
+
+
+No 16
+>tr|W5TC22|W5TC22_BORHE Variable outer membrane protein (Fragment) OS=Borrelia hermsii MTW GN=BHW_0900065 PE=4 SV=1
+Probab=99.82  E-value=4.1e-24  Score=172.05  Aligned_cols=101  Identities=36%  Similarity=0.507  Sum_probs=0.0  Template_Neff=1.556
+
+Q 1G5Z_1|Chain     53 KNTSLLSGAYAISDLIAEKLNVLKN-----EELKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDDNAQRAILKKHANKD  127 (164)
+Q Consensus        53 ~NgsLlAGay~i~~~i~~KL~~L~~-----~~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~~AKkAI~kt~~~~d  127 (164)
+                      +|.+|..||+.+.--+.-+|-.|..     ++||.||..+|.-+.||.||++...-...-.        .+|=--.....
+T Consensus        28 ~ng~l~a~afqv~~tv~~~l~~l~~~~~i~~~lk~k~~~~k~k~~ef~~k~~~~~d~~~a~--------kaid~~~~~g~   99 (142)
+T tr|W5TC22|W5TC   28 HNGSLIARAFQVMSTVQVKLIKLEDEPEIPDELKKKITDSKSKCNEFVNKIKESSDQSDAE--------KAIDINKPDGS   99 (142)
+
+
+Q 1G5Z_1|Chain    128 KGAAELEKLFKAVENLSKAAQDTLKNAVKELTSP  161 (164)
+Q Consensus       128 KGa~EL~~Ln~aVd~LlkaA~~~v~~aIkELt~p  161 (164)
+                      ||--||.+|-+.|..|-|||.+....|+++||.|
+T Consensus       100 kgg~el~~ln~~~~ellkaae~~veaai~~lt~~  133 (142)
+T tr|W5TC22|W5TC  100 KGGNELKKLNQSISELLKAAEDEVEAAIKKLTFP  133 (142)
+
+
+No 17
+>tr|W5T6X8|W5T6X8_BORHE Variable outer membrane protein OS=Borrelia hermsii MTW GN=BHW_0011702 PE=4 SV=1
+Probab=99.81  E-value=1.2e-23  Score=165.41  Aligned_cols=104  Identities=44%  Similarity=0.613  Sum_probs=0.0  Template_Neff=1.571
+
+Q 1G5Z_1|Chain     58 LSGAYAISDLIAEKLNVLKN------EELKEKIDTAKQCSTEFTNKLKSEHAVLGLDN--LTDDNAQRAI-LKKHANKDK  128 (164)
+Q Consensus        58 lAGay~i~~~i~~KL~~L~~------~~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~--~tD~~AKkAI-~kt~~~~dK  128 (164)
+                      ++|+|.|.--+..|+..|.+      .+|++|....+....+|..|+|+.||-+|.|.  -|+|++|.+| --...+..+
+T Consensus         1 ~~g~~~~~l~~~~k~~~l~~~~~~~e~~l~~kvt~~~~~~k~f~dk~k~~~~~~~~~~~~at~~~~~kaid~~n~~~ge~   80 (119)
+T tr|W5T6X8|W5T6    1 MSGVYSIVLDLDDKSKALSVLESFKEQSLDEKVTNFTIATKAFLDKLKSKHAELGVDQGAATKDNAQKAIDQVNQVNGEN   80 (119)
+
+
+Q 1G5Z_1|Chain    129 GAAELEKLFKAVENLSKAAQDTLKNAVKELTSP  161 (164)
+Q Consensus       129 Ga~EL~~Ln~aVd~LlkaA~~~v~~aIkELt~p  161 (164)
+                      |++||-||-|.|..|-+||.....-|++|||.|
+T Consensus        81 g~ael~klnks~d~ll~aan~av~~a~~elttp  113 (119)
+T tr|W5T6X8|W5T6   81 GAAELIKLNKSVDELLKAANEAVEAAIKELTTP  113 (119)
+
+
+No 18
+>tr|W5T790|W5T790_BORHE Variable outer membrane protein (Fragment) OS=Borrelia hermsii MTW GN=BHW_0013701 PE=4 SV=1
+Probab=99.72  E-value=3.8e-21  Score=148.45  Aligned_cols=86  Identities=38%  Similarity=0.616  Sum_probs=0.0  Template_Neff=1.529
+
+Q 1G5Z_1|Chain     77 NEELKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDDNAQRAILKKHANKDKGAAELEKLFKAVENLSKAAQDTLKNAVK  156 (164)
+Q Consensus        77 ~~~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~~AKkAI~kt~~~~dKGa~EL~~Ln~aVd~LlkaA~~~v~~aIk  156 (164)
+                      .++++.++-..|..+.-|..|+|++.+-||-..-+||.+..+|-+..+.|.+|+.||-+|--||..|-++|..+...||+
+T Consensus        10 ~~~~k~~v~~sk~~~~~f~~k~k~~~~~lgk~das~dd~kkai~~~n~dk~~ga~eli~lnta~d~ll~~a~~~v~~a~~   89 (102)
+T tr|W5T790|W5T7   10 SESIKKQVVDSKSKSIAFIDKVKSKNTSLGKNDASDDDTKKAIDRNNGDKSKGAQELIKLNTAIDTLLKSANETVESAMK   89 (102)
+
+
+Q 1G5Z_1|Chain    157 ELTSPI  162 (164)
+Q Consensus       157 ELt~p~  162 (164)
+                      |||.|.
+T Consensus        90 elttp~   95 (102)
+T tr|W5T790|W5T7   90 ELTTPV   95 (102)
+
+
+No 19
+>tr|Q32UP8|Q32UP8_BORBG Outer surface protein C (Fragment) OS=Borreliella burgdorferi GN=ospC PE=4 SV=1
+Probab=99.63  E-value=2.7e-19  Score=134.07  Aligned_cols=81  Identities=59%  Similarity=0.837  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     67 LIAEKLNVLK-NEELKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDDNAQRAILKKH-ANKDKGAAELEKLFKAVENLS  144 (164)
+Q Consensus        67 ~i~~KL~~L~-~~~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~~AKkAI~kt~-~~~dKGa~EL~~Ln~aVd~Ll  144 (164)
+                      +|..||..|. .|.|+|||..+|.||.||..+||..||.||+...||+|+..+|||.. +.||||..|||+|--.+|.||
+T Consensus         2 litqklsklngseglkekiaaakkcseefstklkdnhaqlgiqgvtdenakkailkanaagkdkgveeleklsgslesls   81 (85)
+T tr|Q32UP8|Q32U    2 LITQKLSKLNGSEGLKEKIAAAKKCSEEFSTKLKDNHAQLGIQGVTDENAKKAILKANAAGKDKGVEELEKLSGSLESLS   81 (85)
+
+
+Q 1G5Z_1|Chain    145 KAA  147 (164)
+Q Consensus       145 kaA  147 (164)
+                      ++|
+T Consensus        82 kaa   84 (85)
+T tr|Q32UP8|Q32U   82 KAA   84 (85)
+
+
+No 20
+>tr|W6TFQ3|W6TFQ3_9SPIR Variable outer membrane protein OS=Borrelia duttonii CR2A GN=BDCR2A_01959 PE=4 SV=1 
+Probab=99.60  E-value=8.9e-19  Score=134.69  Aligned_cols=90  Identities=37%  Similarity=0.546  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     23 VETLLASIDELATKAIGKKIGNNGLEAN-----QSKNTSLLSGAYAISDLIAEKLNVL-----KNEELKEKIDTAKQCST   92 (164)
+Q Consensus        23 V~tLvkSIDELA~KAIGKKI~~~g~~~~-----~~~NgsLlAGay~i~~~i~~KL~~L-----~~~~LK~KI~~aK~~s~   92 (164)
+                      +|.||+|+|||| |||||||++|-...+     +|+||.|+||+|+++..++.||+.|     .+++||.|+...|.++.
+T Consensus         1 mhvlvksvdela-kaigkkikqnfeeldvdngknnkngelvagvfqvmltvkskleelwntpeisdelkgkvagsknkck   79 (101)
+T tr|W6TFQ3|W6TF    1 MHVLVKSVDELA-KAIGKKIKQNFEELDVDNGKNNKNGELVAGVFQVMLTVKSKLEELWNTPEISDELKGKVAGSKNKCK   79 (101)
+
+
+Q 1G5Z_1|Chain     93 EFTNKLKSEHAVLGLDNLTDDN  114 (164)
+Q Consensus        93 aF~~KLK~~ha~LGk~~~tD~~  114 (164)
+                      .|.+|+|.. +++.+..+||+|
+T Consensus        80 efvdkikad-sdiakaevtdeh  100 (101)
+T tr|W6TFQ3|W6TF   80 EFVDKIKAD-SDIAKAEVTDEH  100 (101)
+
+
+No 21
+>tr|W5SRC8|W5SRC8_9SPIR Variable outer membrane protein OS=Borrelia crocidurae DOU GN=BCD_1565 PE=4 SV=1
+Probab=99.60  E-value=8.2e-19  Score=131.36  Aligned_cols=69  Identities=43%  Similarity=0.630  Sum_probs=0.0  Template_Neff=1.800
+
+Q 1G5Z_1|Chain     93 EFTNKLKSEHAVLGLDNLTDDNAQRAILKKH-ANKDKGAAELEKLFKAVENLSKAAQDTLKNAVKELTSP  161 (164)
+Q Consensus        93 aF~~KLK~~ha~LGk~~~tD~~AKkAI~kt~-~~~dKGa~EL~~Ln~aVd~LlkaA~~~v~~aIkELt~p  161 (164)
+                      +|-.|++++|+-||-...+|++|..+|=.+. +|+|||++||-.|--+|..|-..|.|....++++|+.|
+T Consensus         8 ~~l~k~k~~~a~lg~~~v~~~~ak~aid~~~~an~~kg~~el~~lnt~id~ll~~an~~v~aai~~l~~~   77 (80)
+T tr|W5SRC8|W5SR    8 NFLSKMKSENATLGKAGVSDANAKEAIDRNNKANGDKGAKELGELNTTIDELLRTANDVVTAAIKELTAA   77 (80)
+
+
+No 22
+>tr|P70822|P70822_9SPIR Outer surface protein C (Fragment) OS=Borreliella turdi PE=4 SV=1
+Probab=99.47  E-value=5.8e-17  Score=124.02  Aligned_cols=54  Identities=78%  Similarity=0.959  Sum_probs=0.0  Template_Neff=1.330
+
+Q 1G5Z_1|Chain      1 PNLTEISKKITESNAVVLAVKEVETLLASIDELATKAIGKKIGNNGLEANQSKN   54 (164)
+Q Consensus         1 ~dL~~ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKKI~~~g~~~~~~~N   54 (164)
+                      |||+|||||||.|||.||||||+|+|+.||||+|+|||||||.||..-+++..+
+T Consensus        39 pnl~eiskkitds~afvlavkeie~lissidela~kaigkki~~~~~~~~~~~~   92 (93)
+T tr|P70822|P708   39 PNLTEISKKITDSNAFVLAVKEIETLISSIDELATKAIGKKIDNNNSLANEAHN   92 (93)
+
+
+No 23
+>tr|I0FF10|I0FF10_BORCA Lipoprotein-containing protein OS=Borrelia crocidurae (strain Achema) GN=Q7M_1310 PE=4 SV=1 
+Probab=99.39  E-value=5.1e-16  Score=125.72  Aligned_cols=62  Identities=48%  Similarity=0.792  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain      2 NLTEISKKITESNAVVLAVKEVETLLASIDELATKAIGKKIGNNGL----EANQSKNTSLLSGAYAI   64 (164)
+Q Consensus         2 dL~~ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKKI~~~g~----~~~~~~NgsLlAGay~i   64 (164)
+                      .|.-.||||...--.++.+.||.||..|+|||| |||||||-|.|.    .+|..||..|..||+.+
+T Consensus        67 dlkvvskkirdavefiigieevqtlinsvdela-kaigkkikndgtleaesanadknsqlvagafsv  132 (143)
+T tr|I0FF10|I0FF   67 DLKVVSKKIRDAVEFIIGIEEVQTLINSVDELA-KAIGKKIKNDGTLEAESANADKNSQLVAGAFSV  132 (143)
+
+
+No 24
+>tr|P70821|P70821_9SPIR Outer surface protein C (Fragment) OS=Borrelia sp. PE=4 SV=1 
+Probab=99.38  E-value=7.6e-16  Score=117.07  Aligned_cols=53  Identities=83%  Similarity=1.049  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain      1 PNLTEISKKITESNAVVLAVKEVETLLASIDELATKAIGKKIGNNGLEANQSKN   54 (164)
+Q Consensus         1 ~dL~~ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKKI~~~g~~~~~~~N   54 (164)
+                      |.|-|||||||.|||+|||||||||||+|||||| ||||.||.||||.+.|.||
+T Consensus        38 pdlieiskkitdsnaivlavkevetllasidela-kaigqkiqnnglaaeqnkn   90 (90)
+T tr|P70821|P708   38 PDLIEISKKITDSNAIVLAVKEVETLLASIDELA-KAIGQKIQNNGLAAEQNKN   90 (90)
+
+
+No 25
+>tr|W6TGT2|W6TGT2_9SPIR Variable outer membrane protein OS=Borrelia duttonii CR2A GN=BDCR2A_01400 PE=4 SV=1 
+Probab=99.24  E-value=1.6e-14  Score=106.95  Aligned_cols=58  Identities=40%  Similarity=0.587  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     15 AVVLAVKEVETLLASIDELATKAIGKKIGNNGL----EANQSKNTSLLSGAYAISDLIAEKLN   73 (164)
+Q Consensus        15 afa~~VKEV~tLvkSIDELA~KAIGKKI~~~g~----~~~~~~NgsLlAGay~i~~~i~~KL~   73 (164)
+                      +|+.+|||||.||.|+.|+| ||||||+.+|..    +...|.||.|+||+|++++.+.+|..
+T Consensus         2 efvtsvkevhalvrsvgefa-kaigkkvtqntgviaadaggnnnggliagaysliselntkvk   63 (74)
+T tr|W6TGT2|W6TG    2 EFVTSVKEVHALVRSVGEFA-KAIGKKVTQNTGVIAADAGGNNNGGLIAGAYSLISELNTKVK   63 (74)
+
+
+No 26
+>tr|F6M701|F6M701_BORBG OspC (Fragment) OS=Borreliella burgdorferi GN=ospC PE=4 SV=1 
+Probab=99.11  E-value=1.8e-13  Score=100.45  Aligned_cols=45  Identities=84%  Similarity=1.054  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain      1 PNLTEISKKITESNAVVLAVKEVETLLASIDELATKAIGKKIGNNG   46 (164)
+Q Consensus         1 ~dL~~ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKKI~~~g   46 (164)
+                      |||.|||||||.|||||+|||||||||-|||||| |||||||...|
+T Consensus        24 pnlveiskkitdsnavviavkevetllvsidela-kaigkkieagg   68 (69)
+T tr|F6M701|F6M7   24 PNLVEISKKITDSNAVVIAVKEVETLLVSIDELA-KAIGKKIEAGG   68 (69)
+
+
+No 27
+>tr|W5SM02|W5SM02_9SPIR Variable outer membrane protein OS=Borrelia crocidurae DOU GN=BCD_1647 PE=4 SV=1
+Probab=98.90  E-value=4.7e-12  Score=94.80  Aligned_cols=62  Identities=37%  Similarity=0.542  Sum_probs=0.0  Template_Neff=1.514
+
+Q 1G5Z_1|Chain     72 LNVL--KNEELKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDDNAQRAILKKHANKDKGAAEL  133 (164)
+Q Consensus        72 L~~L--~~~~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~~AKkAI~kt~~~~dKGa~EL  133 (164)
+                      |+.+  .++++|.||.+||+++-.|+.|||.+|+.||+.++.+++||+||+|++.++|||+.-|
+T Consensus         4 le~~~gisd~~k~k~~~aktk~~~f~~klk~~h~~lg~~~aq~~dakkai~r~~~~gdkg~~sl   67 (74)
+T tr|W5SM02|W5SM    4 LEKTTGISDSIKQKISNAKTKSIDFSSKLKDSHTQLGKQDAQSDDAKKAIDRINNPGDKGASSL   67 (74)
+
+
+No 28
+>tr|W5SGA5|W5SGA5_9SPIR Variable outer membrane protein OS=Borrelia miyamotoi FR64b GN=BOM_1389 PE=4 SV=1 
+Probab=98.81  E-value=1.7e-11  Score=95.30  Aligned_cols=69  Identities=43%  Similarity=0.617  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     80 LKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDDNAQRAILKKHANKDKGAAELEKLFKAVENLSKAAQ  148 (164)
+Q Consensus        80 LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~~AKkAI~kt~~~~dKGa~EL~~Ln~aVd~LlkaA~  148 (164)
+                      ||.|+..+|.....|.|.||.||.-+|-..-.|||+..++|-..+.|.||..|||.|-.+|..|-.-.|
+T Consensus        14 lkakvtvaktscesfsnelktehidfgkedagddnakaallvtnatknkgvteleslntavdkllqclq   82 (98)
+T tr|W5SGA5|W5SG   14 LKAKVTVAKTSCESFSNELKTEHIDFGKEDAGDDNAKAALLVTNATKNKGVTELESLNTAVDKLLQCLQ   82 (98)
+
+
+No 29
+>tr|A0A142JDD1|A0A142JDD1_BORHE Uncharacterized protein OS=Borrelia hermsii GN=A0V01_05680 PE=4 SV=1
+Probab=98.71  E-value=5.7e-11  Score=86.27  Aligned_cols=40  Identities=45%  Similarity=0.627  Sum_probs=0.0  Template_Neff=1.230
+
+Q 1G5Z_1|Chain      1 PNLTEISKKITESNAVVLAVKEVETLLASIDELATKAIGKK   41 (164)
+Q Consensus         1 ~dL~~ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKK   41 (164)
+                      +||.+||.||+|+++|+.+||||+|||+|+|.|| |.|-||
+T Consensus        22 ldlakisaki~~as~fa~~vke~~tlvksvd~la-k~iekk   61 (61)
+T tr|A0A142JDD1|   22 LDLAKISAKIRDASTFATSVKEIHTLVKSVDNLA-KDIEKK   61 (61)
+
+
+No 30
+>tr|H6WU70|H6WU70_BORBG Outer surface protein (Fragment) OS=Borreliella burgdorferi PE=4 SV=1 
+Probab=98.71  E-value=6.2e-11  Score=88.56  Aligned_cols=49  Identities=76%  Similarity=0.950  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain    112 DDNAQRAILK-KHANKDKGAAELEKLFKAVENLSKAAQDTLKNAVKELTS  160 (164)
+Q Consensus       112 D~~AKkAI~k-t~~~~dKGa~EL~~Ln~aVd~LlkaA~~~v~~aIkELt~  160 (164)
+                      |||+..+||| ..+.||||+.|||+||..|-.||++|||.|.||||||||
+T Consensus        15 ddnakkailktnqagkdkgaeeleklfesvgalskaaqdaltnavkelts   64 (74)
+T tr|H6WU70|H6WU   15 DDNAKKAILKTNQAGKDKGAEELEKLFESVGALSKAAQDALTNAVKELTS   64 (74)
+
+
+No 31
+>tr|I0FF09|I0FF09_BORCA Lipoprotein-containing protein OS=Borrelia crocidurae (strain Achema) GN=Q7M_1309 PE=4 SV=1 
+Probab=98.59  E-value=2.3e-10  Score=89.82  Aligned_cols=83  Identities=33%  Similarity=0.526  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     78 EELKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDDNAQRAILKKHANKDKGAAELEKLFKAVENLSKAAQD-TLKNAVK  156 (164)
+Q Consensus        78 ~~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~~AKkAI~kt~~~~dKGa~EL~~Ln~aVd~LlkaA~~-~v~~aIk  156 (164)
+                      +.+|..+++...+.-+++.|+|.. .+|++.++|..|||+.|++++.++|||+.|+..||++|..|++.|++ .+..+|.
+T Consensus         8 dsfkkqvddietkvlaliekmkkd-tdlckdgvtqahakqsilrthdtkdkgaqeiadlntaisdllksakdllldkais   86 (102)
+T tr|I0FF09|I0FF    8 DSFKKQVDDIETKVLALIEKMKKD-TDLCKDGVTQAHAKQSILRTHDTKDKGAQEIADLNTAISDLLKSAKDLLLDKAIS   86 (102)
+
+
+Q 1G5Z_1|Chain    157 ELTSP  161 (164)
+Q Consensus       157 ELt~p  161 (164)
+                      ||.+.
+T Consensus        87 elats   91 (102)
+T tr|I0FF09|I0FF   87 ELATS   91 (102)
+
+
+No 32
+>tr|W5SAT8|W5SAT8_BORHE Variable outer membrane protein OS=Borrelia hermsii YOR GN=BHY_1263 PE=4 SV=1 
+Probab=98.55  E-value=3.6e-10  Score=86.16  Aligned_cols=45  Identities=47%  Similarity=0.615  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain      1 PNLTEISKKITESNAVVLAVKEVETLLASIDELATKAIGKKIGNNG   46 (164)
+Q Consensus         1 ~dL~~ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKKI~~~g   46 (164)
+                      +||.+||.||+++.+|+.+|||||.||.|||++| |.|.||.-|-|
+T Consensus        26 ldlskisakikeasafaasvkevhalvrsiddia-kgikkkllqmg   70 (83)
+T tr|W5SAT8|W5SA   26 LDLSKISAKIKEASAFAASVKEVHALVRSIDDIA-KGIKKKLLQMG   70 (83)
+
+
+No 33
+>tr|W5ST11|W5ST11_BORPR Variable outer membrane protein (Fragment) OS=Borrelia parkeri SLO GN=BPA_0900016 PE=4 SV=1 
+Probab=98.48  E-value=8e-10  Score=77.18  Aligned_cols=46  Identities=41%  Similarity=0.523  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain    119 ILKKHANKDKGAAELEKLFKAVENLSKAAQDTLKNAVKELTSPIVA  164 (164)
+Q Consensus       119 I~kt~~~~dKGa~EL~~Ln~aVd~LlkaA~~~v~~aIkELt~p~~~  164 (164)
+                      ++.+++++|||++||..||++||-|+..|+++|..+|+|||+|..+
+T Consensus         1 mdvnngtkdkgaeelialntavdvlltsakdavttaikelttpakp   46 (48)
+T tr|W5ST11|W5ST    1 MDVNNGTKDKGAEELIALNTAVDVLLTSAKDAVTTAIKELTTPAKP   46 (48)
+
+
+No 34
+>tr|W5T289|W5T289_BORHE Variable outer membrane protein (Fragment) OS=Borrelia hermsii YBT GN=BHO_0013700 PE=4 SV=1
+Probab=98.26  E-value=6.2e-09  Score=72.61  Aligned_cols=39  Identities=36%  Similarity=0.541  Sum_probs=0.0  Template_Neff=1.283
+
+Q 1G5Z_1|Chain    126 KDKGAAELEKLFKAVENLSKAAQDTLKNAVKELTSPIVA  164 (164)
+Q Consensus       126 ~dKGa~EL~~Ln~aVd~LlkaA~~~v~~aIkELt~p~~~  164 (164)
+                      +.||++||..||++||+|+++|+.+|+++|.|||.|+..
+T Consensus         1 ~~k~~~~l~alnta~d~llkaa~g~veaaiaelt~pvk~   39 (46)
+T tr|W5T289|W5T2    1 KEKETSDLIALNTAIDELLKAANGEVEAAIAELTTPVKG   39 (46)
+
+
+No 35
+>tr|W5SCK8|W5SCK8_BORHE Variable outer membrane protein OS=Borrelia hermsii YOR GN=BHY_1433 PE=4 SV=1 
+Probab=98.17  E-value=1.3e-08  Score=67.06  Aligned_cols=33  Identities=48%  Similarity=0.693  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain      8 KKITESNAVVLAVKEVETLLASIDELATKAIGKK   41 (164)
+Q Consensus         8 kKIkda~afa~~VKEV~tLvkSIDELA~KAIGKK   41 (164)
+                      .||.|+++|+..|||+.|||+|+|+|| |.|-||
+T Consensus         2 qkirdasafatgvkeiatlvksvddla-kgiekk   34 (34)
+T tr|W5SCK8|W5SC    2 QKIRDASAFATGVKEIATLVKSVDDLA-KGIEKK   34 (34)
+
+
+No 36
+>tr|W5SCP2|W5SCP2_BORHE Variable outer membrane protein OS=Borrelia hermsii YOR GN=BHY_1478 PE=4 SV=1
+Probab=98.09  E-value=2.6e-08  Score=74.03  Aligned_cols=53  Identities=36%  Similarity=0.502  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     51 QSKNTSLLSGAYAISDLIAEKLNVL-----KNEELKEKIDTAKQCSTEFTNKLKSEHA  103 (164)
+Q Consensus        51 ~~~NgsLlAGay~i~~~i~~KL~~L-----~~~~LK~KI~~aK~~s~aF~~KLK~~ha  103 (164)
+                      +|+||.|+||||+++..++.||+.|     .+++||.||+..|..+..|..|+|....
+T Consensus         6 nnkngelvagafqvmltvkakleklgnmpeiseelkgkitgsksrckefvgkvkansd   63 (67)
+T tr|W5SCP2|W5SC    6 NNKNGELVAGAFQVMLTVKAKLEKLGNMPEISEELKGKITGSKSRCKEFVGKVKANSD   63 (67)
+
+
+No 37
+>tr|W5TC15|W5TC15_BORHE Variable outer membrane protein (Fragment) OS=Borrelia hermsii MTW GN=BHW_0015803 PE=4 SV=1 
+Probab=97.72  E-value=4.1e-07  Score=66.22  Aligned_cols=48  Identities=42%  Similarity=0.536  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     48 EANQSKNTSLLSGAYAISDLIAEKLNVL-----KNEELKEKIDTAKQCSTEFT   95 (164)
+Q Consensus        48 ~~~~~~NgsLlAGay~i~~~i~~KL~~L-----~~~~LK~KI~~aK~~s~aF~   95 (164)
+                      +++.|-||.|+||+|+|++....||..|     ...++|.||+.+|.+..+|+
+T Consensus         3 ddndnlngtllagayqimsdadskltalegnaekfagmkdkitsakqkntafl   55 (57)
+T tr|W5TC15|W5TC    3 DDNDNLNGTLLAGAYQIMSDADSKLTALEGNAEKFAGMKDKITSAKQKNTAFL   55 (57)
+
+
+No 38
+>tr|W5SXH9|W5SXH9_9SPIR Uncharacterized protein OS=Borrelia coriaceae Co53 GN=BCO_0900120 PE=4 SV=1 
+Probab=97.05  E-value=2e-05  Score=63.63  Aligned_cols=72  Identities=28%  Similarity=0.375  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     85 DTAKQCSTEFTNKLKSEHAVLGLDNLT-DDNAQRAILK--KHANKDKGAAELEKLFKAVENLSKAAQDTLKNAVK  156 (164)
+Q Consensus        85 ~~aK~~s~aF~~KLK~~ha~LGk~~~t-D~~AKkAI~k--t~~~~dKGa~EL~~Ln~aVd~LlkaA~~~v~~aIk  156 (164)
+                      +.+|+++-+|-.||-.+++.||..+.| |.||.+||+-  +...+-.|.+||.+|..+|+.|+-.|++.+-..|.
+T Consensus        22 eavktkavafkaklfqqnstlgasggtqdnhaeqaidgttngssgmhgtkelaelhsavntligtakeilggiia   96 (105)
+T tr|W5SXH9|W5SX   22 EAVKTKAVAFKAKLFQQNSTLGASGGTQDNHAEQAIDGTTNGSSGMHGTKELAELHSAVNTLIGTAKEILGGIIA   96 (105)
+
+
+No 39
+>tr|W5SEV2|W5SEV2_9SPIR Variable outer membrane protein OS=Borrelia miyamotoi FR64b GN=BOM_1096 PE=4 SV=1 
+Probab=96.76  E-value=7.8e-05  Score=49.32  Aligned_cols=28  Identities=43%  Similarity=0.646  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     15 AVVLAVKEVETLLASIDELATKAIGKKIG   43 (164)
+Q Consensus        15 afa~~VKEV~tLvkSIDELA~KAIGKKI~   43 (164)
+                      +|+.-|||++.||+|+.|+| |.||.|+.
+T Consensus         4 efaaivkeievlvksvgefa-kgignkvt   31 (31)
+T tr|W5SEV2|W5SE    4 EFAAIVKEIEVLVKSVGEFA-KGIGNKVT   31 (31)
+
+
+No 40
+>tr|W5STW6|W5STW6_BORPR Variable outer membrane protein OS=Borrelia parkeri SLO GN=BPA_0900031 PE=4 SV=1 
+Probab=96.60  E-value=0.00015  Score=48.71  Aligned_cols=29  Identities=38%  Similarity=0.550  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain    133 LEKLFKAVENLSKAAQDTLKNAVKELTSP  161 (164)
+Q Consensus       133 L~~Ln~aVd~LlkaA~~~v~~aIkELt~p  161 (164)
+                      +.+||++||+|+.+|+.+|..+|+|||+.
+T Consensus         1 mvklntaidelltaaeaavtdaikeltts   29 (33)
+T tr|W5STW6|W5ST    1 MVKLNTAIDELLTAAEAAVTDAIKELTTS   29 (33)
+
+
+No 41
+>tr|W5T217|W5T217_BORHE Variable outer membrane protein OS=Borrelia hermsii YBT GN=BHO_0011700 PE=4 SV=1 
+Probab=96.44  E-value=0.00027  Score=48.76  Aligned_cols=31  Identities=35%  Similarity=0.508  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain    133 LEKLFKAVENLSKAAQDTLKNAVKELTSPIV  163 (164)
+Q Consensus       133 L~~Ln~aVd~LlkaA~~~v~~aIkELt~p~~  163 (164)
+                      +.+||++||+|+++|+..|+++|.||..|..
+T Consensus         1 miklntaidellkaaegeveaaitelkapak   31 (38)
+T tr|W5T217|W5T2    1 MIKLNTAIDELLKAAEGEVEAAITELKAPAK   31 (38)
+
+
+No 42
+>tr|I0FF05|I0FF05_BORCA Lipoprotein-containing protein OS=Borrelia crocidurae (strain Achema) GN=Q7M_1305 PE=4 SV=1
+Probab=96.41  E-value=0.0003  Score=49.69  Aligned_cols=24  Identities=58%  Similarity=0.881  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     18 LAVKEVETLLASIDELATKAIGKKI   42 (164)
+Q Consensus        18 ~~VKEV~tLvkSIDELA~KAIGKKI   42 (164)
+                      +.|||++.|++||.||. ||+|||.
+T Consensus         7 qnvkeiesliksinelv-kavgkkl   30 (43)
+T tr|I0FF05|I0FF    7 QNVKEIESLIKSINELV-KAVGKKL   30 (43)
+
+
+No 43
+>tr|W6TGI3|W6TGI3_9SPIR Variable outer membrane protein OS=Borrelia duttonii CR2A GN=BDCR2A_00005 PE=4 SV=1 
+Probab=96.12  E-value=0.00078  Score=44.91  Aligned_cols=27  Identities=37%  Similarity=0.554  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain    136 LFKAVENLSKAAQDTLKNAVKELTSPI  162 (164)
+Q Consensus       136 Ln~aVd~LlkaA~~~v~~aIkELt~p~  162 (164)
+                      .|++||.|++.|+-+|..+|+|||+|.
+T Consensus         3 intaidgllksaevavasaikelttps   29 (31)
+T tr|W6TGI3|W6TG    3 INTAIDGLLKSAEVAVASAIKELTTPS   29 (31)
+
+
+No 44
+>tr|W5SB52|W5SB52_BORHE Variable outer membrane protein OS=Borrelia hermsii YOR GN=BHY_1236 PE=4 SV=1 
+Probab=95.96  E-value=0.0012  Score=51.18  Aligned_cols=53  Identities=28%  Similarity=0.412  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     64 ISDLIAEKLNVL-----KNEELKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDDNAQR  117 (164)
+Q Consensus        64 i~~~i~~KL~~L-----~~~~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~~AKk  117 (164)
+                      +...++-||+.|     .+.+||.||++.|.++..|-+|+|.. +++.+-.+||+|.|+
+T Consensus         1 mvltvkvkleklgntpeisgelkgkitdskskckefadkikad-sdiskvevtdehvkk   58 (73)
+T tr|W5SB52|W5SB    1 MVLTVKVKLEKLGNTPEISGELKGKITDSKSKCKEFADKIKAD-SDISKVEVTDEHVKK   58 (73)
+
+
+No 45
+>tr|W5T696|W5T696_BORHE Variable outer membrane protein OS=Borrelia hermsii MTW GN=BHW_0124102 PE=4 SV=1 
+Probab=95.77  E-value=0.0021  Score=44.32  Aligned_cols=29  Identities=34%  Similarity=0.477  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain    136 LFKAVENLSKAAQDTLKNAVKELTSPIVA  164 (164)
+Q Consensus       136 Ln~aVd~LlkaA~~~v~~aIkELt~p~~~  164 (164)
+                      +|++||.|+++|+.+|.++|+|||+...+
+T Consensus         1 mntaidgllkaaeaavtaaikelttstks   29 (36)
+T tr|W5T696|W5T6    1 MNTAIDGLLKAAEAAVTAAIKELTTSTKS   29 (36)
+
+
+No 46
+>tr|W5T6F1|W5T6F1_BORHE Variable outer membrane protein OS=Borrelia hermsii MTW GN=BHW_0127301 PE=4 SV=1
+Probab=95.44  E-value=0.0043  Score=44.65  Aligned_cols=29  Identities=41%  Similarity=0.538  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain    136 LFKAVENLSKAAQDTLKNAVKELTSPIVA  164 (164)
+Q Consensus       136 Ln~aVd~LlkaA~~~v~~aIkELt~p~~~  164 (164)
+                      ||++|++|+++-+..|.++|+|||.|..+
+T Consensus         3 lntainellkadnkvvkaaikeltapakp   31 (45)
+T tr|W5T6F1|W5T6    3 LNTAINELLKADNKVVKAAIKELTAPAKP   31 (45)
+
+
+No 47
+>tr|W6TET7|W6TET7_9SPIR Variable outer membrane protein OS=Borrelia duttonii CR2A GN=BDCR2A_01972 PE=4 SV=1 
+Probab=94.74  E-value=0.015  Score=40.04  Aligned_cols=32  Identities=44%  Similarity=0.606  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     97 KLKSEHAVLGLDNLTDDNAQRAILKKHANKDK  128 (164)
+Q Consensus        97 KLK~~ha~LGk~~~tD~~AKkAI~kt~~~~dK  128 (164)
+                      |||++.+.||+.+++..+.|.||++.++++||
+T Consensus         3 klkgqganlgkndassndvkaailkgnatkdk   34 (34)
+T tr|W6TET7|W6TE    3 KLKGQGANLGKNDASSNDVKAAILKGNATKDK   34 (34)
+
+
+No 48
+>tr|W5SEV8|W5SEV8_9SPIR Variable outer membrane protein OS=Borrelia miyamotoi FR64b GN=BOM_1101 PE=4 SV=1 
+Probab=94.27  E-value=0.027  Score=42.62  Aligned_cols=32  Identities=38%  Similarity=0.553  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     80 LKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLT  111 (164)
+Q Consensus        80 LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~t  111 (164)
+                      +|-|++.+|+.|..+++|+|+.+++||+.+++
+T Consensus        15 ikvkvtaaktastdllnkfkdknadlgkndas   46 (57)
+T tr|W5SEV8|W5SE   15 IKVKVTAAKTASTDLLNKFKDKNADLGKNDAS   46 (57)
+
+
+No 49
+>tr|W5T0R9|W5T0R9_BORHE Variable outer membrane protein OS=Borrelia hermsii YBT GN=BHO_0124101 PE=4 SV=1 
+Probab=93.28  E-value=0.071  Score=42.31  Aligned_cols=62  Identities=31%  Similarity=0.530  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     33 LATKAIGKKIGNNGLEAN---QSKNTSLLSGAYAISDLIAEKLNVL------KNEELKEKIDTAKQCSTEFT   95 (164)
+Q Consensus        33 LA~KAIGKKI~~~g~~~~---~~~NgsLlAGay~i~~~i~~KL~~L------~~~~LK~KI~~aK~~s~aF~   95 (164)
+                      |- ...-|||....+..+   ..+...|+||.|++.-.|+-|-..|      ++.+|..|+.++-..|.+++
+T Consensus         3 ll-rvlrkkigsakleadagataqyapllagiysvaetieiksaklkieesinskdlsdkvqdvvreskayt   73 (74)
+T tr|W5T0R9|W5T0    3 LL-RVLRKKIGSAKLEADAGATAQYAPLLAGIYSVAETIEIKSAKLKIEESINSKDLSDKVQDVVRESKAYT   73 (74)
+
+
+No 50
+>tr|W5SH18|W5SH18_BORHE Variable outer membrane protein OS=Borrelia hermsii YOR GN=BHY_1431 PE=4 SV=1
+Probab=88.85  E-value=0.63  Score=33.89  Aligned_cols=37  Identities=38%  Similarity=0.434  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     98 LKSEHAVLGLDN--LTDDNAQRAILKKHANKDKGAAELE  134 (164)
+Q Consensus        98 LK~~ha~LGk~~--~tD~~AKkAI~kt~~~~dKGa~EL~  134 (164)
+                      +|.+..+||-.+  +|-.+-|+||+++--.+||-++|+.
+T Consensus         1 mknskddlglansvathtnlkkaidksyvsgdkeakeiv   39 (41)
+T tr|W5SH18|W5SH    1 MKNSKDDLGLANSVATHTNLKKAIDKSYVSGDKEAKEIV   39 (41)
+
+
+No 51
+>tr|W5T1S0|W5T1S0_BORHE Variable outer membrane protein OS=Borrelia hermsii YBT GN=BHO_0900036 PE=4 SV=1 
+Probab=84.28  E-value=1.9  Score=32.61  Aligned_cols=25  Identities=32%  Similarity=0.444  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain    136 LFKAVENLSKAAQDTLKNAVKELTS  160 (164)
+Q Consensus       136 Ln~aVd~LlkaA~~~v~~aIkELt~  160 (164)
+                      ||++|-.|+.+-+..|+++|+|+|+
+T Consensus        14 lntaivallradnkvveaaikeftt   38 (48)
+T tr|W5T1S0|W5T1   14 LNTAIVALLRADNKVVEAAIKEFTT   38 (48)
+
+
+No 52
+>tr|I0FF37|I0FF37_BORCA Uncharacterized protein OS=Borrelia crocidurae (strain Achema) GN=Q7M_1337 PE=4 SV=1
+Probab=82.83  E-value=2.4  Score=30.61  Aligned_cols=31  Identities=29%  Similarity=0.385  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     64 ISDLIAEKLNVLKN------EELKEKIDTAKQCSTEF   94 (164)
+Q Consensus        64 i~~~i~~KL~~L~~------~~LK~KI~~aK~~s~aF   94 (164)
+                      +.+.+.+||..|+.      .++|..|-.+|++|.+|
+T Consensus         1 mvsavdtklasleqkaisrfagmkaqiiavknkstaf   37 (37)
+T tr|I0FF37|I0FF    1 MVSAVDTKLASLEQKAISRFAGMKAQIIAVKNKSTAF   37 (37)
+
+
+No 53
+>tr|W5T2G8|W5T2G8_BORHE Variable outer membrane protein OS=Borrelia hermsii YBT GN=BHO_0130800 PE=4 SV=1 
+Probab=79.89  E-value=3.7  Score=31.53  Aligned_cols=36  Identities=39%  Similarity=0.457  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     98 LKSEHAVLGLDN--LTDDNAQRAILKKHANKDKGAAEL  133 (164)
+Q Consensus        98 LK~~ha~LGk~~--~tD~~AKkAI~kt~~~~dKGa~EL  133 (164)
+                      +|.+..+||-.+  .|-.+.|+||+++--.+||-++.|
+T Consensus         1 mknskddlglansttthtnvkkaidksyvsgdkeakrl   38 (51)
+T tr|W5T2G8|W5T2    1 MKNSKDDLGLANSTTTHTNVKKAIDKSYVSGDKEAKRL   38 (51)
+
+
+No 54
+>tr|W5SFF0|W5SFF0_9SPIR Variable outer membrane protein OS=Borrelia miyamotoi FR64b GN=BOM_1097 PE=4 SV=1
+Probab=69.22  E-value=10  Score=30.36  Aligned_cols=21  Identities=38%  Similarity=0.384  Sum_probs=0.0  Template_Neff=1.583
+
+Q 1G5Z_1|Chain      1 PNLTEISKKITESNAVVLAVK   21 (164)
+Q Consensus         1 ~dL~~ISkKIkda~afa~~VK   21 (164)
+                      +||+.|++||++|+-+...-|
+T Consensus        34 idlk~~~~kik~avgvc~~~k   54 (60)
+T tr|W5SFF0|W5SF   34 IDLKTISKKIKSAVGVCSNCK   54 (60)
+
+
+No 55
+>tr|A0A0S7XWT4|A0A0S7XWT4_9COXI Uncharacterized protein OS=Coxiella sp. DG_40 GN=AMJ43_06460 PE=4 SV=1
+Probab=61.42  E-value=18  Score=32.18  Aligned_cols=34  Identities=24%  Similarity=0.415  Sum_probs=0.0  Template_Neff=1.867
+
+Q 1G5Z_1|Chain     38 IGKKIGNNGLEANQSKNTSLLSGAYAISDLIAEK   71 (164)
+Q Consensus        38 IGKKI~~~g~~~~~~~NgsLlAGay~i~~~i~~K   71 (164)
+                      ||...++-.+...-.+.|.|.||.|.|+.++-.|
+T Consensus        71 IG~q~QAvNlAEsF~q~G~L~ag~Y~vMfRvG~K  104 (111)
+T tr|A0A0S7XWT4|   71 IGQQMQAVNLAESFLQDGTLSAGTYAVMFRVGDK  104 (111)
+
+
+No 56
+>tr|A0A0F9YNJ9|A0A0F9YNJ9_9BACT Uncharacterized protein OS=Parcubacteria group bacterium GW2011_GWC2_32_10 GN=UR22_C0004G0004 PE=4 SV=1 
+Probab=54.71  E-value=31  Score=33.01  Aligned_cols=26  Identities=58%  Similarity=0.664  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     15 AVVLAVKEVETLLASID--ELATKAIGK   40 (164)
+Q Consensus        15 afa~~VKEV~tLvkSID--ELA~KAIGK   40 (164)
+                      +|..+.|--+.||+|||  |||+||..|
+T Consensus        52 afllsakvqerlvksidqselatkafak   79 (195)
+T tr|A0A0F9YNJ9|   52 AFLLSAKVQERLVKSIDQSELATKAFAK   79 (195)
+
+
+No 57
+>tr|F0T8U9|F0T8U9_METLA Uncharacterized protein OS=Methanobacterium lacus (strain AL-21) GN=Metbo_1549 PE=4 SV=1 
+Probab=54.19  E-value=33  Score=27.66  Aligned_cols=23  Identities=48%  Similarity=0.671  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain      1 PNLTEISKKITESNAVVLAVKEV   23 (164)
+Q Consensus         1 ~dL~~ISkKIkda~afa~~VKEV   23 (164)
+                      |.|++|.|||++.++|--...|.
+T Consensus         5 pqlaeigkkitemnefevdaqem   27 (59)
+T tr|F0T8U9|F0T8    5 PQLAEIGKKITEMNEFEVDAQEM   27 (59)
+
+
+No 58
+>tr|J6UCM4|J6UCM4_9RHOB Uncharacterized protein OS=Rhodovulum sp. PH10 GN=A33M_3574 PE=4 SV=1 
+Probab=52.90  E-value=35  Score=30.18  Aligned_cols=24  Identities=33%  Similarity=0.587  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     55 TSLLSGAYAISDLIAEKLNVLKNE   78 (164)
+Q Consensus        55 gsLlAGay~i~~~i~~KL~~L~~~   78 (164)
+                      |.|+||+|++++.+..++..|..+
+T Consensus        14 gtllagawslssdlnsrigdlkte   37 (107)
+T tr|J6UCM4|J6UC   14 GTLLAGAWSLSSDLNSRIGDLKTE   37 (107)
+
+
+No 59
+>tr|I0FES0|I0FES0_BORCA Uncharacterized protein OS=Borrelia crocidurae (strain Achema) GN=Q7M_1219 PE=4 SV=1 
+Probab=50.23  E-value=42  Score=29.28  Aligned_cols=28  Identities=21%  Similarity=0.326  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain    136 LFKAVENLSKAAQDTLKNAVKELTSPIV  163 (164)
+Q Consensus       136 Ln~aVd~LlkaA~~~v~~aIkELt~p~~  163 (164)
+                      ||-.||.|+..|+.-|...|.|||++..
+T Consensus        62 lnieidgllataksfvsdvieelttsak   89 (95)
+T tr|I0FES0|I0FE   62 LNIEIDGLLATAKSFVSDVIEELTTSAK   89 (95)
+
+
+No 60
+>tr|M1IB40|M1IB40_9PHYC Uncharacterized protein OS=Acanthocystis turfacea Chlorella virus MN0810.1 GN=MN0810.1_691L PE=4 SV=1 
+Probab=50.08  E-value=42  Score=33.09  Aligned_cols=39  Identities=33%  Similarity=0.547  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain      2 NLTEISKKITESNAVVLAVKEVETLLASIDELATKAIGKKI   42 (164)
+Q Consensus         2 dL~~ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKKI   42 (164)
+                      ||.++.+.|.|--+...-|-|...+-+..+|+  ||.|||.
+T Consensus        16 dlkelgkqiedlkamsghvdelkamskqfeef--kamgkkf   54 (239)
+T tr|M1IB40|M1IB   16 DLKELGKQIEDLKAMSGHVDELKAMSKQFEEF--KAMGKKF   54 (239)
+
+
+No 61
+>tr|A0A0Q7FWI7|A0A0Q7FWI7_9BURK Uncharacterized protein OS=Massilia sp. Root418 GN=ASC94_00060 PE=4 SV=1 
+Probab=43.48  E-value=62  Score=27.82  Aligned_cols=43  Identities=26%  Similarity=0.392  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     55 TSLL-SGAYAISDLIAEKLNVLKNEELKEKIDTAKQCSTEFTNK   97 (164)
+Q Consensus        55 gsLl-AGay~i~~~i~~KL~~L~~~~LK~KI~~aK~~s~aF~~K   97 (164)
+                      |||+ .|+|.|++..++=|-.|++.+|-..-++.+..|++++.+
+T Consensus        15 gslirmgvftistvfeefllklnsnglfdnpddlrayseayiqr   58 (84)
+T tr|A0A0Q7FWI7|   15 GSLIRMGVFTISTVFEEFLLKLNSNGLFDNPDDLRAYSEAYIQR   58 (84)
+
+
+No 62
+>tr|A0A0F9A7T6|A0A0F9A7T6_9ZZZZ Uncharacterized protein (Fragment) OS=marine sediment metagenome GN=LCGC14_2605270 PE=4 SV=1 
+Probab=42.48  E-value=66  Score=31.89  Aligned_cols=18  Identities=33%  Similarity=0.704  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     56 SLLSGAYAISDLIAEKLN   73 (164)
+Q Consensus        56 sLlAGay~i~~~i~~KL~   73 (164)
+                      |.+||+|+++..|-+||.
+T Consensus       169 svmagvysviqfiltklg  186 (237)
+T tr|A0A0F9A7T6|  169 SVMAGVYSVIQFILTKLG  186 (237)
+
+
+No 63
+>tr|A0A062UJW4|A0A062UJW4_9RHOB Uncharacterized protein OS=Hyphomonas chukchiensis GN=HY30_18215 PE=4 SV=1
+Probab=31.52  E-value=1.2e+02  Score=30.19  Aligned_cols=51  Identities=25%  Similarity=0.505  Sum_probs=0.0  Template_Neff=1.633
+
+Q 1G5Z_1|Chain     56 SLLSGAYAISDLIAEKLNVL--KNEELKEKIDTAKQCSTEFTNKLKSEHAVLG  106 (164)
+Q Consensus        56 sLlAGay~i~~~i~~KL~~L--~~~~LK~KI~~aK~~s~aF~~KLK~~ha~LG  106 (164)
+                      +|++|+..++..|...+..+  ..-.|..||......++.+-.-+.+--.+||
+T Consensus        62 ~ll~g~~~~~a~~~s~~r~~~~~~~~l~dkv~~~~~~~~~wr~~~~d~~~~l~  114 (207)
+T tr|A0A062UJW4|   62 ALLVGCSACVALISSRLRIQEADNRDLRDKVARIRESNAQWRADLADHFQELG  114 (207)
+
+
+No 64
+>tr|A0A174U6Y7|A0A174U6Y7_9BACT Acetoacetate metabolism regulatory protein AtoC OS=Prevotella copri GN=ERS852495_02375 PE=4 SV=1 
+Probab=31.43  E-value=1.3e+02  Score=25.30  Aligned_cols=40  Identities=28%  Similarity=0.478  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     95 TNKLKSEHAVLGLDNLTDDNAQRAILKKHANKDKGAAELE  134 (164)
+Q Consensus        95 ~~KLK~~ha~LGk~~~tD~~AKkAI~kt~~~~dKGa~EL~  134 (164)
+                      +..+|..+..|.-.+.+..-..+|+.+++++..|.++||.
+T Consensus        14 ieeikeenenlnlsdlskqmiekalernngnrkkaaeelg   53 (68)
+T tr|A0A174U6Y7|   14 IEEIKEENENLNLSDLSKQMIEKALERNNGNRKKAAEELG   53 (68)
+
+
+No 65
+>tr|F9WG75|F9WG75_TRYCI Uncharacterized protein OS=Trypanosoma congolense (strain IL3000) GN=TCIL3000_0_12480 PE=4 SV=1 
+Probab=31.19  E-value=1.3e+02  Score=27.65  Aligned_cols=25  Identities=44%  Similarity=0.628  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     20 VKEVETLLASIDELATKAIGKKIGN   44 (164)
+Q Consensus        20 VKEV~tLvkSIDELA~KAIGKKI~~   44 (164)
+                      |||.+.||..+-+|-+||=||+|.+
+T Consensus        34 vkeaeklvenvrdlrrkaggkrisa   58 (123)
+T tr|F9WG75|F9WG   34 VKEAEKLVENVRDLRRKAGGKRISA   58 (123)
+
+
+No 66
+>tr|W1KKP9|W1KKP9_9SPHN Uncharacterized protein OS=Sphingobium chinhatense IP26 GN=M527_02945 PE=4 SV=1 
+Probab=31.05  E-value=1.3e+02  Score=27.29  Aligned_cols=48  Identities=23%  Similarity=0.363  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     58 LSGAYAISDLIAEKLNVLKNEELKEKIDTAKQCSTEFTNKLKSEHAVL  105 (164)
+Q Consensus        58 lAGay~i~~~i~~KL~~L~~~~LK~KI~~aK~~s~aF~~KLK~~ha~L  105 (164)
+                      +-|.-+++.++.+-.++|..+..|..-.+....+.+|.+.+|+..+.+
+T Consensus        11 ligiasvsallaqtvegldveavkrrsadlqaeaqafvdqvkdrgaaf   58 (113)
+T tr|W1KKP9|W1KK   11 LIGIASVSALLAQTVEGLDVEAVKRRSADLQAEAQAFVDQVKDRGAAF   58 (113)
+
+
+No 67
+>tr|D0TYK1|D0TYK1_9BACE Uncharacterized protein OS=Bacteroides sp. 2_1_22 GN=HMPREF0102_04651 PE=4 SV=1
+Probab=27.35  E-value=1.4e+02  Score=31.33  Aligned_cols=55  Identities=36%  Similarity=0.435  Sum_probs=0.0  Template_Neff=2.295
+
+Q 1G5Z_1|Chain     31 DELATKAIGKKIGN---NGLEANQSKNTSLLSGAYAISDLIAEKLNVLKNEELKEKIDT   86 (164)
+Q Consensus        31 DELA~KAIGKKI~~---~g~~~~~~~NgsLlAGay~i~~~i~~KL~~L~~~~LK~KI~~   86 (164)
+                      +|-- |||||+|-=   +..-++..-|.++=.|+|+|++.-..+|...-..=.++|++.
+T Consensus        82 ~eTe-kaiGk~iaFv~~dsvIt~P~Vn~~IesG~F~Iss~~~~~L~~iy~~i~~Ek~ds  139 (313)
+T tr|D0TYK1|D0TY   82 KETE-KAIGKQIAFVFDDSVITNPQVNARIESGVFQISSPHGYDLKNIYNKIRKEKIDS  139 (313)
+
+
+No 68
+>tr|Q2QKM0|Q2QKM0_KALBL Flavonoid 3'-hydroxylase (Fragment) OS=Kalanchoe blossfeldiana PE=2 SV=1
+Probab=26.09  E-value=1.8e+02  Score=26.40  Aligned_cols=55  Identities=24%  Similarity=0.354  Sum_probs=0.0  Template_Neff=1.347
+
+Q 1G5Z_1|Chain     58 LSGAYAISDLIAEKLNVLKNEELKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDD  113 (164)
+Q Consensus        58 lAGay~i~~~i~~KL~~L~~~~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~  113 (164)
+                      +||+|.|--.|-. |+.|.-.+...|....-..-.+|+.++-+.|...|..+..|+
+T Consensus         1 lagvfnigdfip~-lewldlqgv~~kmkklh~rfd~fl~~~le~h~~~~~~ggg~~   55 (103)
+T tr|Q2QKM0|Q2QK    1 LAGVFNIGDFIPS-LEWLDLQGVQRKMKKLHARFDKFLGKFLEEHRARGGGGGGEA   55 (103)
+
+
+No 69
+>tr|M1IB40|M1IB40_9PHYC Uncharacterized protein OS=Acanthocystis turfacea Chlorella virus MN0810.1 GN=MN0810.1_691L PE=4 SV=1 
+Probab=24.33  E-value=2.1e+02  Score=28.95  Aligned_cols=39  Identities=36%  Similarity=0.553  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain      2 NLTEISKKITESNAVVLAVKEVETLLASIDELATKAIGKKI   42 (164)
+Q Consensus         2 dL~~ISkKIkda~afa~~VKEV~tLvkSIDELA~KAIGKKI   42 (164)
+                      .|....+.|.+--+.-..+.|...+-+.|+||  ||.||.|
+T Consensus        66 elkamgkqieelkamgkqieelkamgkqieel--kamgkqi  104 (239)
+T tr|M1IB40|M1IB   66 ELKAMGKQIEELKAMGKQIEELKAMGKQIEEL--KAMGKQI  104 (239)
+
+
+No 70
+>tr|A0A0F9AQ76|A0A0F9AQ76_9ZZZZ Uncharacterized protein OS=marine sediment metagenome GN=LCGC14_2543120 PE=4 SV=1 
+Probab=21.83  E-value=2.5e+02  Score=24.79  Aligned_cols=33  Identities=30%  Similarity=0.532  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     56 SLLSGAYAISDLIAEKLNVLKNEELKEKIDTAKQ   89 (164)
+Q Consensus        56 sLlAGay~i~~~i~~KL~~L~~~~LK~KI~~aK~   89 (164)
+                      |.+.|+|.|.+.|-. |+..-+++||++...+.+
+T Consensus        20 smlggvyiilsriga-leqvvsdglkerlahvek   52 (87)
+T tr|A0A0F9AQ76|   20 SMLGGVYIILSRIGA-LEQVVSDGLKERLAHVEK   52 (87)
+
+
+No 71
+>tr|A5BXU0|A5BXU0_VITVI Putative uncharacterized protein OS=Vitis vinifera GN=VITISV_015195 PE=3 SV=1 
+Probab=21.12  E-value=2.7e+02  Score=30.07  Aligned_cols=56  Identities=18%  Similarity=0.293  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain     65 SDLIAEKLNVLKNEELKEKIDTAKQCSTEFTN---------KLKSEHAVLGLDNLTDDNAQRAIL  120 (164)
+Q Consensus        65 ~~~i~~KL~~L~~~~LK~KI~~aK~~s~aF~~---------KLK~~ha~LGk~~~tD~~AKkAI~  120 (164)
+                      ...|+.|++.|.++++...+++.|..++.++.         .|-++-..||..---++..|.||+
+T Consensus        40 yltitskidelqsedfsnrledlkeeakrlikdardtssrlelidsiqrlgvayhleeeikeaid  104 (407)
+T tr|A5BXU0|A5BX   40 YLTITSKIDELQSEDFSNRLEDLKEEAKRLIKDARDTSSRLELIDSIQRLGVAYHLEEEIKEAID  104 (407)
+
+
+No 72
+>tr|C5LST3|C5LST3_PERM5 Putative uncharacterized protein OS=Perkinsus marinus (strain ATCC 50983 / TXsc) GN=Pmar_PMAR017183 PE=4 SV=1
+Probab=21.11  E-value=2.7e+02  Score=31.58  Aligned_cols=32  Identities=38%  Similarity=0.518  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1G5Z_1|Chain    131 AELEKLFKAVENLSKAAQDTLKNAVKELTSPI  162 (164)
+Q Consensus       131 ~EL~~Ln~aVd~LlkaA~~~v~~aIkELt~p~  162 (164)
+                      .|+..-|.+-+.-+++|.++|+.+|+|.|.|+
+T Consensus       191 eemktanaaeeaevkaareavedaikevtgpi  222 (669)
+T tr|C5LST3|C5LS  191 EEMKTANAAEEAEVKAAREAVEDAIKEVTGPI  222 (669)
+
+
+No 73
+>tr|A0A0E0VTR9|A0A0E0VTR9_STAA5 Transcriptional regulator, MarR family OS=Staphylococcus aureus subsp. aureus 71193 GN=ST398NM01_2677 PE=4 SV=1
+Probab=20.34  E-value=2.5e+02  Score=27.61  Aligned_cols=79  Identities=28%  Similarity=0.293  Sum_probs=0.0  Template_Neff=1.900
+
+Q 1G5Z_1|Chain     70 EKLNVLKNEELKEKIDTAKQCSTEFTNKLKSEHAVLGLDNLTDDNAQRAILKKHANKDKGAAELEKLFKAVENLSKAAQD  149 (164)
+Q Consensus        70 ~KL~~L~~~~LK~KI~~aK~~s~aF~~KLK~~ha~LGk~~~tD~~AKkAI~kt~~~~dKGa~EL~~Ln~aVd~LlkaA~~  149 (164)
+                      .||-+..-.+|-.-.+-.|.-|-+-+.|||++.--.-....+|-..|+-.-..     ||..=..+||.+-++|++-.+.
+T Consensus        66 nKlPGITiK~LL~~LEISKQGSHaTLkkLKe~~lI~e~~~~~DrRvK~Ly~T~-----kG~~Lv~kLNkAQndL~q~i~~  140 (172)
+T tr|A0A0E0VTR9|   66 NKLPGITIKDLLETLEISKQGSHATLKKLKEEGLIIEQPSETDRRVKQLYPTD-----KGDALIAKLNKAQNELLQQIFQ  140 (172)
+
+
+Q 1G5Z_1|Chain    150 TLKN  153 (164)
+Q Consensus       150 ~v~~  153 (164)
+                      .+-+
+T Consensus       141 ~vG~  144 (172)
+T tr|A0A0E0VTR9|  141 KVGN  144 (172)
+
+
