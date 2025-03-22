@@ -149,9 +149,11 @@ def create_final_tensor(fasta_seq, pdb_coords, fasta_idx, pdb_idx):
     """
     fasta_length = len(fasta_seq)
     final_tensor = torch.zeros((fasta_length, 37, 3), dtype=torch.float32)  # Default to zeros
+    final_mask = torch.zeros((fasta_length, 37), dtype=torch.bool)
 
     # Map the PDB coordinates to the matching FASTA indices
     for fasta_position, pdb_position in zip(fasta_idx, pdb_idx):
         final_tensor[fasta_position] = pdb_coords[pdb_position]
+        final_mask[fasta_position] = pdb_coords[pdb_position].abs().sum(dim=-1) > 0
 
-    return final_tensor
+    return final_tensor, final_mask

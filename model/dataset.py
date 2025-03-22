@@ -38,15 +38,18 @@ class ProcessDataset(Dataset):
                 if line.startswith('>'):
                     continue
                 seq += line.strip() # Get sequecnce
-            # Fasta, seq_name, pdb_path --> final_tensor
+            # Fasta, seq_name, pdb_path --> final_tensor --> atom['coordinates'] --> Target output & mask
             try:
                 pdb_sequence = tt.extract_pdb_sequence(pdb_file)
                 pdb_idx, fasta_idx = tt.align_sequences(seq, pdb_sequence)
                 pdb_coordinates = tt.extract_residue_coordinates(pdb_file)
-                atom['coordinates'] = tt.create_final_tensor(seq, pdb_coordinates, fasta_idx, pdb_idx)
+                atom['coordinates'], atom['mask'] = tt.create_final_tensor(seq, pdb_coordinates, fasta_idx, pdb_idx)
+                print(atom['mask'].shape)
+                print(atom['mask'])
             except Exception as e:
                 print(e)
                 atom["coordinates"] = None
+                atom["mask"] = None
                 continue
 
     def __preprocess_all_msa(self, temp_Ph_vals):
