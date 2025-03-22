@@ -24,6 +24,7 @@ def process_files(input_dir, output_dir=None):
                     lines[i] = lines[i].replace('B', '-')
                     lines[i] = lines[i].replace('Z', '-')
                     lines[i] = lines[i].replace('U', '-')
+                    lines[i] = lines[i].replace('O', '-')
 
             
             # 写入处理后的内容
