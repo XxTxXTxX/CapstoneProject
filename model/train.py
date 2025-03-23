@@ -151,8 +151,12 @@ def get_ds():
 # -------------------- MODEL SETUP --------------------
 model = ProteinStructureModel()
 model.to(device)
+print("Model loading....")
 model = load_latest_checkpoint(model)  # Load checkpoint if available
+print("Model loading finished....")
+print("Data loading...")
 train_dataloader, val_dataloader = get_ds()
+print("Data loading finished...")
 
 
 
