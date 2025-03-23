@@ -20,9 +20,9 @@ def process_files(input_dir, output_dir=None):
             with open(input_path, 'w') as f:
                 f.writelines(lines)
                 
-# if __name__ == "__main__":
-#     input_dirs = ['model/input_seqs', 'model/msa_raw']
+if __name__ == "__main__":
+    input_dirs = ['model/input_seqs', 'model/msa_raw']
     
-#     for dir_path in input_dirs:
-#         print(f"\nProcessing files in {dir_path}")
-#         process_files(dir_path)
+    for dir_path in input_dirs:
+        print(f"\nProcessing files in {dir_path}")
+        process_files(dir_path)

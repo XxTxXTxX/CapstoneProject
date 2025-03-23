@@ -3,7 +3,7 @@ Match_columns 331
 No_of_seqs    1795 out of 5712
 Neff          8.91852
 Searched_HMMs 12803
-Date          Sat Mar 22 13:16:27 2025
+Date          Sun Mar 23 02:58:53 2025
 Command       hhblits -cpu 8 -i model/input_seqs/1I10.fasta -d /Users/hahayes/Desktop/Capstone/hh-suite/databases/uniclust30_2016_09/uniclust30_2016_09 -oa3m model/msa_raw/1I10.a3m -norealign -n 3 
 
  No Hit                             Prob E-value P-value  Score    SS Cols Query HMM  Template HMM
@@ -219,8 +219,8 @@ Command       hhblits -cpu 8 -i model/input_seqs/1I10.fasta -d /Users/hahayes/De
 210 tr|B4H195|B4H195_DROPE L-lacta 100.0 1.6E-37 6.2E-43  269.9   0.0  206  126-331   295-500 (500)
 211 tr|A0A0P5ZN73|A0A0P5ZN73_9CRUS 100.0 1.6E-37 6.7E-43  266.0   0.0  272   21-315     6-296 (297)
 212 tr|B9N7N3|B9N7N3_POPTR Nodule- 100.0 1.8E-37   7E-43  264.2   0.0  294   21-329    95-402 (412)
-213 tr|A0A0E0C5C3|A0A0E0C5C3_9ORYZ 100.0 1.9E-37 7.4E-43  277.6   0.0  301   17-331    25-337 (689)
-214 tr|A0A0E0C5C3|A0A0E0C5C3_9ORYZ 100.0 1.9E-37 7.4E-43  277.6   0.0  301   17-331   374-686 (689)
+213 tr|A0A0E0C5C3|A0A0E0C5C3_9ORYZ 100.0 1.9E-37 7.4E-43  277.6   0.0  301   17-331   374-686 (689)
+214 tr|A0A0E0C5C3|A0A0E0C5C3_9ORYZ 100.0 1.9E-37 7.4E-43  277.6   0.0  301   17-331    25-337 (689)
 215 tr|Q0UX88|Q0UX88_PHANO Unchara 100.0   2E-37 7.8E-43  255.8   0.0  240   22-325    10-249 (273)
 216 tr|A0A0V1IF51|A0A0V1IF51_TRIPS 100.0   2E-37 7.8E-43  271.5   0.0  258   21-299    34-308 (544)
 217 tr|A0A0K9QWA0|A0A0K9QWA0_SPIOL 100.0 2.1E-37 8.2E-43  263.9   0.0  305   12-331    88-406 (414)
@@ -7925,45 +7925,6 @@ T tr|B9N7N3|B9N7  400 KGI  402 (412)
 
 No 213
 >tr|A0A0E0C5C3|A0A0E0C5C3_9ORYZ Uncharacterized protein OS=Oryza meridionalis PE=4 SV=1
-Probab=100.00  E-value=1.9e-37  Score=277.56  Aligned_cols=301  Identities=24%  Similarity=0.380  Sum_probs=0.0  Template_Neff=1.000
-
-Q 1I10_1|Chains    17 TPQNKITVVGV-GAVGMACAISILMKDLADELALVDVIEDKLKGEMMDLQHGSLFLRTPKIVSGKDY-NVTANSKLVIIT   94 (331)
-Q Consensus        17 ~~~~kI~IIGa-G~vG~~la~~l~~~~~~~~v~L~D~~~~~~~~~~~dl~~~~~~~~~~~~~~~~~~-~a~~~aDiVii~   94 (331)
-                      .+.+||+|+|+ |.||+++++.+...++++.+.|||+...  .|++.|.+|-..+.........+.. +++.++|+|||.
-T Consensus        25 qperkvailgaaggigqplsllmklnplvsslslydiagt--pgvaadvshinapaqvkgfmgddqlgealegsdiviip  102 (689)
-T tr|A0A0E0C5C3|   25 QPERKVAILGAAGGIGQPLSLLMKLNPLVSSLSLYDIAGT--PGVAADVSHINSPAQVKGFMGDDQLGEALEGSDIVIIP  102 (689)
-
-
-Q 1I10_1|Chains    95 AGARQQEGESRLNLVQRNVNIFKFIIPNVVKYSPNCKLLIVSNPVD----ILTYVAWKISGFPKNRVIGSGCNLDSARFR  170 (331)
-Q Consensus        95 ~g~~~~~g~~r~e~~~~n~~i~~~i~~~i~~~~p~~~viv~tNP~~----~~~~~~~~~s~~~~~rviG~gt~ld~~r~~  170 (331)
-                      ||+||||||+|+|||+.|+.|++.++.+|.+|||++.+-+++||+|    +.+.++.|..-++.+++||. |+||..|++
-T Consensus       103 agvprkpgmtrddlfninagivknlctaiakycpnalvnmisnpvnstvpiaaevfkkagtydekklfgv-ttldvvrak  181 (689)
-T tr|A0A0E0C5C3|  103 AGVPRKPGMTRDDLFNINAGIVKNLCTAIAKYCPNALVNMISNPVNSTVPIAAEVFKKAGTYDEKKLFGV-TTLDVVRAK  181 (689)
-
-
-Q 1I10_1|Chains   171 YLMGERLGVHPLSCHGWVLGEH-GDSSVPVWSGMNVAGVSLKTLHPDLGTDKDKEQWKEVHKQVVESAYEVIKLK---GY  246 (331)
-Q Consensus       171 ~~la~~l~v~~~~v~~~v~G~H-g~~~vp~~s~~~v~g~~~~~~~~~~~~~~~~~~~~~i~~~v~~~~~~ii~~k---g~  246 (331)
-                      +|-|-+.+|+..||+.+|+|+| |-+..|+||+++-....+.+           |+++.+.+++|++|.||+++|   |+
-T Consensus       182 tfyagkanvpvtdvnvpvvgghagitilplfsqatpatnalsd-----------edikaltkrtqdggtevveakagkgs  250 (689)
-T tr|A0A0E0C5C3|  182 TFYAGKANVPVTDVNVPVVGGHAGITILPLFSQATPATNALSD-----------EDIKALTKRTQDGGTEVVEAKAGKGS  250 (689)
-
-
-Q 1I10_1|Chains   247 TSWAIGLSVADLAESIMKNLRRVHPVSTMIKGLYGIKDDVFLSVPCILGQNGISDLVKV-TLTSEEEARLKKSADTLWG-  324 (331)
-Q Consensus       247 t~~~~a~a~~~~~~ail~~~~~~~~vs~~~~g~yg~~~~~~~s~P~~lg~~Gv~~i~~~-~l~~~e~~~l~~s~~~l~~-  324 (331)
-                      ++++||++.+-|+.+.++..+.+--+-.+..-+.-+.+-.||+.-+.+|+||+++++.+ .|++.|++-|+.--.+||. 
-T Consensus       251 atlsmayagavfanaclkglngvpdvvecsfvqstvtelpffaskvklgkngveevlglgqlsdfekeglenlkgelkas  330 (689)
-T tr|A0A0E0C5C3|  251 ATLSMAYAGAVFANACLKGLNGVPDVVECSFVQSTVTELPFFASKVKLGKNGVEEVLGLGQLSDFEKEGLENLKGELKAS  330 (689)
-
-
-Q 1I10_1|Chains   325 IQKELQF  331 (331)
-Q Consensus       325 ~~~~~~~  331 (331)
-                      +.++++|
-T Consensus       331 iekgikf  337 (689)
-T tr|A0A0E0C5C3|  331 IEKGIKF  337 (689)
-
-
-No 214
->tr|A0A0E0C5C3|A0A0E0C5C3_9ORYZ Uncharacterized protein OS=Oryza meridionalis PE=4 SV=1
 Probab=100.00  E-value=1.9e-37  Score=277.56  Aligned_cols=301  Identities=24%  Similarity=0.381  Sum_probs=0.0  Template_Neff=1.000
 
 Q 1I10_1|Chains    17 TPQNKITVVGV-GAVGMACAISILMKDLADELALVDVIEDKLKGEMMDLQHGSLFLRTPKIVSGKDY-NVTANSKLVIIT   94 (331)
@@ -7999,6 +7960,45 @@ Q Consensus       325 ~~~~~~~  331 (331)
                       +.++++|
 T Consensus       680 iekgikf  686 (689)
 T tr|A0A0E0C5C3|  680 IEKGIKF  686 (689)
+
+
+No 214
+>tr|A0A0E0C5C3|A0A0E0C5C3_9ORYZ Uncharacterized protein OS=Oryza meridionalis PE=4 SV=1
+Probab=100.00  E-value=1.9e-37  Score=277.56  Aligned_cols=301  Identities=24%  Similarity=0.380  Sum_probs=0.0  Template_Neff=1.000
+
+Q 1I10_1|Chains    17 TPQNKITVVGV-GAVGMACAISILMKDLADELALVDVIEDKLKGEMMDLQHGSLFLRTPKIVSGKDY-NVTANSKLVIIT   94 (331)
+Q Consensus        17 ~~~~kI~IIGa-G~vG~~la~~l~~~~~~~~v~L~D~~~~~~~~~~~dl~~~~~~~~~~~~~~~~~~-~a~~~aDiVii~   94 (331)
+                      .+.+||+|+|+ |.||+++++.+...++++.+.|||+...  .|++.|.+|-..+.........+.. +++.++|+|||.
+T Consensus        25 qperkvailgaaggigqplsllmklnplvsslslydiagt--pgvaadvshinapaqvkgfmgddqlgealegsdiviip  102 (689)
+T tr|A0A0E0C5C3|   25 QPERKVAILGAAGGIGQPLSLLMKLNPLVSSLSLYDIAGT--PGVAADVSHINSPAQVKGFMGDDQLGEALEGSDIVIIP  102 (689)
+
+
+Q 1I10_1|Chains    95 AGARQQEGESRLNLVQRNVNIFKFIIPNVVKYSPNCKLLIVSNPVD----ILTYVAWKISGFPKNRVIGSGCNLDSARFR  170 (331)
+Q Consensus        95 ~g~~~~~g~~r~e~~~~n~~i~~~i~~~i~~~~p~~~viv~tNP~~----~~~~~~~~~s~~~~~rviG~gt~ld~~r~~  170 (331)
+                      ||+||||||+|+|||+.|+.|++.++.+|.+|||++.+-+++||+|    +.+.++.|..-++.+++||. |+||..|++
+T Consensus       103 agvprkpgmtrddlfninagivknlctaiakycpnalvnmisnpvnstvpiaaevfkkagtydekklfgv-ttldvvrak  181 (689)
+T tr|A0A0E0C5C3|  103 AGVPRKPGMTRDDLFNINAGIVKNLCTAIAKYCPNALVNMISNPVNSTVPIAAEVFKKAGTYDEKKLFGV-TTLDVVRAK  181 (689)
+
+
+Q 1I10_1|Chains   171 YLMGERLGVHPLSCHGWVLGEH-GDSSVPVWSGMNVAGVSLKTLHPDLGTDKDKEQWKEVHKQVVESAYEVIKLK---GY  246 (331)
+Q Consensus       171 ~~la~~l~v~~~~v~~~v~G~H-g~~~vp~~s~~~v~g~~~~~~~~~~~~~~~~~~~~~i~~~v~~~~~~ii~~k---g~  246 (331)
+                      +|-|-+.+|+..||+.+|+|+| |-+..|+||+++-....+.+           |+++.+.+++|++|.||+++|   |+
+T Consensus       182 tfyagkanvpvtdvnvpvvgghagitilplfsqatpatnalsd-----------edikaltkrtqdggtevveakagkgs  250 (689)
+T tr|A0A0E0C5C3|  182 TFYAGKANVPVTDVNVPVVGGHAGITILPLFSQATPATNALSD-----------EDIKALTKRTQDGGTEVVEAKAGKGS  250 (689)
+
+
+Q 1I10_1|Chains   247 TSWAIGLSVADLAESIMKNLRRVHPVSTMIKGLYGIKDDVFLSVPCILGQNGISDLVKV-TLTSEEEARLKKSADTLWG-  324 (331)
+Q Consensus       247 t~~~~a~a~~~~~~ail~~~~~~~~vs~~~~g~yg~~~~~~~s~P~~lg~~Gv~~i~~~-~l~~~e~~~l~~s~~~l~~-  324 (331)
+                      ++++||++.+-|+.+.++..+.+--+-.+..-+.-+.+-.||+.-+.+|+||+++++.+ .|++.|++-|+.--.+||. 
+T Consensus       251 atlsmayagavfanaclkglngvpdvvecsfvqstvtelpffaskvklgkngveevlglgqlsdfekeglenlkgelkas  330 (689)
+T tr|A0A0E0C5C3|  251 ATLSMAYAGAVFANACLKGLNGVPDVVECSFVQSTVTELPFFASKVKLGKNGVEEVLGLGQLSDFEKEGLENLKGELKAS  330 (689)
+
+
+Q 1I10_1|Chains   325 IQKELQF  331 (331)
+Q Consensus       325 ~~~~~~~  331 (331)
+                      +.++++|
+T Consensus       331 iekgikf  337 (689)
+T tr|A0A0E0C5C3|  331 IEKGIKF  337 (689)
 
 
 No 215

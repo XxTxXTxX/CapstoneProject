@@ -115,7 +115,7 @@ def getSequence():
     # For every PDB ID, download pdb file and fasta file -> then generate MSA
     for id in all_id:
         id = id.strip() # remove \n
-        if id == "1I10":
+        if id == "1JEE":
             prevVal = True
         if prevVal:
             url = f"https://files.rcsb.org/download/{id}.pdb"
