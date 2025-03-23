@@ -248,18 +248,18 @@ def train(model, train_loader, val_loader, num_epochs=20, lr=1e-3, device=device
                     val_losses['mask_penalty'] += loss_dict['mask_penalty'].item()
 
                     t.set_postfix({
-                        'val_total': val_losses['total'] / t.n + 1,
-                        'val_coord': val_losses['coord'] / t.n + 1,
-                        'val_mask': val_losses['mask_penalty'] / t.n + 1
+                        'val_total': val_losses['total'] / (t.n + 1),
+                        'val_coord': val_losses['coord'] / (t.n + 1),
+                        'val_mask': val_losses['mask_penalty'] / (t.n + 1)
                     })  # Update tqdm progress bar
 
         print(f"\nEpoch [{epoch+1}/{num_epochs}]")
         print(f"Training - Total Loss: {epoch_losses['total']/count:.4f}, "
               f"Coord Loss: {epoch_losses['coord']/count:.4f}, "
               f"Mask Loss: {epoch_losses['mask_penalty']/count:.4f}")
-        print(f"Validation - Total Loss: {val_losses['total']/t.n+1:.4f}, "
-              f"Coord Loss: {val_losses['coord']/t.n+1:.4f}, "
-              f"Mask Loss: {val_losses['mask_penalty']/t.n+1:.4f}")
+        print(f"Validation - Total Loss: {val_losses['total']/(t.n+1):.4f}, "
+              f"Coord Loss: {val_losses['coord']/(t.n+1):.4f}, "
+              f"Mask Loss: {val_losses['mask_penalty']/(t.n+1):.4f}")
 
         # Save the model after each epoch
         model_save_path = f"../model_weights/model_epoch_{epoch+1}.pt"
