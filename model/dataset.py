@@ -234,7 +234,7 @@ class featureExtraction():
         features['cluster_profile'] = cluster_profile
         return features
     
-    def crop_extra_msa(self, features, max_extra_msa_count=1500, seed=None):
+    def crop_extra_msa(self, features, max_extra_msa_count=1000, seed=None):
         N_extra = features['extra_msa_aatype'].shape[0]
         gen = None
         if seed is not None:
