@@ -111,6 +111,9 @@ def run_inference(model, inference_dataloader, device=device):
     
     pred_coords = pred["final_positions"]
     pred_mask = pred["position_mask"]
+    ca_coords = pred_coords[0,:,1]
+    dists = torch.norm(ca_coords[1:] - ca_coords[:-1], dim=-1)
+    print("Avg CA-CA dist:", dists.mean().item())
     print(f"Predicted Coordinates Shape: {pred_coords.shape}")
     print(f"Predicted position mask: {pred_mask.shape}")
     print(pred_mask)
@@ -160,5 +163,5 @@ def save_pdb(pred_coords, pred_mask, sequence, output_file="model/predict_pdb/pr
 
 
 # -------------------- RUN INFERENCE EXAMPLE --------------------
-sequence = "GAMDPEFMSTPLPAIVPAARKATAAVIFLHGLGDTGHGWAEAFAGIRSSHIKYICPHAPVRPVTLNMNVAMPSWFDIIGLSPDSQEDESGIKQAAENIKALIDQEVKNGIPSNRIILGGFSQGGALSLYTALTTQQKLAGVTALSCWLPLRASFPQGPIGGANRDISILQCHGDCDPLVPLMFGSLTVEKLKTLVNPANVTFKTYEGMMHSSCQQEMMDVKQFIDKLLPPID"
+sequence = "MASMTGGQQMGRIPGNSPRMVLLESEQFLTELTRLFQKCRSSGSVFITLKKYDGRTKPIPRKSSVEGLEPAENKCLLRATDGKRKISTVVSSKEVNKFQMAYSNLLRANMDGLKKRDKKNKSKKSKPAQGGEQKLISEEDDSAGSPMPQFQTWEEFSRAAEKLYLADPMKVRVVLKYRHVDGNLCIKVTDDLVCLVYRTDQAQDVKKIEKFHSQLMRLMVAKESRNVTMETE"
 save_pdb(pred_coords, pred_mask, sequence, "predicted_structure.pdb")

@@ -81,7 +81,7 @@ def load_latest_checkpoint(model, model_dir="../model_weights/"):
     latest_checkpoint = checkpoint_files[-1]
     latest_checkpoint_path = os.path.join(model_dir, latest_checkpoint)
 
-    model.load_state_dict(torch.load(latest_checkpoint_path, map_location=device))
+    model.load_state_dict(torch.load(latest_checkpoint_path, map_location=device), strict = False)
     print(f"Loaded checkpoint: {latest_checkpoint_path}")
     return model
 
