@@ -18,7 +18,7 @@ for dir_path in input_dirs:
         process_files(dir_path)
 
 # -------------------- DEVICE SETUP --------------------
-device = torch.device("cpu")
+device = torch.device("cuda")
 print(f"Using device: {device}")
 
 
@@ -110,32 +110,41 @@ def run_inference(model, inference_dataloader, device=device):
         pred = model(batch)
     
     pred_coords = pred["final_positions"]
+    pred_mask = pred["position_mask"]
     print(f"Predicted Coordinates Shape: {pred_coords.shape}")
+    print(f"Predicted position mask: {pred_mask.shape}")
+    print(pred_mask)
 
-    return pred_coords
+    return pred_coords, pred_mask
 
-result = run_inference(model, inference_dataloader, device)
-print(result.shape)
+pred_coords, pred_mask = run_inference(model, inference_dataloader, device)
 
-def save_pdb(pred_coords, sequence, output_file="model/predict_pdb/predicted_structure_1914.pdb"):
+def save_pdb(pred_coords, pred_mask, sequence, output_file="model/predict_pdb/predicted_structure_1914.pdb"):
     """
-    Saves the predicted (Nres, 37, 3) tensor as a PDB file for visualization.
+    Saves the predicted (Nres, 37, 3) tensor as a PDB file for visualization, applying the predicted mask.
     """
     ATOM_TYPES = [
         "N", "CA", "C", "O", "CB", "CG", "CG1", "CG2", "OG", "OG1", "SG",
         "CD", "CD1", "CD2", "ND1", "ND2", "OD1", "OD2", "SD", "CE", "CE1", "CE2", "CE3",
         "NE", "NE1", "NE2", "OE1", "OE2", "CH2", "CZ", "CZ2", "CZ3", "NZ", "OXT", "OH", "TYR_OH"
     ]
-    pred_coords = pred_coords.squeeze(0)  # Now shape is [232, 37, 3]
+
+    pred_coords = pred_coords.squeeze(0)  # Shape: [Nres, 37, 3]
+    pred_mask = pred_mask.squeeze(0)      # Shape: [Nres, 37]
+
     with open(output_file, "w") as f:
         atom_index = 1  # PDB atom numbering starts at 1
+
         for res_idx, res_name in enumerate(sequence):
             for atom_idx, atom_name in enumerate(ATOM_TYPES):
-                x, y, z = pred_coords[res_idx, atom_idx].tolist()  
+                if not pred_mask[res_idx, atom_idx]:  # Skip masked-out atoms
+                    continue
 
-                # Skip missing atoms (zero tensors)
+                x, y, z = pred_coords[res_idx, atom_idx].tolist()
+
+                # (Optional safety) Skip zero-coordinates if you're extra cautious:
                 if x == 0.0 and y == 0.0 and z == 0.0:
-                    continue  
+                    continue
 
                 pdb_line = (
                     f"ATOM  {atom_index:5d} {atom_name:<4} {res_name:>3} A "
@@ -144,10 +153,12 @@ def save_pdb(pred_coords, sequence, output_file="model/predict_pdb/predicted_str
                 f.write(pdb_line)
                 atom_index += 1
 
-        f.write("TER\nEND\n")  # End of PDB
+        f.write("TER\nEND\n")
+
     print(f"PDB file saved: {output_file}")
 
 
+
 # -------------------- RUN INFERENCE EXAMPLE --------------------
-sequence = "MASMTGGQQMGRIPGNSPRMVLLESEQFLTELTRLFQKCRSSGSVFITLKKYDGRTKPIPRKSSVEGLEPAENKCLLRATDGKRKISTVVSSKEVNKFQMAYSNLLRANMDGLKKRDKKNKSKKSKPAQGGEQKLISEEDDSAGSPMPQFQTWEEFSRAAEKLYLADPMKVRVVLKYRHVDGNLCIKVTDDLVCLVYRTDQAQDVKKIEKFHSQLMRLMVAKESRNVTMETE"
-save_pdb(result, sequence, "predicted_structure.pdb")
+sequence = "GAMDPEFMSTPLPAIVPAARKATAAVIFLHGLGDTGHGWAEAFAGIRSSHIKYICPHAPVRPVTLNMNVAMPSWFDIIGLSPDSQEDESGIKQAAENIKALIDQEVKNGIPSNRIILGGFSQGGALSLYTALTTQQKLAGVTALSCWLPLRASFPQGPIGGANRDISILQCHGDCDPLVPLMFGSLTVEKLKTLVNPANVTFKTYEGMMHSSCQQEMMDVKQFIDKLLPPID"
+save_pdb(pred_coords, pred_mask, sequence, "predicted_structure.pdb")
