@@ -274,6 +274,8 @@ def train(model, train_loader, val_loader, num_epochs=20, lr=1e-3, device=device
         with torch.no_grad():
             with tqdm(val_loader, desc=f"Epoch {epoch+1}/{num_epochs} - Validation", unit="batch") as t:
                 for batch in t:
+                    if batch == None:
+                        continue
                     batch = {k: v.to(device) if torch.is_tensor(v) else v for k, v in batch.items()}
                     coordinates = batch['coordinates']
                     pred = model(batch)
