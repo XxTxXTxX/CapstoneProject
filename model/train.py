@@ -225,6 +225,8 @@ def train(model, train_loader, val_loader, num_epochs=20, lr=1e-3, device=device
         with tqdm(train_loader, desc=f"Epoch {epoch+1}/{num_epochs} - Training", unit="batch") as t:
             count = 0
             for batch in t:
+                if batch == None:
+                    continue
                 count += 1
                 batch = {k: v.to(device) if torch.is_tensor(v) else v for k, v in batch.items()}
                 coordinates = batch['coordinates']  # Ground truth (Nres, 37, 3)
