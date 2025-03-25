@@ -283,6 +283,10 @@ def train(model, train_loader, val_loader, num_epochs=20, lr=1e-3, device=device
                     # Extract the relevant tensors
                     pred_coords = pred["final_positions"]
                     target_coords = coordinates  # Already extracted
+                    if pred_coords.shape[1] < coordinates.shape[1]:
+                        coordinates = coordinates[:, :pred_coords.shape[1], :, :]
+                    elif pred_coords.shape[1] > coordinates.shape[1]:
+                        pred_coords = pred_coords[:, :coordinates.shape[1], :, :]
                     loss_dict = criterion(pred_coords, coordinates, pred['position_mask'])
                     val_losses['total'] += loss_dict['total_loss'].item()
                     val_losses['coord'] += loss_dict['coord_loss'].item()

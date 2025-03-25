@@ -400,6 +400,7 @@ class StructureModule(nn.Module):
         #   - Stack the angles and frames along the correct axes.                #
         #   - Call process_outputs and add the results to the output dict.       #
         ##########################################################################
+        # print(f"Structure Module F.shape: {F.shape}, Unique: {torch.unique(F)}")
 
         s_initial = self.layer_norm_s(s)
         z = self.layer_norm_z(z)
