@@ -171,7 +171,7 @@ class featureExtraction():
         return features
     
 
-    def mask_cluster_centers(self, features, mask_probability=0.15, seed=None):
+    def mask_cluster_centers(self, features, mask_probability=0.2, seed=None):
         N_clust, N_res = features['msa_aatype'].shape[:2]
         N_aa_categories = 23
         odds = {
@@ -318,7 +318,7 @@ class featureExtraction():
         seqs = self.load_a3m_file(file_name)
         # len(seqs[0]) must be less than 400 residues (next time try 450)
         # len(seqs) must be at least 256
-        if len(seqs[0]) < 400 and len(seqs) >= 256:
+        if len(seqs[0]) < 450 and len(seqs) >= 128:
             features = self.initial_data_from_seqs(seqs)
 
             transforms = [
