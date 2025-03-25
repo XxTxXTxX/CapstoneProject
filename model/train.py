@@ -11,7 +11,7 @@ import os
 from tqdm import tqdm
 
 # -------------------- DEVICE SETUP --------------------
-device = torch.device("cpu")
+device = torch.device("cuda")
 print(f"Using device: {device}")
 
 
