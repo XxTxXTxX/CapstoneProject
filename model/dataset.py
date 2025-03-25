@@ -13,6 +13,7 @@ class ProcessDataset(Dataset):
     def __init__(self, temp_Ph_vals):
         self.msa_file_path = "model/msa_raw"
         self.pdb_file_path = "model/targetPDB"
+        self.temp_Ph_vals = temp_Ph_vals
         self.ATOM_TYPES = ["N", "CA", "C", "O", "CB", "CG", "CG1", "CG2", "OG", "OG1", "SG",
                            "CD", "CD1", "CD2", "ND1", "ND2", "OD1", "OD2", "SD", "CE", "CE1", "CE2", "CE3",
                            "NE", "NE1", "NE2", "OE1", "OE2", "CH2", "CZ", "CZ2", "CZ3", "NZ", "OXT", "OH", "TYR_OH"
@@ -23,43 +24,67 @@ class ProcessDataset(Dataset):
             for f in os.listdir(self.msa_file_path) 
             if f.endswith('.a3m')
         ]
-        # print(self.msa_files)
         self.feature_extractor = featureExtraction()
-        self.features = []
-        self.__preprocess_all_msa(temp_Ph_vals)
-        for atom in self.features:
-            filename = atom['seq_name'] # sequence name
-            sequence_file = "model/input_seqs/" + filename + ".fasta" # fasta file
-            pdb_file = os.path.join(self.pdb_file_path, atom['seq_name'] + ".pdb") # pdb file
-            seq = "" # Sequence
-            with open(sequence_file, 'r') as f:
-                lines = f.readlines()
-            for line in lines:
-                if line.startswith('>'):
-                    continue
-                seq += line.strip() # Get sequecnce
-            # Fasta, seq_name, pdb_path --> final_tensor --> atom['coordinates'] --> Target output & mask
-            try:
-                pdb_sequence = tt.extract_pdb_sequence(pdb_file)
-                pdb_idx, fasta_idx = tt.align_sequences(seq, pdb_sequence)
-                pdb_coordinates = tt.extract_residue_coordinates(pdb_file)
-                atom['coordinates'] = tt.create_final_tensor(seq, pdb_coordinates, fasta_idx, pdb_idx)
-            except Exception as e:
-                print(e)
-                atom["coordinates"] = None
-                continue
+        # self.features = []
+        # self.__preprocess_all_msa(temp_Ph_vals)
+        # for atom in self.features:
+        #     filename = atom['seq_name'] # sequence name
+        #     sequence_file = "model/input_seqs/" + filename + ".fasta" # fasta file
+        #     pdb_file = os.path.join(self.pdb_file_path, atom['seq_name'] + ".pdb") # pdb file
+        #     seq = "" # Sequence
+        #     with open(sequence_file, 'r') as f:
+        #         lines = f.readlines()
+        #     for line in lines:
+        #         if line.startswith('>'):
+        #             continue
+        #         seq += line.strip() # Get sequecnce
+        #     # Fasta, seq_name, pdb_path --> final_tensor --> atom['coordinates'] --> Target output & mask
+        #     try:
+        #         pdb_sequence = tt.extract_pdb_sequence(pdb_file)
+        #         pdb_idx, fasta_idx = tt.align_sequences(seq, pdb_sequence)
+        #         pdb_coordinates = tt.extract_residue_coordinates(pdb_file)
+        #         atom['coordinates'] = tt.create_final_tensor(seq, pdb_coordinates, fasta_idx, pdb_idx)
+        #     except Exception as e:
+        #         print(e)
+        #         atom["coordinates"] = None
+        #         continue
 
-    def __preprocess_all_msa(self, temp_Ph_vals):
-        for msa_path in self.msa_files:
-            batch = self.feature_extractor.create_features_from_a3m(msa_path, temp_Ph_vals)
-            if batch != None:
-                self.features.append(batch)
+    # def __preprocess_all_msa(self, temp_Ph_vals):
+    #     for msa_path in self.msa_files:
+    #         batch = self.feature_extractor.create_features_from_a3m(msa_path, temp_Ph_vals)
+    #         if batch != None:
+    #             self.features.append(batch)
     
     def __len__(self):
         return len(self.features)
     
     def __getitem__(self, idx):
-        return self.features[idx]
+        msa_path = self.msa_files[idx]
+        seq_name = os.path.basename(msa_path).replace(".a3m", "")
+
+        msa_features = self.feature_extractor.create_features_from_a3m(msa_path, self.temp_Ph_vals)
+        if msa_features is None:
+            return None 
+
+        sequence_file = f"model/input_seqs/{seq_name}.fasta"
+        seq = ""
+        with open(sequence_file, 'r') as f:
+            lines = f.readlines()
+        for line in lines:
+            if not line.startswith('>'):
+                seq += line.strip()
+
+        pdb_file = os.path.join(self.pdb_file_path, f"{seq_name}.pdb")
+        try:
+            pdb_sequence = tt.extract_pdb_sequence(pdb_file)
+            pdb_idx, fasta_idx = tt.align_sequences(seq, pdb_sequence)
+            pdb_coordinates = tt.extract_residue_coordinates(pdb_file)
+            msa_features['coordinates'] = tt.create_final_tensor(seq, pdb_coordinates, fasta_idx, pdb_idx)
+        except Exception as e:
+            print(f"Error processing {seq_name}: {e}")
+            msa_features["coordinates"] = None
+
+        return msa_features
 
 
             

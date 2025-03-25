@@ -109,44 +109,80 @@ def read_pH_temp_csv(file_path):
 
 
 # -------------------- DATASET LOADING --------------------
-def collate_fn(batch):
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    collated = {}
-    for key in batch[0].keys():
-        samples = [item[key] for item in batch]
-        if isinstance(samples[0], torch.Tensor):
-            try:
-                collated[key] = torch.stack(samples).to(device)
-            except RuntimeError:
-                collated[key] = nn.utils.rnn.pad_sequence(samples, batch_first=True).to(device)
-        else:
-            collated[key] = samples 
-    return collated
+# def collate_fn(batch):
+#     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+#     collated = {}
+#     for key in batch[0].keys():
+#         samples = [item[key] for item in batch]
+#         if isinstance(samples[0], torch.Tensor):
+#             try:
+#                 collated[key] = torch.stack(samples).to(device)
+#             except RuntimeError:
+#                 collated[key] = nn.utils.rnn.pad_sequence(samples, batch_first=True).to(device)
+#         else:
+#             collated[key] = samples 
+#     return collated
 
-def get_ds():
-    """
-    Creates train and validation DataLoaders from ProcessDataset.
-    Returns:
-        tuple: (train_dataloader, val_dataloader)
-    """
-    #torch.manual_seed(seed)
-    #np.random.seed(seed)
-    #random.seed(seed)
+# def get_ds():
+#     """
+#     Creates train and validation DataLoaders from ProcessDataset.
+#     Returns:
+#         tuple: (train_dataloader, val_dataloader)
+#     """
+#     #torch.manual_seed(seed)
+#     #np.random.seed(seed)
+#     #random.seed(seed)
 
+#     temp_pH_vals = read_pH_temp_csv("model/pH_temp.csv")
+#     full_ds = ProcessDataset(temp_pH_vals)
+
+#     # Fix dataset splitting issue
+#     train_ds_size = int(0.85 * len(full_ds))
+#     val_ds_size = len(full_ds) - train_ds_size
+#     train_ds, val_ds = random_split(full_ds, [train_ds_size, val_ds_size])
+
+#     train_dataloader = DataLoader(train_ds, batch_size=1, shuffle=True, collate_fn=collate_fn)
+#     val_dataloader = DataLoader(val_ds, batch_size=1, shuffle=True, collate_fn=collate_fn)
+
+#     return train_dataloader, val_dataloader
+
+def get_ds(batch_size=4, num_workers=4):
     temp_pH_vals = read_pH_temp_csv("model/pH_temp.csv")
-    full_ds = ProcessDataset(temp_pH_vals)
+    full_ds = ProcessDataset(temp_pH_vals) 
 
-    # Fix dataset splitting issue
     train_ds_size = int(0.85 * len(full_ds))
     val_ds_size = len(full_ds) - train_ds_size
     train_ds, val_ds = random_split(full_ds, [train_ds_size, val_ds_size])
 
-    train_dataloader = DataLoader(train_ds, batch_size=1, shuffle=True, collate_fn=collate_fn)
-    val_dataloader = DataLoader(val_ds, batch_size=1, shuffle=True, collate_fn=collate_fn)
+    def collate_fn(batch):
+        batch = [b for b in batch if b is not None]
+        if len(batch) == 0:  
+            return None  
+        collated = {}
+        for key in batch[0].keys():
+            samples = [item[key] for item in batch]
+            if isinstance(samples[0], torch.Tensor):
+                try:
+                    collated[key] = torch.stack(samples) 
+                except RuntimeError:
+                    collated[key] = nn.utils.rnn.pad_sequence(samples, batch_first=True)
+            else:
+                collated[key] = samples
+        return collated
+
+    train_dataloader = DataLoader(
+        train_ds, batch_size=batch_size, shuffle=True,
+        num_workers=num_workers, pin_memory=True,
+        collate_fn=collate_fn, drop_last=True  
+    )
+
+    val_dataloader = DataLoader(
+        val_ds, batch_size=batch_size, shuffle=False,
+        num_workers=num_workers, pin_memory=True,
+        collate_fn=collate_fn, drop_last=True
+    )
 
     return train_dataloader, val_dataloader
-
-
 
 # -------------------- MODEL SETUP --------------------
 model = ProteinStructureModel()
