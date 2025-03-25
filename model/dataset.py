@@ -56,7 +56,7 @@ class ProcessDataset(Dataset):
     #             self.features.append(batch)
     
     def __len__(self):
-        return len(self.features)
+        return len(self.msa_files)
     
     def __getitem__(self, idx):
         msa_path = self.msa_files[idx]

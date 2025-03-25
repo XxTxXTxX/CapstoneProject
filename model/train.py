@@ -11,7 +11,7 @@ import os
 from tqdm import tqdm
 
 # -------------------- DEVICE SETUP --------------------
-device = torch.device("cuda")
+device = torch.device("cpu")
 print(f"Using device: {device}")
 
 
@@ -145,16 +145,7 @@ def read_pH_temp_csv(file_path):
 #     val_dataloader = DataLoader(val_ds, batch_size=1, shuffle=True, collate_fn=collate_fn)
 
 #     return train_dataloader, val_dataloader
-
-def get_ds(batch_size=4, num_workers=4):
-    temp_pH_vals = read_pH_temp_csv("model/pH_temp.csv")
-    full_ds = ProcessDataset(temp_pH_vals) 
-
-    train_ds_size = int(0.85 * len(full_ds))
-    val_ds_size = len(full_ds) - train_ds_size
-    train_ds, val_ds = random_split(full_ds, [train_ds_size, val_ds_size])
-
-    def collate_fn(batch):
+def collate_fn(batch):
         batch = [b for b in batch if b is not None]
         if len(batch) == 0:  
             return None  
@@ -170,15 +161,21 @@ def get_ds(batch_size=4, num_workers=4):
                 collated[key] = samples
         return collated
 
+def get_ds():
+    temp_pH_vals = read_pH_temp_csv("model/pH_temp.csv")
+    full_ds = ProcessDataset(temp_pH_vals) 
+
+    train_ds_size = int(0.85 * len(full_ds))
+    val_ds_size = len(full_ds) - train_ds_size
+    train_ds, val_ds = random_split(full_ds, [train_ds_size, val_ds_size])
+
     train_dataloader = DataLoader(
-        train_ds, batch_size=batch_size, shuffle=True,
-        num_workers=num_workers, pin_memory=True,
+        train_ds, batch_size=1, shuffle=True, pin_memory=True,
         collate_fn=collate_fn, drop_last=True  
     )
 
     val_dataloader = DataLoader(
-        val_ds, batch_size=batch_size, shuffle=False,
-        num_workers=num_workers, pin_memory=True,
+        val_ds, batch_size=1, shuffle=False, pin_memory=True,
         collate_fn=collate_fn, drop_last=True
     )
 
