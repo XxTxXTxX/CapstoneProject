@@ -32,12 +32,12 @@ class ModelArgs:
 
 class ProteinStructureModel(nn.Module):
     def __init__(self, 
-                 c_m=256,        
-                 c_z=129,        
-                 c_e=64,
+                 c_m=512,        
+                 c_z=258,        
+                 c_e=128,
                  f_e=25,
                  tf_dim=21,         
-                 num_blocks=1): 
+                 num_blocks=3): 
         super().__init__()
         
         self.input_embedder = InputEmbedder(c_m, c_z, tf_dim)
