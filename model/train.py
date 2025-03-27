@@ -18,7 +18,7 @@ print(f"Using device: {device}")
 # -------------------- CUSTOM MASKED MSE LOSS --------------------
 class MaskedMSELoss(nn.Module):
     """
-    Custom loss function that computes MSE loss only for non-masked positions.
+    computes MSE loss only for non-masked positions.
     """
     def __init__(self, mask_penalty=1.0):
         super(MaskedMSELoss, self).__init__()
@@ -27,14 +27,6 @@ class MaskedMSELoss(nn.Module):
 
     
     def forward(self, pred, target, mask):
-        """
-        Args:
-            pred: (Nres, 37, 3) predicted coordinates
-            target: (Nres, 37, 3) ground truth coordinates
-            mask: (Nres, 37) mask tensor
-        Returns:
-            masked loss: Mean loss computed only for valid (non-masked) coordinates
-        """
         target_mask = (target != 0).any(dim=-1)  # (batch, Nres, 37)
         
         # uclidean distance loss
@@ -199,17 +191,6 @@ from tqdm import tqdm
 
 # -------------------- TRAINING LOOP --------------------
 def train(model, train_loader, val_loader, num_epochs=20, lr=1e-3, device=device):
-    """
-    Trains the model using the custom masked MSE loss with tqdm progress bars.
-
-    Args:
-        model: The protein structure model (expects input shape Nres, 37, 3)
-        train_loader: Training data DataLoader
-        val_loader: Validation data DataLoader
-        num_epochs: Number of epochs
-        lr: Learning rate
-        device: 'cuda' or 'cpu'
-    """
     optimizer = optim.Adam(model.parameters(), lr=lr)
     criterion = MaskedMSELoss()  # Use custom loss function
 

@@ -14,7 +14,6 @@ ATOM_TYPE_INDEX = {atom: idx for idx, atom in enumerate(ATOM_TYPES)}
 
 
 def extract_pdb_sequence(pdb_file):
-    """Extracts the amino acid sequence from a PDB file."""
     parser = PDB.PDBParser(QUIET=True)
     structure = parser.get_structure("protein", pdb_file)
 
@@ -29,7 +28,6 @@ def extract_pdb_sequence(pdb_file):
 
 
 def align_sequences(seq1, seq2, match_score=1, mismatch_score=-1, gap_penalty=-2):
-
     m, n = len(seq1), len(seq2)
 
     # **1. Initialize DP matrix and traceback matrix**
@@ -111,7 +109,6 @@ def align_sequences(seq1, seq2, match_score=1, mismatch_score=-1, gap_penalty=-2
 
 
 def extract_residue_coordinates(pdb_file): # MASK
-    """Extracts residue 3D coordinates from the PDB file."""
     parser = PDB.PDBParser(QUIET=True)
     structure = parser.get_structure("protein", pdb_file)
 
@@ -134,19 +131,6 @@ def extract_residue_coordinates(pdb_file): # MASK
 
 
 def create_final_tensor(fasta_seq, pdb_coords, fasta_idx, pdb_idx):
-    """
-    Creates a final tensor of shape (N_fasta, 37, 3), where matched residues
-    get real PDB coordinates and unmatched ones get zero tensors.
-
-    Args:
-        fasta_seq (str): The original FASTA sequence.
-        pdb_coords (list of tensors): List of coordinate tensors from PDB.
-        fasta_idx (list of int): Indices in FASTA where residues match PDB.
-        pdb_idx (list of int): Indices in PDB where residues match FASTA.
-
-    Returns:
-        torch.Tensor: Final tensor of shape (N_fasta, 37, 3).
-    """
     fasta_length = len(fasta_seq)
     final_tensor = torch.zeros((fasta_length, 37, 3), dtype=torch.float32)  # Default to zeros
 
