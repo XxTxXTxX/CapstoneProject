@@ -1,5 +1,11 @@
-from dataset_inference import ProcessDataset
-from model import ProteinStructureModel
+from pathlib import Path
+import sys
+MODEL_DIR = Path(__file__).parent
+if str(MODEL_DIR) not in sys.path:
+    sys.path.append(str(MODEL_DIR))
+
+from .dataset_inference import ProcessDataset
+from .model import ProteinStructureModel
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader, random_split
@@ -10,12 +16,6 @@ import numpy as np
 import os
 from tqdm import tqdm
 from training_data_preprocess import process_files
-
-# ---------------- Preprocess data --------------
-# input_dirs = ['model/input_seqs_inference', 'model/msa_raw_inference']
-# for dir_path in input_dirs:
-#         print(f"\nProcessing files in {dir_path}")
-#         process_files(dir_path)
 
 # -------------------- DEVICE SETUP --------------------
 device = torch.device("cpu")
@@ -40,14 +40,15 @@ def load_latest_checkpoint(model, model_dir="./model_weights/"):
     return model
 
 # -------------------- CSV LOADING --------------------
-def read_pH_temp_csv(file_path):
+def read_pH_temp_csv():
     """
     Reads a CSV file containing pH and temperature values for each PDB ID.
     Returns:
         dict: {pdb_id: [pH, temperature]}
     """
+    absolute_path = os.path.join(MODEL_DIR, "pH_temp_inference.csv")
     data_dict = {}
-    with open(file_path, mode="r") as file:
+    with open(absolute_path, mode="r") as file:
         reader = csv.reader(file)
         next(reader)  # Skip header
         for row in reader:
@@ -87,7 +88,7 @@ def get_ds(seed = 43):
     np.random.seed(seed)
     random.seed(seed)
 
-    temp_pH_vals = read_pH_temp_csv("model/pH_temp_inference.csv")
+    temp_pH_vals = read_pH_temp_csv()
     inference_ds = ProcessDataset(temp_pH_vals)
 
     inference_dataloader = DataLoader(inference_ds, batch_size=1, shuffle=False, collate_fn=collate_fn)
@@ -95,22 +96,13 @@ def get_ds(seed = 43):
     return inference_dataloader
 
 
-inference_dataloader = get_ds()
-model = ProteinStructureModel()
-model.to(device)
-model = load_latest_checkpoint(model)
-for name, param in model.state_dict().items():
-    print(name)
-
-
-def run_inference(model, inference_dataloader, device=device):
+def run_inference(sequence, device=torch.device("cpu")):
     model = ProteinStructureModel().to(device)
     model = load_latest_checkpoint(model)
-    
-    print("here")
     model.eval()
-    for batch in inference_dataloader:
-        pred = model(batch)
+
+    with torch.no_grad():
+        pred = model({"sequence": sequence})
     
     pred_coords = pred["final_positions"]
     pred_mask = pred["position_mask"]
@@ -124,9 +116,11 @@ def run_inference(model, inference_dataloader, device=device):
 
     return pred_coords, pred_mask
 
-pred_coords, pred_mask = run_inference(model, inference_dataloader, device)
 
-def save_pdb(pred_coords, pred_mask, sequence, output_file="predicted_structure.pdb"):
+def save_pdb(pred_coords, pred_mask, sequence, output_file):
+    MODEL_DIR = Path(__file__).parent
+    output_path = os.path.join(MODEL_DIR, output_file)
+    
     AA_1_to_3 = {
         'A': 'ALA', 'R': 'ARG', 'N': 'ASN', 'D': 'ASP', 'C': 'CYS',
         'E': 'GLU', 'Q': 'GLN', 'G': 'GLY', 'H': 'HIS', 'I': 'ILE',
@@ -143,7 +137,7 @@ def save_pdb(pred_coords, pred_mask, sequence, output_file="predicted_structure.
     pred_coords = pred_coords.squeeze(0) * 3
     pred_mask = pred_mask.squeeze(0)
 
-    with open(output_file, "w") as f:
+    with open(output_path, "w") as f:
         atom_index = 1
         for res_idx, res_name in enumerate(sequence):
             res_name_3 = AA_1_to_3.get(res_name.upper(), 'UNK')
@@ -160,10 +154,11 @@ def save_pdb(pred_coords, pred_mask, sequence, output_file="predicted_structure.
                 f.write(pdb_line)
                 atom_index += 1
         f.write("TER\nEND\n")
-    print(f"PDB file saved: {output_file}")
+    print(f"PDB file saved: {output_path}")
 
 
 
 # -------------------- RUN INFERENCE EXAMPLE --------------------
-sequence = "NLYQFKNMIKCTVPSRSWWDFADYGCYCGRGGSGTPVDDLDRCCQVHDNCYNEAEKISGCWPYFKTYSYECSQGTLTCKGDNNACAASVCDCDRLAAICFAGAPYNDNNYNIDLKARCQ"
-save_pdb(pred_coords, pred_mask, sequence, "output.pdb")
+# pred_coords, pred_mask = run_inference(model, inference_dataloader, device)
+# sequence = "NLYQFKNMIKCTVPSRSWWDFADYGCYCGRGGSGTPVDDLDRCCQVHDNCYNEAEKISGCWPYFKTYSYECSQGTLTCKGDNNACAASVCDCDRLAAICFAGAPYNDNNYNIDLKARCQ"
+# save_pdb(pred_coords, pred_mask, sequence, "output.pdb")

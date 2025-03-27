@@ -187,8 +187,18 @@
         // handle download -> currently without logic
         function handleDownload() {
             const selectedFormat = document.getElementById('download').value;
-            // download logic ------->>>>>>>> LATER WE NEED TO IMPLEMENT DOWNLOAD LOGIC
-            console.log('Downloading in format:', selectedFormat);
+            if (selectedFormat === 'pdbFile') {
+                const blob = new Blob([`{{ pdb_content|safe }}`], { type: 'text/plain' });
+                const url = window.URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'predicted_structure.pdb';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            }
         }
 
         function handleSendEmail() {

@@ -1,5 +1,10 @@
 import os
+import sys
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..'))
+if PROJECT_ROOT not in sys.path:
+    sys.path.append(PROJECT_ROOT)
 import time
+from pathlib import Path
 
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
@@ -10,6 +15,10 @@ from django.contrib import messages
 from django.urls import reverse
 
 from .models import User
+from .forms import ProteinSequenceForm
+import torch
+from model.inference import run_inference, save_pdb
+from model.model import ProteinStructureModel
 
 
 def register(request):  # register page
@@ -63,4 +72,32 @@ def result(request, sequence):
 
 def calculate_result(file_path):
 
-    return os.path.basename(file_path)  
+    return os.path.basename(file_path)
+
+def predict_structure(request):
+    if request.method == 'POST':
+        form = ProteinSequenceForm(request.POST)
+        if form.is_valid():
+            sequence = form.cleaned_data['sequence']
+            
+            try:
+                pred_coords, pred_mask = run_inference(sequence)
+                
+                pdb_path = os.path.join(PROJECT_ROOT, "temp_structure.pdb")
+                save_pdb(pred_coords, pred_mask, sequence, pdb_path)
+                
+                with open(pdb_path, 'r') as f:
+                    pdb_content = f.read()
+                
+                return render(request, 'users/result.html', { 
+                    'pdb_content': pdb_content
+                })
+            except Exception as e:
+                return render(request, 'users/sequence_input.html', { 
+                    'form': form,
+                    'error': str(e)
+                })
+    else:
+        form = ProteinSequenceForm()
+    
+    return render(request, 'users/sequence_input.html', {'form': form}) 

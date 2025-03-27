@@ -1,59 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Sequence</title>
+    <title>Protein Structure Prediction</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
         }
         .container {
+            max-width: 800px;
+            margin: 0 auto;
             background-color: white;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        input[type="text"] {
-            width: calc(100% - 22px);
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        .form-group {
+            margin-bottom: 20px;
         }
-        button {
+        textarea {
             width: 100%;
             padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        .submit-btn {
             background-color: #007bff;
             color: white;
+            padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 16px;
         }
-        button:hover {
+        .submit-btn:hover {
             background-color: #0056b3;
+        }
+        #loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Input Amino Acid Sequence</h2>
-        <form method="post">
+        <h1>Protein Structure Prediction</h1>
+        <form method="POST" id="sequenceForm">
             {% csrf_token %}
-            <input type="text" name="sequence" placeholder="Enter amino acid sequence" required>
-            <input type="text" name="Ph" placeholder="pH value">
-            <input type="text" name="Temperature" placeholder="Temperature">
-            <button type="submit">Submit</button>
+            <div class="form-group">
+                {{ form.sequence.label_tag }}
+                {{ form.sequence }}
+            </div>
+            <button type="submit" class="submit-btn">Predict Structure</button>
         </form>
+        <div id="loading">
+            <p>Predicting structure... This may take a few minutes.</p>
+            <img src="/static/loading.gif" alt="Loading...">
+        </div>
     </div>
+
+    <script>
+        document.getElementById('sequenceForm').onsubmit = function() {
+            document.getElementById('loading').style.display = 'block';
+        }
+    </script>
 </body>
 </html>

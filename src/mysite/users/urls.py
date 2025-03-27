@@ -6,7 +6,8 @@ from . import views
 urlpatterns = [
     path('register/', views.register, name='register'),
     path('login/', views.user_login, name='login'),
-    path('sequence_input/', views.sequence_input, name='sequence_input'),
-    path('result/<str:sequence>', views.result, name='result'),  
+    path('sequence_input/', views.predict_structure, name='sequence_input'),
+    path('result/<str:sequence>', views.result, name='result'),
+    path('predict/', views.predict_structure, name='predict_structure'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

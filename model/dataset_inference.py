@@ -1,18 +1,23 @@
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset
-from model import ModelArgs
+# from model import ModelArgs
 from Bio import PDB
 import pdbAlign as tt
 import re
 import os
+from pathlib import Path
 
 # if length > 500, ignore
 
 class ProcessDataset(Dataset):
     def __init__(self, temp_Ph_vals):
-        self.msa_file_path = "model/msa_raw_inference"
-        self.pdb_file_path = "model/targetPDB"
+        MODEL_DIR = Path(__file__).parent
+        
+        self.msa_file_path = os.path.join(MODEL_DIR, "msa_raw_inference")
+        self.pdb_file_path = os.path.join(MODEL_DIR, "targetPDB_inference")
+        self.sequence_file_path = os.path.join(MODEL_DIR, "input_seqs_inference")
+        
         self.ATOM_TYPES = ["N", "CA", "C", "O", "CB", "CG", "CG1", "CG2", "OG", "OG1", "SG",
                            "CD", "CD1", "CD2", "ND1", "ND2", "OD1", "OD2", "SD", "CE", "CE1", "CE2", "CE3",
                            "NE", "NE1", "NE2", "OE1", "OE2", "CH2", "CZ", "CZ2", "CZ3", "NZ", "OXT", "OH", "TYR_OH"
@@ -29,7 +34,7 @@ class ProcessDataset(Dataset):
         self.__preprocess_all_msa(temp_Ph_vals)
         for atom in self.features:
             filename = atom['seq_name'] # sequence name
-            sequence_file = "model/input_seqs_inference/" + filename + ".fasta" # fasta file
+            sequence_file = os.path.join(self.sequence_file_path, f"{filename}.fasta") # fasta file
             pdb_file = os.path.join(self.pdb_file_path, atom['seq_name'] + ".pdb") # pdb file
             seq = "" # Sequence
             with open(sequence_file, 'r') as f:

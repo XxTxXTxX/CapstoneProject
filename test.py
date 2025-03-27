@@ -32,7 +32,7 @@ def compare_pdb_files(file1, file2):
 file1 = "origin.pdb"
 file2 = "output.pdb" 
 
-differences = compare_pdb_files(file1, file2)
-print("Line\tcoordinate average difference")
-for line_number, distance in differences:
-    print(f"{line_number}\t{distance:.4f}")
+# differences = compare_pdb_files(file1, file2)
+# print("Line\tcoordinate average difference")
+# for line_number, distance in differences:
+#     print(f"{line_number}\t{distance:.4f}")
