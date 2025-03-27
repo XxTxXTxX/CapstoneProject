@@ -21,7 +21,7 @@ class ProcessDataset(Dataset):
         self.ATOM_TYPE_INDEX = {atom: idx for idx, atom in enumerate(self.ATOM_TYPES)}
         self.msa_files = [
             os.path.join(self.msa_file_path, f) 
-            for f in os.listdir(self.msa_file_path) 
+            for f in os.listdir(self.msa_file_path)
             if f.endswith('.a3m')
         ]
         self.feature_extractor = featureExtraction()

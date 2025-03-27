@@ -15,7 +15,7 @@ def parse_pdb(file_path):
 def calculate_distance(coord1, coord2):
     x1, y1, z1 = coord1
     x2, y2, z2 = coord2
-    distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2)
+    distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2) / 3
     return distance
 
 def compare_pdb_files(file1, file2):
@@ -29,13 +29,10 @@ def compare_pdb_files(file1, file2):
 
     return differences
 
-file1 = "test.pdb"
-file2 = "spread_out_structure.pdb" 
+file1 = "origin.pdb"
+file2 = "output.pdb" 
 
-try:
-    differences = compare_pdb_files(file1, file2)
-    print("Line\tcoordinate difference")
-    for line_number, distance in differences:
-        print(f"{line_number}\t{distance:.4f}")
-except Exception as e:
-    print(f"Error: {e}")
+differences = compare_pdb_files(file1, file2)
+print("Line\tcoordinate average difference")
+for line_number, distance in differences:
+    print(f"{line_number}\t{distance:.4f}")

@@ -101,7 +101,7 @@ class StructureModule(nn.Module):
         self.c_s = c_s
         self.c_z = c_z
         self.n_layer = n_layer
-        self.scale = nn.Parameter(torch.tensor(15.0))
+        # self.scale = nn.Parameter(torch.tensor(15.0))
 
         self.layer_norm_s = nn.LayerNorm(c_s)
         self.layer_norm_z = nn.LayerNorm(c_z)
@@ -118,7 +118,7 @@ class StructureModule(nn.Module):
         final_positions, position_mask, pseudo_beta_positions = None, None, None
 
         scaled_T = T.clone()
-        scaled_T[..., :3, 3] *= self.scale
+        scaled_T[..., :3, 3] *= 10 #Modifed self.scale
         final_positions, position_mask = compute_all_atom_coordinates(scaled_T, alpha, F)
 
         c_beta_ind = residue_constants.atom_types.index('CB')

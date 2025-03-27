@@ -99,11 +99,14 @@ inference_dataloader = get_ds()
 model = ProteinStructureModel()
 model.to(device)
 model = load_latest_checkpoint(model)
+for name, param in model.state_dict().items():
+    print(name)
 
 
 def run_inference(model, inference_dataloader, device=device):
     model = ProteinStructureModel().to(device)
     model = load_latest_checkpoint(model)
+    
     print("here")
     model.eval()
     for batch in inference_dataloader:
@@ -123,12 +126,7 @@ def run_inference(model, inference_dataloader, device=device):
 
 pred_coords, pred_mask = run_inference(model, inference_dataloader, device)
 
-def save_pdb(pred_coords, pred_mask, sequence, output_file="predicted_structure.pdb", scale=2.0):
-    """
-    Saves the predicted (Nres, 37, 3) tensor as a PDB file for visualization, applying the predicted mask.
-    Residue names will be shown in 3-letter amino acid codes.
-    Optional scale multiplies all coordinates to spread structure.
-    """
+def save_pdb(pred_coords, pred_mask, sequence, output_file="predicted_structure.pdb"):
     AA_1_to_3 = {
         'A': 'ALA', 'R': 'ARG', 'N': 'ASN', 'D': 'ASP', 'C': 'CYS',
         'E': 'GLU', 'Q': 'GLN', 'G': 'GLY', 'H': 'HIS', 'I': 'ILE',
@@ -142,7 +140,7 @@ def save_pdb(pred_coords, pred_mask, sequence, output_file="predicted_structure.
         "NE", "NE1", "NE2", "OE1", "OE2", "CH2", "CZ", "CZ2", "CZ3", "NZ", "OXT", "OH", "TYR_OH"
     ]
 
-    pred_coords = pred_coords.squeeze(0) * scale
+    pred_coords = pred_coords.squeeze(0) * 3
     pred_mask = pred_mask.squeeze(0)
 
     with open(output_file, "w") as f:
@@ -162,10 +160,10 @@ def save_pdb(pred_coords, pred_mask, sequence, output_file="predicted_structure.
                 f.write(pdb_line)
                 atom_index += 1
         f.write("TER\nEND\n")
-    print(f"PDB file saved: {output_file} (scaled by {scale})")
+    print(f"PDB file saved: {output_file}")
 
 
 
 # -------------------- RUN INFERENCE EXAMPLE --------------------
 sequence = "NLYQFKNMIKCTVPSRSWWDFADYGCYCGRGGSGTPVDDLDRCCQVHDNCYNEAEKISGCWPYFKTYSYECSQGTLTCKGDNNACAASVCDCDRLAAICFAGAPYNDNNYNIDLKARCQ"
-save_pdb(pred_coords, pred_mask, sequence, "spread_out_structure.pdb", scale=1)
+save_pdb(pred_coords, pred_mask, sequence, "output.pdb")
