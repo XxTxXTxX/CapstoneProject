@@ -30,12 +30,16 @@ class MaskedMSELoss(nn.Module):
         target_mask = (target != 0).any(dim=-1)  # (batch, Nres, 37)
         
         # uclidean distance loss
-        coord_loss = torch.sum((pred - target) ** 2, dim=-1)  # (batch, Nres, 37)
-        total_loss = torch.zeros_like(coord_loss)
+        # coord_loss = torch.sum((pred - target) ** 2, dim=-1)  # (batch, Nres, 37)
+        coord_loss = torch.sqrt(torch.sum((pred - target) ** 2, dim=-1) + 1e-8) 
+        # total_loss = torch.zeros_like(coord_loss)
+        total_loss = (coord_loss[case3].mean() + self.mask_penalty * (case1.sum() + case4.sum())) / (valid_positions + 1e-8)
+
         
         # pred mask = 1 but target is 0, wrong mask, penalty
         case1 = mask & ~target_mask
-        total_loss[case1] = self.mask_penalty * torch.ones_like(total_loss)[case1]
+        # total_loss[case1] = self.mask_penalty * torch.ones_like(total_loss)[case1]
+        total_loss[case1] = self.mask_penalty * coord_loss[case1].mean()
         
         # Correct mask and target is 0, no penalty
         case2 = ~mask & ~target_mask
@@ -55,7 +59,7 @@ class MaskedMSELoss(nn.Module):
             return torch.tensor(0.0, requires_grad=True, device=pred.device)
         
         return {
-            'total_loss': total_loss.sum() / valid_positions,
+            'total_loss': total_loss.sum() / (valid_positions + 1e-8),
             'coord_loss': coord_loss[case3].mean() if case3.sum() > 0 else torch.tensor(0.0),
             'mask_penalty': (total_loss[case1].sum() + total_loss[case4].sum()) / (case1.sum() + case4.sum() + 1e-8)
         }

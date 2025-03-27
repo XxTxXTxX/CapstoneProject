@@ -8,14 +8,8 @@ from .dataset_inference import ProcessDataset
 from .model import ProteinStructureModel
 import torch
 import torch.nn as nn
-from torch.utils.data import Dataset, DataLoader, random_split
-import csv
-import torch.optim as optim
-import random
-import numpy as np
+from torch.utils.data import DataLoader
 import os
-from tqdm import tqdm
-from training_data_preprocess import process_files
 
 # -------------------- DEVICE SETUP --------------------
 device = torch.device("cpu")
@@ -39,82 +33,41 @@ def load_latest_checkpoint(model, model_dir="./model_weights/"):
     print(f"Loaded checkpoint: {latest_checkpoint_path}")
     return model
 
-# -------------------- CSV LOADING --------------------
-def read_pH_temp_csv():
-    """
-    Reads a CSV file containing pH and temperature values for each PDB ID.
-    Returns:
-        dict: {pdb_id: [pH, temperature]}
-    """
-    absolute_path = os.path.join(MODEL_DIR, "pH_temp_inference.csv")
-    data_dict = {}
-    with open(absolute_path, mode="r") as file:
-        reader = csv.reader(file)
-        next(reader)  # Skip header
-        for row in reader:
-            pdb_id = row[0]
-            if row[1] == "Error":
-                row[1] = 7 # Default ph Value
-            ph = float(row[1])
-            if row[2] == "Error":
-                row[2] = 277 # Default temp value
-            temp = float(row[2])
-            data_dict[pdb_id] = [ph, temp]
-    return data_dict
-
-
-# -------------------- DATASET LOADING --------------------
-def collate_fn(batch):
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    collated = {}
-    for key in batch[0].keys():
-        samples = [item[key] for item in batch]
-        if isinstance(samples[0], torch.Tensor):
-            try:
-                collated[key] = torch.stack(samples).to(device)
-            except RuntimeError:
-                collated[key] = nn.utils.rnn.pad_sequence(samples, batch_first=True).to(device)
-        else:
-            collated[key] = samples 
-    return collated
-
-def get_ds(seed = 43):
-    """
-    Creates train and validation DataLoaders from ProcessDataset.
-    Returns:
-        tuple: (train_dataloader, val_dataloader)
-    """
-    torch.manual_seed(seed)
-    np.random.seed(seed)
-    random.seed(seed)
-
-    temp_pH_vals = read_pH_temp_csv()
-    inference_ds = ProcessDataset(temp_pH_vals)
-
-    inference_dataloader = DataLoader(inference_ds, batch_size=1, shuffle=False, collate_fn=collate_fn)
-
-    return inference_dataloader
-
-
-def run_inference(sequence, device=torch.device("cpu")):
+def run_inference(sequence, pH=7.0, temperature=25.0, device=torch.device("cpu")):
+    VALID_AA = ["A","R","N","D","C","Q","E","G","H","I","L","K","M","F","P","S","T","W","Y","V","X","-"]
+    
+    sequence = sequence.upper()
+    invalid_chars = set(sequence) - set(VALID_AA)
+    if invalid_chars:
+        raise ValueError(
+            f"Invalid amino acids found: {', '.join(invalid_chars)}. "
+            f"Valid amino acids are: {', '.join(VALID_AA)}"
+        )
     model = ProteinStructureModel().to(device)
     model = load_latest_checkpoint(model)
+    dataset = ProcessDataset(sequence=sequence, pH=pH, temperature=temperature)
+    if len(dataset) == 0:
+        raise ValueError("Failed to process input sequence")
+    dataloader = DataLoader(dataset, batch_size=1, shuffle=False)
+    print("dataloder = ", dataloader)
     model.eval()
-
     with torch.no_grad():
-        pred = model({"sequence": sequence})
-    
-    pred_coords = pred["final_positions"]
-    pred_mask = pred["position_mask"]
-    # print(f"Pred Coords Min: {pred_coords.min()}, Max: {pred_coords.max()}, Mean: {pred_coords.mean()}")
-    ca_coords = pred_coords[0,:,1]
-    dists = torch.norm(ca_coords[1:] - ca_coords[:-1], dim=-1)
-    print("Avg CA-CA dist:", dists.mean().item())
-    print(f"Predicted Coordinates Shape: {pred_coords.shape}")
-    print(f"Predicted position mask: {pred_mask.shape}")
-    print(pred_mask)
+        for batch in dataloader: 
+            pred = model(batch)
+            
+            pred_coords = pred["final_positions"]
+        pred_mask = pred["position_mask"]
+        # print(f"Pred Coords Min: {pred_coords.min()}, Max: {pred_coords.max()}, Mean: {pred_coords.mean()}")
+        ca_coords = pred_coords[0,:,1]
+        dists = torch.norm(ca_coords[1:] - ca_coords[:-1], dim=-1)
+        print("Avg CA-CA dist:", dists.mean().item())
+        print(f"Predicted Coordinates Shape: {pred_coords.shape}")
+        print(f"Predicted position mask: {pred_mask.shape}")
+        print(pred_mask)
 
-    return pred_coords, pred_mask
+        return pred_coords, pred_mask
+    
+    raise RuntimeError("No predictions generated")
 
 
 def save_pdb(pred_coords, pred_mask, sequence, output_file):
@@ -134,7 +87,7 @@ def save_pdb(pred_coords, pred_mask, sequence, output_file):
         "NE", "NE1", "NE2", "OE1", "OE2", "CH2", "CZ", "CZ2", "CZ3", "NZ", "OXT", "OH", "TYR_OH"
     ]
 
-    pred_coords = pred_coords.squeeze(0) * 3
+    pred_coords = pred_coords.squeeze(0)
     pred_mask = pred_mask.squeeze(0)
 
     with open(output_path, "w") as f:
@@ -145,6 +98,7 @@ def save_pdb(pred_coords, pred_mask, sequence, output_file):
                 if not pred_mask[res_idx, atom_idx]:
                     continue
                 x, y, z = pred_coords[res_idx, atom_idx].tolist()
+                print([x, y, z])
                 if x == 0.0 and y == 0.0 and z == 0.0:
                     continue
                 pdb_line = (

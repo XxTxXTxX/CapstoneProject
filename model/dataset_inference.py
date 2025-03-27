@@ -2,63 +2,101 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset
 # from model import ModelArgs
-from Bio import PDB
-import pdbAlign as tt
 import re
 import os
 from pathlib import Path
-
-# if length > 500, ignore
+import tempfile
+import subprocess
+from training_data_preprocess import process_files
 
 class ProcessDataset(Dataset):
-    def __init__(self, temp_Ph_vals):
-        MODEL_DIR = Path(__file__).parent
+    def __init__(self, sequence, pH, temperature):
+        self.MODEL_DIR = Path(__file__).parent
         
-        self.msa_file_path = os.path.join(MODEL_DIR, "msa_raw_inference")
-        self.pdb_file_path = os.path.join(MODEL_DIR, "targetPDB_inference")
-        self.sequence_file_path = os.path.join(MODEL_DIR, "input_seqs_inference")
+        self.msa_output_dir = os.path.join(self.MODEL_DIR, "msa_raw_inference")
+        os.makedirs(self.msa_output_dir, exist_ok=True)
         
         self.ATOM_TYPES = ["N", "CA", "C", "O", "CB", "CG", "CG1", "CG2", "OG", "OG1", "SG",
                            "CD", "CD1", "CD2", "ND1", "ND2", "OD1", "OD2", "SD", "CE", "CE1", "CE2", "CE3",
                            "NE", "NE1", "NE2", "OE1", "OE2", "CH2", "CZ", "CZ2", "CZ3", "NZ", "OXT", "OH", "TYR_OH"
                           ]
         self.ATOM_TYPE_INDEX = {atom: idx for idx, atom in enumerate(self.ATOM_TYPES)}
-        self.msa_files = [
-            os.path.join(self.msa_file_path, f) 
-            for f in os.listdir(self.msa_file_path) 
-            if f.endswith('.a3m')
-        ]
-        # print(self.msa_files)
         self.feature_extractor = featureExtraction()
         self.features = []
-        self.__preprocess_all_msa(temp_Ph_vals)
-        for atom in self.features:
-            filename = atom['seq_name'] # sequence name
-            sequence_file = os.path.join(self.sequence_file_path, f"{filename}.fasta") # fasta file
-            pdb_file = os.path.join(self.pdb_file_path, atom['seq_name'] + ".pdb") # pdb file
-            seq = "" # Sequence
-            with open(sequence_file, 'r') as f:
-                lines = f.readlines()
-            for line in lines:
-                if line.startswith('>'):
-                    continue
-                seq += line.strip() # Get sequecnce
-            # Fasta, seq_name, pdb_path --> final_tensor
-            try:
-                pdb_sequence = tt.extract_pdb_sequence(pdb_file)
-                pdb_idx, fasta_idx = tt.align_sequences(seq, pdb_sequence)
-                pdb_coordinates = tt.extract_residue_coordinates(pdb_file)
-                atom['coordinates'] = tt.create_final_tensor(seq, pdb_coordinates, fasta_idx, pdb_idx)
-            except Exception as e:
-                print(e)
-                atom["coordinates"] = None
-                continue
+        
+        self.sequence = sequence
+        self.pH = pH
+        self.temperature = temperature
+        # generate fasta file first to get .a3m(MSA) --> Then process data (Create_features from msa)
+        self.__process_msa()
+    
+    def __process_msa(self):
 
-    def __preprocess_all_msa(self, temp_Ph_vals):
-        for msa_path in self.msa_files:
-            batch = self.feature_extractor.create_features_from_a3m(msa_path, temp_Ph_vals)
-            if batch != None:
+        msa_data = self.__get_msa_for_sequence(self.sequence)
+        
+        if msa_data:
+            batch = self.feature_extractor.create_features_from_msa(
+                msa_data, 
+                self.sequence,
+                self.pH,
+                self.temperature
+            )
+            if batch is not None:
                 self.features.append(batch)
+    
+    def __create_fasta_file(self, sequence):
+        temp_fasta = tempfile.NamedTemporaryFile(
+            mode='w+', 
+            suffix='.fasta',
+            delete=False,
+            dir=self.msa_output_dir
+        )
+        temp_fasta.write(f">query\n{sequence}\n")
+        temp_fasta.close()
+        
+        return temp_fasta.name
+    
+    def __get_msa_for_sequence(self, sequence):
+        input_fasta = self.__create_fasta_file(sequence)  # sequence
+        os.makedirs(self.msa_output_dir, exist_ok=True)
+        output_a3m = os.path.join(self.msa_output_dir, "MSA.a3m")    # msa
+        database_path = "/Users/hahayes/Desktop/Capstone/hh-suite/databases/uniclust30_2016_09/uniclust30_2016_09" # database
+
+        # HHblits command
+        hhblits_command = [
+            "hhblits", 
+            "-cpu", "8",
+            "-i", input_fasta,          # sequence
+            "-d", database_path,        # database
+            "-oa3m", output_a3m,        # msa
+            "-norealign",               # norealign
+            "-n", "3"                   # iteration
+        ]
+        try:
+            subprocess.run(hhblits_command, check=True)
+            print(f"MSA successfully generated!")
+            
+            # 读取生成的MSA文件
+            if os.path.exists(output_a3m) and os.path.getsize(output_a3m) > 0:
+                msa_data = self.feature_extractor.load_a3m_file(output_a3m)
+                print(f"MSA data loaded, sequences found: {len(msa_data) if msa_data else 0}")
+                process_files()
+                return output_a3m
+            else:
+                print("MSA file is empty or does not exist")
+                return None
+                
+        except subprocess.CalledProcessError as e:
+            error_msg = e.stderr if e.stderr else str(e)
+            if "could not open file" in error_msg:
+                raise ValueError("Failed to process sequence. Please try again with a different sequence.")
+            else:
+                raise ValueError(f"HHblits error: {error_msg}")
+        except Exception as e:
+            raise ValueError(f"Error processing sequence: {str(e)}")
+        finally:
+            if 'input_fasta' in locals() and os.path.exists(input_fasta):
+                os.remove(input_fasta)
     
     def __len__(self):
         return len(self.features)
@@ -282,7 +320,7 @@ class featureExtraction():
 
         return extra_msa_feat
 
-    def create_features_from_a3m(self, file_name, temp_Ph_vals, seed=None):
+    def create_features_from_msa(self, msa_data, sequence, pH, temperature, seed=None):
         msa_feat = None
         extra_msa_feat = None
         target_feat = None
@@ -294,40 +332,28 @@ class featureExtraction():
             select_clusters_seed = seed
             mask_clusters_seed = seed+1
             crop_extra_seed = seed+2
+        seqs = self.load_a3m_file(msa_data)
+        features = self.initial_data_from_seqs(seqs)
+        
+        transforms = [
+            lambda x: self.select_cluster_centers(x, seed=select_clusters_seed),
+            lambda x: self.mask_cluster_centers(x, seed=mask_clusters_seed),
+            self.cluster_assignment,
+            self.summarize_clusters,
+            lambda x: self.crop_extra_msa(x, seed=crop_extra_seed)
+        ]
 
-        seqs = self.load_a3m_file(file_name)
-        if len(seqs[0]) < 256 and len(seqs) >= 256:
-            features = self.initial_data_from_seqs(seqs)
+        for transform in transforms:
+            features = transform(features)
 
-            transforms = [
-                lambda x: self.select_cluster_centers(x, seed=select_clusters_seed),
-                lambda x: self.mask_cluster_centers(x, seed=mask_clusters_seed),
-                self.cluster_assignment,
-                self.summarize_clusters,
-                lambda x: self.crop_extra_msa(x, seed=crop_extra_seed)
-            ]
-
-            for transform in transforms:
-                features = transform(features)
-
-            msa_feat = self.calculate_msa_feat(features)
-            extra_msa_feat = self.calculate_extra_msa_feat(features)
-            target_feat = self.onehot_encode_aa_type(seqs[0], include_gap_token=False).float()
-            residue_index = torch.arange(len(seqs[0]))
-            print(file_name)
-            return {
-                'msa_feat': msa_feat,
-                'extra_msa_feat': extra_msa_feat,
-                'target_feat': target_feat,
-                'residue_index': residue_index,
-                'seq_name' : file_name.split("/")[2].split(".")[0],
-                'pH' : temp_Ph_vals[file_name.split("/")[2].split(".")[0]][0],
-                'temp': temp_Ph_vals[file_name.split("/")[2].split(".")[0]][1]
-                # 'coordinates' :   # Nres, 37, 3 --> target
-            }
-        else:
-            return None
-
+        return {
+            'msa_feat': self.calculate_msa_feat(features),
+            'extra_msa_feat': self.calculate_extra_msa_feat(features),
+            'target_feat': self.onehot_encode_aa_type(sequence, include_gap_token=False).float(),
+            'residue_index': torch.arange(len(sequence)),
+            'pH': pH,
+            'temp': temperature
+        }
 
 # t = ProcessDataset()
 # print(t.features)

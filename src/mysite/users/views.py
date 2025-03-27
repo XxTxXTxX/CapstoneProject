@@ -79,23 +79,32 @@ def predict_structure(request):
         form = ProteinSequenceForm(request.POST)
         if form.is_valid():
             sequence = form.cleaned_data['sequence']
+            pH = form.cleaned_data['pH']
+            temperature = form.cleaned_data['temperature']
             
             try:
-                pred_coords, pred_mask = run_inference(sequence)
-                
+                pred_coords, pred_mask = run_inference(sequence, pH=pH, temperature=temperature)
+                print("End run inference")
                 pdb_path = os.path.join(PROJECT_ROOT, "temp_structure.pdb")
+                print(pdb_path)
                 save_pdb(pred_coords, pred_mask, sequence, pdb_path)
                 
                 with open(pdb_path, 'r') as f:
                     pdb_content = f.read()
                 
-                return render(request, 'users/result.html', { 
+                return render(request, 'users/result.html', {
                     'pdb_content': pdb_content
                 })
-            except Exception as e:
-                return render(request, 'users/sequence_input.html', { 
+            except ValueError as e:
+                return render(request, 'users/sequence_input.html', {
                     'form': form,
                     'error': str(e)
+                })
+            except Exception as e:
+                print(f"Unexpected error: {str(e)}")
+                return render(request, 'users/sequence_input.html', {
+                    'form': form,
+                    'error': "An unexpected error occurred. Please try again with a different sequence."
                 })
     else:
         form = ProteinSequenceForm()
