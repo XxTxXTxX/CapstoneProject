@@ -85,6 +85,8 @@ class EvoformerStack(nn.Module):
             EvoformerBlock(c_m, c_z) for _ in range(num_blocks)
         ])
         self.linear = nn.Linear(c_m, c_s)
+
+        self.coord_predictor = nn.Linear(c_s, 3)
         self.egnn = EGNNLayer(c_s, c_s)
 
     def forward(self, m, z):
@@ -111,8 +113,8 @@ class EvoformerStack(nn.Module):
                 dtype=torch.long,
                 device=s_seq.device
             ).t().contiguous()
-            # Nres, 3 (dummy coordinates)
-            coords = torch.zeros(N, 3, device=s_seq.device)
+            # Nres, 3
+            coords = self.coord_predictor(s_seq)
 
             s_seq = self.egnn(s_seq, edge_index, coords)
             s_out.append(s_seq)
