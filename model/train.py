@@ -299,6 +299,5 @@ def train(model, train_loader, val_loader, num_epochs=20, lr=1e-3, device=device
 
 
 # -------------------- RUN TRAINING --------------------
-# next time lr = 5e-5
-train(model, train_dataloader, val_dataloader, num_epochs=10, lr=5e-5, device=device)
+train(model, train_dataloader, val_dataloader, num_epochs=10, lr=5e-7, device=device)
 print("finished!!")
