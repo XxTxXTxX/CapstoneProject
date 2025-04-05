@@ -31,40 +31,48 @@ class MaskedMSELoss(nn.Module):
 
 
     def forward(self, pred, target, mask):
-        
-        target_mask = (target != 0).any(dim=-1)  # (B, N, 37)
-        coord_loss = torch.sum((pred - target) ** 2, dim=-1)  # (B, N, 37)
+        # batch, Nres, 37 (boolean mask, = False when (0,0,0) encountered, ground truth)
+        target_mask = (target != 0).any(dim=-1)
+        # batch, Nres, 37 (per-atom squared distance, without sqrt for stability)
+        coord_loss = torch.sum((pred - target) ** 2, dim=-1)
+        # batch, Nres, 37 (total loss per atom)
         total_loss = torch.zeros_like(coord_loss)
+        
+        # Ordinary losses 
 
-        # Penalty: predicted present but actually missing
+        # Type 1: Atom predicted present but actually missing (only needs to be masked) 
         case1 = mask & ~target_mask
         total_loss[case1] = self.mask_penalty
 
-        # No prediction and target also missing — no penalty
+        # Type 2: Atom predicted to be non-existent and it truly does not (no penalty)
         case2 = ~mask & ~target_mask
         total_loss[case2] = 0.0
 
-        # Correct prediction (present in both)
+        # Type 3: Atom predicted to be present and it actually is, just compare coords
         case3 = mask & target_mask
         total_loss[case3] = coord_loss[case3]
 
-        # Missed atom: target present but predicted missing
+        # Type 4: Atom predicted to be missing but should exist, give mask loss and compare coords
         case4 = ~mask & target_mask
         total_loss[case4] = coord_loss[case4] + self.mask_penalty
+        
+        # Special losses
 
-        # === Boost loss for backbone atoms ===
+        # Stype 1: Boost loss for backbone atoms (apply only where atom is visible)
         backbone_indices = [0, 1, 2]  # N, CA, C
+        # batch, Nres, 37
         backbone_mask = torch.zeros_like(mask)
         backbone_mask[..., backbone_indices] = 1
-        backbone_mask = backbone_mask.bool() & case3  # apply only where atom is visible
-
-        # Multiply coord loss of backbone atoms
+        backbone_mask = backbone_mask.bool() & case3
+        # Multiply coord loss with backbone atoms (loss amplified)
         total_loss[backbone_mask] *= self.backbone_weight
 
-        # === CA–CA bond distance loss ===
-        # Extract CA coordinates (index 1)
-        pred_ca = pred[:, :, 1, :]  # (B, N, 3)
-        ca_dists = torch.norm(pred_ca[:, 1:] - pred_ca[:, :-1], dim=-1)  # (B, N-1)
+        # Stype 2: CA–CA bond distance loss
+        # batch, Nres, 3 (Extract CA coordinates at index 1)
+        pred_ca = pred[:, :, 1, :]
+        # batch, Nres-1 (Euclidean distance between CA atoms of adjacent residues)
+        ca_dists = torch.norm(pred_ca[:, 1:] - pred_ca[:, :-1], dim=-1)
+        # scalar (average CA bond error across the entire batch and all residues)
         ca_bond_loss = ((ca_dists - self.expected_ca_dist) ** 2).mean()
         
         # Final loss aggregation
@@ -295,8 +303,7 @@ def train(model, train_loader, val_loader, num_epochs=20, lr=1e-3, device=device
 
 
 # -------------------- RUN TRAINING --------------------
-# next time lr = 5e-5
-train(model, train_dataloader, val_dataloader, num_epochs=10, lr=5e-7, device=device)
+train(model, train_dataloader, val_dataloader, num_epochs=10, lr=1e-7, device=device)
 print("finished!!")
 
 
