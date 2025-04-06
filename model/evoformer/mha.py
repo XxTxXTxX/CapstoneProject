@@ -120,11 +120,12 @@ class MultiHeadAttention(nn.Module):
         cos, sin = rotary_pos_emb.cos(), rotary_pos_emb.sin()
         q, k = apply_rotary_pos_embedding(q, k, cos, sin)
 
-        # if is_global = False, q: batch, seq_len, h, d_k
+        # if is_global = False, q: batch, h, seq_len, d_k
         # if is_global = True, q: batch, h, 1, d_k
         q = q / math.sqrt(self.c)
         
-        # 
+        # if is_global = False, a: batch, h, seq_len, seq_len
+        # if is_global = True: a: unable 
         a = torch.einsum('...qc,...kc->...qk', q, k)
         if bias is not None:
             bias_batch_shape = bias.shape[:-3]
@@ -138,17 +139,22 @@ class MultiHeadAttention(nn.Module):
             attention_mask = attention_mask[..., None, None, :]
             offset = (attention_mask == 0) * -1e8
             a = a + offset
-
+        
+        # batch, h, seq_len, seq_len
         a = torch.softmax(a, dim=-1)
-        # o has shape [*, N_head, q, c]
+        # batch, h, seq_len, d_k
         o = torch.einsum('...qk,...kc->...qc', a, v)
+        # batch, seq_len, h, d_k
         o = o.transpose(-3, -2)
+        # batch, seq_len, h*d_k
         o = torch.flatten(o, start_dim=-2)
+        # batch, seq_len, h*dk
         o = o.moveaxis(-2, self.attn_dim)
         if self.gated:
+            # batch, seq_len, dmodel
             g = torch.sigmoid(self.linear_g(x))
             o = g * o
 
         out = self.linear_o(o)
-
+        # batch, seq_len, dmodel
         return out
