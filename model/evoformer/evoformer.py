@@ -5,6 +5,9 @@ from evoformer.msa_stack import MSARowAttentionWithPairBias, MSAColumnAttention,
 from evoformer.pair_stack import PairStack
 from evoformer.rotaryEmbedding import RotaryEmbedding
 
+from egnn_pytorch import EGNN
+
+
 # Equivariant Graph NeuralNet layer 
 # (refining residue-level features in a geometry-aware way)
 class EGNNLayer(nn.Module):
@@ -85,7 +88,8 @@ class EvoformerStack(nn.Module):
             EvoformerBlock(c_m, c_z) for _ in range(num_blocks)
         ])
         self.linear = nn.Linear(c_m, c_s)
-
+        
+        # Predict initial coords from residue embeddings 
         self.coord_predictor = nn.Linear(c_s, 3)
         self.egnn = EGNNLayer(c_s, c_s)
 
@@ -115,7 +119,8 @@ class EvoformerStack(nn.Module):
             ).t().contiguous()
             # Nres, 3
             coords = self.coord_predictor(s_seq)
-
+            
+            # Pass through EGNN (coords will be updated internally)
             s_seq = self.egnn(s_seq, edge_index, coords)
             s_out.append(s_seq)
 
