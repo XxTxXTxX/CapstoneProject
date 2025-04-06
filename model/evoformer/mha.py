@@ -2,47 +2,58 @@ import torch
 import math
 from torch import nn
 from evoformer.rotaryEmbedding import RotaryEmbedding, apply_rotary_pos_embedding
-rotated = 0
 
+rotated = 0
 
 def isRotated():
     return rotated
-
 
 def plusOne():
     global rotated
     rotated += 1
 
-
 class MultiHeadAttention(nn.Module):
 
     def __init__(self, c_in, c, N_head, attn_dim, gated=False, is_global=False, use_bias_for_embeddings=False):
+        """
+        c_in: dmodel
+        c: dk
+        N_head: h
+        """
         super().__init__()
-
+        
         self.c_in = c_in
         self.c = c
         self.N_head = N_head
+        # if gated = True, initialize linear with bias
         self.gated = gated
+        # which axis to apply attention across
         self.attn_dim = attn_dim
         self.is_global = is_global
         self.rotary = RotaryEmbedding(c)
 
-        # Whether or not query, key, and value layers use bias is determined by `use_bias` (False for AlphaFold).
-
-        # The output layer should always use a bias. If gated is true, initialize another linear with bias.
-
+        # Output layer uses bias
+        # dmodel -> h*d_k
         self.linear_q = nn.Linear(c_in, c*N_head, bias=use_bias_for_embeddings)
-
+        
+        """
+        if is_global = False, standard mha
+        if is_global = True, attention using single shared KV
+        """
         c_kv = c if is_global else c*N_head
+        # False: dmodel -> h*d_k, True: dmodel -> dmodel
         self.linear_k = nn.Linear(c_in, c_kv, bias=use_bias_for_embeddings)
         self.linear_v = nn.Linear(c_in, c_kv, bias=use_bias_for_embeddings)
-
+        
+        # h*d_k -> dmodel
         self.linear_o = nn.Linear(c*N_head, c_in)
 
         if gated:
+            # dmodel -> h*d_k
             self.linear_g = nn.Linear(c_in, c*N_head)
 
     def prepare_qkv(self, q: torch.Tensor, k: torch.Tensor, v: torch.Tensor):
+        # attn_dim usually = 1
 
         # batch, seq_len, h*d_k -> batch, seq_len, h*d_k
         q = q.movedim(self.attn_dim, -2)
@@ -67,18 +78,21 @@ class MultiHeadAttention(nn.Module):
         return q, k, v
 
     def prepare_qkv_global(self, q, k, v):
-        # batch, seq_len, h*dk
+        # q: batch, seq_len, h*dk
+        # k,v: batch, seq_len, dmodel
         q = q.movedim(self.attn_dim, -2)
         k = k.movedim(self.attn_dim, -2)
         v = v.movedim(self.attn_dim, -2)
-
+        
+        # q: batch, seq_len, h, d_k
         q_shape = q.shape[:-1] + (self.N_head, self.c)
         q = q.view(q_shape)
-
+        # q: batch, h, seq_len, d_k
         q = q.transpose(-2, -3)
+        # kv: batch, 1, seq_len, dmodel
         k = k.unsqueeze(-3)
         v = v.unsqueeze(-3)
-
+        # q: batch, h, 1, d_k
         q = torch.mean(q, dim=-2, keepdim=True)
 
         return q, k, v
@@ -93,8 +107,8 @@ class MultiHeadAttention(nn.Module):
         v = self.linear_v(x)
 
         if self.is_global:
-            # q: batch, h, seq_len = 1, d_k
-            #
+            # q: batch, h, 1, d_k
+            # kv: batch, 1, seq_len, dmodel (shared kv across query heads)
             q, k, v = self.prepare_qkv_global(q, k, v)
         else:
             # batch, h, seq_len, d_k
@@ -106,9 +120,11 @@ class MultiHeadAttention(nn.Module):
         cos, sin = rotary_pos_emb.cos(), rotary_pos_emb.sin()
         q, k = apply_rotary_pos_embedding(q, k, cos, sin)
 
-        #
+        # if is_global = False, q: batch, seq_len, h, d_k
+        # if is_global = True, q: batch, h, 1, d_k
         q = q / math.sqrt(self.c)
-
+        
+        # 
         a = torch.einsum('...qc,...kc->...qk', q, k)
         if bias is not None:
             bias_batch_shape = bias.shape[:-3]
