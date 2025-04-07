@@ -4,20 +4,20 @@ MODEL_DIR = Path(__file__).parent
 if str(MODEL_DIR) not in sys.path:
     sys.path.append(str(MODEL_DIR))
 
-from .dataset_inference import ProcessDataset
-from .model import ProteinStructureModel
+from dataset_inference import ProcessDataset
+from model import ProteinStructureModel
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 import os
 
 # -------------------- DEVICE SETUP --------------------
-device = torch.device("cpu")
+device = torch.device("cuda")
 print(f"Using device: {device}")
 
 
 # -------------------- LOAD LATEST CHECKPOINT --------------------
-def load_latest_checkpoint(model, model_dir="./model_weights/"):
+def load_latest_checkpoint(model, model_dir="../model_weights/"):
     os.makedirs(model_dir, exist_ok=True)  
 
     checkpoint_files = [f for f in os.listdir(model_dir) if f.endswith(".pt")]
@@ -33,7 +33,7 @@ def load_latest_checkpoint(model, model_dir="./model_weights/"):
     print(f"Loaded checkpoint: {latest_checkpoint_path}")
     return model
 
-def run_inference(sequence, pH=7.0, temperature=25.0, device=torch.device("cpu")):
+def run_inference(sequence, pH=7.0, temperature=25.0, device=device):
     VALID_AA = ["A","R","N","D","C","Q","E","G","H","I","L","K","M","F","P","S","T","W","Y","V","X","-"]
     
     sequence = sequence.upper()
@@ -113,6 +113,6 @@ def save_pdb(pred_coords, pred_mask, sequence, output_file):
 
 
 # -------------------- RUN INFERENCE EXAMPLE --------------------
-# pred_coords, pred_mask = run_inference(model, inference_dataloader, device)
-# sequence = "NLYQFKNMIKCTVPSRSWWDFADYGCYCGRGGSGTPVDDLDRCCQVHDNCYNEAEKISGCWPYFKTYSYECSQGTLTCKGDNNACAASVCDCDRLAAICFAGAPYNDNNYNIDLKARCQ"
-# save_pdb(pred_coords, pred_mask, sequence, "output.pdb")
+pred_coords, pred_mask = run_inference(model, inference_dataloader, device)
+sequence = "MASMTGGQQMGRIPGNSPRMVLLESEQFLTELTRLFQKCRSSGSVFITLKKYDGRTKPIPRKSSVEGLEPAENKCLLRATDGKRKISTVVSSKEVNKFQMAYSNLLRANMDGLKKRDKKNKSKKSKPAQGGEQKLISEEDDSAGSPMPQFQTWEEFSRAAEKLYLADPMKVRVVLKYRHVDGNLCIKVTDDLVCLVYRTDQAQDVKKIEKFHSQLMRLMVAKESRNVTMETE"
+save_pdb(pred_coords, pred_mask, sequence, "output.pdb")

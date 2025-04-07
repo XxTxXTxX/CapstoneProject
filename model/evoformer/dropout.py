@@ -1,6 +1,10 @@
 import torch
 from torch import nn
 
+"""
+drop entire rows or columns
+"""
+
 class SharedDropout(nn.Module):
     def __init__(self, shared_dim: int, p: float):
         super().__init__()
@@ -9,7 +13,7 @@ class SharedDropout(nn.Module):
 
     def forward(self, x: torch.tensor):
         out = None
-
+        
         mask_shape = list(x.shape)
         mask_shape[self.shared_dim] = 1
         mask = torch.ones(mask_shape, device=x.device)
