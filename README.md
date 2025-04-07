@@ -221,5 +221,6 @@ After downloading the result, use terminal to check ATOM types and coordinates:
 
 
 License
+
 This project is licensed under the MIT License.
 
