@@ -2,16 +2,26 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset
 # from model import ModelArgs
+from dotenv import load_dotenv # Get my database access
 import re
 import os
 from pathlib import Path
 import tempfile
 import subprocess
 from training_data_preprocess import process_files
+import RemoteMSAFetcher
+load_dotenv()
 
 class ProcessDataset(Dataset):
     def __init__(self, sequence, pH, temperature):
         self.MODEL_DIR = Path(__file__).parent
+        self.msaFetcher = RemoteMSAFetcher.RemoteMSAFetcher(
+            ssh_host=os.getenv("SSH_HOST"),
+            ssh_user=os.getenv("SSH_USER"),
+            ssh_key_path=os.getenv("SSH_KEY_PATH"),
+            remote_dir=os.getenv("REMOTE_DIR"),
+            database_path=os.getenv("DATABASE_PATH")
+        )
         
         self.msa_output_dir = os.path.join(self.MODEL_DIR, "msa_raw_inference")
         os.makedirs(self.msa_output_dir, exist_ok=True)
@@ -44,39 +54,12 @@ class ProcessDataset(Dataset):
             if batch is not None:
                 self.features.append(batch)
     
-    def __create_fasta_file(self, sequence):
-        temp_fasta = tempfile.NamedTemporaryFile(
-            mode='w+', 
-            suffix='.fasta',
-            delete=False,
-            dir=self.msa_output_dir
-        )
-        temp_fasta.write(f">query\n{sequence}\n")
-        temp_fasta.close()
-        
-        return temp_fasta.name
-    
     def __get_msa_for_sequence(self, sequence):
-        input_fasta = self.__create_fasta_file(sequence)  # sequence
         os.makedirs(self.msa_output_dir, exist_ok=True)
         output_a3m = os.path.join(self.msa_output_dir, "MSA.a3m")    # msa
-        database_path = "/Users/hahayes/Desktop/Capstone/hh-suite/databases/uniclust30_2016_09/uniclust30_2016_09" # database
 
-        # HHblits command
-        hhblits_command = [
-            "hhblits", 
-            "-cpu", "8",
-            "-i", input_fasta,          # sequence
-            "-d", database_path,        # database
-            "-oa3m", output_a3m,        # msa
-            "-norealign",               # norealign
-            "-n", "3"                   # iteration
-        ]
+        self.msaFetcher.get_msa(sequence, output_a3m)
         try:
-            subprocess.run(hhblits_command, check=True)
-            print(f"MSA successfully generated!")
-            
-            # 读取生成的MSA文件
             if os.path.exists(output_a3m) and os.path.getsize(output_a3m) > 0:
                 msa_data = self.feature_extractor.load_a3m_file(output_a3m)
                 print(f"MSA data loaded, sequences found: {len(msa_data) if msa_data else 0}")
@@ -94,9 +77,6 @@ class ProcessDataset(Dataset):
                 raise ValueError(f"HHblits error: {error_msg}")
         except Exception as e:
             raise ValueError(f"Error processing sequence: {str(e)}")
-        finally:
-            if 'input_fasta' in locals() and os.path.exists(input_fasta):
-                os.remove(input_fasta)
     
     def __len__(self):
         return len(self.features)

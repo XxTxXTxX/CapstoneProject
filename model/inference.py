@@ -4,22 +4,22 @@ MODEL_DIR = Path(__file__).parent
 if str(MODEL_DIR) not in sys.path:
     sys.path.append(str(MODEL_DIR))
 
-from dataset_inference import ProcessDataset
-from model import ProteinStructureModel
+from .dataset_inference import ProcessDataset
+from .model import ProteinStructureModel
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 import os
 
 # -------------------- DEVICE SETUP --------------------
-device = torch.device("cuda")
+device = torch.device("cpu")
 print(f"Using device: {device}")
 
 
 # -------------------- LOAD LATEST CHECKPOINT --------------------
-def load_latest_checkpoint(model, model_dir="../model_weights/"):
+def load_latest_checkpoint(model, model_dir="./model_weights/"):
     os.makedirs(model_dir, exist_ok=True)  
-
+    print(os.listdir(model_dir))
     checkpoint_files = [f for f in os.listdir(model_dir) if f.endswith(".pt")]
     if not checkpoint_files:
         print("No checkpoint found, training from scratch.")
@@ -44,6 +44,7 @@ def run_inference(sequence, pH=7.0, temperature=25.0, device=device):
             f"Valid amino acids are: {', '.join(VALID_AA)}"
         )
     model = ProteinStructureModel().to(device)
+    # print(model.type)
     model = load_latest_checkpoint(model)
     dataset = ProcessDataset(sequence=sequence, pH=pH, temperature=temperature)
     if len(dataset) == 0:
@@ -98,7 +99,7 @@ def save_pdb(pred_coords, pred_mask, sequence, output_file):
                 if not pred_mask[res_idx, atom_idx]:
                     continue
                 x, y, z = pred_coords[res_idx, atom_idx].tolist()
-                print([x, y, z])
+                # print([x, y, z])
                 if x == 0.0 and y == 0.0 and z == 0.0:
                     continue
                 pdb_line = (
@@ -113,6 +114,6 @@ def save_pdb(pred_coords, pred_mask, sequence, output_file):
 
 
 # -------------------- RUN INFERENCE EXAMPLE --------------------
-pred_coords, pred_mask = run_inference(model, inference_dataloader, device)
-sequence = "MASMTGGQQMGRIPGNSPRMVLLESEQFLTELTRLFQKCRSSGSVFITLKKYDGRTKPIPRKSSVEGLEPAENKCLLRATDGKRKISTVVSSKEVNKFQMAYSNLLRANMDGLKKRDKKNKSKKSKPAQGGEQKLISEEDDSAGSPMPQFQTWEEFSRAAEKLYLADPMKVRVVLKYRHVDGNLCIKVTDDLVCLVYRTDQAQDVKKIEKFHSQLMRLMVAKESRNVTMETE"
-save_pdb(pred_coords, pred_mask, sequence, "output.pdb")
+# pred_coords, pred_mask = run_inference(model, inference_dataloader, device)
+# sequence = "MASMTGGQQMGRIPGNSPRMVLLESEQFLTELTRLFQKCRSSGSVFITLKKYDGRTKPIPRKSSVEGLEPAENKCLLRATDGKRKISTVVSSKEVNKFQMAYSNLLRANMDGLKKRDKKNKSKKSKPAQGGEQKLISEEDDSAGSPMPQFQTWEEFSRAAEKLYLADPMKVRVVLKYRHVDGNLCIKVTDDLVCLVYRTDQAQDVKKIEKFHSQLMRLMVAKESRNVTMETE"
+# save_pdb(pred_coords, pred_mask, sequence, "output.pdb")
