@@ -12,10 +12,14 @@
 
 **Integration with HH-suite**: Uses HHBlits for multiple sequence alignment, HHBlits is deployed on server so user no need to download it manually.
 
-## Installation
+## Installation (Running in commandline or VSCODE or any powershell)
 Clone the repository:
 
     git clone https://github.com/XxTxXTxX/CapstoneProject.git
+
+move to the repository where you store CapstoneProject folder --> Go inside:
+
+    cd ~/CapstoneProject
     
 Install the dependencies:
 
